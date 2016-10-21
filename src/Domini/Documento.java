@@ -9,11 +9,11 @@ import java.util.ArrayList;
 
 /**
  *
- * @author florenciarf
+ * @author florencia.rimolo
  */
 public class Documento {
-    private ArrayList<String> autor;
-    private ArrayList<String> titulo;
+    private Autor autor;
+    private Titulo titulo;
     private Contenido contenido;
     private int distancia;
     private ArrayList<Integer> frecs;
@@ -28,7 +28,7 @@ public class Documento {
         tfIdf=null;
     }
     
-    public Documento(ArrayList<String> autor, ArrayList<String> titulo, Contenido contenido) {
+    public Documento(Autor autor, Titulo titulo, Contenido contenido) {
         this.autor = autor;
         this.titulo = titulo;
         this.contenido = contenido;
@@ -36,20 +36,20 @@ public class Documento {
     }
     
 
-    public void setAutor(ArrayList<String> autor) {
+    public void setAutor(Autor autor) {
         this.autor = autor;
     }
 
-    public void setTitulo(ArrayList<String> titulo) {
+    public void setTitulo(Titulo titulo) {
         this.titulo = titulo;
     }
     
     
-    public ArrayList<String> getAutor() {
+    public Autor getAutor() {
         return autor;
     }
 
-    public ArrayList<String> getTitulo() {
+    public Titulo getTitulo() {
         return titulo;
     }
     
