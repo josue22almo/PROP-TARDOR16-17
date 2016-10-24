@@ -4,15 +4,19 @@
  * and open the template in the editor.
  */
 package Domini;
-import java.util.*;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 
 /**
  *
  * @author josue.inaldo.alcantara
  */
 public class CjtoDocumentos {
-    private final Map <Autor, ArrayList<Documento>> mapDocumentos;
-    private final ArrayList<Documento> vecDocumentos;
+    private Map <Autor, ArrayList<Documento>> mapDocumentos;
+    private ArrayList<Documento> vecDocumentos;
     private int numDocs;
     
     
@@ -22,7 +26,14 @@ public class CjtoDocumentos {
         numDocs = 0;
     }
     
-    public void crearDocumento() throws ExceptionsDomini{
+    private boolean existDoc(Documento doc){
+        for (int i = 0; i < mapDocumentos.get(doc.getAutor()).size(); ++i){
+            if (mapDocumentos.get(doc.getAutor()).equals(i)) return true;
+        }
+        return false;
+    }
+    
+    public void altaDocumento() throws ExceptionsDomini{
         Scanner sc = new Scanner(System.in);
         System.out.println("Escribe el nombre del autor del documento");
         String au = sc.nextLine();
@@ -40,24 +51,28 @@ public class CjtoDocumentos {
         Contenido contenido = new Contenido(cont);
         
         Documento doc = new Documento(autor,titulo,contenido);
-        
-        try{
-        if (mapDocumentos.containsKey(autor)){ //al autor ya existe en el CjtoDocumentos
-            if(!mapDocumentos.get(autor).add(doc))
-                throw new ExceptionsDomini("El documento dado ya existe");
-        }else{
-            ArrayList<Documento> vd = new ArrayList<>();
-            vd.add(doc);
-            mapDocumentos.put(autor, vd);
-        }
-        vecDocumentos.add(doc);
-        numDocs += 1;
-        } catch(ExceptionsDomini e){
-            System.out.println(e.getMessage());
-        } 
+        System.out.println(autor.getAutor());
+      //  try{
+        //    if (vecDocumentos.contains(doc)){ //el documento ya existe
+          //      throw new ExceptionsDomini("El documento dado ya existe");
+            //}else{
+             //   System.out.println("Documento añadido a un autor no existente");
+              // ArrayList<Documento> vd = new ArrayList<>();
+              //  vd.add(doc);
+               // mapDocumentos.put(autor, vd);
+         //   }
+          //  vecDocumentos.add(doc);
+           // numDocs += 1;
+      //  }catch(ExceptionsDomini e){
+        //    System.out.println(e.getMessage());
+        //} 
+        if (!vecDocumentos.contains(doc))
+            vecDocumentos.add(doc);
+        else System.out.print("Ya existe el documento");
     }
     
     public void eliminarDocumento(){
         System.out.println("Escribe el nombre del autor y el título del documento");
     }
+   
 }

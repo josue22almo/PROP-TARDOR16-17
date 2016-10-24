@@ -29,5 +29,8 @@ public class Autor {
     public void setAutor(String autor) {
         this.autor = autor;
     }
-        
+    
+    public boolean equals(Autor a){
+        return this.autor.equals(a.getAutor());
+    }        
 }

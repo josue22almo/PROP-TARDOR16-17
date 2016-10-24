@@ -28,5 +28,7 @@ public class Titulo {
         this.titulo = titulo;
     }
     
-    
+    public boolean equals(Titulo t){
+        return this.titulo.equals(t.getTitulo());
+    }
 }

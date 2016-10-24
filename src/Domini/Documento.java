@@ -30,9 +30,18 @@ public class Documento {
     
     
     public Documento(Autor autor, Titulo titulo, Contenido contenido) {
-       this.autor = autor;
+        this.autor = autor;
         this.titulo = titulo;
         this.contenido = contenido;
+    }
+    
+    public Documento(String autor, String titulo, String contenido) {
+        this.autor = new Autor();
+        this.titulo = new Titulo();
+        this.contenido = new Contenido();
+        this.autor.setAutor(autor); 
+        this.titulo.setTitulo(titulo); 
+        this.contenido.setContenidoOriginal(contenido);
     }
     
 
@@ -51,6 +60,18 @@ public class Documento {
 
     public Titulo getTitulo() {
         return titulo;
+    }
+    
+    public String getAutorString() {
+        return autor.getAutor();
+    }
+
+    public String getTituloString() {
+        return titulo.getTitulo();
+    }
+    
+    public boolean equals(Documento d){
+        return autor.getAutor().equals(d.getAutorString()) && titulo.getTitulo().equals(d.getTituloString());
     }
     
 }
