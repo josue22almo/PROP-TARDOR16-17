@@ -20,19 +20,19 @@ public class Documento {
     private ArrayList<Integer> tfIdf;
     
     public Documento() {
-        autor= null;
-        titulo=null;
-        contenido=null;
-        distancia=0;
-        frecs=null;
-        tfIdf=null;
+        autor= new Autor();
+        titulo = new Titulo();
+        contenido = new Contenido();
+        distancia = 0;
+        frecs = null;
+        tfIdf = null;
     }
     
+    
     public Documento(Autor autor, Titulo titulo, Contenido contenido) {
-        this.autor = autor;
+       this.autor = autor;
         this.titulo = titulo;
         this.contenido = contenido;
-        
     }
     
 

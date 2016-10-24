@@ -10,26 +10,26 @@ package Domini;
  * @author florenciarf
  */
 public class Contenido {
-    private String[] contenidoOriginal;
-    private String[] contenidoReducido;
+    private String contenidoOriginal;
+    private String contenidoReducido;
 
     public Contenido(){
     }
     
-    public Contenido(String[] contenidoOriginal) {
+    public Contenido(String contenidoOriginal) {
         this.contenidoOriginal = contenidoOriginal;
         calcularContenidoReducido();
     }
 
-    public String[] getContenidoOriginal() {
+    public String getContenidoOriginal() {
         return contenidoOriginal;
     }
 
-    public void setContenidoOriginal(String[] contenidoOriginal) {
+    public void setContenidoOriginal(String contenidoOriginal) {
         this.contenidoOriginal = contenidoOriginal;
     }
 
-    public String[] getContenidoReducido() {
+    public String getContenidoReducido() {
         return contenidoReducido;
     }
     
