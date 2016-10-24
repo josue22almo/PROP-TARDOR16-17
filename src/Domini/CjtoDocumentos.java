@@ -38,7 +38,7 @@ public class CjtoDocumentos {
         System.out.println("Escribe el nombre del autor del documento");
         String au = sc.nextLine();
         Autor autor = new Autor(au);
-        System.out.println("Escribe título del documento");
+        System.out.println("Escribe el título del documento");
         String tit = sc.nextLine();
         Titulo titulo = new Titulo(tit);
         System.out.println("Escribe el contenido del documento");
