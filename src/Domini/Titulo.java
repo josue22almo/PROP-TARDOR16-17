@@ -10,5 +10,25 @@ package Domini;
  * @author josue.inaldo.alcantara
  */
 public class Titulo {
+    private String titulo;
     
+    public Titulo(){
+        titulo = new String();
+    }
+    
+    public Titulo (String titulo){
+        this.titulo = titulo;
+    }
+    
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+    
+    public boolean equals(Titulo t){
+        return this.titulo.equals(t.getTitulo());
+    }
 }

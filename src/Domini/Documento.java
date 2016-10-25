@@ -9,48 +9,77 @@ import java.util.ArrayList;
 
 /**
  *
- * @author florenciarf
+ * @author florencia.rimolo
  */
 public class Documento {
-    private ArrayList<String> autor;
-    private ArrayList<String> titulo;
+    private Autor autor;
+    private Titulo titulo;
     private Contenido contenido;
+    private final int id;
     private int distancia;
     private ArrayList<Integer> frecs;
     private ArrayList<Integer> tfIdf;
     
     public Documento() {
-        autor= null;
-        titulo=null;
-        contenido=null;
-        distancia=0;
-        frecs=null;
-        tfIdf=null;
+        autor= new Autor();
+        titulo = new Titulo();
+        contenido = new Contenido();
+        distancia = 0;
+        frecs = null;
+        tfIdf = null;
+        id = 0;
     }
     
-    public Documento(ArrayList<String> autor, ArrayList<String> titulo, Contenido contenido) {
+    
+    public Documento(Autor autor, Titulo titulo, Contenido contenido, int id) {
         this.autor = autor;
         this.titulo = titulo;
         this.contenido = contenido;
-        
+        this.id = id;
+    }
+    
+    public Documento(String autor, String titulo, String contenido, int id) {
+        this.autor = new Autor();
+        this.titulo = new Titulo();
+        this.contenido = new Contenido();
+        this.autor.setAutor(autor); 
+        this.titulo.setTitulo(titulo); 
+        this.id = id;
+        this.contenido.setContenidoOriginal(contenido);
     }
     
 
-    public void setAutor(ArrayList<String> autor) {
+    public void setAutor(Autor autor) {
         this.autor = autor;
     }
 
-    public void setTitulo(ArrayList<String> titulo) {
+    public void setTitulo(Titulo titulo) {
         this.titulo = titulo;
     }
     
     
-    public ArrayList<String> getAutor() {
+    public Autor getAutor() {
         return autor;
     }
 
-    public ArrayList<String> getTitulo() {
+    public Titulo getTitulo() {
         return titulo;
+    }
+    
+    public String getAutorString() {
+        return autor.getAutor();
+    }
+
+    public String getTituloString() {
+        return titulo.getTitulo();
+    }
+
+    public int getId() {
+        return id;
+    }
+       
+    public boolean equals(Documento d){
+        return autor.getAutor().equals(d.getAutorString()) && titulo.getTitulo().equals(d.getTituloString());
     }
     
 }
