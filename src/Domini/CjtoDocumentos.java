@@ -13,15 +13,13 @@ import java.util.Scanner;
  * @author josue.inaldo.alcantara
  */
 public class CjtoDocumentos {
-    private MapDoc mapDocumentos;
-    private ArrayList<Documento> vecDocumentos;
-    private int numDocs;
+    private DocList vecDocumentos;
+    private int id;
     
     
     public CjtoDocumentos(){
-        mapDocumentos = new MapDoc();
-        vecDocumentos = new ArrayList<>();
-        numDocs = 0;
+        vecDocumentos = new DocList();
+        id = 0;
     }
     
     public void altaDocumento() throws ExceptionsDomini{
@@ -35,28 +33,24 @@ public class CjtoDocumentos {
         System.out.println("Escribe el contenido del documento");
         String cont = new String();
         int conta = 1;
-        while(sc.hasNext() && conta < 2){ //leemos el contenido
+        while(sc.hasNext() && conta < 1){ //leemos el contenido
             cont += sc.nextLine();
             conta += 1;
         }
         Contenido contenido = new Contenido(cont);
         
-        Documento doc = new Documento(autor,titulo,contenido);
+        Documento doc = new Documento(autor,titulo,contenido,id);
         System.out.println(autor.getAutor());
         
-        if (mapDocumentos.containsKey(autor)){
-            System.out.println("Existe el autor");//el autor ya existe
-            if (mapDocumentos.containsValue(doc)){
-                System.out.println("Existe el documento");
-            } //no se añade el documento 
-            else{
-                System.out.println("Añadimos documento");
-                mapDocumentos.addDocumento(autor,doc);
-            }
+        if (vecDocumentos.contains(doc)){
+            //el documento ya existe
+            System.out.println("Ya existe el documento");
         }else{
-            System.out.println("Añadimos documento y autor");
-            mapDocumentos.addAutorDocumento(autor,doc);
+            System.out.println("Documento nuevo");
+            vecDocumentos.add(doc);
+            ++id;
         }
+        vecDocumentos.print();
     }
     
     

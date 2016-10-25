@@ -15,6 +15,7 @@ public class Documento {
     private Autor autor;
     private Titulo titulo;
     private Contenido contenido;
+    private final int id;
     private int distancia;
     private ArrayList<Integer> frecs;
     private ArrayList<Integer> tfIdf;
@@ -26,21 +27,24 @@ public class Documento {
         distancia = 0;
         frecs = null;
         tfIdf = null;
+        id = 0;
     }
     
     
-    public Documento(Autor autor, Titulo titulo, Contenido contenido) {
+    public Documento(Autor autor, Titulo titulo, Contenido contenido, int id) {
         this.autor = autor;
         this.titulo = titulo;
         this.contenido = contenido;
+        this.id = id;
     }
     
-    public Documento(String autor, String titulo, String contenido) {
+    public Documento(String autor, String titulo, String contenido, int id) {
         this.autor = new Autor();
         this.titulo = new Titulo();
         this.contenido = new Contenido();
         this.autor.setAutor(autor); 
         this.titulo.setTitulo(titulo); 
+        this.id = id;
         this.contenido.setContenidoOriginal(contenido);
     }
     
@@ -69,7 +73,11 @@ public class Documento {
     public String getTituloString() {
         return titulo.getTitulo();
     }
-    
+
+    public int getId() {
+        return id;
+    }
+       
     public boolean equals(Documento d){
         return autor.getAutor().equals(d.getAutorString()) && titulo.getTitulo().equals(d.getTituloString());
     }
