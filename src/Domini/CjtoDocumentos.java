@@ -22,40 +22,24 @@ public class CjtoDocumentos {
         id = 0;
     }
     
-    public void altaDocumento() throws ExceptionsDomini{
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Escribe el nombre del autor del documento");
-        String au = sc.nextLine();
-        Autor autor = new Autor(au);
-        System.out.println("Escribe el título del documento");
-        String tit = sc.nextLine();
-        Titulo titulo = new Titulo(tit);
-        System.out.println("Escribe el contenido del documento");
-        String cont = new String();
-        int conta = 1;
-        while(sc.hasNext() && conta < 1){ //leemos el contenido
-            cont += sc.nextLine();
-            conta += 1;
-        }
-        Contenido contenido = new Contenido(cont);
-        
+    public void altaDocumento(String autor, String titulo, String contenido) throws ExceptionDomini{
+
         Documento doc = new Documento(autor,titulo,contenido,id);
-        System.out.println(autor.getAutor());
-        
-        if (vecDocumentos.contains(doc)){
-            //el documento ya existe
-            System.out.println("Ya existe el documento");
-        }else{
-            System.out.println("Documento nuevo");
-            vecDocumentos.add(doc);
-            ++id;
+        try{    
+            if (vecDocumentos.contains(doc)){
+                throw new ExceptionDomini("El documento ya existe");
+            }else{
+                vecDocumentos.add(doc);
+                ++id;
+            }
+        } catch(ExceptionDomini e){
+            System.out.println(e.getMessage());
         }
         vecDocumentos.print();
     }
     
     
     public void eliminarDocumento(){
-        System.out.println("Escribe el nombre del autor y el título del documento");
     }
    
 }

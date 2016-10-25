@@ -15,7 +15,7 @@ public class MainClass {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws ExceptionsDomini {
+    public static void main(String[] args) throws ExceptionDomini {
         // TODO code application logic here
         Scanner sc = new Scanner(System.in);
         CjtoDocumentos  cjD= new CjtoDocumentos();
@@ -34,7 +34,10 @@ public class MainClass {
             op = sc.nextInt();
             switch(op){
                 case 1:
-                    cjD.altaDocumento();
+                    String autor = sc.next();
+                    String titulo = sc.next();
+                    String contenido = sc.next();
+                    cjD.altaDocumento(autor,titulo,contenido);
                 case 2:
                 case 3:
                 case 4:
