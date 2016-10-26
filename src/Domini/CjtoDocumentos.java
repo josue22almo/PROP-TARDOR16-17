@@ -4,8 +4,10 @@
  * and open the template in the editor.
  */
 package Domini;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 
 /**
@@ -15,16 +17,24 @@ import java.util.Scanner;
 public class CjtoDocumentos {
     private DocList vecDocumentos;
     private int id;
+    private ArrayList<String> español;
+    private ArrayList<String> catalan;
+    private ArrayList<String> ingles;
     
-    
-    public CjtoDocumentos(){
+    public CjtoDocumentos() throws IOException, FileNotFoundException{
         vecDocumentos = new DocList();
         id = 0;
+        CtrlDomini ctrlDomini = new CtrlDomini();
+        español = new ArrayList<>();
+        catalan = new ArrayList<>();
+        ingles = new ArrayList<>();
+        ctrlDomini.leerPalabras(español, catalan, ingles);
     }
     
     public void altaDocumento(String autor, String titulo, String contenido) throws ExceptionDomini{
 
-        Documento doc = new Documento(autor,titulo,contenido,id);
+        Documento doc;
+        doc = new Documento(autor,titulo,contenido,id,español,catalan,ingles);
         try{    
             if (vecDocumentos.contains(doc)){
                 throw new ExceptionDomini("El documento ya existe");

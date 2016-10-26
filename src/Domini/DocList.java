@@ -27,7 +27,7 @@ public class DocList extends ArrayList{
     
     public void print(){
         for(Documento doc : vecDocumentos){
-            System.out.println(doc.getId() + " " + doc.getAutorString() + " " + doc.getTituloString());
+            System.out.println(doc.getId() + " " + doc.getAutor() + " " + doc.getTitulo());
         }
         System.out.println("---------------------");
     }

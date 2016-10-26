@@ -30,47 +30,33 @@ public class Documento {
         id = 0;
     }
     
-    
-    public Documento(Autor autor, Titulo titulo, Contenido contenido, int id) {
-        this.autor = autor;
-        this.titulo = titulo;
-        this.contenido = contenido;
-        this.id = id;
-    }
-    
-    public Documento(String autor, String titulo, String contenido, int id) {
+    public Documento(String autor, String titulo, String contenido, int id, ArrayList<String> español,ArrayList<String> catalan, ArrayList<String> ingles) {
         this.autor = new Autor();
         this.titulo = new Titulo();
-        this.contenido = new Contenido();
+        this.contenido = new Contenido(contenido,español,catalan,ingles);
         this.autor.setAutor(autor); 
         this.titulo.setTitulo(titulo); 
         this.id = id;
+    }
+    
+
+    public void setAutor(String autor) {
+        this.autor.setAutor(autor);
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo.setTitulo(titulo);
+    }
+
+    public void setContenido(String contenido) {
         this.contenido.setContenidoOriginal(contenido);
     }
-    
-
-    public void setAutor(Autor autor) {
-        this.autor = autor;
-    }
-
-    public void setTitulo(Titulo titulo) {
-        this.titulo = titulo;
-    }
-    
-    
-    public Autor getAutor() {
-        return autor;
-    }
-
-    public Titulo getTitulo() {
-        return titulo;
-    }
-    
-    public String getAutorString() {
+        
+    public String getAutor() {
         return autor.getAutor();
     }
 
-    public String getTituloString() {
+    public String getTitulo() {
         return titulo.getTitulo();
     }
 
@@ -79,7 +65,7 @@ public class Documento {
     }
        
     public boolean equals(Documento d){
-        return autor.getAutor().equals(d.getAutorString()) && titulo.getTitulo().equals(d.getTituloString());
+        return autor.getAutor().equals(d.getAutor()) && titulo.getTitulo().equals(d.getTitulo());
     }
     
 }

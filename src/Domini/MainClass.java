@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package Domini;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 /**
@@ -14,8 +16,11 @@ public class MainClass {
 
     /**
      * @param args the command line arguments
+     * @throws Domini.ExceptionDomini
+     * @throws java.io.IOException
+     * @throws java.io.FileNotFoundException
      */
-    public static void main(String[] args) throws ExceptionDomini {
+    public static void main(String[] args) throws ExceptionDomini, IOException, FileNotFoundException{
         // TODO code application logic here
         Scanner sc = new Scanner(System.in);
         CjtoDocumentos  cjD= new CjtoDocumentos();
