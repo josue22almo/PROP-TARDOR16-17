@@ -35,4 +35,34 @@ public class DocList extends ArrayList{
     public void add(Documento doc){
         vecDocumentos.add(doc);
     }
+    
+    public void delete(Documento doc){
+        for(int i = 0; i < vecDocumentos.size(); i++){
+            if (vecDocumentos.get(i).equals(doc)) vecDocumentos.remove(i);
+        }
+    }
+    
+    public void modificarAutor(Documento doc){
+        for(int i = 0; i < vecDocumentos.size(); i++){
+            if (vecDocumentos.get(i).equals(doc)){
+                //falta
+            }
+        }
+    }
+    
+    public void modificarTitulo(Documento doc){
+        for(int i = 0; i < vecDocumentos.size(); i++){
+            if (vecDocumentos.get(i).equals(doc)){
+                //falta
+            }
+        }
+    }
+    
+    public void modificarContenido(Documento doc){
+        for(int i = 0; i < vecDocumentos.size(); i++){
+            if (vecDocumentos.get(i).equals(doc)){
+                //falta
+            }
+        }
+    }
 }

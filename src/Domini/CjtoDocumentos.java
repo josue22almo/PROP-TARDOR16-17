@@ -48,8 +48,69 @@ public class CjtoDocumentos {
         vecDocumentos.print();
     }
     
+    public void bajaDocumento(String autor, String titulo, String contenido) throws ExceptionDomini{
+
+        Documento doc;
+        doc = new Documento(autor,titulo,contenido,id,español,catalan,ingles);
+        try{    
+            if (!vecDocumentos.contains(doc)){
+                throw new ExceptionDomini("El documento no existe");
+            }else{
+                vecDocumentos.delete(doc);
+                --id;
+            }
+        } catch(ExceptionDomini e){
+            System.out.println(e.getMessage());
+        }
+        vecDocumentos.print();
+    }
     
-    public void eliminarDocumento(){
+    public void modificaAutorDoc(String autor, String titulo, String contenido) throws ExceptionDomini{
+
+        Documento doc;
+        doc = new Documento(autor,titulo,contenido,id,español,catalan,ingles);
+        try{    
+            if (!vecDocumentos.contains(doc)){
+                throw new ExceptionDomini("El documento no existe");
+            }else{
+                vecDocumentos.modificarAutor(doc);
+            }
+        } catch(ExceptionDomini e){
+            System.out.println(e.getMessage());
+        }
+        vecDocumentos.print();
+    }
+    
+    public void modificaTituloDoc(String autor, String titulo, String contenido) throws ExceptionDomini{
+
+        Documento doc;
+        doc = new Documento(autor,titulo,contenido,id,español,catalan,ingles);
+        try{    
+            if (!vecDocumentos.contains(doc)){
+                throw new ExceptionDomini("El documento no existe");
+            }else{
+                vecDocumentos.modificarTitulo(doc);
+            }
+        } catch(ExceptionDomini e){
+            System.out.println(e.getMessage());
+        }
+        vecDocumentos.print();
+    }
+    
+    public void modificaContenidoDoc(String autor, String titulo, String contenido) throws ExceptionDomini{
+
+        Documento doc;
+        doc = new Documento(autor,titulo,contenido,id,español,catalan,ingles);
+        try{    
+            if (!vecDocumentos.contains(doc)){
+                throw new ExceptionDomini("El documento no existe");
+            }else{
+                vecDocumentos.modificarContenido(doc);
+            }
+        } catch(ExceptionDomini e){
+            System.out.println(e.getMessage());
+        }
+        //vecDocumentos.print();
     }
    
 }
