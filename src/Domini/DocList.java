@@ -38,31 +38,34 @@ public class DocList extends ArrayList{
     
     public void delete(Documento doc){
         for(int i = 0; i < vecDocumentos.size(); i++){
-            if (vecDocumentos.get(i).equals(doc)) vecDocumentos.remove(i);
-        }
-    }
-    
-    public void modificarAutor(Documento doc){
-        for(int i = 0; i < vecDocumentos.size(); i++){
-            if (vecDocumentos.get(i).equals(doc)){
-                //falta
+            if (vecDocumentos.get(i).equals(doc)) {
+                vecDocumentos.remove(i);
+                break;      // salir del for cuando ya lo ha borrado
             }
         }
     }
     
-    public void modificarTitulo(Documento doc){
-        for(int i = 0; i < vecDocumentos.size(); i++){
-            if (vecDocumentos.get(i).equals(doc)){
-                //falta
-            }
+    public void modificarAutor(Documento doc, String au){
+        int i = vecDocumentos.indexOf(doc);
+        if (i != -1) {
+            vecDocumentos.get(i).setAutor(au);
         }
+        else System.out.println("No existe ningún documento para este autor");   // excepción??   
     }
     
-    public void modificarContenido(Documento doc){
-        for(int i = 0; i < vecDocumentos.size(); i++){
-            if (vecDocumentos.get(i).equals(doc)){
-                //falta
-            }
+    public void modificarTitulo(Documento doc,String titulo){
+        int i = vecDocumentos.indexOf(doc);
+        if (i != -1) {
+            vecDocumentos.get(i).setTitulo(titulo);
         }
+        else System.out.println("No existe ningún documento con este título");
+    }
+    
+    public void modificarContenido(Documento doc, String contenido){
+        int i = vecDocumentos.indexOf(doc);
+        if (i != -1) {
+            vecDocumentos.get(i).setContenido(contenido);
+        }
+        else System.out.println("No existe ningún documento con este contenido");
     }
 }
