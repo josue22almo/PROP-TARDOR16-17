@@ -25,22 +25,37 @@ public class CjtoDocumentos {
         numDocs = 0;
     }
     
-    /*public ArrayList<String> consultarTitulosAutor(String autor){
+    public ArrayList<String> consultarTitulosAutor(String autor){
         
-        
-        
-        
+        ArrayList<String> titulos = new ArrayList<>();
+        for (int i=0; i < vecDocumentos.size(); ++i){
+            if (vecDocumentos.get(i).getAutor()==autor)
+                titulos.add(vecDocumentos.get(i).getTitulo());
+        }
+        return titulos;
     }
     
     public ArrayList<String> consultarAutores(String prefijo){
         
+        ArrayList<String> autores = new ArrayList<>();
+        for (int i=0; i < vecDocumentos.size(); ++i){
+            if (vecDocumentos.get(i).getAutor().contains(prefijo))
+                autores.add(vecDocumentos.get(i).getAutor());
+        }
+        return autores;
     }
     
     public Contenido consultarContenido(String autor, String titulo){
         
+        Contenido cont = new Contenido();
+        for (int i=0; i < vecDocumentos.size(); ++i){
+            if (vecDocumentos.get(i).getAutor()==autor && vecDocumentos.get(i).getTitulo()==titulo)
+                cont = vecDocumentos.get(i).getContenido();
+        }
+        return cont;
     }
     
-    public ArrayList<Documento> getDocumentosParecidosFrecs(Documento T, int k){
+    /*public ArrayList<Documento> getDocumentosParecidosFrecs(Documento T, int k){
     
     }
     
@@ -134,13 +149,15 @@ public class CjtoDocumentos {
     }
     
     private int contiene(String autor, String titulo) {
+        
         for(int i=0; i<vecDocumentos.size(); i++){
             if (vecDocumentos.get(i).equals(autor, titulo)) return i;
         }
         return -1;
     }
     
-    public void print(){
+    private void print(){
+        
         for(Documento doc : vecDocumentos){
             System.out.println(doc.getId() + " " + doc.getAutor() + " " + doc.getTitulo());
         }

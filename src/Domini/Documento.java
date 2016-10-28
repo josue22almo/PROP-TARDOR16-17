@@ -66,13 +66,40 @@ public class Documento {
     public String getTitulo() {
         return titulo;
     }
+    
+    public Contenido getContenido(){
+        return contenido;
+    }
+    
+    public int getDistancia(){
+        return distancia;
+    }
+    
+    public ArrayList<Integer> getFreqs() {
+        return frecs;
+    }
+    
+    public ArrayList<Integer> getFfIdf(){
+        return tfIdf;
+    }
 
     public int getId() {
         return id;
     }
+    
+    /*public void computeFrecs(){
+        
+    }
+ 
+    public void computeTfDf(){
+        
+    }*/
        
     public boolean equals(String au, String tit){
         return autor.equals(au) && titulo.equals(tit);
     }
     
+    /*public void calcularDistancia(ArrayList<int> dist_palabras){
+    
+    }*/
 }
