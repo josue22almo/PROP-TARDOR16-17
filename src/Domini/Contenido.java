@@ -12,14 +12,14 @@ import java.util.ArrayList;
  */
 public class Contenido {
     private String contenidoOriginal;
-    private CjtoPalabras contenidoReducido;
+    private ArrayList<Palabra> contenidoReducido;
 
     public Contenido(){
     }
-    
-    public Contenido(String contenidoOriginal,ArrayList<String> español,ArrayList<String> catalan, ArrayList<String> ingles) {
+        
+    public Contenido(String contenidoOriginal) {
         this.contenidoOriginal = contenidoOriginal;
-        calcularContenidoReducido(español,catalan,ingles);
+        calcularContenidoReducido();
     }
 
     public String getContenidoOriginal() {
@@ -30,30 +30,36 @@ public class Contenido {
         this.contenidoOriginal = contenidoOriginal;
     }
 
-    public CjtoPalabras getContenidoReducido() {
+    public ArrayList<Palabra> getContenidoReducido() {
         return contenidoReducido;
     }
     
-    private void calcularContenidoReducido(ArrayList<String> español,ArrayList<String> catalan, ArrayList<String> ingles){
+    private void calcularContenidoReducido(){
         String palabra = new String();
+        contenidoReducido = new ArrayList<>();
         for(int i = 0; i < contenidoOriginal.length(); ++i){
-            if (esValido(contenidoOriginal.charAt(i)))
+            if (esValido(contenidoOriginal.charAt(i))){
                 palabra = palabra + contenidoOriginal.charAt(i);
+            }
             else{
                 Palabra p = new Palabra(palabra);
-                if (contenidoReducido.contains(palabra) && !español.contains(palabra) && !catalan.contains(palabra) && !ingles.contains(palabra)) 
-                    contenidoReducido.incrementarPalabra(palabra);
-                else contenidoReducido.add(p);
                 palabra = "";
+                int j = existPalabra(p);
+                if (j != -1){
+                     
+                  //  incrementarPalabra(palabra);
+                //else 
+               
+                    contenidoReducido.get(j).incrementarFrecuencia();
+                } else contenidoReducido.add(p);
             }
         } 
     }
     
     private boolean esValido(char a){ 
         //los numeros se consideran validos, los carácteres son válidos en el alfabeto español, catalan e inglés
-        //MAYUSCULAS de 65 a 90, minusculas de 97 a 122
-        String s = new StringBuilder().append("").append('1').toString();
-        int value = Integer.parseInt(s);
+        //MAYUSCULAS de 65 a 90, minusculas de 97 a 122, no sabemos diferenciar los puntos suspensivos
+        int value = (int)a;
         if (value >= 0 && value <= 47) return false;
         if (value >= 58 && value <= 64) return false;
         if (value >= 91 && value <= 96) return false;
@@ -66,8 +72,17 @@ public class Contenido {
         if (value == 149) return true; //ò
         if (value == 151) return true; //ú
         if (value == 154) return true; //Ü
+        if (value == 8230) return false; //...
         if (value >= 160 && value <= 165) return true; // á,í,ó,ú,ñ,Ñ
-        return false;
+        return true;
     }
     
+    
+    private int existPalabra(Palabra palabra){
+         for (int i = 0; i < contenidoReducido.size(); ++i)
+             //System.out.println(contenidoReducido.get(i).getPalabra());
+             if (contenidoReducido.get(i).equals(palabra)) return i;
+         //System.out.println("------------------");
+         return -1;
+    }
 }

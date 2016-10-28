@@ -29,14 +29,8 @@ public class DriverContenido {
 "\n" +
 "Queriendo, añorando, deseando. En la soledad de la compañía de cientos que no hablarán.\n" +
 "Sin desearlo, la perdición del que anhela sin alcanzar lo deseado, llegando desde lejano sitio, el cariño despoja la razón mientras la añoranza tortura la tranquilidad del alma apacible, tranquila que sin sobresaltos descansaba en el letargo de la singularidad.";
-        ArrayList<String> español = leerPalabras("/home2/users/alumnes/1193805/dades/Tercer/Q1/PROP/PROP-TARDOR16-17/palabras_cast.txt");
-        ArrayList<String> catalan = leerPalabras("/home2/users/alumnes/1193805/dades/Tercer/Q1/PROP/PROP-TARDOR16-17/words_en.txt");
-        ArrayList<String> ingles = leerPalabras("/home2/users/alumnes/1193805/dades/Tercer/Q1/PROP/PROP-TARDOR16-17/palaures_cat.txt");
-        
-        Contenido cont = new Contenido(s,español,catalan,ingles);
-        
-        String contenidoOriginal = cont.getContenidoOriginal();
-        System.out.println("Parecido de los contenidos "+ s.equalsIgnoreCase(contenidoOriginal));
+           
+       // System.out.println("Parecido de los contenidos "+ s.equals(cont.getContenidoOriginal()));
     }
     
     private static ArrayList<String> leerPalabras(String archivo) throws FileNotFoundException, IOException{

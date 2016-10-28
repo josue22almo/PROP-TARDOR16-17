@@ -40,10 +40,7 @@ public class Documento {
         this.titulo = titulo;        
         this.id = id;
         CtrlDomini ctrlDomini = new CtrlDomini();
-        español = ctrlDomini.leerPalabras("/home2/users/alumnes/1192783/dades/PROP/proj/palabras_cast.txt");
-        catalan = ctrlDomini.leerPalabras("/home2/users/alumnes/1192783/dades/PROP/proj/paraules_cat.txt");
-        ingles = ctrlDomini.leerPalabras("/home2/users/alumnes/1192783/dades/PROP/proj/words_en.txt");
-        this.contenido = new Contenido(contenido,español,catalan,ingles);
+        this.contenido = new Contenido(contenido);
     }
     
 

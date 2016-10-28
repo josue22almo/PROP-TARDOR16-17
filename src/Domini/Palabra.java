@@ -24,7 +24,7 @@ public class Palabra {
     public Palabra(String palabra){
         this.palabra = palabra;
         TfDf = 0;
-        frecuencia  = 0;
+        frecuencia  = 1;
     }
     
     public void setPalabra(String palabra){
@@ -55,7 +55,7 @@ public class Palabra {
         frecuencia++;
     }
     
-    public boolean equals(String palabra){
-        return this.palabra.equals(palabra);
+    public boolean equals(Palabra palabra){
+        return this.palabra.equals(palabra.getPalabra());
     }
 }

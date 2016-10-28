@@ -10,7 +10,7 @@ import java.util.ArrayList;
  *
  * @author josue.inaldo.alcantara
  */
-public class CjtoPalabras extends ArrayList {
+public class CjtoPalabras{
     
     private ArrayList<Palabra> list;
     
@@ -25,9 +25,6 @@ public class CjtoPalabras extends ArrayList {
         return false; 
     }
     
-    public void add (Palabra palabra){
-        list.add(palabra);
-    }
     
     public void incrementarPalabra(String palabra){
         for (Palabra p : list){

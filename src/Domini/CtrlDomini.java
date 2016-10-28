@@ -17,7 +17,7 @@ public class CtrlDomini {
 
     public CtrlDomini(){}
     
-    public ArrayList<String> leerPalabras(String path) throws IOException, FileNotFoundException{
+    public static ArrayList<String> leerPalabras(String path) throws IOException, FileNotFoundException{
         CtrlPersistencia ctrlPersistencia = new CtrlPersistencia();
         ArrayList<String> list = ctrlPersistencia.leerPalabras(path);
         return list;
