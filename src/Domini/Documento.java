@@ -12,8 +12,8 @@ import java.util.ArrayList;
  * @author florencia.rimolo
  */
 public class Documento {
-    private Autor autor;
-    private Titulo titulo;
+    private String autor;
+    private String titulo;
     private Contenido contenido;
     private final int id;
     private int distancia;
@@ -21,8 +21,8 @@ public class Documento {
     private ArrayList<Integer> tfIdf;
     
     public Documento() {
-        autor= new Autor();
-        titulo = new Titulo();
+        autor= null;
+        titulo = null;
         contenido = new Contenido();
         distancia = 0;
         frecs = null;
@@ -31,21 +31,19 @@ public class Documento {
     }
     
     public Documento(String autor, String titulo, String contenido, int id, ArrayList<String> español,ArrayList<String> catalan, ArrayList<String> ingles) {
-        this.autor = new Autor();
-        this.titulo = new Titulo();
+        this.autor = autor;
+        this.titulo = titulo;
         this.contenido = new Contenido(contenido,español,catalan,ingles);
-        this.autor.setAutor(autor); 
-        this.titulo.setTitulo(titulo); 
         this.id = id;
     }
     
 
     public void setAutor(String autor) {
-        this.autor.setAutor(autor);
+        this.autor = autor;
     }
 
     public void setTitulo(String titulo) {
-        this.titulo.setTitulo(titulo);
+        this.titulo = titulo;
     }
 
     public void setContenido(String contenido) {
@@ -53,11 +51,11 @@ public class Documento {
     }
         
     public String getAutor() {
-        return autor.getAutor();
+        return autor;
     }
 
     public String getTitulo() {
-        return titulo.getTitulo();
+        return titulo;
     }
 
     public int getId() {
@@ -65,7 +63,7 @@ public class Documento {
     }
        
     public boolean equals(Documento d){
-        return autor.getAutor().equals(d.getAutor()) && titulo.getTitulo().equals(d.getTitulo());
+        return autor.equals(d.autor) && titulo.equals(d.titulo);
     }
     
 }
