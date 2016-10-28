@@ -11,12 +11,12 @@ package Domini;
  */
 public class Palabra {
     private String palabra;
-    private double TfDf;
+    private int TfDf;
     private int frecuencia;
 
     
     public Palabra(){
-        palabra = null;
+        palabra = "";
         TfDf = 0;
         frecuencia  = 0;
     }
@@ -39,7 +39,7 @@ public class Palabra {
         this.TfDf = pesoFrec;
     }
     
-    public void setPesoTfDs(double pesoTfDf) {
+    public void setPesoTfDf(int pesoTfDf) { //no funciona con TfDf double
         this.TfDf = pesoTfDf;
     }
 
