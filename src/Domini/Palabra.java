@@ -15,25 +15,39 @@ public class Palabra {
     private int frecuencia;
 
     
+    public Palabra(){
+        palabra = null;
+        TfDf = 0;
+        frecuencia  = 0;
+    }
+    
     public Palabra(String palabra){
         this.palabra = palabra;
         TfDf = 0;
         frecuencia  = 0;
     }
     
+    public void setPalabra(String palabra){
+        this.palabra = palabra;
+    }
+    
     public String getPalabra() {
         return palabra;
     }
-
-    public void setTfDs(double pesoTfDf) {
+    
+    public void setPesoFrec(int pesoFrec) {
+        this.TfDf = pesoFrec;
+    }
+    
+    public void setPesoTfDs(double pesoTfDf) {
         this.TfDf = pesoTfDf;
     }
 
-    public int getFrec() {
+    public int getPesoFrec() {
         return frecuencia;
     }
 
-    public double getTfDf() {
+    public double getPesoTfDf() {
         return TfDf;
     }
 

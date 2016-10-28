@@ -1,10 +1,12 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package Domini;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -43,27 +45,42 @@ public class DocList extends ArrayList{
         }
     }
     
-    public void modificarAutor(Documento doc, String au){
+    public void modificarAutor(Documento doc, String au) throws ExceptionDomini{
         int i = vecDocumentos.indexOf(doc);
+        try {
         if (i != -1) {
             vecDocumentos.get(i).setAutor(au);
         }
-        else System.out.println("No existe ningún documento para este autor");   // excepción??   
+        else throw new ExceptionDomini("No existe ningún documento para este autor");
+        }
+        catch (ExceptionDomini ed) {
+            System.out.println(ed);
+        }
     }
     
     public void modificarTitulo(Documento doc,String titulo){
         int i = vecDocumentos.indexOf(doc);
+        try {
         if (i != -1) {
             vecDocumentos.get(i).setTitulo(titulo);
         }
-        else System.out.println("No existe ningún documento con este título");
+        else throw new ExceptionDomini("No existe ningún documento con este título");
+        }
+        catch (ExceptionDomini ed){
+            System.out.println(ed);
+        }
     }
     
     public void modificarContenido(Documento doc, String contenido){
         int i = vecDocumentos.indexOf(doc);
+        try {
         if (i != -1) {
             vecDocumentos.get(i).setContenido(contenido);
         }
-        else System.out.println("No existe ningún documento con este contenido");
+        else throw new ExceptionDomini("No existe ningún documento con este contenido");
+        }
+        catch (ExceptionDomini ed) {
+            System.out.println(ed);
+        }
     }
 }

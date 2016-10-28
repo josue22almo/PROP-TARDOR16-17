@@ -52,7 +52,8 @@ public class Contenido {
     private boolean esValido(char a){ 
         //los numeros se consideran validos, los carácteres son válidos en el alfabeto español, catalan e inglés
         //MAYUSCULAS de 65 a 90, minusculas de 97 a 122
-        int value = Integer.parseInt("" + a);
+        String s = new StringBuilder().append("").append('1').toString();
+        int value = Integer.parseInt(s);
         if (value >= 0 && value <= 47) return false;
         if (value >= 58 && value <= 64) return false;
         if (value >= 91 && value <= 96) return false;
