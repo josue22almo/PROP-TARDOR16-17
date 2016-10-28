@@ -18,17 +18,17 @@ public class DriverPalabra {
         //Escribimos el valor de p
         System.out.println("p = " + p.getPalabra());
         //Cambiamos el valor de la frecuencia
-        p.setPesoFrec(15);
+        p.setFrecuencia(15);
         //Imprimimos el valor de la frecuencia
-        System.out.println("p frec= " + p.getPesoFrec());
+        System.out.println("p frec= " + p.getFrecuencia());
         //Cambiamos el valor de la TfDf
-        p.setPesoTfDf(5);
+        p.setTfDf(5);
         //Imprimimos el valor de la frecuencia
-        System.out.println("p frec= " + p.getPesoTfDf());
+        System.out.println("p frec= " + p.getTfDf());
         //incrementamos la frecuencia
         p.incrementarFrecuencia();
         //Imprimimos el valor de la nuevafrecuencia
-        System.out.println("p frec= " + p.getPesoFrec());
+        System.out.println("p frec= " + p.getFrecuencia());
         //Creamos un Palabra con la otra creadora y las comparamos 
         Palabra p2 = new Palabra("Adios");
         System.out.println("p y p2 son " + p.equals(p2));

@@ -5,12 +5,7 @@
  */
 package Domini;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 /**
  *
@@ -19,8 +14,8 @@ import java.util.Scanner;
 public class DriverContenido {
     
 
-    public static void main(String[] args) throws IOException {
-        String s = "Después de estar lejos de casa, horas trascurridas, momentos que no podría olvidar pero serán meramente recuerdos en la memoria.\n" +
+    public static void main(String[] args){
+       /* String s = "Después de estar lejos de casa, horas trascurridas, momentos que no podría olvidar pero serán meramente recuerdos en la memoria.\n" +
 "\n" +
 "Los días transcurren normalmente y la continuidad de la monotonía se interrumpe mientras las palabras alegres de personas queridas invaden espacios vacios esperando ser llenados.\n" +
 "El cansancio físico no dispone el cuerpo a continuar mientras las ganas de seguir le impulsan y continua siguiendo…\n" +
@@ -28,21 +23,22 @@ public class DriverContenido {
 "Hay un rostro conocido, distante pero inusualmente extrañado. Sin la confianza del que posee, queriendo conquistar un espacio jamás visitado, pretendiendo alcanzar la mano de alguien que no estará, extrañando la presencia de alguien que no ha estado cerca jamás. Es sentir la compañía de la soledad compartida por otra.\n" +
 "\n" +
 "Queriendo, añorando, deseando. En la soledad de la compañía de cientos que no hablarán.\n" +
-"Sin desearlo, la perdición del que anhela sin alcanzar lo deseado, llegando desde lejano sitio, el cariño despoja la razón mientras la añoranza tortura la tranquilidad del alma apacible, tranquila que sin sobresaltos descansaba en el letargo de la singularidad.";
-           
-       // System.out.println("Parecido de los contenidos "+ s.equals(cont.getContenidoOriginal()));
-    }
+"Sin desearlo, la perdición del que anhela sin alcanzar lo deseado, llegando desde lejano sitio, el cariño despoja la razón mientras la añoranza tortura la tranquilidad del alma apacible, tranquila que sin sobresaltos descansaba en el letargo de la singularidad.";*/
+        String s = "Hola hola mundo adios mundo hola AdiOs";
+        
+        Contenido cont = new Contenido();
+        //actualizamosel contenidoOriginal
+        cont.setContenidoOriginal(s); 
+        //comparamos el contenidoOriginal con s
+        System.out.println("Parecido de los contenidos " + s.equals(cont.getContenidoOriginal()));
+        ArrayList <Palabra> contReducido = cont.getContenidoReducido();
+        for (Palabra p : contReducido)
+            System.out.println(p.getPalabra() + " " + p.getFrecuencia());
+       // System.out.println(contReducido.size());
+        //System.out.println("Producto escalar = " + cont.distancia(contReducido));
+        double d = cont.distancia(contReducido);
+        System.out.println("Producto escalar = " + d);
+    } 
     
-    private static ArrayList<String> leerPalabras(String archivo) throws FileNotFoundException, IOException{
-        ArrayList<String> l = new ArrayList<>();
-        FileReader f = new FileReader(archivo);
-        BufferedReader b = new BufferedReader(f);
-        while(b.readLine()!=null) {
-            l.add(b.readLine());
-        }
-        b.close();
-        return l;
-    }
-  
-    
+      
 }

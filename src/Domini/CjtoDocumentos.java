@@ -21,7 +21,6 @@ public class CjtoDocumentos {
     
     public CjtoDocumentos() throws IOException, FileNotFoundException{
         vecDocumentos = new ArrayList<Documento>();
-        id = 0;
         numDocs = 0;
     }
     
@@ -71,14 +70,14 @@ public class CjtoDocumentos {
     public void altaDocumento (String autor, String titulo, String contenido) throws ExceptionDomini, IOException{
 
         Documento doc;
-        doc = new Documento(autor,titulo,contenido,id);
+        doc = new Documento(autor,titulo,contenido,VariablesGlobales.id);
         try{    
             int pos = vecDocumentos.indexOf(doc);
             if (pos >= 0){
                 throw new ExceptionDomini("El documento ya existe");
             }else{
                 vecDocumentos.add(doc);
-                ++id;
+                ++VariablesGlobales.id;
                 ++numDocs;
             }
         } catch(ExceptionDomini e){
