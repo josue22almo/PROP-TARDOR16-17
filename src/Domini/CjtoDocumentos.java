@@ -15,33 +15,28 @@ import java.util.ArrayList;
  * @author josue.inaldo.alcantara
  */
 public class CjtoDocumentos {
-    private DocList vecDocumentos;
+    private ArrayList<Documento> vecDocumentos;
     private int id;
     private int numDocs;
-    private ArrayList<String> español;
-    private ArrayList<String> catalan;
-    private ArrayList<String> ingles;
     
     public CjtoDocumentos() throws IOException, FileNotFoundException{
-        vecDocumentos = new DocList();
+        vecDocumentos = new ArrayList<Documento>();
         id = 0;
         numDocs = 0;
-        CtrlDomini ctrlDomini = new CtrlDomini();
-        español = new ArrayList<>();
-        catalan = new ArrayList<>();
-        ingles = new ArrayList<>();
-        ctrlDomini.leerPalabras(español, catalan, ingles);
     }
     
-    public ArrayList<Titulo> consultarTitulosAutor(Autor autor){
+    /*public ArrayList<String> consultarTitulosAutor(String autor){
+        
+        
+        
         
     }
     
-    public ArrayList<Autor> consultarAutores(String prefijo){
+    public ArrayList<String> consultarAutores(String prefijo){
         
     }
     
-    public Contenido consultarContenido(Autor autor, Titulo titulo){
+    public Contenido consultarContenido(String autor, String titulo){
         
     }
     
@@ -55,13 +50,13 @@ public class CjtoDocumentos {
     
     public ArrayList<Documento> getDocumentosBool(ArrayList<String> frase){
         
-    }
+    }*/
     
     
-    public void altaDocumento(Autor autor, Titulo titulo, Contenido contenido) throws ExceptionDomini{
+    public void altaDocumento (String autor, String titulo, String contenido) throws ExceptionDomini, IOException{
 
         Documento doc;
-        doc = new Documento(autor,titulo,contenido,id,español,catalan,ingles); //arreglar
+        doc = new Documento(autor,titulo,contenido,id);
         try{    
             int pos = vecDocumentos.indexOf(doc);
             if (pos >= 0){
@@ -74,15 +69,13 @@ public class CjtoDocumentos {
         } catch(ExceptionDomini e){
             System.out.println(e.getMessage());
         }
-        vecDocumentos.print();
+        print();
     }
     
-    public void bajaDocumento(Autor autor, Titulo titulo, Contenido contenido) throws ExceptionDomini{
+    public void bajaDocumento(String autor, String titulo) throws ExceptionDomini{
 
-        Documento doc;
-        doc = new Documento(autor,titulo,contenido,id,español,catalan,ingles); //arreglar + id
         try{    
-            int pos = vecDocumentos.indexOf(doc);
+            int pos = contiene(autor, titulo);
             if (pos==-1){
                 throw new ExceptionDomini("El documento no existe");
             }else{
@@ -92,58 +85,70 @@ public class CjtoDocumentos {
         } catch(ExceptionDomini e){
             System.out.println(e.getMessage());
         }
-        vecDocumentos.print();
+        print();
     }
     
-    public void modificaAutorDoc(Autor autor, Titulo titulo, Contenido contenido, String autorModif) throws ExceptionDomini{
+    public void modificaAutorDoc(String autor, String titulo, String autorModif) throws ExceptionDomini{
 
-        Documento doc;
-        doc = new Documento(autor,titulo,contenido,id,español,catalan,ingles); //arreglar + id
         try{    
-            int pos = vecDocumentos.indexOf(doc);
+            int pos = contiene(autor, titulo);
             if (pos==-1){
                 throw new ExceptionDomini("El documento no existe");
             }else{
-                vecDocumentos.modificarAutor(doc);
+                vecDocumentos.get(pos).setAutor(autorModif);
             }
         } catch(ExceptionDomini e){
             System.out.println(e.getMessage());
         }
-        vecDocumentos.print();
+        print();
     }
     
-    public void modificaTituloDoc(Autor autor, Titulo titulo, Contenido contenido, String TituloModif) throws ExceptionDomini{
+    public void modificaTituloDoc(String autor, String titulo, String tituloModif) throws ExceptionDomini{
 
-        Documento doc;
-        doc = new Documento(autor,titulo,contenido,id,español,catalan,ingles); //arreglar + id
         try{    
-            int pos = vecDocumentos.indexOf(doc);
+            int pos = contiene(autor, titulo);
             if (pos==-1){
                 throw new ExceptionDomini("El documento no existe");
             }else{
-                vecDocumentos.modificarTitulo(doc);
+                vecDocumentos.get(pos).setTitulo(tituloModif);
             }
         } catch(ExceptionDomini e){
             System.out.println(e.getMessage());
         }
-        vecDocumentos.print();
+        print();
     }
     
-    public void modificaContenidoDoc(Autor autor, Titulo titulo, Contenido contenido, String contenidoModif) throws ExceptionDomini{
+    public void modificaContenidoDoc(String autor, String titulo, String contenido, String contenidoModif) throws ExceptionDomini{
 
-        Documento doc;
-        doc = new Documento(autor,titulo,contenido,id,español,catalan,ingles); //arreglar + id
         try{  
-            int pos = vecDocumentos.indexOf(doc);
+            int pos = contiene(autor, titulo);
             if (pos==-1){
                 throw new ExceptionDomini("El documento no existe");
             }else{
-                vecDocumentos.modificarContenido(doc);
+                vecDocumentos.get(pos).setContenido(contenidoModif);
             }
         } catch(ExceptionDomini e){
             System.out.println(e.getMessage());
         }
         //vecDocumentos.print();
     }
+    
+    private int contiene(String autor, String titulo) {
+        for(int i=0; i<vecDocumentos.size(); i++){
+            if (vecDocumentos.get(i).equals(autor, titulo)) return i;
+        }
+        return -1;
+    }
+    
+    public void print(){
+        for(Documento doc : vecDocumentos){
+            System.out.println(doc.getId() + " " + doc.getAutor() + " " + doc.getTitulo());
+        }
+        System.out.println("---------------------");
+    }
+
+    /*public void add(Documento doc){
+        vecDocumentos.add(doc);
+    }*/
    
 }
