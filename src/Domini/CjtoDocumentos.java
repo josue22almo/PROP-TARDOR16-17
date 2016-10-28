@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author josue.inaldo.alcantara
+ * @author jessica.sobreviela
  */
 public class CjtoDocumentos {
     private ArrayList<Documento> vecDocumentos;

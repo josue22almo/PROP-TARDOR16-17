@@ -55,6 +55,10 @@ public class Documento {
     public void setContenido(String contenido) {
         this.contenido.setContenidoOriginal(contenido);
     }
+    
+    public void setID(int id) {
+        this.id = id;
+    }
         
     public String getAutor() {
         return autor;

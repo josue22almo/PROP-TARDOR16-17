@@ -25,16 +25,16 @@ public class MainClass {
         Scanner sc = new Scanner(System.in);
         CjtoDocumentos  cjD= new CjtoDocumentos();
         while(true){
-            System.out.println("Indique que quiere hacer:");
+            System.out.println("Indique qué desea hacer:");
             System.out.println("1. Dar alta documento");
             System.out.println("2. Eliminar documento");
-            System.out.println("3.Modificar documento");
-            System.out.println("4.Lista de títulos de un autor");
-            System.out.println("5.Lista de autores que empiezan por un prefijo");
-            System.out.println("6.Contenido de un documento dado su título"); 
-            System.out.println("7.Lista de los k documentos más parecidos a T");
-            System.out.println("8.Lista de los documentos con una expresión booleana");
-            System.out.println("9.Salir");
+            System.out.println("3. Modificar documento");
+            System.out.println("4. Lista de títulos de un autor");
+            System.out.println("5. Lista de autores que empiezan por un prefijo");
+            System.out.println("6. Contenido de un documento dado su título"); 
+            System.out.println("7. Lista de los k documentos más parecidos a T");
+            System.out.println("8. Lista de los documentos con una expresión booleana");
+            System.out.println("9. Salir");
             int op;
             op = sc.nextInt();
             switch(op){
