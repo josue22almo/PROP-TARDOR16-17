@@ -3,12 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/dades/josue.inaldo.alcantara/Tercer/Q1/PROP/PROP-TARDOR16-17/src/Domini/DocList.java</file>
-=======
-            <file>file:/home/jessica/Documentos/PROP/PROP-TARDOR16-17/src/Domini/CjtoDocumentos.java</file>
-            <file>file:/home/jessica/Documentos/PROP/PROP-TARDOR16-17/src/Domini/Palabra.java</file>
->>>>>>> 1c4184ca28b29dbf2451db5da76ab5f6eb8486da
+            <file>file:/home/florenciarf/Dropbox/Informatica/prop/proj/src/Domini/DriverDocumento.java</file>
+            <file>file:/home/florenciarf/Dropbox/Informatica/prop/proj/src/Domini/DriverContenido.java</file>
+            <file>file:/home/florenciarf/Dropbox/Informatica/prop/proj/src/Domini/DriverPalabra.java</file>
+            <file>file:/home/florenciarf/Dropbox/Informatica/prop/proj/src/Domini/Documento.java</file>
         </group>
     </open-files>
 </project-private>

@@ -13,6 +13,9 @@ import java.io.IOException;
  */
 public class DriverDocumento {
     public static void main(String[] args) throws IOException{
-        Documento doc = new Documento();
+        Documento doc1 = new Documento("Flor","Prueba","Esto es una prueba",1);
+        System.out.println("Autor: " + doc1.getAutor());
+        System.out.println("Título: " + doc1.getTitulo());
+        System.out.println("Contenido: " + doc1.getContenidoOriginal());
     }
 }

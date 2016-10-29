@@ -101,7 +101,7 @@ public class Contenido {
     }
     
     
-    //Una palabra es balida si no está en ninguna de las listas de español, catalan ni inglés
+    //Una palabra es válida si no está en ninguna de las listas de español, catalan ni inglés
     private boolean palabraValida(String p){
         return !(VariablesGlobales.catalan.contains(p.toLowerCase()) || VariablesGlobales.espanol.contains(p.toLowerCase()) || VariablesGlobales.english.contains(p.toLowerCase()));
     }

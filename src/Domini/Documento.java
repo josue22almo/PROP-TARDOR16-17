@@ -17,14 +17,14 @@ public class Documento {
     private String titulo;
     private Contenido contenido;
     private final int id;
-    private int distancia;
+    private double distancia;
     private ArrayList<Integer> frecs;
     private ArrayList<Integer> tfIdf;
     private static ArrayList<String> español;
     private static ArrayList<String> catalan;
     private static ArrayList<String> ingles;
     
-    public Documento()  {
+    /*public Documento()  {
         autor= null;
         titulo = null;
         contenido = new Contenido();
@@ -33,7 +33,7 @@ public class Documento {
         tfIdf = null;
         id = 0;
        
-    }
+    }*/
     
     public Documento(String autor, String titulo, String contenido, int id) throws IOException{
         this.autor = autor;
@@ -55,10 +55,6 @@ public class Documento {
     public void setContenido(String contenido) {
         this.contenido.setContenidoOriginal(contenido);
     }
-    
-    public void setID(int id) {
-        this.id = id;
-    }
         
     public String getAutor() {
         return autor;
@@ -68,12 +64,20 @@ public class Documento {
         return titulo;
     }
     
+    public String getContenidoOriginal(){
+        return contenido.getContenidoOriginal();
+    }
+    
+    public ArrayList<Palabra> getContenidoReducido(){
+        return contenido.getContenidoReducido();
+    }
+    
     public Contenido getContenido(){
         return contenido;
     }
     
-    public int getDistancia(){
-        return distancia;
+    public double getDistancia(){
+        return this.contenido.distancia(this.contenido.getContenidoReducido());
     }
     
     public ArrayList<Integer> getFreqs() {
