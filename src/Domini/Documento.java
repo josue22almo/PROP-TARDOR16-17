@@ -76,8 +76,8 @@ public class Documento {
         return contenido;
     }
     
-    public double getDistancia(){
-        return this.contenido.distancia(this.contenido.getContenidoReducido());
+    public double getDistancia(Documento doc){
+        return this.contenido.distancia(doc.contenido.getContenidoReducido());
     }
     
     public ArrayList<Integer> getFreqs() {
@@ -103,8 +103,4 @@ public class Documento {
     public boolean equals(String au, String tit){
         return autor.equals(au) && titulo.equals(tit);
     }
-    
-    /*public void calcularDistancia(ArrayList<int> dist_palabras){
-    
-    }*/
 }
