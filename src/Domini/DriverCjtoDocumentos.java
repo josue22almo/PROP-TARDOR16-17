@@ -14,6 +14,9 @@ import java.io.IOException;
 public class DriverCjtoDocumentos {
     public static void main(String[] args) throws IOException, ExceptionDomini{
         CjtoDocumentos c = new CjtoDocumentos();
+           
+        //ALTAS, BAJAS Y MODIFICACIONES
+
         //Damos de alta un documento
         c.altaDocumento("Jessica","Prueba","abc");
         System.out.println("c = ");
@@ -35,6 +38,8 @@ public class DriverCjtoDocumentos {
         System.out.println("c = ");
         c.print();
         
+        //CONSULTAS
+
         //Damos de alta un par de documentos para comprobar consultas
         c.altaDocumento("Jessica","Prueba","Abc.");
         c.altaDocumento("Jessica","Prueba2","Cba.");

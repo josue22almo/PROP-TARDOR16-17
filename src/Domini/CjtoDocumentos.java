@@ -20,7 +20,7 @@ public class CjtoDocumentos {
     private int numDocs;
     
     public CjtoDocumentos() throws IOException, FileNotFoundException{
-        vecDocumentos = new ArrayList<Documento>();
+        vecDocumentos = new ArrayList<>();
         id = 0;
         numDocs = 0;
     }
@@ -55,16 +55,64 @@ public class CjtoDocumentos {
         return cont;
     }
     
-    public ArrayList<Documento> getDocumentosParecidosFrecs(String autor, String titulo, String k){
-    
+    public ArrayList<Documento> getDocumentosParecidosFrecs(String autor, String titulo, String k) throws ExceptionDomini{
+        
+        ArrayList<Documento> v_docs =  new ArrayList<>();
+        try{  
+            int pos = contiene(autor, titulo);
+            if (pos==-1){
+                throw new ExceptionDomini("El documento no existe");
+            }else{
+                Integer num = Integer.parseInt(k);
+                Integer aux = 0;
+                double max = 0;
+                boolean max_iniciada = false;
+                for (int i = 0; i < vecDocumentos.size(); i++){
+                    if (i != pos) {
+                        double dist = vecDocumentos.get(pos).getDistancia(vecDocumentos.get(i));
+                        if (aux < num){
+                            v_docs.add(vecDocumentos.get(i));
+                            ++aux;
+                            if (!max_iniciada){
+                                max = dist;
+                                max_iniciada = true;
+                            }
+                            else {
+                                if (max < dist) max = dist;
+                                //Ordenar vector
+                            }
+                        }
+                        else {
+                            if (dist < max){
+                                v_docs.remove(num-1);
+                                v_docs.add(vecDocumentos.get(i));
+                            }
+                        }
+                    }
+                }
+            }
+        } catch(ExceptionDomini e){
+            System.out.println(e.getMessage());
+        }
+        return v_docs;
     }
     
     public ArrayList<Documento> getDocumentosParecidosTfDf(String autor, String titulo, String k){
         
+        ArrayList<Documento> v_docs =  new ArrayList<>();
+        
+        
+        
+        return v_docs;
     }
     
-    public ArrayList<Documento> getDocumentosBool(ArrayList<String> frase){
+    public ArrayList<Documento> getDocumentosBool(String frase){
         
+        ArrayList<Documento> v_docs =  new ArrayList<>();
+        
+        
+        
+        return v_docs;
     }
     
     
@@ -129,7 +177,7 @@ public class CjtoDocumentos {
         }
     }
     
-    public void modificaContenidoDoc(String autor, String titulo, String contenido, String contenidoModif) throws ExceptionDomini{
+    public void modificaContenidoDoc(String autor, String titulo, String contenidoModif) throws ExceptionDomini{
 
         try{  
             int pos = contiene(autor, titulo);
@@ -157,10 +205,6 @@ public class CjtoDocumentos {
             System.out.println(doc.getId() + " " + doc.getAutor() + " " + doc.getTitulo() + " " + doc.getContenido());
         }
         System.out.println("---------------------");
-    }
-
-    void getDocumentosBool(String abc__def) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    } 
     
 }
