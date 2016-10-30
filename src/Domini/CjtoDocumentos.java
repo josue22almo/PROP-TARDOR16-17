@@ -21,6 +21,7 @@ public class CjtoDocumentos {
     
     public CjtoDocumentos() throws IOException, FileNotFoundException{
         vecDocumentos = new ArrayList<Documento>();
+        id = 0;
         numDocs = 0;
     }
     
@@ -54,17 +55,17 @@ public class CjtoDocumentos {
         return cont;
     }
     
-    /*public ArrayList<Documento> getDocumentosParecidosFrecs(Documento T, int k){
+    public ArrayList<Documento> getDocumentosParecidosFrecs(String autor, String titulo, String k){
     
     }
     
-    public ArrayList<Documento> getDocumentosParecidosTfDf(Documento T, int k){
+    public ArrayList<Documento> getDocumentosParecidosTfDf(String autor, String titulo, String k){
         
     }
     
     public ArrayList<Documento> getDocumentosBool(ArrayList<String> frase){
         
-    }*/
+    }
     
     
     public void altaDocumento (String autor, String titulo, String contenido) throws ExceptionDomini, IOException{
@@ -83,7 +84,6 @@ public class CjtoDocumentos {
         } catch(ExceptionDomini e){
             System.out.println(e.getMessage());
         }
-        print();
     }
     
     public void bajaDocumento(String autor, String titulo) throws ExceptionDomini{
@@ -99,7 +99,6 @@ public class CjtoDocumentos {
         } catch(ExceptionDomini e){
             System.out.println(e.getMessage());
         }
-        print();
     }
     
     public void modificaAutorDoc(String autor, String titulo, String autorModif) throws ExceptionDomini{
@@ -114,7 +113,6 @@ public class CjtoDocumentos {
         } catch(ExceptionDomini e){
             System.out.println(e.getMessage());
         }
-        print();
     }
     
     public void modificaTituloDoc(String autor, String titulo, String tituloModif) throws ExceptionDomini{
@@ -129,7 +127,6 @@ public class CjtoDocumentos {
         } catch(ExceptionDomini e){
             System.out.println(e.getMessage());
         }
-        print();
     }
     
     public void modificaContenidoDoc(String autor, String titulo, String contenido, String contenidoModif) throws ExceptionDomini{
@@ -144,7 +141,6 @@ public class CjtoDocumentos {
         } catch(ExceptionDomini e){
             System.out.println(e.getMessage());
         }
-        //vecDocumentos.print();
     }
     
     private int contiene(String autor, String titulo) {
@@ -155,16 +151,16 @@ public class CjtoDocumentos {
         return -1;
     }
     
-    private void print(){
+    void print(){
         
         for(Documento doc : vecDocumentos){
-            System.out.println(doc.getId() + " " + doc.getAutor() + " " + doc.getTitulo());
+            System.out.println(doc.getId() + " " + doc.getAutor() + " " + doc.getTitulo() + " " + doc.getContenido());
         }
         System.out.println("---------------------");
     }
 
-    /*public void add(Documento doc){
-        vecDocumentos.add(doc);
-    }*/
-   
+    void getDocumentosBool(String abc__def) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
 }
