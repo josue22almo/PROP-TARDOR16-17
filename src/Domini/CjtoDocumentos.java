@@ -51,6 +51,7 @@ public class CjtoDocumentos {
         for (int i=0; i < vecDocumentos.size(); ++i){
             if (vecDocumentos.get(i).getAutor()==autor && vecDocumentos.get(i).getTitulo()==titulo)
                 cont = vecDocumentos.get(i).getContenido();
+                break;
         }
         return cont;
     }

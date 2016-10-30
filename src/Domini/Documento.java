@@ -7,6 +7,7 @@ package Domini;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  *
@@ -18,22 +19,9 @@ public class Documento {
     private Contenido contenido;
     private final int id;
     private double distancia;
-    private ArrayList<Integer> frecs;
-    private ArrayList<Integer> tfIdf;
-    private static ArrayList<String> español;
+    /*private static ArrayList<String> español;
     private static ArrayList<String> catalan;
-    private static ArrayList<String> ingles;
-    
-    /*public Documento()  {
-        autor= null;
-        titulo = null;
-        contenido = new Contenido();
-        distancia = 0;
-        frecs = null;
-        tfIdf = null;
-        id = 0;
-       
-    }*/
+    private static ArrayList<String> ingles;*/
     
     public Documento(String autor, String titulo, String contenido, int id) throws IOException{
         this.autor = autor;
@@ -79,26 +67,10 @@ public class Documento {
     public double getDistancia(Documento doc){
         return this.contenido.distancia(doc.contenido.getContenidoReducido());
     }
-    
-    public ArrayList<Integer> getFreqs() {
-        return frecs;
-    }
-    
-    public ArrayList<Integer> getFfIdf(){
-        return tfIdf;
-    }
 
     public int getId() {
         return id;
     }
-    
-    /*public void computeFrecs(){
-        
-    }
- 
-    public void computeTfDf(){
-        
-    }*/
        
     public boolean equals(String au, String tit){
         return autor.equals(au) && titulo.equals(tit);

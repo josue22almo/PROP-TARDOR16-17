@@ -8,7 +8,7 @@ package Domini;
 import java.util.ArrayList;
 /**
  *
- * @author florenciarf
+ * @author josue.inaldo.alcantara
  */
 public class Contenido {
     private String contenidoOriginal;
@@ -127,7 +127,7 @@ public class Contenido {
         return cont;
     }
 
-    private int isIn(Palabra p, ArrayList<Palabra> u) {
+    int isIn(Palabra p, ArrayList<Palabra> u) {
          for (int i = 0; i < u.size(); ++i)
              if (u.get(i).equals(p)) return i;
          return -1;
