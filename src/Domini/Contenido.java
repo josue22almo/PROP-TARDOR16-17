@@ -127,7 +127,7 @@ public class Contenido {
         return cont;
     }
 
-    int isIn(Palabra p, ArrayList<Palabra> u) {
+    private int isIn(Palabra p, ArrayList<Palabra> u) {
          for (int i = 0; i < u.size(); ++i)
              if (u.get(i).equals(p)) return i;
          return -1;
