@@ -11,39 +11,51 @@ package Domini;
  */
 public class Palabra {
     private String palabra;
-    private double pesoTfDf;
-    private int pesoFrec;
+    private double TfDf;
+    private double frecuencia;
 
     
     public Palabra(){
-        palabra = null;
-        pesoTfDf = 0;
-        pesoFrec  = 0;
+        palabra = "";
+        TfDf = 0;
+        frecuencia  = 0;
+    }
+    
+    public Palabra(String palabra){
+        this.palabra = palabra;
+        TfDf = 0.0;
+        frecuencia  = 1.0;
+    }
+    
+    public void setPalabra(String palabra){
+        this.palabra = palabra;
     }
     
     public String getPalabra() {
         return palabra;
     }
-
-    public void setPalabra(String palabra) {
-        this.palabra = palabra;
+        
+     public void setFrecuencia(double frecuencia) { //no funciona con TfDf double
+        this.frecuencia = frecuencia;
     }
 
-    public double getPesoTfDs() {
-        return pesoTfDf;
+    public void setTfDf(double pesoTfDf) { //no funciona con TfDf double
+        this.TfDf = pesoTfDf;
     }
 
-    public void setPesoTfDs(double pesoTfDf) {
-        this.pesoTfDf = pesoTfDf;
+    public double getFrecuencia() {
+        return frecuencia;
     }
 
-    public int getPesoFrec() {
-        return pesoFrec;
+    public double getTfDf() {
+        return TfDf;
     }
 
-    public void setPesoFrec(int pesoFrec) {
-        this.pesoFrec = pesoFrec;
+    public void incrementarFrecuencia(){
+        frecuencia++;
     }
     
-    
+    public boolean equals(Palabra palabra){
+        return this.palabra.equals(palabra.getPalabra());
+    }
 }

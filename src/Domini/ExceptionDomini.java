@@ -9,9 +9,9 @@ package Domini;
  *
  * @author josue.inaldo.alcantara
  */
-public class ExceptionsDomini extends Exception {
+public class ExceptionDomini extends Exception {
     
-    public ExceptionsDomini(String msg) {
+    public ExceptionDomini(String msg) {
         super(msg);
     }
 }

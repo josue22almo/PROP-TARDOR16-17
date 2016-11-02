@@ -5,81 +5,74 @@
  */
 package Domini;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  *
  * @author florencia.rimolo
  */
 public class Documento {
-    private Autor autor;
-    private Titulo titulo;
+    private String autor;
+    private String titulo;
     private Contenido contenido;
     private final int id;
-    private int distancia;
-    private ArrayList<Integer> frecs;
-    private ArrayList<Integer> tfIdf;
+    private double distancia;
+    /*private static ArrayList<String> español;
+    private static ArrayList<String> catalan;
+    private static ArrayList<String> ingles;*/
     
-    public Documento() {
-        autor= new Autor();
-        titulo = new Titulo();
-        contenido = new Contenido();
-        distancia = 0;
-        frecs = null;
-        tfIdf = null;
-        id = 0;
-    }
-    
-    
-    public Documento(Autor autor, Titulo titulo, Contenido contenido, int id) {
+    public Documento(String autor, String titulo, String contenido, int id) throws IOException{
         this.autor = autor;
-        this.titulo = titulo;
-        this.contenido = contenido;
+        this.titulo = titulo;        
         this.id = id;
+        CtrlDomini ctrlDomini = new CtrlDomini();
+        this.contenido = new Contenido(contenido);
     }
     
-    public Documento(String autor, String titulo, String contenido, int id) {
-        this.autor = new Autor();
-        this.titulo = new Titulo();
-        this.contenido = new Contenido();
-        this.autor.setAutor(autor); 
-        this.titulo.setTitulo(titulo); 
-        this.id = id;
+
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public void setContenido(String contenido) {
         this.contenido.setContenidoOriginal(contenido);
     }
-    
-
-    public void setAutor(Autor autor) {
-        this.autor = autor;
-    }
-
-    public void setTitulo(Titulo titulo) {
-        this.titulo = titulo;
-    }
-    
-    
-    public Autor getAutor() {
+        
+    public String getAutor() {
         return autor;
     }
 
-    public Titulo getTitulo() {
+    public String getTitulo() {
         return titulo;
     }
     
-    public String getAutorString() {
-        return autor.getAutor();
+    public String getContenidoOriginal(){
+        return contenido.getContenidoOriginal();
     }
-
-    public String getTituloString() {
-        return titulo.getTitulo();
+    
+    public ArrayList<Palabra> getContenidoReducido(){
+        return contenido.getContenidoReducido();
+    }
+    
+    public Contenido getContenido(){
+        return contenido;
+    }
+    
+    public double getDistancia(Documento doc){
+        return this.contenido.distancia(doc.contenido.getContenidoReducido());
     }
 
     public int getId() {
         return id;
     }
        
-    public boolean equals(Documento d){
-        return autor.getAutor().equals(d.getAutorString()) && titulo.getTitulo().equals(d.getTituloString());
+    public boolean equals(String au, String tit){
+        return autor.equals(au) && titulo.equals(tit);
     }
-    
 }
