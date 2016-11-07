@@ -19,10 +19,10 @@ public class Documento {
     private Contenido contenido;
     private final int id;
     private double distancia;
-    /*private static ArrayList<String> español;
-    private static ArrayList<String> catalan;
-    private static ArrayList<String> ingles;*/
     
+    public Documento () {
+        id = -1;
+    }
     public Documento(String autor, String titulo, String contenido, int id) throws IOException{
         this.autor = autor;
         this.titulo = titulo;        
@@ -65,7 +65,11 @@ public class Documento {
     }
     
     public double getDistancia(Documento doc){
-        return this.contenido.distancia(doc.contenido.getContenidoReducido());
+        return this.contenido.calcularDistancia(doc.contenido.getContenidoReducido());
+    }
+    
+    public void setDistancia(double dist) {
+        this.distancia = dist;
     }
 
     public int getId() {

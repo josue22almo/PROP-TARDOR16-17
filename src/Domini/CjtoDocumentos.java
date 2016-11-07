@@ -8,97 +8,105 @@ package Domini;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-
+//import java.util.Collections;
+//import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
  * @author jessica.sobreviela
  */
 public class CjtoDocumentos {
-    private ArrayList<Documento> vecDocumentos;
+    
+    private ArrayList<Documento> vecDocumentos; //para getDocumentosParecidos
+    private class Autor_Titulo {
+        String autor;
+        String titulo;
+    } 
+    private Map<Autor_Titulo, String> vecDoc1; //para consultarContenido 
+    private Map<String, ArrayList<String> > vecDoc2; //para consultarTitulosAutor i contiene
     private int id;
     private int numDocs;
     
-    public CjtoDocumentos() throws IOException, FileNotFoundException{
+    public CjtoDocumentos() {
+        
         vecDocumentos = new ArrayList<>();
+        Map<Autor_Titulo, String> vecDoc1 = new HashMap<>(); 
+        Map<String, ArrayList<String> > vecDoc2 = new HashMap<>(); 
         id = 0;
         numDocs = 0;
     }
     
     public ArrayList<String> consultarTitulosAutor(String autor){
         
-        ArrayList<String> titulos = new ArrayList<>();
+        /*ArrayList<String> titulos = new ArrayList<>();
         for (int i=0; i < vecDocumentos.size(); ++i){
             if (vecDocumentos.get(i).getAutor()==autor)
                 titulos.add(vecDocumentos.get(i).getTitulo());
         }
-        return titulos;
+        return titulos;*/
+        return vecDoc2.get(autor);
     }
     
     public ArrayList<String> consultarAutores(String prefijo){
         
         ArrayList<String> autores = new ArrayList<>();
         for (int i=0; i < vecDocumentos.size(); ++i){
-            if (vecDocumentos.get(i).getAutor().contains(prefijo))
+            if (vecDocumentos.get(i).getAutor().contains(prefijo)) //cambiar
                 autores.add(vecDocumentos.get(i).getAutor());
         }
         return autores;
     }
     
-    public Contenido consultarContenido(String autor, String titulo){
+    public String consultarContenido(String autor, String titulo){
         
-        Contenido cont = new Contenido();
+        /*Contenido cont = new Contenido();
         for (int i=0; i < vecDocumentos.size(); ++i){
             if (vecDocumentos.get(i).getAutor()==autor && vecDocumentos.get(i).getTitulo()==titulo)
                 cont = vecDocumentos.get(i).getContenido();
                 break;
         }
-        return cont;
+        return cont;*/
+        Autor_Titulo aux = new Autor_Titulo();
+        aux.autor=autor;
+        aux.titulo=titulo;
+        return vecDoc1.get(aux);
     }
     
-    public ArrayList<Documento> getDocumentosParecidosFrecs(String autor, String titulo, String k) throws ExceptionDomini{
+    public ArrayList<Documento> getDocumentosParecidosFrecs(String autor, String titulo, int k) throws Exception{
         
-        ArrayList<Documento> v_docs =  new ArrayList<>();
-        try{  
-            int pos = contiene(autor, titulo);
-            if (pos==-1){
-                throw new ExceptionDomini("El documento no existe");
-            }else{
-                Integer num = Integer.parseInt(k);
-                Integer aux = 0;
-                double max = 0;
-                boolean max_iniciada = false;
-                for (int i = 0; i < vecDocumentos.size(); i++){
-                    if (i != pos) {
-                        double dist = vecDocumentos.get(pos).getDistancia(vecDocumentos.get(i));
-                        if (aux < num){
-                            v_docs.add(vecDocumentos.get(i));
-                            ++aux;
-                            if (!max_iniciada){
-                                max = dist;
-                                max_iniciada = true;
-                            }
-                            else {
-                                if (max < dist) max = dist;
-                                //Ordenar vector
-                            }
-                        }
-                        else {
-                            if (dist < max){
-                                v_docs.remove(num-1);
-                                v_docs.add(vecDocumentos.get(i));
-                            }
-                        }
-                    }
-                }
+        ArrayList<Documento> v_docs =  new ArrayList<>(); 
+        int pos = posicion(autor, titulo);
+        if (pos==-1){
+            throw new Exception("El documento no existe");
+        }else{
+            Documento origen = vecDocumentos.get(pos);
+            //Se calcula la distancia de los otros documentos respecto al documento T
+            for (int i = 0; i < vecDocumentos.size(); i++){
+                if (i != pos) {
+                    double dist = origen.getDistancia(vecDocumentos.get(i));
+                    vecDocumentos.get(i).setDistancia(dist);
+                }    
             }
-        } catch(ExceptionDomini e){
-            System.out.println(e.getMessage());
+            //v_docs=(ArrayList<Documento>) vecDocumentos.clone();
+            //ordenar vecDocumentos segun su distancia (de menor a mayor)
+            /*Collections.sort(vecDocumentos, new Comparator(){
+                @Override
+                public int compare(Documento doc1, Documento doc2) {
+                   return new Integer(doc1.getDistancia()).compareTo(new Integer(doc2.getDistancia()));
+                }
+            });*/
         }
+        //retornar solo los k primeros elementos
+        if (vecDocumentos.size() < k)
+            for (int i = 0; i < vecDocumentos.size(); ++i) v_docs.add(vecDocumentos.get(i));
+        else 
+            for (int i = 0; i < k; ++i) v_docs.add(vecDocumentos.get(i));
         return v_docs;
     }
     
-    public ArrayList<Documento> getDocumentosParecidosTfDf(String autor, String titulo, String k){
+    public ArrayList<Documento> getDocumentosParecidosTfDf(String autor, String titulo, Integer k){
         
         ArrayList<Documento> v_docs =  new ArrayList<>();
         
@@ -117,82 +125,135 @@ public class CjtoDocumentos {
     }
     
     
-    public void altaDocumento (String autor, String titulo, String contenido) throws ExceptionDomini, IOException{
+    public void altaDocumento (String autor, String titulo, String contenido) throws Exception{
 
         Documento doc;
-        doc = new Documento(autor,titulo,contenido,VariablesGlobales.id);
-        try{    
-            int pos = vecDocumentos.indexOf(doc);
-            if (pos >= 0){
-                throw new ExceptionDomini("El documento ya existe");
-            }else{
-                vecDocumentos.add(doc);
-                ++VariablesGlobales.id;
-                ++numDocs;
-            }
-        } catch(ExceptionDomini e){
-            System.out.println(e.getMessage());
+        doc = new Documento(autor,titulo,contenido,VariablesGlobales.id);  
+        int pos = vecDocumentos.indexOf(doc);
+        if (pos >= 0){
+            throw new Exception("El documento ya existe");
+        }else{
+           //Se da de alta en vecDocumentos
+           vecDocumentos.add(doc);
+           
+           //Se da de alta en vecDoc1
+           Autor_Titulo aux = new Autor_Titulo();
+           aux.autor=autor;
+           aux.titulo=titulo;
+           vecDoc1.put(aux,contenido);
+           
+           //Se da de alta en vecDoc2
+           ArrayList<String> titulos = vecDoc2.get(autor);
+           titulos.add(titulo);
+           vecDoc2.put(autor,titulos);
+           
+           ++VariablesGlobales.id;
+           ++numDocs;
         }
     }
     
-    public void bajaDocumento(String autor, String titulo) throws ExceptionDomini{
+    public void bajaDocumento(String autor, String titulo) throws Exception{
 
-        try{    
-            int pos = contiene(autor, titulo);
-            if (pos==-1){
-                throw new ExceptionDomini("El documento no existe");
-            }else{
-                vecDocumentos.remove(pos);
-                --numDocs;
-            }
-        } catch(ExceptionDomini e){
-            System.out.println(e.getMessage());
+        if (!contiene(autor, titulo)){
+            throw new Exception("El documento no existe");
+        }else{
+            //Se da de baja en vecDocumentos
+            int pos = posicion(autor, titulo);
+            vecDocumentos.remove(pos);
+            
+            //Se da de baja en vecDoc1
+            Autor_Titulo aux = new Autor_Titulo();
+            aux.autor=autor;
+            aux.titulo=titulo;
+            vecDoc1.remove(aux);
+            
+            //Se da de baja en vecDoc2
+            ArrayList<String> titulos = vecDoc2.get(autor);
+            titulos.remove(titulo);
+            vecDoc2.put(autor,titulos);
+            
+            --numDocs;
         }
     }
     
-    public void modificaAutorDoc(String autor, String titulo, String autorModif) throws ExceptionDomini{
+    public void modificaAutorDoc(String autor, String titulo, String autorModif) throws Exception{
 
-        try{    
-            int pos = contiene(autor, titulo);
-            if (pos==-1){
-                throw new ExceptionDomini("El documento no existe");
-            }else{
-                vecDocumentos.get(pos).setAutor(autorModif);
-            }
-        } catch(ExceptionDomini e){
-            System.out.println(e.getMessage());
+        if (!contiene(autor, titulo)){
+            throw new Exception("El documento no existe");
+        }else{
+            //Se modifica en vecDocumentos
+            int pos = posicion(autor, titulo);
+            vecDocumentos.get(pos).setAutor(autorModif);
+            
+            //Se modifica en vecDoc1
+            Autor_Titulo aux = new Autor_Titulo();
+            aux.autor=autor;
+            aux.titulo=titulo;
+            String contenido = vecDoc1.get(aux);
+            vecDoc1.remove(aux);
+            Autor_Titulo aux2 = new Autor_Titulo();
+            aux2.autor=autorModif;
+            aux2.titulo=titulo;
+            vecDoc1.put(aux2,contenido);
+            
+            //Se modifica en vecDoc2
+            ArrayList<String> titulos = vecDoc2.get(autor);
+            titulos.remove(titulo);
+            vecDoc2.put(autor,titulos);
+            
+            ArrayList<String> titulos2 = vecDoc2.get(autorModif);
+            titulos2.add(titulo);
+            vecDoc2.put(autor,titulos2);
         }
     }
     
-    public void modificaTituloDoc(String autor, String titulo, String tituloModif) throws ExceptionDomini{
+    public void modificaTituloDoc(String autor, String titulo, String tituloModif) throws Exception{
 
-        try{    
-            int pos = contiene(autor, titulo);
-            if (pos==-1){
-                throw new ExceptionDomini("El documento no existe");
-            }else{
-                vecDocumentos.get(pos).setTitulo(tituloModif);
-            }
-        } catch(ExceptionDomini e){
-            System.out.println(e.getMessage());
+        if (!contiene(autor, titulo)){
+            throw new Exception("El documento no existe");
+        }else{
+            //Se modifica en vecDocumentos
+            int pos = posicion(autor, titulo);
+            vecDocumentos.get(pos).setTitulo(tituloModif);
+            
+            //Se modifica en vecDoc1
+            Autor_Titulo aux = new Autor_Titulo();
+            aux.autor=autor;
+            aux.titulo=titulo;
+            String contenido = vecDoc1.get(aux);
+            vecDoc1.remove(aux);
+            Autor_Titulo aux2 = new Autor_Titulo();
+            aux2.autor=autor;
+            aux2.titulo=tituloModif;
+            vecDoc1.put(aux2,contenido);
+            
+            //Se modifica en vecDoc2
+            ArrayList<String> titulos = vecDoc2.get(autor);
+            titulos.remove(titulo);
+            titulos.add(tituloModif);
+            vecDoc2.put(autor,titulos);
         }
     }
     
-    public void modificaContenidoDoc(String autor, String titulo, String contenidoModif) throws ExceptionDomini{
+    public void modificaContenidoDoc(String autor, String titulo, String contenidoModif) throws Exception{
 
-        try{  
-            int pos = contiene(autor, titulo);
-            if (pos==-1){
-                throw new ExceptionDomini("El documento no existe");
-            }else{
-                vecDocumentos.get(pos).setContenido(contenidoModif);
-            }
-        } catch(ExceptionDomini e){
-            System.out.println(e.getMessage());
+        if (!contiene(autor, titulo)){
+            throw new Exception("El documento no existe");
+        }else{
+            //Se modifica en vecDocumentos
+            int pos = posicion(autor, titulo);
+            vecDocumentos.get(pos).setContenido(contenidoModif);
+            
+            //Se modifica en vecDoc1
+            Autor_Titulo aux = new Autor_Titulo();
+            aux.autor=autor;
+            aux.titulo=titulo;
+            vecDoc1.remove(aux);
+            vecDoc1.put(aux,contenidoModif);
         }
     }
     
-    private int contiene(String autor, String titulo) {
+    private int posicion(String autor, String titulo) {
         
         for(int i=0; i<vecDocumentos.size(); i++){
             if (vecDocumentos.get(i).equals(autor, titulo)) return i;
@@ -200,12 +261,19 @@ public class CjtoDocumentos {
         return -1;
     }
     
-    void print(){
+    private boolean contiene(String autor, String titulo){
+        
+        if (vecDoc2.containsKey(autor)){
+            ArrayList<String> titulos = vecDoc2.get(autor);
+            return titulos.contains(titulo);
+        }
+        return false;
+    }
+    
+    public void print(){
         
         for(Documento doc : vecDocumentos){
-            System.out.println(doc.getId() + " " + doc.getAutor() + " " + doc.getTitulo() + " " + doc.getContenido());
+            System.out.println( doc.getAutor() + " " + doc.getTitulo() + " " + doc.getContenido().getContenidoOriginal());
         }
-        System.out.println("---------------------");
-    } 
-    
+    }
 }

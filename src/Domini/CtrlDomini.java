@@ -6,21 +6,24 @@
 package Domini;
 
 import Persistencia.*;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 /**
  *
  * @author florencia.rimolo
  */
 public class CtrlDomini {
-
+    private CjtoDocumentos cd = new CjtoDocumentos();
+    
     public CtrlDomini(){}
     
-    public static ArrayList<String> leerPalabras(String path) throws IOException, FileNotFoundException{
-        CtrlPersistencia ctrlPersistencia = new CtrlPersistencia();
-        ArrayList<String> list = ctrlPersistencia.leerPalabras(path);
-        return list;
+    public void altaDocumento(String autor, String titulo, String contenido) {
+        cd.altaDocumento(autor, titulo, contenido);
     }
+    
+    public void bajaDocumento(String autor, String titulo) {
+        cd.bajaDocumento(autor, titulo);
+    }
+    
+    
     
 }
