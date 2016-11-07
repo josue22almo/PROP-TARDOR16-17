@@ -26,7 +26,6 @@ public class CjtoDocumentos {
     } 
     private Map<Autor_Titulo, String> vecDoc1; //para consultarContenido 
     private Map<String, ArrayList<String> > vecDoc2; //para consultarTitulosAutor i contiene
-    private int id;
     private int numDocs;
     
     public CjtoDocumentos() {
@@ -34,7 +33,6 @@ public class CjtoDocumentos {
         vecDocumentos = new ArrayList<>();
         Map<Autor_Titulo, String> vecDoc1 = new HashMap<>(); 
         Map<String, ArrayList<String> > vecDoc2 = new HashMap<>(); 
-        id = 0;
         numDocs = 0;
     }
     
@@ -128,7 +126,7 @@ public class CjtoDocumentos {
     public void altaDocumento (String autor, String titulo, String contenido) throws Exception{
 
         Documento doc;
-        doc = new Documento(autor,titulo,contenido,VariablesGlobales.id);  
+        doc = new Documento(autor,titulo,contenido);  
         int pos = vecDocumentos.indexOf(doc);
         if (pos >= 0){
             throw new Exception("El documento ya existe");
@@ -146,8 +144,6 @@ public class CjtoDocumentos {
            ArrayList<String> titulos = vecDoc2.get(autor);
            titulos.add(titulo);
            vecDoc2.put(autor,titulos);
-           
-           ++VariablesGlobales.id;
            ++numDocs;
         }
     }

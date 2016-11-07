@@ -43,7 +43,7 @@ public class Contenido {
         return (ArrayList)contenidoReducido.clone();
     } 
     
-    public double distancia (ArrayList<Palabra> v){
+    public double calculardistancia (ArrayList<Palabra> v){
         if (v.isEmpty() || contenidoReducido.isEmpty()) return 0;
         double escalar = productEscalar(v,contenidoReducido);
         double modU = module(contenidoReducido);

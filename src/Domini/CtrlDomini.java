@@ -16,11 +16,11 @@ public class CtrlDomini {
     
     public CtrlDomini(){}
     
-    public void altaDocumento(String autor, String titulo, String contenido) {
+    public void altaDocumento(String autor, String titulo, String contenido) throws Exception {
         cd.altaDocumento(autor, titulo, contenido);
     }
     
-    public void bajaDocumento(String autor, String titulo) {
+    public void bajaDocumento(String autor, String titulo) throws Exception {
         cd.bajaDocumento(autor, titulo);
     }
     

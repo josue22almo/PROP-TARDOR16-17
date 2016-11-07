@@ -17,16 +17,13 @@ public class Documento {
     private String autor;
     private String titulo;
     private Contenido contenido;
-    private final int id;
     private double distancia;
     
-    public Documento () {
-        id = -1;
-    }
-    public Documento(String autor, String titulo, String contenido, int id) throws IOException{
+    public Documento(){}
+    
+    public Documento(String autor, String titulo, String contenido) throws IOException{
         this.autor = autor;
-        this.titulo = titulo;        
-        this.id = id;
+        this.titulo = titulo;  
         CtrlDomini ctrlDomini = new CtrlDomini();
         this.contenido = new Contenido(contenido);
     }
@@ -71,11 +68,7 @@ public class Documento {
     public void setDistancia(double dist) {
         this.distancia = dist;
     }
-
-    public int getId() {
-        return id;
-    }
-       
+      
     public boolean equals(String au, String tit){
         return autor.equals(au) && titulo.equals(tit);
     }
