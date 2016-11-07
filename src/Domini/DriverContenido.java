@@ -30,14 +30,14 @@ public class DriverContenido {
         Contenido cont2 = new Contenido ("aaa aaa bbb bbb ccc ddd aaa bbb ccc ddd");
              
         //tiene que dar 0 porque cont no tiene nada
-        double d = cont.distancia(cont2.getContenidoReducido());
-        double d2 = cont2.distancia(cont.getContenidoReducido());
+        double d = cont.calcularDistancia(cont2.getContenidoReducido());
+        double d2 = cont2.calcularDistancia(cont.getContenidoReducido());
         System.out.println("Producto escalar = " + d  + " o " + d2);
         //actualizamosel contenidoOriginal
         cont.setContenidoOriginal(s); 
         //volvemos a calcular la distancia
-        d = cont.distancia(cont2.getContenidoReducido());
-        d2 = cont2.distancia(cont.getContenidoReducido());
+        d = cont.calcularDistancia(cont2.getContenidoReducido());
+        d2 = cont2.calcularDistancia(cont.getContenidoReducido());
         System.out.println("Producto escalar = " + d  + " o " + d2);
         //comparamos el contenidoOriginal con s
         System.out.println("Parecido de los contenidos " + s.equals(cont2.getContenidoOriginal()));

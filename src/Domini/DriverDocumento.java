@@ -23,7 +23,7 @@ public class DriverDocumento {
         String titulo = sc.next();
         System.out.println("Introduzca el contenido del documento:");
         String contenido = sc.next();
-        Documento doc = new Documento(autor,titulo,contenido,1);
+        Documento doc = new Documento(autor,titulo,contenido);
         while (true) {
             System.out.println("Indique qué desea hacer:");
             System.out.println("1. Modificar documento");
@@ -33,8 +33,7 @@ public class DriverDocumento {
             System.out.println("5. Mostrar contenido reducido");
             System.out.println("6. Obtener distancia respecto a otro documento");
             System.out.println("7. Establecer distancia");
-            System.out.println("8. Mostrar ID");
-            System.out.println("9. Salir");
+            System.out.println("8. Salir");
             int op;
             op = sc.nextInt();
             switch(op){
@@ -75,15 +74,13 @@ public class DriverDocumento {
                     String autor2 = sc.next();
                     String titulo2 = sc.next();
                     String contenido2 = sc.next();
-                    Documento doc2 = new Documento(autor2, titulo2, contenido2, 2);
+                    Documento doc2 = new Documento(autor2, titulo2, contenido2);
                     System.out.println("Distancia: " + doc.getDistancia(doc2));
                 case 7:
                     System.out.println("Introduzca la nueva distancia:");
                     double dist = sc.nextDouble();
                     doc.setDistancia(dist);
                 case 8:
-                    System.out.println(doc.getId());
-                case 9:
                     break;
             }
         }
