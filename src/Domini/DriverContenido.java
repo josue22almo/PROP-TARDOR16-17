@@ -24,20 +24,23 @@ public class DriverContenido {
 "\n" +
 "Queriendo, añorando, deseando. En la soledad de la compañía de cientos que no hablarán.\n" +
 "Sin desearlo, la perdición del que anhela sin alcanzar lo deseado, llegando desde lejano sitio, el cariño despoja la razón mientras la añoranza tortura la tranquilidad del alma apacible, tranquila que sin sobresaltos descansaba en el letargo de la singularidad.";*/
-        String s = "Hola hola mundo adios mundo hola AdiOs";
+        String s = "aaa aaa aaa bbb bbb bbb ccc ccc ddd ddd eee";
         
         Contenido cont = new Contenido();
+        Contenido cont2 = new Contenido ("aaa aaa bbb bbb ccc ddd aaa bbb ccc ddd");
+             
+        //tiene que dar 0 porque cont no tiene nada
+        double d = cont.distancia(cont2.getContenidoReducido());
+        double d2 = cont2.distancia(cont.getContenidoReducido());
+        System.out.println("Producto escalar = " + d  + " o " + d2);
         //actualizamosel contenidoOriginal
         cont.setContenidoOriginal(s); 
+        //volvemos a calcular la distancia
+        d = cont.distancia(cont2.getContenidoReducido());
+        d2 = cont2.distancia(cont.getContenidoReducido());
+        System.out.println("Producto escalar = " + d  + " o " + d2);
         //comparamos el contenidoOriginal con s
-        System.out.println("Parecido de los contenidos " + s.equals(cont.getContenidoOriginal()));
-        ArrayList <Palabra> contReducido = cont.getContenidoReducido();
-        for (Palabra p : contReducido)
-            System.out.println(p.getPalabra() + " " + p.getFrecuencia());
-       // System.out.println(contReducido.size());
-        //System.out.println("Producto escalar = " + cont.distancia(contReducido));
-        double d = cont.distancia(contReducido);
-        System.out.println("Producto escalar = " + d);
+        System.out.println("Parecido de los contenidos " + s.equals(cont2.getContenidoOriginal()));
     } 
     
       

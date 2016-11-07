@@ -15,9 +15,9 @@ public class Contenido {
     private ArrayList<Palabra> contenidoReducido = new ArrayList<>();
 
     public Contenido(){
-      //  System.out.println("Creadora por defecto");
+        contenidoOriginal = "";
     }
-           
+    
     //Crea un contenido con contenidoOriginal y a partir de contenidoOriginal calula contenidoReducido
     public Contenido(String contenidoOriginal){
       //  System.out.println("Creadora paso contenido");
@@ -44,6 +44,7 @@ public class Contenido {
     } 
     
     public double distancia (ArrayList<Palabra> v){
+        if (v.isEmpty() || contenidoReducido.isEmpty()) return 0;
         double escalar = productEscalar(v,contenidoReducido);
         double modU = module(contenidoReducido);
         double modV = module(v);
@@ -139,7 +140,5 @@ public class Contenido {
             cont += (p.getFrecuencia() * p.getFrecuencia());
         }        
         return Math.sqrt(cont);
-    }
-      
-    
+    }   
 }
