@@ -39,7 +39,8 @@ public class DriverCjtoDocumentos {
             op = sc.nextInt();
             switch(op){
                 case 1:
-                    System.out.println("Autor:");
+                    System.out.println("Alta documento");
+                   /* System.out.println("Autor:");
                     autor = sc.next();
                     System.out.println("Titulo:");
                     titulo = sc.next();
@@ -50,9 +51,11 @@ public class DriverCjtoDocumentos {
                         c.print();
                     }catch (Exception e){
                         System.out.println(e.getMessage());
-                    }
+                    }*/
+                    break;
                 case 2:
-                    System.out.println("Autor:");
+                    System.out.println("Eliminar documento");
+                   /* System.out.println("Autor:");
                     autor = sc.next();
                     System.out.println("Titulo:");
                     titulo = sc.next();
@@ -61,9 +64,11 @@ public class DriverCjtoDocumentos {
                         c.print();
                     }catch (Exception e){
                         System.out.println(e.getMessage());
-                    }
+                    }*/
+                    break;
                 case 3:
-                    System.out.println("Autor:");
+                    System.out.println("Modificar autor");
+                    /*System.out.println("Autor:");
                     autor = sc.next();
                     System.out.println("Titulo:");
                     titulo = sc.next();
@@ -74,102 +79,121 @@ public class DriverCjtoDocumentos {
                         c.print();
                     }catch (Exception e){
                         System.out.println(e.getMessage());
-                    }
+                    }*/
+                    break;
                 case 4:
-                    System.out.println("Autor:");
-                    autor = sc.next();
-                    System.out.println("Titulo:");
-                    titulo = sc.next();
-                    System.out.println("Titulo modificado:");
-                    aux = sc.next();
-                    try{
-                        c.modificaTituloDoc(autor,titulo,aux); 
-                        c.print();
-                    }catch (Exception e){
-                        System.out.println(e.getMessage());
-                    }
+                    System.out.println("Modificar titulo");
+//                    System.out.println("Autor:");
+//                    autor = sc.next();
+//                    System.out.println("Titulo:");
+//                    titulo = sc.next();
+//                    System.out.println("Titulo modificado:");
+//                    aux = sc.next();
+//                    try{
+//                        c.modificaTituloDoc(autor,titulo,aux); 
+//                        c.print();
+//                    }catch (Exception e){
+//                        System.out.println(e.getMessage());
+//                    }
+                    break;
                 case 5:
-                    System.out.println("Autor:");
-                    autor = sc.next();
-                    System.out.println("Titulo:");
-                    titulo = sc.next();
-                    System.out.println("Contenido modificado:");
-                    aux = sc.next();
-                    try{
-                        c.modificaContenidoDoc(autor,titulo,aux); 
-                        c.print();
-                    }catch (Exception e){
-                        System.out.println(e.getMessage());
-                    }
+                    System.out.println("Modificar contenido");
+//                    System.out.println("Autor:");
+//                    autor = sc.next();
+//                    System.out.println("Titulo:");
+//                    titulo = sc.next();
+//                    System.out.println("Contenido modificado:");
+//                    aux = sc.next();
+//                    try{
+//                        c.modificaContenidoDoc(autor,titulo,aux); 
+//                        c.print();
+//                    }catch (Exception e){
+//                        System.out.println(e.getMessage());
+//                    }
+                    break;
                 case 6:
-                    System.out.println("Autor:");
-                    autor = sc.next();
-                    try{
-                        c.consultarTitulosAutor(autor); 
-                        c.print();
-                    }catch (Exception e){
-                        System.out.println(e.getMessage());
-                    }
+                    System.out.println("Consular títulos autor");
+//                    System.out.println("Autor:");
+//                    autor = sc.next();
+//                    try{
+//                        c.consultarTitulosAutor(autor); 
+//                        c.print();
+//                    }catch (Exception e){
+//                        System.out.println(e.getMessage());
+//                    }
+                    break;
                 case 7:
-                    System.out.println("Prefijo:");
-                    aux = sc.next();
-                    try{
-                        c.consultarAutores(aux); 
-                        c.print();
-                    }catch (Exception e){
-                        System.out.println(e.getMessage());
-                    }
+                    System.out.println("Consulta por prefijo");
+//                    System.out.println("Prefijo:");
+//                    aux = sc.next();
+//                    try{
+//                        c.consultarAutores(aux); 
+//                        c.print();
+//                    }catch (Exception e){
+//                        System.out.println(e.getMessage());
+//                    }
+                    break;
                 case 8:
-                    System.out.println("Autor:");
-                    autor = sc.next();
-                    System.out.println("Titulo:");
-                    titulo = sc.next();
-                    try{
-                        c.consultarContenido(autor,titulo); 
-                        c.print();
-                    }catch (Exception e){
-                        System.out.println(e.getMessage());
-                    }
+                    System.out.println("Consultar contenido");
+//                    System.out.println("Autor:");
+//                    autor = sc.next();
+//                    System.out.println("Titulo:");
+//                    titulo = sc.next();
+//                    try{
+//                        c.consultarContenido(autor,titulo); 
+//                        c.print();
+//                    }catch (Exception e){
+//                        System.out.println(e.getMessage());
+//                    }
+                    break;
                 case 9:
-                    System.out.println("Autor:");
-                    autor = sc.next();
-                    System.out.println("Titulo:");
-                    titulo = sc.next();
-                    System.out.println("Número de documentos:");
-                    aux = sc.next();
-                    k = Integer.parseInt(aux);
-                    try{
-                        c.getDocumentosParecidosFrecs(autor,titulo,k); 
-                        c.print();
-                    }catch (Exception e){
-                        System.out.println(e.getMessage());
-                    }
+                    System.out.println("Consultar k mas parecidos Frec");
+//                    System.out.println("Autor:");
+//                    autor = sc.next();
+//                    System.out.println("Titulo:");
+//                    titulo = sc.next();
+//                    System.out.println("Número de documentos:");
+//                    aux = sc.next();
+//                    k = Integer.parseInt(aux);
+//                    try{
+//                        c.getDocumentosParecidosFrecs(autor,titulo,k); 
+//                        c.print();
+//                    }catch (Exception e){
+//                        System.out.println(e.getMessage());
+//                    }
+                    break;
                 case 10:
-                    System.out.println("Autor:");
-                    autor = sc.next();
-                    System.out.println("Titulo:");
-                    titulo = sc.next();
-                    System.out.println("Número de documentos:");
-                    aux = sc.next();
-                    k = Integer.parseInt(aux);
-                    try{
-                        c.getDocumentosParecidosTfDf(autor,titulo,k); 
-                        c.print();
-                    }catch (Exception e){
-                        System.out.println(e.getMessage());
-                    }
+                    System.out.println("Consultar k mas parecidos TF-IDF");
+//                    System.out.println("Autor:");
+//                    autor = sc.next();
+//                    System.out.println("Titulo:");
+//                    titulo = sc.next();
+//                    System.out.println("Número de documentos:");
+//                    aux = sc.next();
+//                    k = Integer.parseInt(aux);
+//                    try{
+//                        c.getDocumentosParecidosTfDf(autor,titulo,k); 
+//                        c.print();
+//                    }catch (Exception e){
+//                        System.out.println(e.getMessage());
+//                    }
+                    break;
                 case 11:
-                    System.out.println("Frase booleana:");
-                    aux = sc.next();
-                    try{
-                        c.getDocumentosBool(aux);
-                        c.print();
-                    }catch (Exception e){
-                        System.out.println(e.getMessage());
-                    }
+                    System.out.println("Consulta expresion booleana");
+//                    System.out.println("Frase booleana:");
+//                    aux = sc.next();
+//                    try{
+//                        c.getDocumentosBool(aux);
+//                        c.print();
+//                    }catch (Exception e){
+//                        System.out.println(e.getMessage());
+//                    }
+                    break;
                 case 12: 
-                    break;               
+                    System.out.println("Salir");
+                    return;               
             }
+            System.out.println();
         }
     }
 }

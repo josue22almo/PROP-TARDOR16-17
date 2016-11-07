@@ -24,7 +24,6 @@ public class Documento {
     public Documento(String autor, String titulo, String contenido) throws IOException{
         this.autor = autor;
         this.titulo = titulo;  
-        CtrlDomini ctrlDomini = new CtrlDomini();
         this.contenido = new Contenido(contenido);
     }
     
