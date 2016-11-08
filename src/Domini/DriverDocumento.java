@@ -7,6 +7,7 @@ package Domini;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.Scanner;
 
 /**
@@ -17,12 +18,30 @@ public class DriverDocumento {
     public static void main(String[] args) throws IOException,RuntimeException{
         Scanner sc = new Scanner(System.in);
         System.out.println("Primero, cree un documento.");
-        System.out.println("Introduzca el autor del documento:");
-        String autor = sc.next();
-        System.out.println("Introduzca el título del documento:");
-        String titulo = sc.next();
-        System.out.println("Introduzca el contenido del documento:");
-        String contenido = sc.next();
+        System.out.println("Introduzca el autor del documento:(la entrada acaba con un punto)");
+        String autor = "";
+        String j = sc.next();
+        while (!j.equals(".")){
+            autor += j;
+            autor += " ";
+            j = sc.next();
+        }
+        System.out.println("Introduzca el título del documento:(la entrada acaba con un punto)");
+        String titulo = "";
+        j = sc.next();
+        while (!j.equals(".")){
+            titulo += j;
+            titulo += " ";
+            j = sc.next();
+        }
+        System.out.println("Introduzca el contenido del documento:(la entrada acaba con un punto)");
+        String contenido = "";
+        j = sc.next();
+        while (!j.equals(".")){
+            contenido += j;
+            contenido += " ";
+            j = sc.next();
+        }
         Documento doc = new Documento(autor,titulo,contenido);
         while (true) {
             System.out.println("Indique qué desea hacer:");
@@ -46,42 +65,87 @@ public class DriverDocumento {
                     switch(op1) {
                         case 1:
                             System.out.println("Introduzca el nuevo autor:");
-                            autor = sc.nextLine();
+                            autor = "";
+                            j = sc.next();
+                            while (!j.equals(".")){
+                                autor += j;
+                                autor += " ";
+                                j = sc.next();
+                            }
                             doc.setAutor(autor);
+                            break;
                         case 2:
                             System.out.println("Introduzca el nuevo título:");
-                            titulo = sc.nextLine();
+                            titulo = "";
+                            j = sc.next();
+                            while (!j.equals(".")){
+                                titulo += j;
+                                titulo += " ";
+                                j = sc.next();
+                            }
                             doc.setTitulo(titulo);
+                            break;
                         case 3:
                             System.out.println("Introduzca el nuevo contenido:");
-                            contenido = sc.nextLine();
+                            contenido = "";
+                            j = sc.next();
+                            while (!j.equals(".")){
+                                contenido += j;
+                                contenido += " ";
+                                j = sc.next();
+                            }
                             doc.setContenido(contenido);
+                            break;
                     }
                 case 2:
                     System.out.println(doc.getAutor());
+                    break;
                 case 3:
                     System.out.println(doc.getTitulo());
+                    break;
                 case 4:
                     System.out.println(doc.getContenidoOriginal());
+                    break;
                 case 5:
                     int i;
-                    ArrayList<Palabra> contRed = doc.getContenidoReducido();
-                    for (i = 0; i < contRed.size(); i++) {
-                        System.out.println(contRed.get(i).getPalabra());
+                    Map<String,Palabra> contRed = doc.getContenidoReducido();
+                    for (String key : contRed.keySet()) {
+                        System.out.println(contRed.get(key).getPalabra() + " con una frecuencia " + contRed.get(key).getFrecuencia() + " y un TF-IDF " + contRed.get(key).getTfDf());
                     }
+                    break;
                 case 6:
                     System.out.println("Introduzca autor, título y contenido del documento respecto al que quiere calcular la distancia");
-                    String autor2 = sc.next();
-                    String titulo2 = sc.next();
-                    String contenido2 = sc.next();
+                    String autor2 = "";
+                    j = sc.next();
+                    while (!j.equals(".")){
+                        autor2 += j;
+                        autor2 += " ";
+                        j = sc.next();
+                    }
+                    String titulo2 = "";
+                    j = sc.next();
+                    while (!j.equals(".")){
+                        titulo2 += j;
+                        titulo2 += " ";
+                        j = sc.next();
+                    }
+                    String contenido2 = "";
+                    j = sc.next();
+                    while (!j.equals(".")){
+                        contenido2 += j;
+                        contenido2 += " ";
+                        j = sc.next();
+                    }
                     Documento doc2 = new Documento(autor2, titulo2, contenido2);
                     System.out.println("Distancia: " + doc.getDistancia(doc2));
+                    break;
                 case 7:
                     System.out.println("Introduzca la nueva distancia:");
                     double dist = sc.nextDouble();
                     doc.setDistancia(dist);
-                case 8:
                     break;
+                case 8:
+                    return;
             }
         }
     }

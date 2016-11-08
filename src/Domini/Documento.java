@@ -8,6 +8,7 @@ package Domini;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Map;
 
 /**
  *
@@ -21,7 +22,7 @@ public class Documento {
     
     public Documento(){}
     
-    public Documento(String autor, String titulo, String contenido) throws IOException{
+    public Documento(String autor, String titulo, String contenido)throws IOException{
         this.autor = autor;
         this.titulo = titulo;  
         this.contenido = new Contenido(contenido);
@@ -52,7 +53,7 @@ public class Documento {
         return contenido.getContenidoOriginal();
     }
     
-    public ArrayList<Palabra> getContenidoReducido(){
+    public Map<String,Palabra> getContenidoReducido(){
         return contenido.getContenidoReducido();
     }
     
@@ -61,7 +62,7 @@ public class Documento {
     }
     
     public double getDistancia(Documento doc){
-        return this.contenido.calcularDistancia(doc.contenido.getContenidoReducido());
+        return this.contenido.calcularDistanciaFrecs(doc.contenido.getContenidoReducido());
     }
     
     public void setDistancia(double dist) {

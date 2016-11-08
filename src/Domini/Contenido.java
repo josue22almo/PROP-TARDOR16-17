@@ -5,14 +5,16 @@
  */
 package Domini;
 
-import java.util.ArrayList;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.Iterator;
 /**
  *
  * @author josue.inaldo.alcantara
  */
 public class Contenido {
     private String contenidoOriginal;
-    private ArrayList<Palabra> contenidoReducido = new ArrayList<>();
+    private Map<String,Palabra> contenidoReducido = new HashMap<>();
 
     public Contenido(){
         contenidoOriginal = "";
@@ -39,16 +41,16 @@ public class Contenido {
     }
 
     /*retorna contenidoReducido*/
-    public ArrayList<Palabra> getContenidoReducido() {
-        return (ArrayList)contenidoReducido.clone();
+    public Map<String,Palabra> getContenidoReducido() {
+        return contenidoReducido;
     } 
     
-    public double calcularDistancia (ArrayList<Palabra> v){
+    public double calcularDistanciaFrecs(Map<String,Palabra> v){
         if (v.isEmpty() || contenidoReducido.isEmpty()) return 0;
         double escalar = productEscalar(v,contenidoReducido);
         double modU = module(contenidoReducido);
         double modV = module(v);
-        return escalar/(modU*modV);
+        return 1 - escalar/(modU*modV);
     }
     
     private void calcularContenidoReducido(){
@@ -58,7 +60,6 @@ public class Contenido {
                 palabra = palabra + contenidoOriginal.charAt(i);
             }
             else{
-                //System.out.println(palabra);
                 if (palabraValida(palabra) && palabra.length() > 0){
                     addPalabra(palabra);
                 }
@@ -74,10 +75,9 @@ public class Contenido {
     Si lo está suma 1 a su frecuencia, si no lo está la añade*/
     private void addPalabra(String palabra){
         Palabra p = new Palabra(palabra.toLowerCase());
-            int j = existPalabra(p);
-            if (j != -1){
-                contenidoReducido.get(j).incrementarFrecuencia();
-            } else contenidoReducido.add(p);
+        if (contenidoReducido.containsKey(palabra)){
+                contenidoReducido.get(palabra).incrementarFrecuencia();
+        }else contenidoReducido.put(palabra, p);
     }
     
     /*los numeros se consideran validos, los carácteres son válidos en el alfabeto español, catalan e inglés
@@ -109,36 +109,45 @@ public class Contenido {
     
     
     //nos dice si la palanra ya ha aparecido anteriormente en el texto
-    private int existPalabra(Palabra palabra){
+  /*  private int existPalabra(Palabra palabra){
          for (int i = 0; i < contenidoReducido.size(); ++i)
              //System.out.println(contenidoReducido.get(i).getPalabra());
              if (contenidoReducido.get(i).equals(palabra)) return i;
             //System.out.println("------------------");
          return -1;
-    }
+    }*/
 
-    private double productEscalar(ArrayList<Palabra> v, ArrayList<Palabra> u) {
+    private double productEscalar(Map<String,Palabra> v, Map<String,Palabra> u) {
         double cont = 0.0;
-        for (Palabra p : v){
+        
+        for (String key : v.keySet()) {
+            if (u.containsKey(key))
+                cont += v.get(key).getFrecuencia()*u.get(key).getFrecuencia();
+        }
+        
+        /*for (String p : v){
             int i = isIn(p,u);
             if (i != -1){ //u contiene p
                 cont += (p.getFrecuencia() * u.get(i).getFrecuencia());
             }
-        }
+        }*/
         return cont;
     }
 
-    private int isIn(Palabra p, ArrayList<Palabra> u) {
+  /*  private int isIn(Palabra p, ArrayList<Palabra> u) {
          for (int i = 0; i < u.size(); ++i)
              if (u.get(i).equals(p)) return i;
          return -1;
-    }
+    }*/
 
-    private double module(ArrayList<Palabra> v) {
+    private double module(Map<String,Palabra> v) {
         double cont = 0.0;
-        for (Palabra p : v){
+        for (String key : v.keySet()) {
+            cont += v.get(key).getFrecuencia()*v.get(key).getFrecuencia();
+        }
+       /* for (Palabra p : v){
             cont += (p.getFrecuencia() * p.getFrecuencia());
-        }        
+        }  */      
         return Math.sqrt(cont);
     }   
 }

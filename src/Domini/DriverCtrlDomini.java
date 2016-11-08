@@ -12,9 +12,9 @@ import java.util.Scanner;
  *
  * @author jessica.sobreviela
  */
-public class DriverCjtoDocumentos {
+public class DriverCtrlDomini {
     public static void main(String[] args) throws IOException, Exception{
-        CjtoDocumentos c = new CjtoDocumentos();
+        CtrlDomini c = new CtrlDomini();
         Scanner sc = new Scanner(System.in);
         while(true){
             System.out.println("Indique qué desea hacer:");
@@ -29,7 +29,8 @@ public class DriverCjtoDocumentos {
             System.out.println("9. Consultar lista de los k documentos más parecidos a T por frecuencia");
             System.out.println("10. Consultar lista de los k documentos más parecidos a T por TfiDf");
             System.out.println("11. Consultar lista de los documentos con una expresión booleana");
-            System.out.println("12. Salir");
+            System.out.println("12. Escribir conjunto");
+            System.out.println("13. Salir");
             String autor;
             String titulo;
             String contenido;
@@ -40,7 +41,7 @@ public class DriverCjtoDocumentos {
             switch(op){
                 case 1:
                     System.out.println("Alta documento");
-                   System.out.println("Autor:");
+                    System.out.println("Autor:");
                     autor = sc.next();
                     System.out.println("Titulo:");
                     titulo = sc.next();
@@ -48,7 +49,6 @@ public class DriverCjtoDocumentos {
                     contenido = sc.next();
                     try{
                         c.altaDocumento(autor,titulo,contenido);
-                        c.print();
                     }catch (Exception e){
                         System.out.println(e.getMessage());
                     }
@@ -61,7 +61,6 @@ public class DriverCjtoDocumentos {
                     titulo = sc.next();
                     try{
                         c.bajaDocumento(autor,titulo); 
-                        c.print();
                     }catch (Exception e){
                         System.out.println(e.getMessage());
                     }
@@ -76,7 +75,6 @@ public class DriverCjtoDocumentos {
                     aux = sc.next();
                     try{
                         c.modificaAutorDoc(autor,titulo,aux); 
-                        c.print();
                     }catch (Exception e){
                         System.out.println(e.getMessage());
                     }
@@ -91,7 +89,6 @@ public class DriverCjtoDocumentos {
                     aux = sc.next();
                     try{
                         c.modificaTituloDoc(autor,titulo,aux); 
-                        c.print();
                     }catch (Exception e){
                         System.out.println(e.getMessage());
                     }
@@ -106,7 +103,6 @@ public class DriverCjtoDocumentos {
                     aux = sc.next();
                     try{
                         c.modificaContenidoDoc(autor,titulo,aux); 
-                        c.print();
                     }catch (Exception e){
                         System.out.println(e.getMessage());
                     }
@@ -117,7 +113,6 @@ public class DriverCjtoDocumentos {
                     autor = sc.next();
                     try{
                         c.consultarTitulosAutor(autor); 
-                        c.print();
                     }catch (Exception e){
                         System.out.println(e.getMessage());
                     }
@@ -128,7 +123,6 @@ public class DriverCjtoDocumentos {
                     aux = sc.next();
                     try{
                         c.consultarAutores(aux); 
-                        c.print();
                     }catch (Exception e){
                         System.out.println(e.getMessage());
                     }
@@ -141,7 +135,6 @@ public class DriverCjtoDocumentos {
                     titulo = sc.next();
                     try{
                         c.consultarContenido(autor,titulo); 
-                        c.print();
                     }catch (Exception e){
                         System.out.println(e.getMessage());
                     }
@@ -157,7 +150,6 @@ public class DriverCjtoDocumentos {
                     k = Integer.parseInt(aux);
                     try{
                         c.getDocumentosParecidosFrecs(autor,titulo,k); 
-                        c.print();
                     }catch (Exception e){
                         System.out.println(e.getMessage());
                     }
@@ -173,7 +165,6 @@ public class DriverCjtoDocumentos {
                     k = Integer.parseInt(aux);
                     try{
                         c.getDocumentosParecidosTfDf(autor,titulo,k); 
-                        c.print();
                     }catch (Exception e){
                         System.out.println(e.getMessage());
                     }
@@ -184,12 +175,15 @@ public class DriverCjtoDocumentos {
                     aux = sc.next();
                     try{
                         c.getDocumentosBool(aux);
-                        c.print();
                     }catch (Exception e){
                         System.out.println(e.getMessage());
                     }
                     break;
                 case 12: 
+                    System.out.println("Escribir conjunto");
+                    c.print();
+                    return;     
+                case 13: 
                     System.out.println("Salir");
                     return;               
             }

@@ -5,13 +5,15 @@
  */
 package Domini;
 
-import Persistencia.*;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 /**
  *
  * @author florencia.rimolo
  */
 public class CtrlDomini {
+    
     private CjtoDocumentos cd = new CjtoDocumentos();
     
     public CtrlDomini(){}
@@ -24,6 +26,60 @@ public class CtrlDomini {
         cd.bajaDocumento(autor, titulo);
     }
     
+    public void modificaAutorDoc(String autor, String titulo, String autorModif) throws Exception{
+        cd.modificaAutorDoc(autor, titulo, autorModif);
+    }
+    
+    public void modificaTituloDoc(String autor, String titulo, String tituloModif) throws Exception{
+        cd.modificaTituloDoc(autor, titulo, tituloModif);
+    }
+    
+    public void modificaContenidoDoc(String autor, String titulo, String contenidoModif) throws Exception{
+        cd.modificaContenidoDoc(autor, titulo, contenidoModif);
+    }
+    
+    public ArrayList<String> consultarTitulosAutor(String autor){
+        return cd.consultarTitulosAutor(autor);        
+    }
+    
+    public ArrayList<String> consultarAutores(String prefijo){
+        return cd.consultarAutores(prefijo);
+    }
+    
+    public String consultarContenido(String autor, String titulo){
+        return cd.consultarContenido(autor, titulo);
+    }
+    
+    public Map<String,String> getDocumentosParecidosFrecs(String autor, String titulo, int k) throws Exception{
+        Map<String,String> m = new HashMap<>();
+        ArrayList <Documento> l = cd.getDocumentosParecidosFrecs(autor, titulo, k);
+        l.stream().forEach((d) -> {
+            m.put(d.getTitulo(),d.getAutor());
+        });
+        return m;
+    }
+    
+    public Map<String,String> getDocumentosParecidosTfDf(String autor, String titulo, Integer k) throws Exception{
+        Map<String,String> m = new HashMap<>();
+        ArrayList <Documento> l = cd.getDocumentosParecidosTfDf(autor, titulo, k);
+        l.stream().forEach((d) -> {
+            m.put(d.getTitulo(),d.getAutor());
+        });
+        return m;
+    }
+    
+    public Map<String,String> getDocumentosBool(String frase){
+        Map<String,String> m = new HashMap<>();
+        ArrayList <Documento> l = cd.getDocumentosBool(frase);
+        l.stream().forEach((d) -> {
+            m.put(d.getTitulo(),d.getAutor());
+        });
+        return m;
+    }
+    
+    public void print(){        
+        cd.print();
+    }
     
     
 }

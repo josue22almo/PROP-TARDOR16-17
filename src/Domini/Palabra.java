@@ -35,12 +35,8 @@ public class Palabra {
         return palabra;
     }
         
-     public void setFrecuencia(double frecuencia) { //no funciona con TfDf double
-        this.frecuencia = frecuencia;
-    }
-
-    public void setTfDf(double pesoTfDf) { //no funciona con TfDf double
-        this.TfDf = pesoTfDf;
+    public void calcularTfDf(int numDocs, int numApariciones) { 
+        this.TfDf = frecuencia*Math.log(numDocs/numApariciones);
     }
 
     public double getFrecuencia() {

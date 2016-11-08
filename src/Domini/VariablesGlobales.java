@@ -14,6 +14,7 @@ import java.util.Arrays;
  */
 public class VariablesGlobales {
     
+    public Diccionario diccionario = new Diccionario();
     
     public static ArrayList<String> espanol = new ArrayList<>(Arrays.asList("a","actualmente","adelante","además","afirmó","agregó","ahora","ahí","al","algo","alguna","algunas","alguno","algunos","algún","alrededor","ambos","ante","anterior","antes","apenas","aproximadamente","aquí","aseguró",
         "así","aunque","ayer","añadió","aún","bajo","bien","buen","buena","buenas","bueno","buenos","cada","casi","cerca","cierto","cinco","comentó","como","con","conocer","considera","consideró","contra","cosas",

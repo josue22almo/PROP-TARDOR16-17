@@ -34,94 +34,7 @@ public class CjtoDocumentos {
         numDocs = 0;
     }
     
-    public ArrayList<String> consultarTitulosAutor(String autor){
-        
-        /*ArrayList<String> titulos = new ArrayList<>();
-        for (int i=0; i < vecDocumentos.size(); ++i){
-            if (vecDocumentos.get(i).getAutor()==autor)
-                titulos.add(vecDocumentos.get(i).getTitulo());
-        }
-        return titulos;*/
-        return vecDoc2.get(autor);
-    }
-    
-    public ArrayList<String> consultarAutores(String prefijo){
-        
-        ArrayList<String> autores = new ArrayList<>();
-        for (int i=0; i < vecDocumentos.size(); ++i){
-            if (vecDocumentos.get(i).getAutor().contains(prefijo)) //cambiar
-                autores.add(vecDocumentos.get(i).getAutor());
-        }
-        return autores;
-    }
-    
-    public String consultarContenido(String autor, String titulo){
-        
-        /*Contenido cont = new Contenido();
-        for (int i=0; i < vecDocumentos.size(); ++i){
-            if (vecDocumentos.get(i).getAutor()==autor && vecDocumentos.get(i).getTitulo()==titulo)
-                cont = vecDocumentos.get(i).getContenido();
-                break;
-        }
-        return cont;*/
-        Autor_Titulo aux = new Autor_Titulo();
-        aux.autor=autor;
-        aux.titulo=titulo;
-        return vecDoc1.get(aux);
-    }
-    
-    public ArrayList<Documento> getDocumentosParecidosFrecs(String autor, String titulo, int k) throws Exception{
-        
-        ArrayList<Documento> v_docs =  new ArrayList<>(); 
-        int pos = posicion(autor, titulo);
-        if (pos==-1){
-            throw new Exception("El documento no existe");
-        }else{
-            Documento origen = vecDocumentos.get(pos);
-            //Se calcula la distancia de los otros documentos respecto al documento T
-            for (int i = 0; i < vecDocumentos.size(); i++){
-                if (i != pos) {
-                    double dist = origen.getDistancia(vecDocumentos.get(i));
-                    vecDocumentos.get(i).setDistancia(dist);
-                }    
-            }
-            //v_docs=(ArrayList<Documento>) vecDocumentos.clone();
-            //ordenar vecDocumentos segun su distancia (de menor a mayor)
-            /*Collections.sort(vecDocumentos, new Comparator(){
-                @Override
-                public int compare(Documento doc1, Documento doc2) {
-                   return new Integer(doc1.getDistancia()).compareTo(new Integer(doc2.getDistancia()));
-                }
-            });*/
-        }
-        //retornar solo los k primeros elementos
-        if (vecDocumentos.size() < k)
-            for (int i = 0; i < vecDocumentos.size(); ++i) v_docs.add(vecDocumentos.get(i));
-        else 
-            for (int i = 0; i < k; ++i) v_docs.add(vecDocumentos.get(i));
-        return v_docs;
-    }
-    
-    public ArrayList<Documento> getDocumentosParecidosTfDf(String autor, String titulo, Integer k){
-        
-        ArrayList<Documento> v_docs =  new ArrayList<>();
-        
-        
-        
-        return v_docs;
-    }
-    
-    public ArrayList<Documento> getDocumentosBool(String frase){
-        
-        ArrayList<Documento> v_docs =  new ArrayList<>();
-        
-        
-        
-        return v_docs;
-    }
-    
-    
-    public void altaDocumento (String autor, String titulo, String contenido) throws Exception{
+      public void altaDocumento (String autor, String titulo, String contenido) throws Exception{
 
         Documento doc;
         doc = new Documento(autor,titulo,contenido);  
@@ -245,6 +158,92 @@ public class CjtoDocumentos {
             vecDoc1.remove(aux);
             vecDoc1.put(aux,contenidoModif);
         }
+    }
+    
+    public ArrayList<String> consultarTitulosAutor(String autor){
+        
+        /*ArrayList<String> titulos = new ArrayList<>();
+        for (int i=0; i < vecDocumentos.size(); ++i){
+            if (vecDocumentos.get(i).getAutor()==autor)
+                titulos.add(vecDocumentos.get(i).getTitulo());
+        }
+        return titulos;*/
+        return vecDoc2.get(autor);
+    }
+    
+    public ArrayList<String> consultarAutores(String prefijo){
+        
+        ArrayList<String> autores = new ArrayList<>();
+        for (int i=0; i < vecDocumentos.size(); ++i){
+            if (vecDocumentos.get(i).getAutor().contains(prefijo)) //cambiar
+                autores.add(vecDocumentos.get(i).getAutor());
+        }
+        return autores;
+    }
+    
+    public String consultarContenido(String autor, String titulo){
+        
+        /*Contenido cont = new Contenido();
+        for (int i=0; i < vecDocumentos.size(); ++i){
+            if (vecDocumentos.get(i).getAutor()==autor && vecDocumentos.get(i).getTitulo()==titulo)
+                cont = vecDocumentos.get(i).getContenido();
+                break;
+        }
+        return cont;*/
+        Autor_Titulo aux = new Autor_Titulo();
+        aux.autor=autor;
+        aux.titulo=titulo;
+        return vecDoc1.get(aux);
+    }
+    
+    public ArrayList<Documento> getDocumentosParecidosFrecs(String autor, String titulo, int k) throws Exception{
+        
+        ArrayList<Documento> v_docs =  new ArrayList<>(); 
+        int pos = posicion(autor, titulo);
+        if (pos==-1){
+            throw new Exception("El documento no existe");
+        }else{
+            Documento origen = vecDocumentos.get(pos);
+            //Se calcula la distancia de los otros documentos respecto al documento T
+            for (int i = 0; i < vecDocumentos.size(); i++){
+                if (i != pos) {
+                    double dist = origen.getDistancia(vecDocumentos.get(i));
+                    vecDocumentos.get(i).setDistancia(dist);
+                }    
+            }
+            //v_docs=(ArrayList<Documento>) vecDocumentos.clone();
+            //ordenar vecDocumentos segun su distancia (de menor a mayor)
+            /*Collections.sort(vecDocumentos, new Comparator(){
+                @Override
+                public int compare(Documento doc1, Documento doc2) {
+                   return new Integer(doc1.getDistancia()).compareTo(new Integer(doc2.getDistancia()));
+                }
+            });*/
+        }
+        //retornar solo los k primeros elementos
+        if (vecDocumentos.size() < k)
+            for (int i = 0; i < vecDocumentos.size(); ++i) v_docs.add(vecDocumentos.get(i));
+        else 
+            for (int i = 0; i < k; ++i) v_docs.add(vecDocumentos.get(i));
+        return v_docs;
+    }
+    
+    public ArrayList<Documento> getDocumentosParecidosTfDf(String autor, String titulo, Integer k){
+        
+        ArrayList<Documento> v_docs =  new ArrayList<>();
+        
+        
+        
+        return v_docs;
+    }
+    
+    public ArrayList<Documento> getDocumentosBool(String frase){
+        
+        ArrayList<Documento> v_docs =  new ArrayList<>();
+        
+        
+        
+        return v_docs;
     }
     
     private int posicion(String autor, String titulo) {
