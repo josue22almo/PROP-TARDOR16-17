@@ -38,37 +38,28 @@ public class CtrlDomini {
         cd.modificaContenidoDoc(autor, titulo, contenidoModif);
     }
     
-    public ArrayList<String> consultarTitulosAutor(String autor){
+    public ArrayList<String> consultarTitulosAutor(String autor) throws Exception{
         return cd.consultarTitulosAutor(autor);        
     }
     
-    public ArrayList<String> consultarAutores(String prefijo){
+    public ArrayList<String> consultarAutores(String prefijo) throws Exception{
         return cd.consultarAutores(prefijo);
     }
     
-    public String consultarContenido(String autor, String titulo){
+    public String consultarContenido(String autor, String titulo) throws Exception{
         return cd.consultarContenido(autor, titulo);
     }
     
-    public Map<String,String> getDocumentosParecidosFrecs(String autor, String titulo, int k) throws Exception{
+    public Map<String,String> getDocumentosParecidos(String autor, String titulo, int k, String type) throws Exception{
         Map<String,String> m = new HashMap<>();
-        ArrayList <Documento> l = cd.getDocumentosParecidosFrecs(autor, titulo, k);
+        ArrayList <Documento> l = cd.getDocumentosParecidos(autor, titulo, k,type);
         l.stream().forEach((d) -> {
             m.put(d.getTitulo(),d.getAutor());
         });
         return m;
     }
     
-    public Map<String,String> getDocumentosParecidosTfDf(String autor, String titulo, Integer k) throws Exception{
-        Map<String,String> m = new HashMap<>();
-        ArrayList <Documento> l = cd.getDocumentosParecidosTfDf(autor, titulo, k);
-        l.stream().forEach((d) -> {
-            m.put(d.getTitulo(),d.getAutor());
-        });
-        return m;
-    }
-    
-    public Map<String,String> getDocumentosBool(String frase){
+    public Map<String,String> getDocumentosBool(String frase) throws Exception{
         Map<String,String> m = new HashMap<>();
         ArrayList <Documento> l = cd.getDocumentosBool(frase);
         l.stream().forEach((d) -> {

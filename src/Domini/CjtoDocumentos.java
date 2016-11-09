@@ -6,246 +6,232 @@
 package Domini;
 
 import java.util.ArrayList;
-//import java.util.Collections;
-//import java.util.Comparator;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.TreeMap;
 
 /**
  *
  * @author jessica.sobreviela
  */
 public class CjtoDocumentos {
-    
+	
     private ArrayList<Documento> vecDocumentos; //para getDocumentosParecidos
-    private class Autor_Titulo {
-        String autor;
-        String titulo;
-    } 
-    private Map<Autor_Titulo, String> vecDoc1; //para consultarContenido 
-    private Map<String, ArrayList<String> > vecDoc2; //para consultarTitulosAutor i contiene
+    private Map<String, String> vecDoc1; //para consultarContenido 
+    private Map<String, ArrayList<String> > vecDoc2; //para consultarTitulosAutor, consultarAutores
+                                                     // i contiene
     private int numDocs;
     
     public CjtoDocumentos() {
         
-        vecDocumentos = new ArrayList<>();
-        Map<Autor_Titulo, String> vecDoc1 = new HashMap<>(); 
-        Map<String, ArrayList<String> > vecDoc2 = new HashMap<>(); 
-        numDocs = 0;
+        this.vecDocumentos = new ArrayList<>();
+        this.vecDoc1 = new HashMap<>(); 
+        this.vecDoc2 = new HashMap<>(); 
+        this.numDocs = 0;
     }
     
-      public void altaDocumento (String autor, String titulo, String contenido) throws Exception{
-
-        Documento doc;
-        doc = new Documento(autor,titulo,contenido);  
-        int pos = vecDocumentos.indexOf(doc);
-        if (pos >= 0){
-            throw new Exception("El documento ya existe");
-        }else{
-           //Se da de alta en vecDocumentos
-           vecDocumentos.add(doc);
-           
-           //Se da de alta en vecDoc1
-           Autor_Titulo aux = new Autor_Titulo();
-           aux.autor=autor;
-           aux.titulo=titulo;
-           vecDoc1.put(aux,contenido);
-           
-           //Se da de alta en vecDoc2
-           ArrayList<String> titulos = vecDoc2.get(autor);
-           titulos.add(titulo);
-           vecDoc2.put(autor,titulos);
-           ++numDocs;
-        }
-    }
+    public void altaDocumento (String autor, String titulo, String contenido) throws Exception{
+        Documento doc = new Documento(autor,titulo,contenido);
+        if (contiene(autor, titulo))
+            throw new Exception("El documento no existe"); 
+        //Se da de alta en vecDocumentos
+        altaVecDocumentos(doc);
+        //Se da de alta en vecDoc1
+        altaVecDoc1(autor,titulo,contenido);
+        //Se da de alta en vecDoc2
+        altaVecDoc2(autor,titulo);
+        //Añadimos palabras al diccionario
+        VariablesGlobales.diccionario.anadirPalabras(doc.getContenidoReducido());
+        ++numDocs; //Documento nuevo
+        //calculamos el peso de todos los documentos
+        calcularTFiDFtodosLosDocumentos();
+    }      
     
     public void bajaDocumento(String autor, String titulo) throws Exception{
-
-        if (!contiene(autor, titulo)){
-            throw new Exception("El documento no existe");
-        }else{
-            //Se da de baja en vecDocumentos
-            int pos = posicion(autor, titulo);
-            vecDocumentos.remove(pos);
-            
-            //Se da de baja en vecDoc1
-            Autor_Titulo aux = new Autor_Titulo();
-            aux.autor=autor;
-            aux.titulo=titulo;
-            vecDoc1.remove(aux);
-            
-            //Se da de baja en vecDoc2
-            ArrayList<String> titulos = vecDoc2.get(autor);
-            titulos.remove(titulo);
-            vecDoc2.put(autor,titulos);
-            
-            --numDocs;
-        }
+        comprobarSiDocumentoExistente(autor,titulo);
+        //Se da de baja en vecDocumentos y eliminamos las palabras de su contenido del diccionario
+        bajaVecDocumentos(autor,titulo);
+        //Se da de baja en vecDoc1, no funciona
+        bajaVecDoc1(autor,titulo);
+        //Se da de baja en vecDoc2
+        bajaVecDoc2(autor,titulo);
+        //Documento eliminado           
+        --numDocs;
     }
     
     public void modificaAutorDoc(String autor, String titulo, String autorModif) throws Exception{
-
-        if (!contiene(autor, titulo)){
-            throw new Exception("El documento no existe");
-        }else{
-            //Se modifica en vecDocumentos
-            int pos = posicion(autor, titulo);
-            vecDocumentos.get(pos).setAutor(autorModif);
-            
-            //Se modifica en vecDoc1
-            Autor_Titulo aux = new Autor_Titulo();
-            aux.autor=autor;
-            aux.titulo=titulo;
-            String contenido = vecDoc1.get(aux);
-            vecDoc1.remove(aux);
-            Autor_Titulo aux2 = new Autor_Titulo();
-            aux2.autor=autorModif;
-            aux2.titulo=titulo;
-            vecDoc1.put(aux2,contenido);
-            
-            //Se modifica en vecDoc2
-            ArrayList<String> titulos = vecDoc2.get(autor);
-            titulos.remove(titulo);
-            vecDoc2.put(autor,titulos);
-            
-            ArrayList<String> titulos2 = vecDoc2.get(autorModif);
-            titulos2.add(titulo);
-            vecDoc2.put(autor,titulos2);
-        }
+        comprobarSiDocumentoExistente(autor,titulo);
+        //Se modifica en vecDocumentos
+        int pos = posicion(autor, titulo);
+        vecDocumentos.get(pos).setAutor(autorModif);
+        //Se modifica en vecDoc1 = baja en vecDoc1 del autor+titulo antiguo + alta en vecDoc1 del autorModif+titulo
+        String at = autor + " " + titulo;
+        String cont = vecDoc1.get(at);
+        bajaVecDoc1(autor,titulo);
+        altaVecDoc1(autor,titulo,cont);
+        //Se modifica en vecDoc2
+        bajaVecDoc2(autor,titulo);
+        altaVecDoc2(autorModif,titulo);
     }
     
     public void modificaTituloDoc(String autor, String titulo, String tituloModif) throws Exception{
+        comprobarSiDocumentoExistente(autor,titulo);
+        //Se modifica en vecDocumentos
+        int pos = posicion(autor, titulo);
+        vecDocumentos.get(pos).setTitulo(tituloModif);
 
-        if (!contiene(autor, titulo)){
-            throw new Exception("El documento no existe");
-        }else{
-            //Se modifica en vecDocumentos
-            int pos = posicion(autor, titulo);
-            vecDocumentos.get(pos).setTitulo(tituloModif);
-            
-            //Se modifica en vecDoc1
-            Autor_Titulo aux = new Autor_Titulo();
-            aux.autor=autor;
-            aux.titulo=titulo;
-            String contenido = vecDoc1.get(aux);
-            vecDoc1.remove(aux);
-            Autor_Titulo aux2 = new Autor_Titulo();
-            aux2.autor=autor;
-            aux2.titulo=tituloModif;
-            vecDoc1.put(aux2,contenido);
-            
-            //Se modifica en vecDoc2
-            ArrayList<String> titulos = vecDoc2.get(autor);
-            titulos.remove(titulo);
-            titulos.add(tituloModif);
-            vecDoc2.put(autor,titulos);
-        }
+        //Se modifica en vecDoc1
+        String at = autor + " " + titulo;
+        String cont = vecDoc1.get(at);
+        vecDoc1.remove(at);
+        String atAux = autor + " " + tituloModif;
+        vecDoc1.put(atAux, cont);
+
+        //Se modifica en vecDoc2
+        ArrayList<String> titulos = vecDoc2.get(autor);
+        titulos.remove(titulo);
+        titulos.add(tituloModif);
     }
+    
     
     public void modificaContenidoDoc(String autor, String titulo, String contenidoModif) throws Exception{
 
-        if (!contiene(autor, titulo)){
-            throw new Exception("El documento no existe");
-        }else{
-            //Se modifica en vecDocumentos
-            int pos = posicion(autor, titulo);
-            vecDocumentos.get(pos).setContenido(contenidoModif);
-            
-            //Se modifica en vecDoc1
-            Autor_Titulo aux = new Autor_Titulo();
-            aux.autor=autor;
-            aux.titulo=titulo;
-            vecDoc1.remove(aux);
-            vecDoc1.put(aux,contenidoModif);
-        }
+        comprobarSiDocumentoExistente(autor,titulo);
+        //Se modifica en vecDocumentos, eliminamos las palabras de su contenido antiguo del diccionario y añadimos las nuevas
+        int pos = posicion(autor, titulo);
+        Documento doc = vecDocumentos.get(pos);
+        VariablesGlobales.diccionario.eliminarPalabras(doc.getContenidoReducido());
+        vecDocumentos.get(pos).setContenido(contenidoModif); //modificamos el contenido en vecDocumentos
+        VariablesGlobales.diccionario.anadirPalabras(doc.getContenidoReducido());
+
+        //Se modifica en vecDoc1
+        String at = autor + " " + titulo;
+        vecDoc1.remove(at);
+        vecDoc1.put(at,contenidoModif);
+        
     }
     
-    public ArrayList<String> consultarTitulosAutor(String autor){
-        
-        /*ArrayList<String> titulos = new ArrayList<>();
-        for (int i=0; i < vecDocumentos.size(); ++i){
-            if (vecDocumentos.get(i).getAutor()==autor)
-                titulos.add(vecDocumentos.get(i).getTitulo());
-        }
-        return titulos;*/
+    
+    public ArrayList<String> consultarTitulosAutor(String autor) throws Exception{
+        if (vecDoc2.get(autor) == null)
+        	throw new Exception("No existe el autor");
         return vecDoc2.get(autor);
     }
     
-    public ArrayList<String> consultarAutores(String prefijo){
+   
+    public ArrayList<String> consultarAutores(String prefijo) throws Exception{
         
-        ArrayList<String> autores = new ArrayList<>();
-        for (int i=0; i < vecDocumentos.size(); ++i){
-            if (vecDocumentos.get(i).getAutor().contains(prefijo)) //cambiar
-                autores.add(vecDocumentos.get(i).getAutor());
-        }
-        return autores;
+    //    ArrayList<String> autores = new ArrayList<>();
+      //  Iterator<String> it = vecDoc2.keySet().iterator();
+      //  String n=null;
+       // while (it.hasNext()) {
+         //   n=it.next(); //en n tenemos la clave
+          //  if (empieza_por(n,prefijo)) autores.add(n);
+        //}
+        //return autores;
+        return null;
     }
     
-    public String consultarContenido(String autor, String titulo){
+    public String consultarContenido(String autor, String titulo) throws Exception{
+        comprobarSiDocumentoExistente(autor,titulo);
+        String at = autor + " " + titulo;
+        return vecDoc1.get(at);
         
-        /*Contenido cont = new Contenido();
-        for (int i=0; i < vecDocumentos.size(); ++i){
-            if (vecDocumentos.get(i).getAutor()==autor && vecDocumentos.get(i).getTitulo()==titulo)
-                cont = vecDocumentos.get(i).getContenido();
-                break;
-        }
-        return cont;*/
-        Autor_Titulo aux = new Autor_Titulo();
-        aux.autor=autor;
-        aux.titulo=titulo;
-        return vecDoc1.get(aux);
     }
     
-    public ArrayList<Documento> getDocumentosParecidosFrecs(String autor, String titulo, int k) throws Exception{
-        
-        ArrayList<Documento> v_docs =  new ArrayList<>(); 
-        int pos = posicion(autor, titulo);
-        if (pos==-1){
-            throw new Exception("El documento no existe");
-        }else{
-            Documento origen = vecDocumentos.get(pos);
-            //Se calcula la distancia de los otros documentos respecto al documento T
-            for (int i = 0; i < vecDocumentos.size(); i++){
-                if (i != pos) {
-                    double dist = origen.getDistancia(vecDocumentos.get(i));
-                    vecDocumentos.get(i).setDistancia(dist);
-                }    
-            }
-            //v_docs=(ArrayList<Documento>) vecDocumentos.clone();
-            //ordenar vecDocumentos segun su distancia (de menor a mayor)
-            /*Collections.sort(vecDocumentos, new Comparator(){
-                @Override
-                public int compare(Documento doc1, Documento doc2) {
-                   return new Integer(doc1.getDistancia()).compareTo(new Integer(doc2.getDistancia()));
+   
+    public ArrayList<Documento> getDocumentosParecidos(String autor, String titulo, int k, String type) throws Exception{
+    	if (!type.equals("TF-IDF") && !type.equals("FREC"))
+    		throw new Exception("El tipo que ha especificado no es v�lido. Ha de ser FREC o TF-IDF.");
+        Map<Double,ArrayList<Documento>> docs;
+        docs = new TreeMap<>();
+        comprobarSiDocumentoExistente(autor,titulo);
+        int pos = posicion(autor, titulo);        
+        Documento origen = vecDocumentos.get(pos);
+        //Se calcula la distancia de los otros documentos respecto al documento T
+        for (int i = 0; i < vecDocumentos.size(); i++){
+            if (i != pos) {
+                double dist = origen.calcularDistancia(vecDocumentos.get(i),type);
+                //añadimos al treemap la distancia y el documento y ya queda ordenado 
+                if (!docs.containsKey(dist)) {// si en el map no hay documentos con distancia = dist
+                    ArrayList<Documento> d = new ArrayList<>();
+                    d.add(vecDocumentos.get(i));
+                    docs.put(dist,d);
                 }
-            });*/
+                else {
+                    ArrayList<Documento> d = docs.get(dist);
+                    d.add(vecDocumentos.get(i));
+                }
+            }
         }
+        
         //retornar solo los k primeros elementos
-        if (vecDocumentos.size() < k)
-            for (int i = 0; i < vecDocumentos.size(); ++i) v_docs.add(vecDocumentos.get(i));
-        else 
-            for (int i = 0; i < k; ++i) v_docs.add(vecDocumentos.get(i));
+        ArrayList<Documento> v_docs = new ArrayList<>();
+        Iterator it = docs.keySet().iterator();
+        int aux = k;
+        while(it.hasNext() && aux > 0){
+            Double key = (Double) it.next();
+            ArrayList<Documento> dd = docs.get(key);
+            for (int i = 0; i< dd.size() && aux > 0; i++ ){
+                v_docs.add(dd.get(i));
+                --aux;
+            }
+        }
         return v_docs;
     }
     
-    public ArrayList<Documento> getDocumentosParecidosTfDf(String autor, String titulo, Integer k){
+    public ArrayList<Documento> getDocumentosBool(String frase) throws Exception{
         
         ArrayList<Documento> v_docs =  new ArrayList<>();
         
         
         
         return v_docs;
+    }  
+    
+    public void print(){
+        System.out.println("vecDocumentos es:");
+        for(Documento doc : vecDocumentos){
+            System.out.println("Autor: " + doc.getAutor() + " Titulo: " + doc.getTitulo() + " Contenido: " + doc.getContenidoOriginal());
+        }
+        System.out.println("vecDoc1 es:");
+        for(String t : vecDoc1.keySet()){
+            System.out.println("Autor y titulo: " + t + " Contenido: " + vecDoc1.get(t));
+        }
+        System.out.println("Titulos de autor:");
+        for(String a : vecDoc2.keySet()){
+            for (int i = 0; i < vecDoc2.get(a).size(); ++i)
+                System.out.println("Autor: " + a + " Titulo: " + vecDoc2.get(a).get(i));
+        }
     }
     
-    public ArrayList<Documento> getDocumentosBool(String frase){
-        
-        ArrayList<Documento> v_docs =  new ArrayList<>();
-        
-        
-        
-        return v_docs;
+    private boolean empieza_por (String autor, String prefijo){
+        int i = 0;
+        while(i < autor.length()){
+            boolean saltar = false;
+            int j = 0;
+            while (j < prefijo.length() && !saltar && i < autor.length()) {
+                if (autor.charAt(i)==prefijo.charAt(j)){
+                    ++i;
+                    ++j;
+                    if (prefijo.length()==j) return true;
+                }
+                else saltar=true;
+            }
+            while (saltar && i < autor.length()) {
+                if (autor.charAt(i) == ' ') saltar=false;  
+                ++i;
+            }
+        }
+        return false;
     }
-    
+
+    public void escribirContenidoReducido(){
+    	for (Documento doc : vecDocumentos)
+    		doc.printContenidoReducido();
+    }
+   
     private int posicion(String autor, String titulo) {
         
         for(int i=0; i<vecDocumentos.size(); i++){
@@ -253,20 +239,62 @@ public class CjtoDocumentos {
         }
         return -1;
     }
+
+    private void altaVecDocumentos(Documento doc) {
+        vecDocumentos.add(doc);
+    }
     
-    private boolean contiene(String autor, String titulo){
-        
+    private void altaVecDoc1(String autor, String titulo, String contenido) {
+        String at = autor + " " + titulo;
+        vecDoc1.put(at,contenido);
+    }
+
+    private void altaVecDoc2(String autor, String titulo) {
+        if (vecDoc2.get(autor) == null) {  // si el autor no esta en el map
+            ArrayList<String> titulos = new ArrayList<String>();
+            titulos.add(titulo);
+            vecDoc2.put(autor,titulos);
+        }
+        else {
+            ArrayList<String> titulos = vecDoc2.get(autor);
+            titulos.add(titulo);
+        }
+    }
+
+    private void bajaVecDocumentos(String autor, String titulo) {
+        int pos = posicion(autor, titulo);
+        Documento doc = vecDocumentos.get(pos);
+        VariablesGlobales.diccionario.eliminarPalabras(doc.getContenidoReducido());
+        vecDocumentos.remove(pos);
+    }
+
+    private void bajaVecDoc1(String autor, String titulo) {
+        String at = autor + " " + titulo;
+        vecDoc1.remove(at);
+    }
+
+    private void bajaVecDoc2(String autor, String titulo) {
+        ArrayList<String> titulos = vecDoc2.get(autor);
+        titulos.remove(titulo);
+        //if (titulos.size() == 0) vecDoc2.remove(autor);
+    }
+    
+    private boolean contiene(String autor, String titulo){        
         if (vecDoc2.containsKey(autor)){
             ArrayList<String> titulos = vecDoc2.get(autor);
             return titulos.contains(titulo);
         }
         return false;
     }
-    
-    public void print(){
-        
-        for(Documento doc : vecDocumentos){
-            System.out.println( doc.getAutor() + " " + doc.getTitulo() + " " + doc.getContenido().getContenidoOriginal());
+
+    private void calcularTFiDFtodosLosDocumentos() {
+        for (Documento doc : vecDocumentos){
+        	doc.calcularTFiDF(numDocs);
         }
+    }
+
+    private void comprobarSiDocumentoExistente(String autor, String titulo) throws Exception{
+        if (!contiene(autor, titulo))
+            throw new Exception("El documento no existe"); 
     }
 }

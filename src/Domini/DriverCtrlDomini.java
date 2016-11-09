@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -149,7 +150,7 @@ public class DriverCtrlDomini {
                     aux = sc.next();
                     k = Integer.parseInt(aux);
                     try{
-                        c.getDocumentosParecidosFrecs(autor,titulo,k); 
+                        c.getDocumentosParecidos(autor,titulo,k,"FREC"); 
                     }catch (Exception e){
                         System.out.println(e.getMessage());
                     }
@@ -164,7 +165,7 @@ public class DriverCtrlDomini {
                     aux = sc.next();
                     k = Integer.parseInt(aux);
                     try{
-                        c.getDocumentosParecidosTfDf(autor,titulo,k); 
+                        c.getDocumentosParecidos(autor,titulo,k,"TF-IDF"); 
                     }catch (Exception e){
                         System.out.println(e.getMessage());
                     }

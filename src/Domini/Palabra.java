@@ -35,7 +35,7 @@ public class Palabra {
         return palabra;
     }
         
-    public void calcularTfDf(int numDocs, int numApariciones) { 
+    public void calcularTfDf(double numDocs, double numApariciones) {
         this.TfDf = frecuencia*Math.log(numDocs/numApariciones);
     }
 

@@ -6,6 +6,7 @@
 package Domini;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -29,7 +30,9 @@ public class DriverCjtoDocumentos {
             System.out.println("9. Consultar lista de los k documentos más parecidos a T por frecuencia");
             System.out.println("10. Consultar lista de los k documentos más parecidos a T por TfiDf");
             System.out.println("11. Consultar lista de los documentos con una expresión booleana");
-            System.out.println("12. Salir");
+           // System.out.println("12. Escribir palabras del diccionario");
+            System.out.println("12. Escribir todo el conjunto de documentos");
+            System.out.println("13. Salir");
             String autor;
             String titulo;
             String contenido;
@@ -40,28 +43,58 @@ public class DriverCjtoDocumentos {
             switch(op){
                 case 1:
                     System.out.println("Alta documento");
-                   System.out.println("Autor:");
-                    autor = sc.next();
+                    System.out.println("Autor:");
+                    autor = "";
+                    aux = sc.next();
+                    while (!aux.equals(".")){
+                        autor += aux;
+                        autor += " ";
+                        aux = sc.next();
+                    }
                     System.out.println("Titulo:");
-                    titulo = sc.next();
+                    titulo = "";
+                    aux = sc.next();
+                    while (!aux.equals(".")){
+                        titulo += aux;
+                        titulo += " ";
+                        aux = sc.next();
+                    }
                     System.out.println("Contenido:");
-                    contenido = sc.next();
+                    contenido = "";
+                    aux = sc.next();
+                    while (!aux.equals(".")){
+                        contenido += aux;
+                        contenido += " ";
+                        aux = sc.next();
+                    }
                     try{
                         c.altaDocumento(autor,titulo,contenido);
-                        c.print();
+                        //c.print();
                     }catch (Exception e){
                         System.out.println(e.getMessage());
                     }
                     break;
                 case 2:
-                    System.out.println("Eliminar documento");
+                    System.out.println("Baja documento");
                     System.out.println("Autor:");
-                    autor = sc.next();
+                    autor = "";
+                    aux = sc.next();
+                    while (!aux.equals(".")){
+                        autor += aux;
+                        autor += " ";
+                        aux = sc.next();
+                    }
                     System.out.println("Titulo:");
-                    titulo = sc.next();
+                    titulo = "";
+                    aux = sc.next();
+                    while (!aux.equals(".")){
+                        titulo += aux;
+                        titulo += " ";
+                        aux = sc.next();
+                    }
                     try{
                         c.bajaDocumento(autor,titulo); 
-                        c.print();
+                        //c.print();
                     }catch (Exception e){
                         System.out.println(e.getMessage());
                     }
@@ -69,29 +102,65 @@ public class DriverCjtoDocumentos {
                 case 3:
                     System.out.println("Modificar autor");
                     System.out.println("Autor:");
-                    autor = sc.next();
+                    autor = "";
+                    aux = sc.next();
+                    while (!aux.equals(".")){
+                        autor += aux;
+                        autor += " ";
+                        aux = sc.next();
+                    }
                     System.out.println("Titulo:");
-                    titulo = sc.next();
+                    titulo = "";
+                    aux = sc.next();
+                    while (!aux.equals(".")){
+                        titulo += aux;
+                        titulo += " ";
+                        aux = sc.next();
+                    }
                     System.out.println("Autor modificado:");
                     aux = sc.next();
+                    String autorAux = "";
+                    while (!aux.equals(".")){
+                        autorAux += aux;
+                        autorAux += " ";
+                        aux = sc.next();
+                    }
                     try{
-                        c.modificaAutorDoc(autor,titulo,aux); 
-                        c.print();
+                        c.modificaAutorDoc(autor,titulo,autorAux); 
+                        //c.print();
                     }catch (Exception e){
                         System.out.println(e.getMessage());
                     }
                     break;
                 case 4:
                     System.out.println("Modificar titulo");
-                   System.out.println("Autor:");
-                   autor = sc.next();
+                    System.out.println("Autor:");
+                    autor = "";
+                    aux = sc.next();
+                    while (!aux.equals(".")){
+                        autor += aux;
+                        autor += " ";
+                        aux = sc.next();
+                    }
                     System.out.println("Titulo:");
-                    titulo = sc.next();
+                    titulo = "";
+                    aux = sc.next();
+                    while (!aux.equals(".")){
+                        titulo += aux;
+                        titulo += " ";
+                        aux = sc.next();
+                    }
                     System.out.println("Titulo modificado:");
                     aux = sc.next();
+                    String tituloAux = "";
+                    while (!aux.equals(".")){
+                        tituloAux += aux;
+                        tituloAux += " ";
+                        aux = sc.next();
+                    }
                     try{
-                        c.modificaTituloDoc(autor,titulo,aux); 
-                        c.print();
+                        c.modificaTituloDoc(autor,titulo,tituloAux); 
+                        //c.print();
                     }catch (Exception e){
                         System.out.println(e.getMessage());
                     }
@@ -99,36 +168,69 @@ public class DriverCjtoDocumentos {
                 case 5:
                     System.out.println("Modificar contenido");
                     System.out.println("Autor:");
-                    autor = sc.next();
+                    autor = "";
+                    aux = sc.next();
+                    while (!aux.equals(".")){
+                        autor += aux;
+                        autor += " ";
+                        aux = sc.next();
+                    }
                     System.out.println("Titulo:");
-                    titulo = sc.next();
+                    titulo = "";
+                    aux = sc.next();
+                    while (!aux.equals(".")){
+                        titulo += aux;
+                        titulo += " ";
+                        aux = sc.next();
+                    }
                     System.out.println("Contenido modificado:");
                     aux = sc.next();
+                    String contAux = "";
+                    while (!aux.equals(".")){
+                        contAux += aux;
+                        contAux += " ";
+                        aux = sc.next();
+                    }
                     try{
-                        c.modificaContenidoDoc(autor,titulo,aux); 
-                        c.print();
+                        c.modificaContenidoDoc(autor,titulo,contAux); 
+                        //c.print();
                     }catch (Exception e){
                         System.out.println(e.getMessage());
                     }
-                  break;
+                    break;
                 case 6:
                     System.out.println("Consular títulos autor");
-                    System.out.println("Autor:");
-                    autor = sc.next();
+                    autor = "";
+                    aux = sc.next();
+                    while (!aux.equals(".")){
+                        autor += aux;
+                        autor += " ";
+                        aux = sc.next();
+                    }
                     try{
-                        c.consultarTitulosAutor(autor); 
-                        c.print();
+                        ArrayList<String> tit = c.consultarTitulosAutor(autor); 
+                        for (int i=0; i < tit.size(); ++i){
+                            System.out.println(tit.get(i));
+                        }
                     }catch (Exception e){
                         System.out.println(e.getMessage());
                     }
                     break;
                 case 7:
-                    System.out.println("Consulta por prefijo");
+                    System.out.println("Consultar autores por prefijo");
                     System.out.println("Prefijo:");
+                    String prefijo = "";
                     aux = sc.next();
+                    while (!aux.equals(".")){
+                        prefijo += aux;
+                        prefijo += " ";
+                        aux = sc.next();
+                    }
                     try{
-                        c.consultarAutores(aux); 
-                        c.print();
+                        ArrayList<String> aut = c.consultarAutores(prefijo); 
+                        for (int i=0; i < aut.size(); ++i){
+                            System.out.println(aut.get(i));
+                        }
                     }catch (Exception e){
                         System.out.println(e.getMessage());
                     }
@@ -136,62 +238,126 @@ public class DriverCjtoDocumentos {
                 case 8:
                     System.out.println("Consultar contenido");
                     System.out.println("Autor:");
-                    autor = sc.next();
+                    autor = "";
+                    aux = sc.next();
+                    while (!aux.equals(".")){
+                        autor += aux;
+                        autor += " ";
+                        aux = sc.next();
+                    }
                     System.out.println("Titulo:");
-                    titulo = sc.next();
+                    titulo = "";
+                    aux = sc.next();
+                    while (!aux.equals(".")){
+                        titulo += aux;
+                        titulo += " ";
+                        aux = sc.next();
+                    }
                     try{
-                        c.consultarContenido(autor,titulo); 
-                        c.print();
+                        contenido = c.consultarContenido(autor,titulo); 
+                        System.out.println(contenido);
                     }catch (Exception e){
                         System.out.println(e.getMessage());
                     }
                     break;
                 case 9:
-                    System.out.println("Consultar k mas parecidos Frec");
+                    System.out.println("Consultar k mas parecidos a T por Frec");
                     System.out.println("Autor:");
-                    autor = sc.next();
-                    System.out.println("Titulo:");
-                    titulo = sc.next();
-                    System.out.println("Número de documentos:");
+                    autor = "";
                     aux = sc.next();
-                    k = Integer.parseInt(aux);
+                    while (!aux.equals(".")){
+                        autor += aux;
+                        autor += " ";
+                        aux = sc.next();
+                    }
+                    System.out.println("Titulo:");
+                    titulo = "";
+                    aux = sc.next();
+                    while (!aux.equals(".")){
+                        titulo += aux;
+                        titulo += " ";
+                        aux = sc.next();
+                    }
+                    System.out.println("Número de documentos:");
+                    k = sc.nextInt();
                     try{
-                        c.getDocumentosParecidosFrecs(autor,titulo,k); 
-                        c.print();
+                        ArrayList<Documento> docs = c.getDocumentosParecidos(autor,titulo,k,"FREC"); 
+                        for (int i=0; i < docs.size(); ++i){
+                            System.out.println("Autor: " + docs.get(i).getAutor());
+                            System.out.println("Titulo: " + docs.get(i).getTitulo());
+                            System.out.println("Contenido: " + docs.get(i).getContenidoOriginal());
+                            System.out.println();
+                        } 
                     }catch (Exception e){
                         System.out.println(e.getMessage());
                     }
                     break;
                 case 10:
-                    System.out.println("Consultar k mas parecidos TF-IDF");
+                    System.out.println("Consultar k mas parecidos a T por TF-IDF");
                     System.out.println("Autor:");
-                    autor = sc.next();
-                    System.out.println("Titulo:");
-                    titulo = sc.next();
-                    System.out.println("Número de documentos:");
+                    autor = "";
                     aux = sc.next();
-                    k = Integer.parseInt(aux);
+                    while (!aux.equals(".")){
+                        autor += aux;
+                        autor += " ";
+                        aux = sc.next();
+                    }
+                    System.out.println("Titulo:");
+                    titulo = "";
+                    aux = sc.next();
+                    while (!aux.equals(".")){
+                        titulo += aux;
+                        titulo += " ";
+                        aux = sc.next();
+                    }
+                    System.out.println("Escribe k:");
+                    k = sc.nextInt();
                     try{
-                        c.getDocumentosParecidosTfDf(autor,titulo,k); 
-                        c.print();
+                    	ArrayList<Documento> docs = c.getDocumentosParecidos(autor, titulo, k, "TF-IDF"); 
+                        //c.print();
+                        for (int i=0; i < docs.size(); ++i){
+                            System.out.println("Autor: " + docs.get(i).getAutor());
+                            System.out.println("Titulo: " + docs.get(i).getTitulo());
+                            System.out.println("Contenido: " + docs.get(i).getContenidoOriginal());
+                            System.out.println();
+                        } 
                     }catch (Exception e){
                         System.out.println(e.getMessage());
                     }
                     break;
                 case 11:
-                    System.out.println("Consulta expresion booleana");
+                    System.out.println("Consultar expresion booleana");
                     System.out.println("Frase booleana:");
+                    String booleano = "";
                     aux = sc.next();
+                    while (!aux.equals(".")){
+                        booleano += aux;
+                        booleano += " ";
+                        aux = sc.next();
+                    }
                     try{
-                        c.getDocumentosBool(aux);
-                        c.print();
+                        c.getDocumentosBool(booleano);
+                        //c.print();
                     }catch (Exception e){
                         System.out.println(e.getMessage());
                     }
-                    break;
+                   break;
+               // case 12: 
+                //    System.out.println("Escribimos palabras del diccionario");
+                  //  VariablesGlobales.diccionario.print();
+                   /// break;
                 case 12: 
+                    System.out.println("Escribir todo el conjunto de documentos");
+                    c.print();
+                    break;
+                case 13:
                     System.out.println("Salir");
-                    return;               
+                    return;   
+                case 14:
+                    c.escribirContenidoReducido();
+                    break;
+                case 15:
+                    VariablesGlobales.diccionario.print();;
             }
             System.out.println();
         }

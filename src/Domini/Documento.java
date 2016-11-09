@@ -5,9 +5,7 @@
  */
 package Domini;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
+
 import java.util.Map;
 
 /**
@@ -18,11 +16,10 @@ public class Documento {
     private String autor;
     private String titulo;
     private Contenido contenido;
-    private double distancia;
     
     public Documento(){}
     
-    public Documento(String autor, String titulo, String contenido)throws IOException{
+    public Documento(String autor, String titulo, String contenido) {
         this.autor = autor;
         this.titulo = titulo;  
         this.contenido = new Contenido(contenido);
@@ -42,34 +39,38 @@ public class Documento {
     }
         
     public String getAutor() {
-        return autor;
+        return this.autor;
     }
 
     public String getTitulo() {
-        return titulo;
+        return this.titulo;
     }
     
     public String getContenidoOriginal(){
-        return contenido.getContenidoOriginal();
+        return this.contenido.getContenidoOriginal();
     }
     
     public Map<String,Palabra> getContenidoReducido(){
-        return contenido.getContenidoReducido();
+        return this.contenido.getContenidoReducido();
     }
-    
     public Contenido getContenido(){
         return contenido;
     }
     
-    public double getDistancia(Documento doc){
-        return this.contenido.calcularDistanciaFrecs(doc.contenido.getContenidoReducido());
-    }
-    
-    public void setDistancia(double dist) {
-        this.distancia = dist;
+    public double calcularDistancia(Documento doc, String type){
+    	return this.contenido.calcularDistancia(doc.contenido.getContenidoReducido(),type);
     }
       
     public boolean equals(String au, String tit){
         return autor.equals(au) && titulo.equals(tit);
     }
+
+	public void calcularTFiDF(int numDocs) {
+		contenido.calcularTFiDF(numDocs);
+	}
+	
+	public void printContenidoReducido(){
+		System.out.println("Autor: " + autor + " titulo: " + titulo);
+		contenido.printContenidoReducido();
+	}
 }

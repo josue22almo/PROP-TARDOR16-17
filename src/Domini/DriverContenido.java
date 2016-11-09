@@ -5,7 +5,6 @@
  */
 package Domini;
 
-import java.util.ArrayList;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -82,12 +81,14 @@ public class DriverContenido {
                         j = sc.next();
                     }
                     Contenido cont2 = new Contenido(s);
-                    System.out.println("La distancia respecto a cont es " + cont.calcularDistanciaFrecs(cont2.getContenidoReducido()));
+                    System.out.println("La distancia (con la frecuencia) respecto a cont es " + cont.calcularDistancia(cont2.getContenidoReducido(),"FREC"));
+                    System.out.println("La distancia (con TF-IDF) respecto a cont es " + cont.calcularDistancia(cont2.getContenidoReducido(),"TF-IDF"));
                     break;
                 case 7:
                     System.out.println("Salir");                    
                     return;
              }
+             sc.close();
         }        
     }   
 }

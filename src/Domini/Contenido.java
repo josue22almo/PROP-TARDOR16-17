@@ -7,14 +7,13 @@ package Domini;
 
 import java.util.Map;
 import java.util.HashMap;
-import java.util.Iterator;
 /**
  *
  * @author josue.inaldo.alcantara
  */
 public class Contenido {
     private String contenidoOriginal;
-    private Map<String,Palabra> contenidoReducido = new HashMap<>();
+    private Map<String,Palabra> contenidoReducido;
 
     public Contenido(){
         contenidoOriginal = "";
@@ -45,16 +44,17 @@ public class Contenido {
         return contenidoReducido;
     } 
     
-    public double calcularDistanciaFrecs(Map<String,Palabra> v){
+    public double calcularDistancia(Map<String,Palabra> v, String type){
         if (v.isEmpty() || contenidoReducido.isEmpty()) return 0;
-        double escalar = productEscalar(v,contenidoReducido);
-        double modU = module(contenidoReducido);
-        double modV = module(v);
+        double escalar = productEscalar(v,contenidoReducido,type);
+        double modU = module(contenidoReducido,type);
+        double modV = module(v,type);
         return 1 - escalar/(modU*modV);
     }
     
     private void calcularContenidoReducido(){
         String palabra = new String();
+        this.contenidoReducido = new HashMap<>();
         for(int i = 0; i < contenidoOriginal.length(); ++i){
             if (charValido(contenidoOriginal.charAt(i))){
                 palabra = palabra + contenidoOriginal.charAt(i);
@@ -75,9 +75,9 @@ public class Contenido {
     Si lo está suma 1 a su frecuencia, si no lo está la añade*/
     private void addPalabra(String palabra){
         Palabra p = new Palabra(palabra.toLowerCase());
-        if (contenidoReducido.containsKey(palabra)){
-                contenidoReducido.get(palabra).incrementarFrecuencia();
-        }else contenidoReducido.put(palabra, p);
+        if (this.contenidoReducido.containsKey(palabra)){
+                this.contenidoReducido.get(palabra).incrementarFrecuencia();
+        }else this.contenidoReducido.put(palabra, p);
     }
     
     /*los numeros se consideran validos, los carácteres son válidos en el alfabeto español, catalan e inglés
@@ -107,47 +107,43 @@ public class Contenido {
         return !(VariablesGlobales.catalan.contains(p.toLowerCase()) || VariablesGlobales.espanol.contains(p.toLowerCase()) || VariablesGlobales.english.contains(p.toLowerCase()));
     }
     
-    
-    //nos dice si la palanra ya ha aparecido anteriormente en el texto
-  /*  private int existPalabra(Palabra palabra){
-         for (int i = 0; i < contenidoReducido.size(); ++i)
-             //System.out.println(contenidoReducido.get(i).getPalabra());
-             if (contenidoReducido.get(i).equals(palabra)) return i;
-            //System.out.println("------------------");
-         return -1;
-    }*/
-
-    private double productEscalar(Map<String,Palabra> v, Map<String,Palabra> u) {
+    private double productEscalar(Map<String,Palabra> v, Map<String,Palabra> u, String type) {
         double cont = 0.0;
-        
         for (String key : v.keySet()) {
-            if (u.containsKey(key))
-                cont += v.get(key).getFrecuencia()*u.get(key).getFrecuencia();
-        }
-        
-        /*for (String p : v){
-            int i = isIn(p,u);
-            if (i != -1){ //u contiene p
-                cont += (p.getFrecuencia() * u.get(i).getFrecuencia());
+            if (u.containsKey(key)){
+            	if (type.equals("FREC"))
+            		cont += v.get(key).getFrecuencia()*u.get(key).getFrecuencia();
+            	else{
+            		cont += v.get(key).getTfDf()*u.get(key).getTfDf();
+        		}
             }
-        }*/
+        }
         return cont;
     }
-
-  /*  private int isIn(Palabra p, ArrayList<Palabra> u) {
-         for (int i = 0; i < u.size(); ++i)
-             if (u.get(i).equals(p)) return i;
-         return -1;
-    }*/
-
-    private double module(Map<String,Palabra> v) {
+    
+    private double module(Map<String,Palabra> v,String type) {
         double cont = 0.0;
         for (String key : v.keySet()) {
-            cont += v.get(key).getFrecuencia()*v.get(key).getFrecuencia();
+        	if (type.equals("FREC"))
+        		cont += v.get(key).getFrecuencia()*v.get(key).getFrecuencia();
+        	else{
+        		cont += v.get(key).getTfDf()*v.get(key).getTfDf();
+    		}
         }
-       /* for (Palabra p : v){
-            cont += (p.getFrecuencia() * p.getFrecuencia());
-        }  */      
-        return Math.sqrt(cont);
-    }   
+       return cont;
+    }
+
+	public void calcularTFiDF(int numDocs) {
+		for (String key : contenidoReducido.keySet())	{
+			int numApariciones = VariablesGlobales.diccionario.getNumAparicionesPalabra(key);
+			contenidoReducido.get(key).calcularTfDf(numDocs, numApariciones);
+		}	
+		
+	}
+
+	public void printContenidoReducido() {
+		for (String key : contenidoReducido.keySet())
+			System.out.println("key: " + key + " frecs = " + contenidoReducido.get(key).getFrecuencia() + " TF-IDF: " + contenidoReducido.get(key).getTfDf());
+		
+	}
 }
