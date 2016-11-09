@@ -1,3 +1,4 @@
+
 package Domini;
 
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ public class CjtoDocumentos {
 	
     private ArrayList<Documento> vecDocumentos; //para getDocumentosParecidos
     private Map<String, String> vecDoc1; //para consultarContenido 
-    private Map<String, ArrayList<String> > vecDoc2; //para consultarTitulosAutor, consultarAutores
+    private Map<String, ArrayList<String> > vecDoc2; //para consultarTitulosAutor
     private int numDocs;   
     
     public CjtoDocumentos() {        
@@ -42,7 +43,7 @@ public class CjtoDocumentos {
     }      
     
     public void bajaDocumento(String autor, String titulo) throws Exception{
-        comprobarSiDocumentoExistente(autor,titulo);
+        comprobarSiDocumentoExiste(autor,titulo);
         //Se da de baja en vecDocumentos y eliminamos las palabras de su contenido del diccionario
         bajaVecDocumentos(autor,titulo);
         //Se da de baja en vecDoc1, no funciona
@@ -54,7 +55,7 @@ public class CjtoDocumentos {
     }
     
     public void modificaAutorDoc(String autor, String titulo, String autorModif) throws Exception{
-        comprobarSiDocumentoExistente(autor,titulo);
+        comprobarSiDocumentoExiste(autor,titulo);
         //Se modifica en vecDocumentos       
         String at = autor + " " + titulo;
         String contenido = vecDoc1.get(at);
@@ -63,7 +64,7 @@ public class CjtoDocumentos {
     }
     
     public void modificaTituloDoc(String autor, String titulo, String tituloModif) throws Exception{
-        comprobarSiDocumentoExistente(autor,titulo);
+        comprobarSiDocumentoExiste(autor,titulo);
         String at = autor + " " + titulo;
         String contenido = vecDoc1.get(at);
         bajaDocumento(autor,titulo);
@@ -71,7 +72,7 @@ public class CjtoDocumentos {
     }    
     
     public void modificaContenidoDoc(String autor, String titulo, String contenidoModif) throws Exception{
-        comprobarSiDocumentoExistente(autor,titulo);
+        comprobarSiDocumentoExiste(autor,titulo);
         bajaDocumento(autor,titulo);
         altaDocumento(autor,titulo,contenidoModif);   
     }
@@ -88,7 +89,7 @@ public class CjtoDocumentos {
     }
     
     public String consultarContenido(String autor, String titulo) throws Exception{
-        comprobarSiDocumentoExistente(autor,titulo);
+        comprobarSiDocumentoExiste(autor,titulo);
         String at = autor + " " + titulo;
         return vecDoc1.get(at);        
     }
@@ -98,7 +99,7 @@ public class CjtoDocumentos {
     		throw new Exception("El tipo que ha especificado no es válido. Ha de ser FREC o TF-IDF.");
         Map<Double,ArrayList<Documento>> docs;
         docs = new TreeMap<>();
-        comprobarSiDocumentoExistente(autor,titulo);
+        comprobarSiDocumentoExiste(autor,titulo);
         int pos = posicion(autor, titulo);        
         Documento origen = vecDocumentos.get(pos);
         //Se calcula la distancia de los otros documentos respecto al documento T
@@ -158,8 +159,7 @@ public class CjtoDocumentos {
         }
     }
 
-    private int posicion(String autor, String titulo) {
-        
+    private int posicion(String autor, String titulo) {        
         for(int i=0; i<vecDocumentos.size(); i++){
             if (vecDocumentos.get(i).equals(autor, titulo)) return i;
         }
@@ -202,7 +202,6 @@ public class CjtoDocumentos {
     private void bajaVecDoc2(String autor, String titulo) {
         ArrayList<String> titulos = vecDoc2.get(autor);
         titulos.remove(titulo);
-        //if (titulos.size() == 0) vecDoc2.remove(autor);
     }
     
     private boolean existeDocumenteo(String autor, String titulo){        
@@ -219,7 +218,7 @@ public class CjtoDocumentos {
         }
     }
 
-    private void comprobarSiDocumentoExistente(String autor, String titulo) throws Exception{
+    private void comprobarSiDocumentoExiste(String autor, String titulo) throws Exception{
         if (!existeDocumenteo(autor, titulo))
             throw new Exception("El documento no existe"); 
     }
