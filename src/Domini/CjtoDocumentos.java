@@ -20,7 +20,7 @@ public class CjtoDocumentos {
     private ArrayList<Documento> vecDocumentos; //para getDocumentosParecidos
     private Map<String, String> vecDoc1; //para consultarContenido 
     private Map<String, ArrayList<String> > vecDoc2; //para consultarTitulosAutor, consultarAutores
-                                                     // i contiene
+                                                     // i contien
     private int numDocs;
     
     public CjtoDocumentos() {
@@ -33,8 +33,8 @@ public class CjtoDocumentos {
     
     public void altaDocumento (String autor, String titulo, String contenido) throws Exception{
         Documento doc = new Documento(autor,titulo,contenido);
-        if (contiene(autor, titulo))
-            throw new Exception("El documento no existe"); 
+        if (existeDocumenteo(autor, titulo))
+            throw new Exception("El documento ya existe"); 
         //Se da de alta en vecDocumentos
         altaVecDocumentos(doc);
         //Se da de alta en vecDoc1
@@ -62,88 +62,47 @@ public class CjtoDocumentos {
     
     public void modificaAutorDoc(String autor, String titulo, String autorModif) throws Exception{
         comprobarSiDocumentoExistente(autor,titulo);
-        //Se modifica en vecDocumentos
-        int pos = posicion(autor, titulo);
-        vecDocumentos.get(pos).setAutor(autorModif);
-        //Se modifica en vecDoc1 = baja en vecDoc1 del autor+titulo antiguo + alta en vecDoc1 del autorModif+titulo
+        //Se modifica en vecDocumentos       
         String at = autor + " " + titulo;
-        String cont = vecDoc1.get(at);
-        bajaVecDoc1(autor,titulo);
-        altaVecDoc1(autor,titulo,cont);
-        //Se modifica en vecDoc2
-        bajaVecDoc2(autor,titulo);
-        altaVecDoc2(autorModif,titulo);
+        String contenido = vecDoc1.get(at);
+        bajaDocumento(autor,titulo);
+        altaDocumento(autorModif,titulo,contenido);        
     }
     
     public void modificaTituloDoc(String autor, String titulo, String tituloModif) throws Exception{
         comprobarSiDocumentoExistente(autor,titulo);
-        //Se modifica en vecDocumentos
-        int pos = posicion(autor, titulo);
-        vecDocumentos.get(pos).setTitulo(tituloModif);
-
-        //Se modifica en vecDoc1
         String at = autor + " " + titulo;
-        String cont = vecDoc1.get(at);
-        vecDoc1.remove(at);
-        String atAux = autor + " " + tituloModif;
-        vecDoc1.put(atAux, cont);
-
-        //Se modifica en vecDoc2
-        ArrayList<String> titulos = vecDoc2.get(autor);
-        titulos.remove(titulo);
-        titulos.add(tituloModif);
-    }
-    
+        String contenido = vecDoc1.get(at);
+        bajaDocumento(autor,titulo);
+        altaDocumento(autor,tituloModif,contenido);          
+    }    
     
     public void modificaContenidoDoc(String autor, String titulo, String contenidoModif) throws Exception{
-
         comprobarSiDocumentoExistente(autor,titulo);
-        //Se modifica en vecDocumentos, eliminamos las palabras de su contenido antiguo del diccionario y añadimos las nuevas
-        int pos = posicion(autor, titulo);
-        Documento doc = vecDocumentos.get(pos);
-        VariablesGlobales.diccionario.eliminarPalabras(doc.getContenidoReducido());
-        vecDocumentos.get(pos).setContenido(contenidoModif); //modificamos el contenido en vecDocumentos
-        VariablesGlobales.diccionario.anadirPalabras(doc.getContenidoReducido());
-
-        //Se modifica en vecDoc1
-        String at = autor + " " + titulo;
-        vecDoc1.remove(at);
-        vecDoc1.put(at,contenidoModif);
-        
+        bajaDocumento(autor,titulo);
+        altaDocumento(autor,titulo,contenidoModif);   
     }
-    
     
     public ArrayList<String> consultarTitulosAutor(String autor) throws Exception{
         if (vecDoc2.get(autor) == null)
         	throw new Exception("No existe el autor");
         return vecDoc2.get(autor);
     }
-    
    
-    public ArrayList<String> consultarAutores(String prefijo) throws Exception{
+    public ArrayList<String> consultarAutoresPorPrefijo(String prefijo) throws Exception{
         
-    //    ArrayList<String> autores = new ArrayList<>();
-      //  Iterator<String> it = vecDoc2.keySet().iterator();
-      //  String n=null;
-       // while (it.hasNext()) {
-         //   n=it.next(); //en n tenemos la clave
-          //  if (empieza_por(n,prefijo)) autores.add(n);
-        //}
-        //return autores;
-        return null;
+         return null;
     }
     
     public String consultarContenido(String autor, String titulo) throws Exception{
         comprobarSiDocumentoExistente(autor,titulo);
         String at = autor + " " + titulo;
-        return vecDoc1.get(at);
-        
+        return vecDoc1.get(at);        
     }
-    
    
     public ArrayList<Documento> getDocumentosParecidos(String autor, String titulo, int k, String type) throws Exception{
     	if (!type.equals("TF-IDF") && !type.equals("FREC"))
-    		throw new Exception("El tipo que ha especificado no es v�lido. Ha de ser FREC o TF-IDF.");
+    		throw new Exception("El tipo que ha especificado no es válido. Ha de ser FREC o TF-IDF.");
         Map<Double,ArrayList<Documento>> docs;
         docs = new TreeMap<>();
         comprobarSiDocumentoExistente(autor,titulo);
@@ -227,11 +186,6 @@ public class CjtoDocumentos {
         return false;
     }
 
-    public void escribirContenidoReducido(){
-    	for (Documento doc : vecDocumentos)
-    		doc.printContenidoReducido();
-    }
-   
     private int posicion(String autor, String titulo) {
         
         for(int i=0; i<vecDocumentos.size(); i++){
@@ -279,7 +233,7 @@ public class CjtoDocumentos {
         //if (titulos.size() == 0) vecDoc2.remove(autor);
     }
     
-    private boolean contiene(String autor, String titulo){        
+    private boolean existeDocumenteo(String autor, String titulo){        
         if (vecDoc2.containsKey(autor)){
             ArrayList<String> titulos = vecDoc2.get(autor);
             return titulos.contains(titulo);
@@ -294,7 +248,7 @@ public class CjtoDocumentos {
     }
 
     private void comprobarSiDocumentoExistente(String autor, String titulo) throws Exception{
-        if (!contiene(autor, titulo))
+        if (!existeDocumenteo(autor, titulo))
             throw new Exception("El documento no existe"); 
     }
 }

@@ -69,7 +69,6 @@ public class DriverCjtoDocumentos {
                     }
                     try{
                         c.altaDocumento(autor,titulo,contenido);
-                        //c.print();
                     }catch (Exception e){
                         System.out.println(e.getMessage());
                     }
@@ -94,7 +93,6 @@ public class DriverCjtoDocumentos {
                     }
                     try{
                         c.bajaDocumento(autor,titulo); 
-                        //c.print();
                     }catch (Exception e){
                         System.out.println(e.getMessage());
                     }
@@ -127,7 +125,6 @@ public class DriverCjtoDocumentos {
                     }
                     try{
                         c.modificaAutorDoc(autor,titulo,autorAux); 
-                        //c.print();
                     }catch (Exception e){
                         System.out.println(e.getMessage());
                     }
@@ -160,7 +157,6 @@ public class DriverCjtoDocumentos {
                     }
                     try{
                         c.modificaTituloDoc(autor,titulo,tituloAux); 
-                        //c.print();
                     }catch (Exception e){
                         System.out.println(e.getMessage());
                     }
@@ -193,7 +189,6 @@ public class DriverCjtoDocumentos {
                     }
                     try{
                         c.modificaContenidoDoc(autor,titulo,contAux); 
-                        //c.print();
                     }catch (Exception e){
                         System.out.println(e.getMessage());
                     }
@@ -227,7 +222,7 @@ public class DriverCjtoDocumentos {
                         aux = sc.next();
                     }
                     try{
-                        ArrayList<String> aut = c.consultarAutores(prefijo); 
+                        ArrayList<String> aut = c.consultarAutoresPorPrefijo(prefijo); 
                         for (int i=0; i < aut.size(); ++i){
                             System.out.println(aut.get(i));
                         }
@@ -337,15 +332,10 @@ public class DriverCjtoDocumentos {
                     }
                     try{
                         c.getDocumentosBool(booleano);
-                        //c.print();
                     }catch (Exception e){
                         System.out.println(e.getMessage());
                     }
                    break;
-               // case 12: 
-                //    System.out.println("Escribimos palabras del diccionario");
-                  //  VariablesGlobales.diccionario.print();
-                   /// break;
                 case 12: 
                     System.out.println("Escribir todo el conjunto de documentos");
                     c.print();
@@ -353,11 +343,6 @@ public class DriverCjtoDocumentos {
                 case 13:
                     System.out.println("Salir");
                     return;   
-                case 14:
-                    c.escribirContenidoReducido();
-                    break;
-                case 15:
-                    VariablesGlobales.diccionario.print();;
             }
             System.out.println();
         }
