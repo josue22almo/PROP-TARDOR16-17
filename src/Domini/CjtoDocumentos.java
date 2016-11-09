@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Domini;
 
 import java.util.ArrayList;
@@ -20,11 +15,9 @@ public class CjtoDocumentos {
     private ArrayList<Documento> vecDocumentos; //para getDocumentosParecidos
     private Map<String, String> vecDoc1; //para consultarContenido 
     private Map<String, ArrayList<String> > vecDoc2; //para consultarTitulosAutor, consultarAutores
-                                                     // i contien
-    private int numDocs;
+    private int numDocs;   
     
-    public CjtoDocumentos() {
-        
+    public CjtoDocumentos() {        
         this.vecDocumentos = new ArrayList<>();
         this.vecDoc1 = new HashMap<>(); 
         this.vecDoc2 = new HashMap<>(); 
@@ -163,27 +156,6 @@ public class CjtoDocumentos {
             for (int i = 0; i < vecDoc2.get(a).size(); ++i)
                 System.out.println("Autor: " + a + " Titulo: " + vecDoc2.get(a).get(i));
         }
-    }
-    
-    private boolean empieza_por (String autor, String prefijo){
-        int i = 0;
-        while(i < autor.length()){
-            boolean saltar = false;
-            int j = 0;
-            while (j < prefijo.length() && !saltar && i < autor.length()) {
-                if (autor.charAt(i)==prefijo.charAt(j)){
-                    ++i;
-                    ++j;
-                    if (prefijo.length()==j) return true;
-                }
-                else saltar=true;
-            }
-            while (saltar && i < autor.length()) {
-                if (autor.charAt(i) == ' ') saltar=false;  
-                ++i;
-            }
-        }
-        return false;
     }
 
     private int posicion(String autor, String titulo) {
