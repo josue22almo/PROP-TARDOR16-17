@@ -20,7 +20,8 @@ public class DriverTrie {
                 System.out.println("1. Añadir prefijo");
                 System.out.println("2. Eliminar prefijo");
                 System.out.println("3. Consultar lista del prefijo");
-                System.out.println("4. Salir");  
+                System.out.println("4. Escribir trie");  
+                System.out.println("5. Salir");  
                 int op = sc.nextInt(); 
                 sc.nextLine();                
                 switch(op){
@@ -45,6 +46,7 @@ public class DriverTrie {
                         break;
                     case 4: 
                         trie.print();
+                        break;
                     case 5:
                         return;                    
                 }

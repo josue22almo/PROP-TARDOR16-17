@@ -48,18 +48,21 @@ public class Trie {
     }
     
     public ArrayList<String> consultarListaDelPrefijo(String prefijo) throws Exception{
-        //if (trie.containsKey(prefijo)) 
-        System.out.println(trie.containsKey(prefijo));
-        return  trie.get(prefijo);
-        //else throw new Exception("No existen autores con el prefijo " + prefijo +  " prefijo");
+        if (trie.containsKey(prefijo)) 
+            return  trie.get(prefijo);
+        throw new Exception("No existen autores con el prefijo " + prefijo +  " prefijo");
     }
     
     public void print(){
-        for (String key : trie.keySet()){
-            System.out.println("El prefijo " + key + " tiene ");
-            for (int i=0; i < trie.get(key).size(); ++i){
-                System.out.println(trie.get(key).get(i));
-            } 
+        if (trie.isEmpty()) 
+            System.out.println("El trie está vacío");
+        else{
+            for (String key : trie.keySet()){
+                System.out.println("El prefijo " + key + " tiene ");
+                for (int i=0; i < trie.get(key).size(); ++i){
+                    System.out.println(trie.get(key).get(i));
+                } 
+            }
         }
     }
 }
