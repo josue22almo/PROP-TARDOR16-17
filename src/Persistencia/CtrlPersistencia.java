@@ -12,7 +12,8 @@ public class CtrlPersistencia {
     public CtrlPersistencia(){
     }
 
-    public ArrayList<File> leerCarpeta() throws Exception{
-        ArrayList<File> result = new ArrayList<>());
+    public ArrayList<File> leerCarpeta(String folder) throws Exception{
+        ArrayList<File> result = new ArrayList<>();
+        
     }
 }
