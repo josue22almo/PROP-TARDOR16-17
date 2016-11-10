@@ -12,8 +12,6 @@ public class DriverContenido {
     
     private static Scanner sc = new Scanner(System.in);
     public static void main(String[] args){
-
-        
         
         Contenido cont = new Contenido();
         while(true){            
@@ -26,10 +24,9 @@ public class DriverContenido {
             System.out.println("6. Calcular distancia respecto a otro contenido");
             System.out.println("7. Salir");
             int op = sc.nextInt();
-            System.out.println("Escriba el contenido");
             switch(op){
                  case 1:
-                    System.out.println("Instanciar contenido vacio");
+                    System.out.println("1.Instanciar contenido vacio");
                     cont = new Contenido();
                     break;
                 case 2:

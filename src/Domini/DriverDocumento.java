@@ -41,6 +41,7 @@ public class DriverDocumento {
                 switch(op){
                     case 1:
                         System.out.println("Introduzca el nuevo autor(la entrada acaba con un punto):");
+                        sc.nextLine(); 
                         autor = sc.nextLine(); 
                         doc.setAutor(autor);
                         System.out.println("Autor cambiado con éxito.");
