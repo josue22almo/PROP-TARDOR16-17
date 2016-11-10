@@ -47,7 +47,6 @@ public class DriverContenido {
                         System.out.println("El nuevo contenido original sera:");
                         contenido = "";
                         aux = "";
-                        //sc.nextLine();
                         while (!(aux=sc.nextLine()).isEmpty()){
                             contenido += aux;
                             contenido += '\n';
@@ -68,7 +67,6 @@ public class DriverContenido {
                         System.out.println("Escriba el contenido respecto al cual quiere calcular la distancia:");
                         contenido = "";
                         aux = "";
-                        //sc.nextLine();
                         while (!(aux=sc.nextLine()).isEmpty()){
                             contenido += aux;
                             contenido += '\n';

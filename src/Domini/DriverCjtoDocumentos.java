@@ -40,13 +40,10 @@ public class DriverCjtoDocumentos {
                     case 1:
                         System.out.println("Alta documento");
                         System.out.println("Autor:");
-                        
                         autor = sc.nextLine();
                         System.out.println("Titulo:");
-                        //sc.nextLine();
                         titulo = sc.nextLine();
                         System.out.println("Contenido (la entrada debe acabar con una linea vacía):");
-                        //sc.nextLine();
                         contenido = "";
                         aux = "";
                         while (!(aux=sc.nextLine()).isEmpty()){
@@ -58,49 +55,38 @@ public class DriverCjtoDocumentos {
                     case 2:
                         System.out.println("Baja documento");
                         System.out.println("Autor:");
-                        //sc.nextLine();
                         autor = sc.nextLine();
                         System.out.println("Titulo:");
-                        //sc.nextLine();
                         titulo = sc.nextLine();
                         c.bajaDocumento(autor,titulo);
                         break;
                     case 3:
                         System.out.println("Modificar autor");
                         System.out.println("Autor:");
-                        //sc.nextLine();
                         autor = sc.nextLine();
                         System.out.println("Titulo:");
-                        //sc.nextLine();
                         titulo = sc.nextLine();
                         System.out.println("Autor modificado:");
-                        //sc.nextLine();
                         String autorAux = sc.nextLine();
                         c.modificaAutorDoc(autor,titulo,autorAux);
                         break;
                     case 4:
                         System.out.println("Modificar titulo");
                         System.out.println("Autor:");
-                        //sc.nextLine();
                         autor = sc.nextLine();
                         System.out.println("Titulo:");
-                        //sc.nextLine();
                         titulo = sc.nextLine();
                         System.out.println("Titulo modificado:");
-                        //sc.nextLine();
                         String tituloAux = sc.nextLine();;
                         c.modificaTituloDoc(autor,titulo,tituloAux);
                         break;
                     case 5:
                         System.out.println("Modificar contenido");
                         System.out.println("Autor:");
-                        //sc.nextLine();
                         autor = sc.nextLine();
                         System.out.println("Titulo:");
-                        //sc.nextLine();
                         titulo = sc.nextLine();
                         System.out.println("Contenido modificado (la entrada debe acabar con una linea vacía):");
-                        //sc.nextLine();
                         String contAux = "";
                         aux = "";
                         while (!(aux=sc.nextLine()).isEmpty()){
@@ -111,7 +97,6 @@ public class DriverCjtoDocumentos {
                         break;
                     case 6:
                         System.out.println("Consular títulos autor");
-                        //sc.nextLine();
                         autor = sc.nextLine();
                         ArrayList<String> tit = c.consultarTitulosAutor(autor); 
                         for (int i=0; i < tit.size(); ++i){
@@ -121,7 +106,6 @@ public class DriverCjtoDocumentos {
                     case 7:
                         System.out.println("Consultar autores por prefijo");
                         System.out.println("Prefijo:");
-                        //sc.nextLine();
                         String prefijo = "";
                         if (!(aux = sc.nextLine()).isEmpty())
                             prefijo = aux;
@@ -133,10 +117,8 @@ public class DriverCjtoDocumentos {
                     case 8:
                         System.out.println("Consultar contenido");
                         System.out.println("Autor:");
-                        //sc.nextLine();
                         autor = sc.nextLine();
                         System.out.println("Titulo:");
-                        //sc.nextLine();
                         titulo = sc.nextLine();
                         contenido = c.consultarContenido(autor,titulo); 
                         System.out.println(contenido);
@@ -144,16 +126,12 @@ public class DriverCjtoDocumentos {
                     case 9:
                         System.out.println("Consultar k mas parecidos a T");
                         System.out.println("Autor:");
-                        //sc.nextLine();
                         autor = sc.nextLine();
                         System.out.println("Titulo:");
-                        //sc.nextLine();
                         titulo = sc.nextLine();
                         System.out.println("Número de documentos:");
-                        //sc.nextLine();
                         k = sc.nextInt();
                         System.out.println("Escribe FREC o TFIDF");
-                        //sc.nextLine();
                         aux = sc.nextLine();
                         ArrayList<Documento> docs = c.getDocumentosParecidos(autor,titulo,k,aux); 
                         for (int i=0; i < docs.size(); ++i){
@@ -166,7 +144,6 @@ public class DriverCjtoDocumentos {
                     case 10:
                         System.out.println("Consultar expresion booleana");
                         System.out.println("Frase booleana:");
-                        //sc.nextLine();
                         String booleano = sc.nextLine();
                         c.getDocumentosBool(booleano);
                        break;
