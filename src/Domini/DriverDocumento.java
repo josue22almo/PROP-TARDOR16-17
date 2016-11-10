@@ -48,6 +48,7 @@ public class DriverDocumento {
                         break;
                     case 2:
                         System.out.println("Introduzca el nuevo título(la entrada acaba con un punto):");
+                        sc.nextLine(); 
                         titulo = sc.nextLine();
                         doc.setTitulo(titulo);
                         System.out.println("Título cambiado con éxito.");
@@ -76,7 +77,7 @@ public class DriverDocumento {
                         if (doc.getContenidoReducido() != null) {
                             Map<String, Palabra> contRed = doc.getContenidoReducido();
                             for (String palabra : contRed.keySet()) {
-                                System.out.println("La palabra " + contRed.get(palabra).getPalabra() +  "aparece " + contRed.get(palabra).getFrecuencia());
+                                System.out.println("La palabra " + contRed.get(palabra).getPalabra() +  " aparece " + contRed.get(palabra).getFrecuencia());
                             }
                         }
                         break;
@@ -86,6 +87,7 @@ public class DriverDocumento {
                         sc.nextLine();
                         autor = sc.nextLine();                        
                         System.out.println("Introduzca el título del documento:");
+                        //sc.nextLine(); 
                         titulo = sc.nextLine();
                         System.out.println("Introduzca el contenido del documento:(la entrada acaba con una linea vacía)");
                         contenido = "";
@@ -97,7 +99,7 @@ public class DriverDocumento {
                         Documento doc2 = new Documento(autor, titulo, contenido);
                         System.out.println("Distancia con FREC: " + doc.calcularDistancia(doc2, "FREC"));
                         System.out.println("Distancia con TF-IDF: " + doc.calcularDistancia(doc2, "TF-IDF")); //da 0 porque se calcula en CjtoDocumentos cada 
-                                                                                                                // vez que se da de alta a un documento
+                                                                                                              // vez que se da de alta a un documento
                         break;
                     case 9:
                         return;
