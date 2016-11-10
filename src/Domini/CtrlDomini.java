@@ -1,6 +1,7 @@
 
 package Domini;
 
+import Persistencia.CtrlPersistencia;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,6 +11,7 @@ import java.util.Map;
  */
 public class CtrlDomini {
     
+    private CtrlPersistencia ctrlPersistencia = new CtrlPersistencia();
     private CjtoDocumentos cd = new CjtoDocumentos();
     
     public CtrlDomini(){}
