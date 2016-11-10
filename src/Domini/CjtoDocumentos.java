@@ -32,14 +32,14 @@ public class CjtoDocumentos {
     
     public void altaDocumento (String autor, String titulo, String contenido) throws Exception {
         
-        Documento doc = new Documento(autor,titulo,contenido);
+        
         
         if (existeDocumento(autor, titulo))
             throw new Exception("El documento ya existe"); 
         
         if (vecDoc2.get(autor) == null)//no existe el autor, lo añadimos a nuestro trie
         	triePrefijosAutor.anadirPrefijo(autor);
-        
+        Documento doc = new Documento(autor,titulo,contenido);
         //Se da de alta en vecDocumentos
         altaVecDocumentos(doc);
         

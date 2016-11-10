@@ -15,9 +15,9 @@ public class CtrlDomini {
     private CjtoDocumentos cd = new CjtoDocumentos();
     
     public CtrlDomini(){}
-    
-    public void altarConjuntoDocumentos (String path) throws Exception{
-        ArrayList<BufferedReader> docs = ctrlPersistencia.leerCarpeta(path);
+  
+    public void altaConjuntoDocumentosDirectorio(String folder) throws Exception{       
+        ArrayList<BufferedReader> docs = ctrlPersistencia.leerCarpeta(folder);
         for (int i = 0; i < docs.size(); ++i){
                 String autor = docs.get(i).readLine();
                 String titulo = docs.get(i).readLine();
@@ -27,23 +27,8 @@ public class CtrlDomini {
                     contenido += aux;
                     contenido += '\n';
                 }
-                System.out.println(autor + '\n' + titulo + "\n" + contenido);
+                cd.altaDocumento(autor, titulo, contenido);
             }
-    }
-    
-    public void altaConjuntoDocumentosDirectorio(String folder) throws Exception{
-        ArrayList<BufferedReader> docs = ctrlPersistencia.leerCarpeta(folder);        
-        for (int i = 0; i < docs.size();++i){
-            BufferedReader b = docs.get(i);
-            String autor = b.readLine();
-            String titulo = b.readLine();
-            String contenido = "";
-            while((contenido = b.readLine())!=null) {
-                System.out.println(contenido);
-             }
-            cd.altaDocumento(autor, titulo, contenido);
-            b.close();
-        }
     }
     
     public void altaDocumento(String autor, String titulo, String contenido) throws Exception {

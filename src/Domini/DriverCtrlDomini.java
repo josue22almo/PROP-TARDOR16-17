@@ -8,13 +8,13 @@ import java.util.Scanner;
 
 /**
  *
- * @author jessica.sobreviela
+ * @author florencia.rimolo
  */
 public class DriverCtrlDomini {
     public static void main(String[] args) throws IOException, Exception{
         CtrlDomini c = new CtrlDomini();
         Scanner sc = new Scanner(System.in);
-       // try {
+        try {
             while(true){
                 System.out.println("Indique qué desea hacer:");
                 System.out.println("1. Dar de alta a un conjunto de documentos dado un directorio");
@@ -42,7 +42,7 @@ public class DriverCtrlDomini {
                     case 1:
                         System.out.println("Escriba la dirección");
                         String directorio = sc.nextLine();
-                        c.altaConjuntoDocumentosDirectorio(directorio);
+                            c.altaConjuntoDocumentosDirectorio(directorio);
                     case 2:
                         System.out.println("Alta documento");
                         System.out.println("Autor:");
@@ -191,8 +191,8 @@ public class DriverCtrlDomini {
                 if (resp.equals("n")) return;
                 System.out.println();
             }
-     /*   } catch (Exception e) {
+        } catch (Exception e) {
             System.out.println(e.getMessage());          
-        }    */
+        }    
     }
 }
