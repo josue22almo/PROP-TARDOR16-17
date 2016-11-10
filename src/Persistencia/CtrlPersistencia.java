@@ -1,7 +1,9 @@
 
 package Persistencia;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.util.ArrayList;
 /**
  *
@@ -12,8 +14,17 @@ public class CtrlPersistencia {
     public CtrlPersistencia(){
     }
 
-    public ArrayList<File> leerCarpeta(String folder) throws Exception{
-        ArrayList<File> result = new ArrayList<>();
-        
+    public ArrayList<BufferedReader> leerCarpeta(String folder) throws Exception{
+        File fichero = new File(folder);
+        if (!fichero.isDirectory())
+            throw new Exception("La direccion que ha pasado no corresponde a un directorio");
+        File[] archivos = fichero.listFiles();
+        ArrayList<BufferedReader> result = new ArrayList<>();
+        for (int i = 0; i < archivos.length; ++i){
+            FileReader f = new FileReader(archivos[i].getPath());
+            BufferedReader b = new BufferedReader(f);
+            result.add(b);
+        }
+        return result;
     }
 }
