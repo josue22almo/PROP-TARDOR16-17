@@ -11,9 +11,7 @@ import java.util.Map;
 public class Diccionario {
     private Map <String,Integer> diccionario = new TreeMap<>();
 
-    public Diccionario() {
-    }
-    
+    public Diccionario() {}
     
     public void anadirPalabras(Map<String,Palabra> v){
         for (String key : v.keySet()){
@@ -43,7 +41,6 @@ public class Diccionario {
     	return diccionario.get(key);
     }
     
-
     void print() {
         System.out.println("Tamaño del diccionario " + diccionario.size());
         for (String key : diccionario.keySet())
