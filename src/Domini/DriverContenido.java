@@ -25,6 +25,7 @@ public class DriverContenido {
             System.out.println("6. Calcular distancia respecto a otro contenido");
             System.out.println("7. Salir");
             int op = sc.nextInt();
+            sc.nextLine();
             switch(op){
                  case 1:
                     System.out.println("1.Instanciar contenido vacio");
@@ -34,7 +35,6 @@ public class DriverContenido {
                     System.out.println("2.Instanciar cotenido con un string, escriba un contenido");
                     String contenido = "";
                     String aux = "";
-                    sc.nextLine();
                     while (!(aux=sc.nextLine()).isEmpty()){
                         contenido += aux;
                         contenido += '\n';
@@ -50,7 +50,7 @@ public class DriverContenido {
                     System.out.println("4.Set contenidoOriginal");
                     contenido = "";
                     aux = "";
-                    sc.nextLine();
+                    //sc.nextLine();
                     while (!(aux=sc.nextLine()).isEmpty()){
                         contenido += aux;
                         contenido += '\n';
@@ -72,7 +72,7 @@ public class DriverContenido {
                     System.out.println("6. Calcular distancia respecto a otro contenido");
                     contenido = "";
                     aux = "";
-                    sc.nextLine();
+                    //sc.nextLine();
                     while (!(aux=sc.nextLine()).isEmpty()){
                         contenido += aux;
                         contenido += '\n';
