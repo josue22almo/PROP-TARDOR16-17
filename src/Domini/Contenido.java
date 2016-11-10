@@ -178,9 +178,9 @@ public class Contenido {
        return cont;
     }
 
-	public void calcularTFiDF(int numDocs) {
+	public void calcularTFiDF(int numDocs,Diccionario diccionario) {
 		for (String key : contenidoReducido.keySet())	{
-			int numApariciones = VariablesGlobales.diccionario.getNumAparicionesPalabra(key);
+			int numApariciones = diccionario.getNumAparicionesPalabra(key);
 			contenidoReducido.get(key).calcularTfDf(numDocs, numApariciones);
 		}	
 		

@@ -61,8 +61,8 @@ public class Documento {
         return autor.equals(au) && titulo.equals(tit);
     }
 
-	public void calcularTFiDF(int numDocs) {
-		contenido.calcularTFiDF(numDocs);
+	public void calcularTFiDF(int numDocs, Diccionario diccionario) {
+		contenido.calcularTFiDF(numDocs,diccionario);
 	}
 	
 	public void printContenidoReducido(){

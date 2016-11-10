@@ -18,6 +18,7 @@ public class CjtoDocumentos {
     private Map<String, ArrayList<String> > vecDoc2; //para consultarTitulosAutor
     private int numDocs;  
     private Trie triePrefijosAutor = new Trie();
+    public static Diccionario  diccionario = new Diccionario();
     
     public CjtoDocumentos() {        
         this.vecDocumentos = new ArrayList<>();
@@ -37,8 +38,8 @@ public class CjtoDocumentos {
         //Se da de alta en vecDoc2
         altaVecDoc2(autor,titulo);
         //AÃ±adimos palabras al diccionario
-        VariablesGlobales.diccionario.anadirPalabras(doc.getContenidoReducido());
-        if (vecDoc2.get(autor) == null)//no existe el autor, lo añadimos a nuestro trie
+        diccionario.anadirPalabras(doc.getContenidoReducido());
+        if (vecDoc2.get(autor) == null)//no existe el autor, lo aï¿½adimos a nuestro trie
         	triePrefijosAutor.anadirPrefijo(autor);
         ++numDocs; //Documento nuevo
         //calculamos el peso de todos los documentos
@@ -53,7 +54,8 @@ public class CjtoDocumentos {
         bajaVecDoc1(autor,titulo);
         //Se da de baja en vecDoc2
         bajaVecDoc2(autor,titulo);
-        triePrefijosAutor.eliminarPrefijo(autor);
+        if (vecDoc2.get(autor) == null)//no existe el autor, lo eliminamos de nuestro trie
+        	triePrefijosAutor.eliminarPrefijo(autor);
         //Documento eliminado           
         --numDocs;
     }
@@ -193,7 +195,7 @@ public class CjtoDocumentos {
     private void bajaVecDocumentos(String autor, String titulo) {
         int pos = posicion(autor, titulo);
         Documento doc = vecDocumentos.get(pos);
-        VariablesGlobales.diccionario.eliminarPalabras(doc.getContenidoReducido());
+        diccionario.eliminarPalabras(doc.getContenidoReducido());
         vecDocumentos.remove(pos);
     }
 
@@ -217,7 +219,7 @@ public class CjtoDocumentos {
 
     private void calcularTFiDFtodosLosDocumentos() {
         for (Documento doc : vecDocumentos){
-        	doc.calcularTFiDF(numDocs);
+        	doc.calcularTFiDF(numDocs,diccionario);
         }
     }
 
