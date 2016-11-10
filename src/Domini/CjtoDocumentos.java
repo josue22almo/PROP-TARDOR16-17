@@ -16,7 +16,8 @@ public class CjtoDocumentos {
     private ArrayList<Documento> vecDocumentos; //para getDocumentosParecidos
     private Map<String, String> vecDoc1; //para consultarContenido 
     private Map<String, ArrayList<String> > vecDoc2; //para consultarTitulosAutor
-    private int numDocs;   
+    private int numDocs;  
+    private Trie triePrefijosAutor = new Trie();
     
     public CjtoDocumentos() {        
         this.vecDocumentos = new ArrayList<>();
@@ -37,6 +38,8 @@ public class CjtoDocumentos {
         altaVecDoc2(autor,titulo);
         //AÃ±adimos palabras al diccionario
         VariablesGlobales.diccionario.anadirPalabras(doc.getContenidoReducido());
+        if (vecDoc2.get(autor) == null)//no existe el autor, lo añadimos a nuestro trie
+        	triePrefijosAutor.anadirPrefijo(autor);
         ++numDocs; //Documento nuevo
         //calculamos el peso de todos los documentos
         calcularTFiDFtodosLosDocumentos();
@@ -50,6 +53,7 @@ public class CjtoDocumentos {
         bajaVecDoc1(autor,titulo);
         //Se da de baja en vecDoc2
         bajaVecDoc2(autor,titulo);
+        triePrefijosAutor.eliminarPrefijo(autor);
         //Documento eliminado           
         --numDocs;
     }
@@ -84,8 +88,7 @@ public class CjtoDocumentos {
     }
    
     public ArrayList<String> consultarAutoresPorPrefijo(String prefijo) throws Exception{
-        
-         return null;
+         return triePrefijosAutor.consultarListaDelPrefijo(prefijo);
     }
     
     public String consultarContenido(String autor, String titulo) throws Exception{

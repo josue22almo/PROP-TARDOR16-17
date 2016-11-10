@@ -13,10 +13,10 @@ public class Trie {
     
     public Trie(){}
     
-    public void añadirPrefijo(String prefijo){
-        for (int i = 0; i < prefijo.length() -1; ++i){
-            String subPrefijo = prefijo.substring(0, i+1);
-        if (trie.get(subPrefijo) == null) {  
+    public void anadirPrefijo(String prefijo){
+        for (int i = 0; i < prefijo.length(); ++i){
+            String subPrefijo = prefijo.substring(0, i);
+            if (trie.get(subPrefijo) == null) {  
                 ArrayList<String> titulos = new ArrayList<>();
                 titulos.add(prefijo);
                 trie.put(subPrefijo,titulos);
@@ -29,17 +29,17 @@ public class Trie {
     }
     
     public void eliminarPrefijo(String prefijo){
-        System.out.println(prefijo.length());
-        for (int i = 0; i < prefijo.length()-1; ++i){
-            String subPrefijo = prefijo.substring(0, i+1);
-            trie.remove(subPrefijo);
+        for (int i = 0; i < prefijo.length(); ++i){
+            String subPrefijo = prefijo.substring(0, i);
+            ArrayList<String> list = trie.get(subPrefijo);
+            list.remove(prefijo);
         }
     }
     
     public ArrayList<String> consultarListaDelPrefijo(String prefijo) throws Exception{
         if (trie.get(prefijo) != null) 
             return trie.get(prefijo);
-        else throw new Exception("No existe el prefijo");
+        else throw new Exception("No existen autores con el prefijo " + prefijo +  " prefijo");
     }
     
     public void print(){

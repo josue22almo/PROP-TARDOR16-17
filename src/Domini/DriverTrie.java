@@ -1,13 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Domini;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 /**
  *
@@ -17,51 +12,98 @@ public class DriverTrie {
  
     public static void main(String[] args) throws IOException, Exception{
         Trie trie = new Trie();
-        Scanner sc = new Scanner(System.in);
-        while(true){
-            try{
-                String prefijo,aux;
-                System.out.println("Escriba prefijo");
-                prefijo = sc.nextLine();
-                aux = sc.next();
-                while (!aux.equals(".")){
-                    prefijo += aux;
-                    prefijo += " ";
-                    aux = sc.next();
-                }
-                prefijo = prefijo.substring(0, prefijo.length()-1);
-                System.out.println("Indique qué desea hacer con el prefijo:");
-                System.out.println("1. Añadir prefijo");
-                System.out.println("2. Eliminar prefijo");
-                System.out.println("3. Consultar lista del prefijo");
-                System.out.println("4. Escribir trie");
-                System.out.println("5. Salir");
-                int op = sc.nextInt();
-                switch(op){
-                    case 1:
-                        trie.añadirPrefijo(prefijo);
-                        System.out.println("Prefijo añadido");
-                        break;
-                    case 2:
-                        trie.eliminarPrefijo(prefijo);
-                        System.out.println("Prefijo eliminado");
-                        break;
-                    case 3:  
-                        ArrayList<String> list = trie.consultarListaDelPrefijo(prefijo);
-                        for (int i=0; i < list.size(); ++i){
-                                System.out.println( list.get(i));
-                        }   
-                        break;
-                    case 4:
-                        trie.print();;
-                        System.out.println("Lista imprimida");
-                        break;
-                    case 5:
-                        return;
-                }
-            }catch(Exception e){
-                System.out.println(e.getMessage());
-            }
+        try{
+	        System.out.println("A�adimos varios prefijos");
+	        trie.anadirPrefijo("Juan");
+	        trie.anadirPrefijo("Judas");
+	        trie.anadirPrefijo("Josue");
+	        trie.anadirPrefijo("Joseas");
+	        trie.anadirPrefijo("Jose");
+	        trie.anadirPrefijo("Jordania");
+	        trie.anadirPrefijo("Jota");
+	        trie.anadirPrefijo("Joselito");
+	        trie.anadirPrefijo("Josele");
+	        trie.anadirPrefijo("Joan");
+	        trie.anadirPrefijo("Ana");
+	        trie.anadirPrefijo("Ana Simon");
+	        trie.anadirPrefijo("Ana Maria");
+	        trie.anadirPrefijo("Ana Gloria");
+	        trie.anadirPrefijo("Anna");
+	       
+	        System.out.println("Listamos varios prefijos");	       
+	        ArrayList<String> list = trie.consultarListaDelPrefijo("");
+	        System.out.println("Lista del prefijo vacio");
+	        for (int i = 0; i < list.size();++i)
+	        	System.out.println(list.get(i));
+	        System.out.println();
+	        
+	        list = trie.consultarListaDelPrefijo("J");
+	        System.out.println("Lista del prefijo J");
+	        for (int i = 0; i < list.size();++i)
+	        	System.out.println(list.get(i));
+	        System.out.println();
+	        
+	        list = trie.consultarListaDelPrefijo("Ju");
+	        System.out.println("Lista del prefijo Ju");
+	        for (int i = 0; i < list.size();++i)
+	        	System.out.println(list.get(i));
+	        System.out.println();
+	        
+	        list = trie.consultarListaDelPrefijo("Jos");
+	        System.out.println("Lista del prefijo Jos");
+	        for (int i = 0; i < list.size();++i)
+	        	System.out.println(list.get(i));
+	        System.out.println();
+	        
+	        list = trie.consultarListaDelPrefijo("Jose");
+	        System.out.println("Lista del prefijo Jose");
+	        for (int i = 0; i < list.size();++i)
+	        	System.out.println(list.get(i));
+	        System.out.println();
+	        
+	        list = trie.consultarListaDelPrefijo("An");
+	        System.out.println("Lista del prefijo An");
+	        for (int i = 0; i < list.size();++i)
+	        	System.out.println(list.get(i));
+	        System.out.println();
+	        
+	        list = trie.consultarListaDelPrefijo("A");
+	        System.out.println("Lista del prefijo A");
+	        for (int i = 0; i < list.size();++i)
+	        	System.out.println(list.get(i));
+	        System.out.println();
+	        
+	        System.out.println("Eliminamos varios prefijos");
+	        trie.eliminarPrefijo("Josue");
+	        trie.eliminarPrefijo("Jordania");
+	        trie.eliminarPrefijo("Jota");
+	        trie.eliminarPrefijo("Ana");
+	        System.out.println();
+	        
+	        System.out.println("Listamos varios prefijos");
+	        list = trie.consultarListaDelPrefijo("");
+	        System.out.println("Lista del prefijo vacio");
+	        for (int i = 0; i < list.size();++i)
+	        	System.out.println(list.get(i));
+	        System.out.println();
+	        list = trie.consultarListaDelPrefijo("J");
+	        System.out.println("Lista del prefijo J");
+	        for (int i = 0; i < list.size();++i)
+	        	System.out.println(list.get(i));
+	        System.out.println();
+	       
+	        list = trie.consultarListaDelPrefijo("A");
+	        System.out.println("Lista del prefijo A");
+	        for (int i = 0; i < list.size();++i)
+	        	System.out.println(list.get(i));
+	        System.out.println();
+	        list = trie.consultarListaDelPrefijo("Josue");
+	        System.out.println("Lista del prefijo Josue");
+	        for (int i = 0; i < list.size();++i)
+	        	System.out.println(list.get(i));
+	        System.out.println();
+        } catch(Exception e){
+    	   System.out.println(e.getMessage());
         }
     }
 }
