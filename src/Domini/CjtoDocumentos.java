@@ -17,33 +17,44 @@ public class CjtoDocumentos {
     private Map<String, String> vecDoc1; //para consultarContenido 
     private Map<String, ArrayList<String> > vecDoc2; //para consultarTitulosAutor
     private int numDocs;  
-    private Trie triePrefijosAutor = new Trie();
-    private static Diccionario  diccionario = new Diccionario();
+    private Trie triePrefijosAutor; //para consultarAutoresPorPrefijo
+    private static Diccionario diccionario;
     
     public CjtoDocumentos() {        
         
         this.vecDocumentos = new ArrayList<>();
         this.vecDoc1 = new HashMap<>(); 
-        this.vecDoc2 = new HashMap<>(); 
+        this.vecDoc2 = new HashMap<>();
+        this.triePrefijosAutor = new Trie();
+        this.diccionario = new Diccionario();
         this.numDocs = 0;
     }
     
     public void altaDocumento (String autor, String titulo, String contenido) throws Exception{
         
         Documento doc = new Documento(autor,titulo,contenido);
+        
         if (existeDocumento(autor, titulo))
             throw new Exception("El documento ya existe"); 
+        
         if (vecDoc2.get(autor) == null)//no existe el autor, lo añadimos a nuestro trie
         	triePrefijosAutor.anadirPrefijo(autor);
+        
         //Se da de alta en vecDocumentos
         altaVecDocumentos(doc);
+        
         //Se da de alta en vecDoc1
         altaVecDoc1(autor,titulo,contenido);
+        
         //Se da de alta en vecDoc2
         altaVecDoc2(autor,titulo);
+        
         //Añadimos palabras al diccionario
         diccionario.anadirPalabras(doc.getContenidoReducido());
-        ++numDocs; //Documento nuevo
+        
+        //Un documento más
+        ++numDocs;
+        
         //calculamos el peso de todos los documentos
         calcularTFIDFtodosLosDocumentos();
     }      
@@ -51,17 +62,25 @@ public class CjtoDocumentos {
     public void bajaDocumento(String autor, String titulo) throws Exception{
         
         comprobarSiDocumentoExiste(autor,titulo);
+        
         //Se da de baja en vecDocumentos y eliminamos las palabras de su contenido del diccionario
         bajaVecDocumentos(autor,titulo);
-        //Se da de baja en vecDoc1, no funciona
+        
+        //Se da de baja en vecDoc1
         bajaVecDoc1(autor,titulo);
+        
         //Se da de baja en vecDoc2
         bajaVecDoc2(autor,titulo);
-        if (vecDoc2.get(autor) == null)//si despues de elinimar el documento no existe el autor,
-            //                         //lo eliminamos de nuestro trie
-        	triePrefijosAutor.eliminarPrefijo(autor);
-        //Documento eliminado           
-        --numDocs;
+        
+        //Si después de elinimar el documento no existe el autor,lo eliminamos de nuestro trie
+        if (vecDoc2.get(autor) == null)
+            triePrefijosAutor.eliminarPrefijo(autor);
+        
+        //Un documento menos
+        --numDocs; 
+        
+        //calculamos el peso de todos los documentos
+        calcularTFIDFtodosLosDocumentos();
     }
     
     public void modificaAutorDoc(String autor, String titulo, String autorModif) throws Exception{
