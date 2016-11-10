@@ -66,9 +66,8 @@ public class CtrlDomini {
     public Map<String,String> getDocumentosParecidos(String autor, String titulo, int k, String type) throws Exception{
         Map<String,String> m = new HashMap<>();
         ArrayList <Documento> l = cd.getDocumentosParecidos(autor, titulo, k,type);
-        l.stream().forEach((d) -> {
-            m.put(d.getTitulo(),d.getAutor());
-        });
+        for (Documento d : l)
+            m.put(d.getAutor(),d.getTitulo());
         return m;
     }
     
