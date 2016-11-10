@@ -1,7 +1,7 @@
-
 package Domini;
 
 import Persistencia.CtrlPersistencia;
+import java.io.BufferedReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,6 +15,21 @@ public class CtrlDomini {
     private CjtoDocumentos cd = new CjtoDocumentos();
     
     public CtrlDomini(){}
+    
+    public void altaConjuntoDocumentosDirectorio(String folder) throws Exception{
+        ArrayList<BufferedReader> docs = ctrlPersistencia.leerCarpeta(folder);        
+        for (int i = 0; i < docs.size();++i){
+            BufferedReader b = docs.get(i);
+            String autor = b.readLine();
+            String titulo = b.readLine();
+            String contenido = "";
+            while((contenido = b.readLine())!=null) {
+                System.out.println(contenido);
+             }
+            cd.altaDocumento(autor, titulo, contenido);
+            b.close();
+        }
+    }
     
     public void altaDocumento(String autor, String titulo, String contenido) throws Exception {
         cd.altaDocumento(autor, titulo, contenido);
@@ -73,6 +88,5 @@ public class CtrlDomini {
     public void print(){        
         cd.print();
     }
-    
     
 }

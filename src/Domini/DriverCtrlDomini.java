@@ -1,4 +1,5 @@
 
+
 package Domini;
 
 import java.io.IOException;
@@ -15,19 +16,20 @@ public class DriverCtrlDomini {
         CtrlDomini c = new CtrlDomini();
         Scanner sc = new Scanner(System.in);
         while(true){
-            System.out.println("Indique qué desea hacer:");
-            System.out.println("1. Dar de alta un documento");
-            System.out.println("2. Dar de baja un documento");
-            System.out.println("3. Modificar autor de un documento");
-            System.out.println("4. Modificar titulo de un documento");
-            System.out.println("5. Modificar contenido de un documento");
-            System.out.println("6. Consultar titulos de los documentos de un autor");
-            System.out.println("7. Consultar autores que empiezan por un prefijo");
-            System.out.println("8. Consultar contenido de un documento"); 
-            System.out.println("9. Consultar lista de los k documentos más parecidos a T");
-            System.out.println("10. Consultar lista de los documentos con una expresión booleana");
-            System.out.println("11. Consultar todo el conjunto de documentos");
-            System.out.println("12. Salir");
+            System.out.println("Indique quÃ© desea hacer:");
+            System.out.println("1. Dar de alta conjunto de documentos con una carpeta");
+            System.out.println("2. Dar de alta un documento");
+            System.out.println("3. Dar de baja un documento");
+            System.out.println("4. Modificar autor de un documento");
+            System.out.println("5. Modificar titulo de un documento");
+            System.out.println("6. Modificar contenido de un documento");
+            System.out.println("7. Consultar titulos de los documentos de un autor");
+            System.out.println("8. Consultar autores que empiezan por un prefijo");
+            System.out.println("9. Consultar contenido de un documento"); 
+            System.out.println("10. Consultar lista de los k documentos mÃ¡s parecidos a T");
+            System.out.println("11. Consultar lista de los documentos con una expresiÃ³n booleana");
+            System.out.println("12. Consultar todo el conjunto de documentos");
+            System.out.println("13. Salir");
             String autor;
             String titulo;
             String contenido;
@@ -37,6 +39,12 @@ public class DriverCtrlDomini {
             op = sc.nextInt();
             switch(op){
                 case 1:
+                    System.out.println("Dar de alta conjunto de documentos con una carpeta");
+                    System.out.println("Direccion de la carpeta");
+                    sc.nextLine();
+                    String folder = sc.nextLine();
+                    c.altaConjuntoDocumentosDirectorio(folder);
+                case 2:
                     System.out.println("Alta documento");
                     System.out.println("Autor:");
                     sc.nextLine();
@@ -44,7 +52,7 @@ public class DriverCtrlDomini {
                     System.out.println("Titulo:");
                     sc.nextLine();
                     titulo = sc.nextLine();
-                    System.out.println("Contenido (la entrada debe acabar con una linea vacía):");
+                    System.out.println("Contenido (la entrada debe acabar con una linea vacÃ­a):");
                     sc.nextLine();
                     contenido = "";
                     aux = "";
@@ -58,7 +66,7 @@ public class DriverCtrlDomini {
                         System.out.println(e.getMessage());
                     }
                     break;
-                case 2:
+                case 3:
                     System.out.println("Baja documento");
                     System.out.println("Autor:");
                     sc.nextLine();
@@ -72,7 +80,7 @@ public class DriverCtrlDomini {
                         System.out.println(e.getMessage());
                     }
                     break;
-                case 3:
+                case 4:
                     System.out.println("Modificar autor");
                     System.out.println("Autor:");
                     sc.nextLine();
@@ -89,7 +97,7 @@ public class DriverCtrlDomini {
                         System.out.println(e.getMessage());
                     }
                     break;
-                case 4:
+                case 5:
                     System.out.println("Modificar titulo");
                     System.out.println("Autor:");
                     sc.nextLine();
@@ -106,7 +114,7 @@ public class DriverCtrlDomini {
                         System.out.println(e.getMessage());
                     }
                     break;
-                case 5:
+                case 6:
                     System.out.println("Modificar contenido");
                     System.out.println("Autor:");
                     sc.nextLine();
@@ -114,7 +122,7 @@ public class DriverCtrlDomini {
                     System.out.println("Titulo:");
                     sc.nextLine();
                     titulo = sc.nextLine();
-                    System.out.println("Contenido modificado (la entrada debe acabar con una linea vacía):");
+                    System.out.println("Contenido modificado (la entrada debe acabar con una linea vacÃ­a):");
                     sc.nextLine();
                     String contAux = "";
                     aux = "";
@@ -128,8 +136,8 @@ public class DriverCtrlDomini {
                         System.out.println(e.getMessage());
                     }
                     break;
-                case 6:
-                    System.out.println("Consular títulos autor");
+                case 7:
+                    System.out.println("Consular tÃ­tulos autor");
                     sc.nextLine();
                     autor = sc.nextLine();
                     try{
@@ -141,7 +149,7 @@ public class DriverCtrlDomini {
                         System.out.println(e.getMessage());
                     }
                     break;
-                case 7:
+                case 8:
                     System.out.println("Consultar autores por prefijo");
                     System.out.println("Prefijo:");
                     sc.nextLine();
@@ -158,7 +166,7 @@ public class DriverCtrlDomini {
                         System.out.println(e.getMessage());
                     }
                     break;
-                case 8:
+                case 9:
                     System.out.println("Consultar contenido");
                     System.out.println("Autor:");
                     sc.nextLine();
@@ -173,7 +181,7 @@ public class DriverCtrlDomini {
                         System.out.println(e.getMessage());
                     }
                     break;
-                case 9:
+                case 10:
                     System.out.println("Consultar k mas parecidos a T");
                     System.out.println("Autor:");
                     sc.nextLine();
@@ -181,7 +189,7 @@ public class DriverCtrlDomini {
                     System.out.println("Titulo:");
                     sc.nextLine();
                     titulo = sc.nextLine();
-                    System.out.println("Número de documentos:");
+                    System.out.println("NÃºmero de documentos:");
                     sc.nextLine();
                     k = sc.nextInt();
                     System.out.println("Escribe FREC o TFIDF");
@@ -198,7 +206,7 @@ public class DriverCtrlDomini {
                         System.out.println(e.getMessage());
                     }
                     break;
-                case 10:
+                case 11:
                     System.out.println("Consultar expresion booleana");
                     System.out.println("Frase booleana:");
                     sc.nextLine();
@@ -209,15 +217,15 @@ public class DriverCtrlDomini {
                         System.out.println(e.getMessage());
                     }
                    break;
-                case 11: 
+                case 12: 
                     System.out.println("Consultar todo el conjunto de documentos");
                     c.print();
                     break;
-                case 12:
+                case 13:
                     System.out.println("Salir");
                     return;   
                 default:
-                    System.out.println("Operación incorrecta");
+                    System.out.println("OperaciÃ³n incorrecta");
                     break;
             }
             System.out.println();
