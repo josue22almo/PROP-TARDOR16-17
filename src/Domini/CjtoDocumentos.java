@@ -31,6 +31,8 @@ public class CjtoDocumentos {
         Documento doc = new Documento(autor,titulo,contenido);
         if (existeDocumenteo(autor, titulo))
             throw new Exception("El documento ya existe"); 
+        if (vecDoc2.get(autor) == null)//no existe el autor, lo añadimos a nuestro trie
+        	triePrefijosAutor.anadirPrefijo(autor);
         //Se da de alta en vecDocumentos
         altaVecDocumentos(doc);
         //Se da de alta en vecDoc1
@@ -38,9 +40,7 @@ public class CjtoDocumentos {
         //Se da de alta en vecDoc2
         altaVecDoc2(autor,titulo);
         //Añadimos palabras al diccionario
-        diccionario.anadirPalabras(doc.getContenidoReducido());
-        if (vecDoc2.get(autor) == null)//no existe el autor, lo a�adimos a nuestro trie
-        	triePrefijosAutor.anadirPrefijo(autor);
+        diccionario.anadirPalabras(doc.getContenidoReducido());        
         ++numDocs; //Documento nuevo
         //calculamos el peso de todos los documentos
         calcularTFiDFtodosLosDocumentos();
@@ -96,7 +96,7 @@ public class CjtoDocumentos {
     public String consultarContenido(String autor, String titulo) throws Exception{
         comprobarSiDocumentoExiste(autor,titulo);
         String at = autor + " " + titulo;
-        return vecDoc1.get(at);        
+        return vecDoc1.get(at);   
     }
    
     public ArrayList<Documento> getDocumentosParecidos(String autor, String titulo, int k, String type) throws Exception{

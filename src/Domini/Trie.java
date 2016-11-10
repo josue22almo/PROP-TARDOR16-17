@@ -50,7 +50,7 @@ public class Trie {
     public ArrayList<String> consultarListaDelPrefijo(String prefijo) throws Exception{
         if (trie.containsKey(prefijo)) 
             return  trie.get(prefijo);
-        throw new Exception("No existen autores con el prefijo " + prefijo +  " prefijo");
+        throw new Exception("No existen autores con el prefijo " + prefijo);
     }
     
     public void print(){
