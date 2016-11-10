@@ -102,6 +102,7 @@ public class CjtoDocumentos {
     public ArrayList<Documento> getDocumentosParecidos(String autor, String titulo, int k, String type) throws Exception{
     	if (!type.equals("TF-IDF") && !type.equals("FREC"))
     		throw new Exception("El tipo que ha especificado no es válido. Ha de ser FREC o TF-IDF.");
+        
         Map<Double,ArrayList<Documento>> docs;
         docs = new TreeMap<>();
         comprobarSiDocumentoExiste(autor,titulo);
@@ -112,12 +113,12 @@ public class CjtoDocumentos {
             if (i != pos) {
                 double dist = origen.calcularDistancia(vecDocumentos.get(i),type);
                 //añadimos al treemap la distancia y el documento y ya queda ordenado 
-                if (!docs.containsKey(dist)) {// si en el map no hay documentos con distancia = dist
+                if (!docs.containsKey(dist)) { // si en el map no hay documentos con distancia = dist
                     ArrayList<Documento> d = new ArrayList<>();
                     d.add(vecDocumentos.get(i));
                     docs.put(dist,d);
                 }
-                else {
+                else {           // si en el map ya hay documentos con distancia = dist
                     ArrayList<Documento> d = docs.get(dist);
                     d.add(vecDocumentos.get(i));
                 }

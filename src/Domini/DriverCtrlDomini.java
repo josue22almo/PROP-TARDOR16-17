@@ -2,6 +2,8 @@
 package Domini;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Map;
 import java.util.Scanner;
 
 /**
@@ -22,11 +24,10 @@ public class DriverCtrlDomini {
             System.out.println("6. Consultar titulos de los documentos de un autor");
             System.out.println("7. Consultar autores que empiezan por un prefijo");
             System.out.println("8. Consultar contenido de un documento"); 
-            System.out.println("9. Consultar lista de los k documentos más parecidos a T por frecuencia");
-            System.out.println("10. Consultar lista de los k documentos más parecidos a T por TfiDf");
-            System.out.println("11. Consultar lista de los documentos con una expresión booleana");
-            System.out.println("12. Escribir conjunto");
-            System.out.println("13. Salir");
+            System.out.println("9. Consultar lista de los k documentos más parecidos a T");
+            System.out.println("10. Consultar lista de los documentos con una expresión booleana");
+            System.out.println("11. Consultar todo el conjunto de documentos");
+            System.out.println("12. Salir");
             String autor;
             String titulo;
             String contenido;
@@ -38,11 +39,19 @@ public class DriverCtrlDomini {
                 case 1:
                     System.out.println("Alta documento");
                     System.out.println("Autor:");
-                    autor = sc.next();
+                    sc.nextLine();
+                    autor = sc.nextLine();
                     System.out.println("Titulo:");
-                    titulo = sc.next();
-                    System.out.println("Contenido:");
-                    contenido = sc.next();
+                    sc.nextLine();
+                    titulo = sc.nextLine();
+                    System.out.println("Contenido (la entrada debe acabar con una linea vacía):");
+                    sc.nextLine();
+                    contenido = "";
+                    aux = "";
+                    while (!(aux=sc.nextLine()).isEmpty()){
+                        contenido += aux;
+                        contenido += '\n';
+                    }
                     try{
                         c.altaDocumento(autor,titulo,contenido);
                     }catch (Exception e){
@@ -50,11 +59,13 @@ public class DriverCtrlDomini {
                     }
                     break;
                 case 2:
-                    System.out.println("Eliminar documento");
+                    System.out.println("Baja documento");
                     System.out.println("Autor:");
-                    autor = sc.next();
+                    sc.nextLine();
+                    autor = sc.nextLine();
                     System.out.println("Titulo:");
-                    titulo = sc.next();
+                    sc.nextLine();
+                    titulo = sc.nextLine();
                     try{
                         c.bajaDocumento(autor,titulo); 
                     }catch (Exception e){
@@ -64,27 +75,33 @@ public class DriverCtrlDomini {
                 case 3:
                     System.out.println("Modificar autor");
                     System.out.println("Autor:");
-                    autor = sc.next();
+                    sc.nextLine();
+                    autor = sc.nextLine();
                     System.out.println("Titulo:");
-                    titulo = sc.next();
+                    sc.nextLine();
+                    titulo = sc.nextLine();
                     System.out.println("Autor modificado:");
-                    aux = sc.next();
+                    sc.nextLine();
+                    String autorAux = sc.nextLine();
                     try{
-                        c.modificaAutorDoc(autor,titulo,aux); 
+                        c.modificaAutorDoc(autor,titulo,autorAux); 
                     }catch (Exception e){
                         System.out.println(e.getMessage());
                     }
                     break;
                 case 4:
                     System.out.println("Modificar titulo");
-                   System.out.println("Autor:");
-                   autor = sc.next();
+                    System.out.println("Autor:");
+                    sc.nextLine();
+                    autor = sc.nextLine();
                     System.out.println("Titulo:");
-                    titulo = sc.next();
+                    sc.nextLine();
+                    titulo = sc.nextLine();
                     System.out.println("Titulo modificado:");
-                    aux = sc.next();
+                    sc.nextLine();
+                    String tituloAux = sc.nextLine();;
                     try{
-                        c.modificaTituloDoc(autor,titulo,aux); 
+                        c.modificaTituloDoc(autor,titulo,tituloAux); 
                     }catch (Exception e){
                         System.out.println(e.getMessage());
                     }
@@ -92,33 +109,51 @@ public class DriverCtrlDomini {
                 case 5:
                     System.out.println("Modificar contenido");
                     System.out.println("Autor:");
-                    autor = sc.next();
+                    sc.nextLine();
+                    autor = sc.nextLine();
                     System.out.println("Titulo:");
-                    titulo = sc.next();
-                    System.out.println("Contenido modificado:");
-                    aux = sc.next();
+                    sc.nextLine();
+                    titulo = sc.nextLine();
+                    System.out.println("Contenido modificado (la entrada debe acabar con una linea vacía):");
+                    sc.nextLine();
+                    String contAux = "";
+                    aux = "";
+                    while (!(aux=sc.nextLine()).isEmpty()){
+                        contAux += aux;
+                        contAux += '\n';
+                    }
                     try{
-                        c.modificaContenidoDoc(autor,titulo,aux); 
+                        c.modificaContenidoDoc(autor,titulo,contAux); 
                     }catch (Exception e){
                         System.out.println(e.getMessage());
                     }
-                  break;
+                    break;
                 case 6:
                     System.out.println("Consular títulos autor");
-                    System.out.println("Autor:");
-                    autor = sc.next();
+                    sc.nextLine();
+                    autor = sc.nextLine();
                     try{
-                        c.consultarTitulosAutor(autor); 
+                        ArrayList<String> tit = c.consultarTitulosAutor(autor); 
+                        for (int i=0; i < tit.size(); ++i){
+                            System.out.println(tit.get(i));
+                        }
                     }catch (Exception e){
                         System.out.println(e.getMessage());
                     }
                     break;
                 case 7:
-                    System.out.println("Consulta por prefijo");
+                    System.out.println("Consultar autores por prefijo");
                     System.out.println("Prefijo:");
-                    aux = sc.next();
+                    sc.nextLine();
+                    String prefijo = "";
+                    if (!(aux = sc.nextLine()).isEmpty())
+                        prefijo = aux;
+                    
                     try{
-                        c.consultarAutores(aux); 
+                        ArrayList<String> aut = c.consultarAutoresPorPrefijo(prefijo); 
+                        for (int i=0; i < aut.size(); ++i){
+                            System.out.println(aut.get(i));
+                        }
                     }catch (Exception e){
                         System.out.println(e.getMessage());
                     }
@@ -126,62 +161,64 @@ public class DriverCtrlDomini {
                 case 8:
                     System.out.println("Consultar contenido");
                     System.out.println("Autor:");
-                    autor = sc.next();
+                    sc.nextLine();
+                    autor = sc.nextLine();
                     System.out.println("Titulo:");
-                    titulo = sc.next();
+                    sc.nextLine();
+                    titulo = sc.nextLine();
                     try{
-                        c.consultarContenido(autor,titulo); 
+                        contenido = c.consultarContenido(autor,titulo); 
+                        System.out.println(contenido);
                     }catch (Exception e){
                         System.out.println(e.getMessage());
                     }
                     break;
                 case 9:
-                    System.out.println("Consultar k mas parecidos Frec");
+                    System.out.println("Consultar k mas parecidos a T");
                     System.out.println("Autor:");
-                    autor = sc.next();
+                    sc.nextLine();
+                    autor = sc.nextLine();
                     System.out.println("Titulo:");
-                    titulo = sc.next();
+                    sc.nextLine();
+                    titulo = sc.nextLine();
                     System.out.println("Número de documentos:");
-                    aux = sc.next();
-                    k = Integer.parseInt(aux);
+                    sc.nextLine();
+                    k = sc.nextInt();
+                    System.out.println("Escribe FREC o TFIDF");
+                    sc.nextLine();
+                    aux = sc.nextLine();
                     try{
-                        c.getDocumentosParecidos(autor,titulo,k,"FREC"); 
+                        Map<String,String> docs = c.getDocumentosParecidos(autor,titulo,k,aux); 
+                        for (String key : docs.keySet()){
+                            System.out.println("Autor: " + key);
+                            System.out.println("Titulo: " + docs.get(key));
+                            System.out.println();
+                        } 
                     }catch (Exception e){
                         System.out.println(e.getMessage());
                     }
                     break;
                 case 10:
-                    System.out.println("Consultar k mas parecidos TF-IDF");
-                    System.out.println("Autor:");
-                    autor = sc.next();
-                    System.out.println("Titulo:");
-                    titulo = sc.next();
-                    System.out.println("Número de documentos:");
-                    aux = sc.next();
-                    k = Integer.parseInt(aux);
-                    try{
-                        c.getDocumentosParecidos(autor,titulo,k,"TF-IDF"); 
-                    }catch (Exception e){
-                        System.out.println(e.getMessage());
-                    }
-                    break;
-                case 11:
-                    System.out.println("Consulta expresion booleana");
+                    System.out.println("Consultar expresion booleana");
                     System.out.println("Frase booleana:");
-                    aux = sc.next();
+                    sc.nextLine();
+                    String booleano = sc.nextLine();
                     try{
-                        c.getDocumentosBool(aux);
+                        c.getDocumentosBool(booleano);
                     }catch (Exception e){
                         System.out.println(e.getMessage());
                     }
-                    break;
-                case 12: 
-                    System.out.println("Escribir conjunto");
+                   break;
+                case 11: 
+                    System.out.println("Consultar todo el conjunto de documentos");
                     c.print();
-                    return;     
-                case 13: 
+                    break;
+                case 12:
                     System.out.println("Salir");
-                    return;               
+                    return;   
+                default:
+                    System.out.println("Operación incorrecta");
+                    break;
             }
             System.out.println();
         }

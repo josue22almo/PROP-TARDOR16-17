@@ -55,6 +55,10 @@ public class CtrlDomini {
         return m;
     }
     
+    public ArrayList<String> consultarAutoresPorPrefijo(String prefijo) throws Exception{
+         return cd.consultarAutoresPorPrefijo(prefijo);
+    }
+    
     public Map<String,String> getDocumentosBool(String frase) throws Exception{
         Map<String,String> m = new HashMap<>();
         ArrayList <Documento> l = cd.getDocumentosBool(frase);
