@@ -108,8 +108,9 @@ public class DriverDocumento {
                         break;
                     }
                     System.out.println("¿Desea realizar otra operación? (s/n)");
-                    String resp = sc.nextLine();
+                    String resp = sc.next();
                     if (resp.equals("n")) return;
+                    sc.nextLine();
             }
         } catch(Exception e){
             System.out.println(e.getMessage());

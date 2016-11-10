@@ -245,8 +245,13 @@ public class CjtoDocumentos {
     private boolean existeDocumento(String autor, String titulo) {        
         
         if (vecDoc2.containsKey(autor)){
-            ArrayList<String> titulos = vecDoc2.get(autor);
-            return titulos.contains(titulo);
+            /*ArrayList<String> titulos = vecDoc2.get(autor);
+            return titulos.contains(titulo);*/
+            if (vecDoc2.get(autor) == null) return false;
+            else {
+                ArrayList<String> titulos = vecDoc2.get(autor);
+                return titulos.contains(titulo);
+            }
         }
         return false;
     }
@@ -274,7 +279,7 @@ public class CjtoDocumentos {
         for(String t : vecDoc1.keySet()){
             System.out.println("Autor y titulo: " + t + " Contenido: " + vecDoc1.get(t));
         }
-        System.out.println("Titulos de autor:");
+        System.out.println("vecDoc2 es:");
         for(String a : vecDoc2.keySet()){
             for (int i = 0; i < vecDoc2.get(a).size(); ++i)
                 System.out.println("Autor: " + a + " Titulo: " + vecDoc2.get(a).get(i));
