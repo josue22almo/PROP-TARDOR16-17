@@ -38,17 +38,17 @@ public class DriverDocumento {
                 System.out.println("9. Salir");
                 int op;
                 op = sc.nextInt();
+                sc.nextLine(); 
                     switch(op){
                         case 1:
                             System.out.println("Introduzca el nuevo autor:");
-                            sc.nextLine(); 
+                            
                             autor = sc.nextLine(); 
                             doc.setAutor(autor);
                             System.out.println("Autor cambiado con éxito.");
                             break;
                         case 2:
                             System.out.println("Introduzca el nuevo título:");
-                            sc.nextLine(); 
                             titulo = sc.nextLine();
                             doc.setTitulo(titulo);
                             System.out.println("Título cambiado con éxito.");
@@ -84,10 +84,8 @@ public class DriverDocumento {
                         case 8:
                             System.out.println("Introduzca autor, título y contenido del documento respecto al que quiere calcular la distancia");
                             System.out.println("Introduzca el autor del documento:");
-                            sc.nextLine();
                             autor = sc.nextLine();                        
                             System.out.println("Introduzca el título del documento:");
-                            //sc.nextLine(); 
                             titulo = sc.nextLine();
                             System.out.println("Introduzca el contenido del documento (la entrada debe acabar con una linea vacía):");
                             contenido = "";
