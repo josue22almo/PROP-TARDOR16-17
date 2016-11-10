@@ -54,7 +54,6 @@ public class DriverCtrlDomini {
                             contenido += '\n';
                         }
                         c.altaDocumento(autor,titulo,contenido);
-                        System.out.println(e.getMessage());
                         break;
                     case 2:
                         System.out.println("Baja documento");
@@ -78,7 +77,6 @@ public class DriverCtrlDomini {
                         //sc.nextLine();
                         String autorAux = sc.nextLine();
                         c.modificaAutorDoc(autor,titulo,autorAux); 
-                        System.out.println(e.getMessage());
                         break;
                     case 4:
                         System.out.println("Modificar titulo");

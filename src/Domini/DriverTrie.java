@@ -16,7 +16,7 @@ public class DriverTrie {
         Scanner sc = new Scanner(System.in);
         try{
             while(true){
-                System.out.println("Indique qué desea hace y aprete enter:");
+                System.out.println("Indique qué desea hacer y aprete enter:");
                 System.out.println("1. Añadir prefijo");
                 System.out.println("2. Eliminar prefijo");
                 System.out.println("3. Consultar lista del prefijo");
