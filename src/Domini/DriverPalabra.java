@@ -29,43 +29,41 @@ public class DriverPalabra {
             String s;
              switch(op){
                  case 1:
-                    System.out.print("Instanciar palabra vacia");
+                    System.out.println("Instanciar palabra vacia");
                     p = new Palabra();
                     break;
                 case 2:
-                    System.out.print("2. Instanciar palabra con un string, escribre una palabra y apreta enter ");
+                    System.out.println("Palabra:");
                     s = sc.next();
                     p = new Palabra(s);
                     break;
                 case 3:
-                    System.out.print("3. Dar valor al atributo palabra de p, escribre una palabra y apreta enter ");
+                    System.out.println("3. Dar valor al atributo palabra de p, escribre una palabra y apreta enter ");
                     s = sc.next();
                     p = new Palabra(s);
                     break;
                 case 4:
-                    System.out.print("4. Get palabra");
+                    System.out.println("4. Get palabra");
                     System.out.println("La palabra es " + p.getPalabra());
                     break;
                 case 5:
-                    System.out.print("5. Calcular TF-IDF. Escribe un double ");
+                    System.out.println("Escribe un ejemplo de cantidad de documentos:");
                     int numDocs = sc.nextInt();
+                    System.out.println("Escribe un ejemplo de cantidad de documentos en los que aparece la palabra:");
                     int numApariciones = sc.nextInt();
                     p.calcularTFIDF(numDocs,numApariciones);                    
                   break;
                 case 6:
-                    System.out.print("6. Get frecuencia");
                     System.out.println("La frecuencia de la palabra es " + p.getFrecuencia());                    
                     break;
-                case 7:
-                    System.out.print("7. Get TF-IDF"); 
+                case 7: 
                     System.out.println("El TF-IDF de la palabra es " + p.getTFIDF()); 
                     break;
                 case 8:
-                    System.out.print("8. Incrementar frecuencia");
                     p.incrementarFrecuencia();
                     break;
                 case 9:
-                    System.out.print("9. Consultar si es igual a otra palabra. Escribe la palabra a comparar ");
+                    System.out.println("Escribe la palabra a comparar:");
                     s = sc.next();
                     Palabra p2 = new Palabra(s);
                     if (p2.equals(p)) System.out.println("Son iguales");
