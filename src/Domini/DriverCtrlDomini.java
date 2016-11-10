@@ -189,10 +189,10 @@ public class DriverCtrlDomini {
                     System.out.println("Titulo:");
                     sc.nextLine();
                     titulo = sc.nextLine();
-                    System.out.println("NÃºmero de documentos:");
+                    System.out.println("Numero de documentos:");
                     sc.nextLine();
                     k = sc.nextInt();
-                    System.out.println("Escribe FREC o TFIDF");
+                    System.out.println("Escribe FREC o TFIDF:");
                     sc.nextLine();
                     aux = sc.nextLine();
                     try{
@@ -225,7 +225,7 @@ public class DriverCtrlDomini {
                     System.out.println("Salir");
                     return;   
                 default:
-                    System.out.println("OperaciÃ³n incorrecta");
+                    System.out.println("Operacion incorrecta");
                     break;
             }
             System.out.println();
