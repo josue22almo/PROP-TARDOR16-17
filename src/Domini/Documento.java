@@ -15,7 +15,9 @@ public class Documento {
     
     public Documento(){}
     
-    public Documento(String autor, String titulo, String contenido) {
+    public Documento(String autor, String titulo, String contenido) throws Exception{
+        if (autor.isEmpty() || titulo.isEmpty() || contenido.isEmpty())
+            throw new Exception("Uno de los parametros del documento esta vacio");
         this.autor = autor;
         this.titulo = titulo;  
         this.contenido = new Contenido(contenido);
