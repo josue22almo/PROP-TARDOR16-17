@@ -78,9 +78,8 @@ public class CtrlDomini {
     public Map<String,String> getDocumentosBool(String frase) throws Exception{
         Map<String,String> m = new HashMap<>();
         ArrayList <Documento> l = cd.getDocumentosBool(frase);
-        l.stream().forEach((d) -> {
-            m.put(d.getTitulo(),d.getAutor());
-        });
+        for (Documento d : l)
+            m.put(d.getAutor(),d.getTitulo());
         return m;
     }
     
