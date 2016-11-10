@@ -29,7 +29,7 @@ public class CjtoDocumentos {
     
     public void altaDocumento (String autor, String titulo, String contenido) throws Exception{
         Documento doc = new Documento(autor,titulo,contenido);
-        if (existeDocumenteo(autor, titulo))
+        if (existeDocumento(autor, titulo))
             throw new Exception("El documento ya existe"); 
         if (vecDoc2.get(autor) == null)//no existe el autor, lo añadimos a nuestro trie
         	triePrefijosAutor.anadirPrefijo(autor);
@@ -209,7 +209,7 @@ public class CjtoDocumentos {
         titulos.remove(titulo);
     }
     
-    private boolean existeDocumenteo(String autor, String titulo){        
+    private boolean existeDocumento(String autor, String titulo){        
         if (vecDoc2.containsKey(autor)){
             ArrayList<String> titulos = vecDoc2.get(autor);
             return titulos.contains(titulo);
@@ -224,7 +224,7 @@ public class CjtoDocumentos {
     }
 
     private void comprobarSiDocumentoExiste(String autor, String titulo) throws Exception{
-        if (!existeDocumenteo(autor, titulo))
+        if (!existeDocumento(autor, titulo))
             throw new Exception("El documento no existe"); 
     }
 }
