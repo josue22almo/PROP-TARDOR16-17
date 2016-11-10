@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author jessica.sobreviela
+ * @author florencia.rimolo
  */
 public class DriverCtrlDomini {
     public static void main(String[] args) throws IOException, Exception{

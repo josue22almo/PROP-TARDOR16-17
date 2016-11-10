@@ -103,6 +103,9 @@ public class DriverDocumento {
                         break;
                     case 9:
                         return;
+                    default:
+                        System.out.println("Operación incorrecta");
+                    break;
                 }
                 System.out.println("¿Desea realizar otra operación? (s/n)");
                 String resp = sc.next();

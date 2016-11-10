@@ -49,7 +49,7 @@ public class DriverPalabra {
                     System.out.print("5. Calcular TF-IDF. Escribe un double ");
                     int numDocs = sc.nextInt();
                     int numApariciones = sc.nextInt();
-                    p.calcularTfDf(numDocs,numApariciones);                    
+                    p.calcularTFIDF(numDocs,numApariciones);                    
                   break;
                 case 6:
                     System.out.print("6. Get frecuencia");
@@ -57,7 +57,7 @@ public class DriverPalabra {
                     break;
                 case 7:
                     System.out.print("7. Get TF-IDF"); 
-                    System.out.println("El TF-IDF de la palabra es " + p.getTfDf()); 
+                    System.out.println("El TF-IDF de la palabra es " + p.getTFIDF()); 
                     break;
                 case 8:
                     System.out.print("8. Incrementar frecuencia");

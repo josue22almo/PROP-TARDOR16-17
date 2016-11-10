@@ -12,7 +12,6 @@ public class DriverDiccionario {
     public static void main(String[] args){
         Diccionario diccionario = new Diccionario();
         Scanner sc = new Scanner(System.in);
-        
         while(true){
             System.out.println("Escriba las palabras(enter para finalizar entrada)");
             String j;
@@ -39,6 +38,9 @@ public class DriverDiccionario {
                     break;
                 case 4:
                     return;
+                default:
+                    System.out.println("Operación incorrecta");
+                    break;
             }
             System.out.println("¿Desea realizar otra operación? (s/n)");
             String resp = sc.next();

@@ -18,7 +18,7 @@ public class CjtoDocumentos {
     private Map<String, ArrayList<String> > vecDoc2; //para consultarTitulosAutor
     private int numDocs;  
     private Trie triePrefijosAutor = new Trie();
-    public static Diccionario  diccionario = new Diccionario();
+    private static Diccionario  diccionario = new Diccionario();
     
     public CjtoDocumentos() {        
         this.vecDocumentos = new ArrayList<>();
@@ -40,10 +40,10 @@ public class CjtoDocumentos {
         //Se da de alta en vecDoc2
         altaVecDoc2(autor,titulo);
         //Añadimos palabras al diccionario
-        diccionario.anadirPalabras(doc.getContenidoReducido());        
+        diccionario.anadirPalabras(doc.getContenidoReducido());
         ++numDocs; //Documento nuevo
         //calculamos el peso de todos los documentos
-        calcularTFiDFtodosLosDocumentos();
+        calcularTFIDFtodosLosDocumentos();
     }      
     
     public void bajaDocumento(String autor, String titulo) throws Exception{
@@ -54,7 +54,8 @@ public class CjtoDocumentos {
         bajaVecDoc1(autor,titulo);
         //Se da de baja en vecDoc2
         bajaVecDoc2(autor,titulo);
-        if (vecDoc2.get(autor) == null)//no existe el autor, lo eliminamos de nuestro trie
+        if (vecDoc2.get(autor) == null)//si despues de elinimar el documento no existe el autor,
+            //                         //lo eliminamos de nuestro trie
         	triePrefijosAutor.eliminarPrefijo(autor);
         //Documento eliminado           
         --numDocs;
@@ -147,22 +148,6 @@ public class CjtoDocumentos {
         
         
         return v_docs;
-    }  
-    
-    public void print(){
-        System.out.println("vecDocumentos es:");
-        for(Documento doc : vecDocumentos){
-            System.out.println("Autor: " + doc.getAutor() + " Titulo: " + doc.getTitulo() + " Contenido: " + doc.getContenidoOriginal());
-        }
-        System.out.println("vecDoc1 es:");
-        for(String t : vecDoc1.keySet()){
-            System.out.println("Autor y titulo: " + t + " Contenido: " + vecDoc1.get(t));
-        }
-        System.out.println("Titulos de autor:");
-        for(String a : vecDoc2.keySet()){
-            for (int i = 0; i < vecDoc2.get(a).size(); ++i)
-                System.out.println("Autor: " + a + " Titulo: " + vecDoc2.get(a).get(i));
-        }
     }
 
     private int posicion(String autor, String titulo) {        
@@ -218,14 +203,30 @@ public class CjtoDocumentos {
         return false;
     }
 
-    private void calcularTFiDFtodosLosDocumentos() {
+    private void calcularTFIDFtodosLosDocumentos() {
         for (Documento doc : vecDocumentos){
-        	doc.calcularTFiDF(numDocs,diccionario);
+        	doc.calcularTFIDF(numDocs,diccionario);
         }
     }
 
     private void comprobarSiDocumentoExiste(String autor, String titulo) throws Exception{
         if (!existeDocumento(autor, titulo))
             throw new Exception("El documento no existe"); 
+    }
+    
+    public void print(){
+        System.out.println("vecDocumentos es:");
+        for(Documento doc : vecDocumentos){
+            System.out.println("Autor: " + doc.getAutor() + " Titulo: " + doc.getTitulo() + " Contenido: " + doc.getContenidoOriginal());
+        }
+        System.out.println("vecDoc1 es:");
+        for(String t : vecDoc1.keySet()){
+            System.out.println("Autor y titulo: " + t + " Contenido: " + vecDoc1.get(t));
+        }
+        System.out.println("Titulos de autor:");
+        for(String a : vecDoc2.keySet()){
+            for (int i = 0; i < vecDoc2.get(a).size(); ++i)
+                System.out.println("Autor: " + a + " Titulo: " + vecDoc2.get(a).get(i));
+        }
     }
 }

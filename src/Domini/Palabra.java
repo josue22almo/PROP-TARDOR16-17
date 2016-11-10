@@ -7,19 +7,19 @@ package Domini;
  */
 public class Palabra {
     private String palabra;
-    private double TfDf;
+    private double tfidf;
     private double frecuencia;
 
     
     public Palabra(){
         palabra = "";
-        TfDf = 0;
+        tfidf = 0;
         frecuencia  = 0;
     }
     
     public Palabra(String palabra){
         this.palabra = palabra;
-        TfDf = 0.0;
+        tfidf = 0.0;
         frecuencia  = 1.0;
     }
     
@@ -31,16 +31,16 @@ public class Palabra {
         return palabra;
     }
         
-    public void calcularTfDf(double numDocs, double numApariciones) {
-        this.TfDf = frecuencia*Math.log(numDocs/numApariciones);
+    public void calcularTFIDF(double numDocs, double numApariciones) {
+        this.tfidf = frecuencia*Math.log(numDocs/numApariciones);
     }
 
     public double getFrecuencia() {
         return frecuencia;
     }
 
-    public double getTfDf() {
-        return TfDf;
+    public double getTFIDF() {
+        return tfidf;
     }
 
     public void incrementarFrecuencia(){

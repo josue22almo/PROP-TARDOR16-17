@@ -42,15 +42,16 @@ public class Documento {
         return this.titulo;
     }
     
+    public Contenido getContenido(){
+        return contenido;
+    }
+    
     public String getContenidoOriginal(){
         return this.contenido.getContenidoOriginal();
     }
     
     public Map<String,Palabra> getContenidoReducido(){
         return this.contenido.getContenidoReducido();
-    }
-    public Contenido getContenido(){
-        return contenido;
     }
     
     public double calcularDistancia(Documento doc, String type){
@@ -61,12 +62,12 @@ public class Documento {
         return autor.equals(au) && titulo.equals(tit);
     }
 
-	public void calcularTFiDF(int numDocs, Diccionario diccionario) {
-		contenido.calcularTFiDF(numDocs,diccionario);
-	}
+    public void calcularTFIDF(int numDocs, Diccionario diccionario) {
+	contenido.calcularTFIDF(numDocs,diccionario);
+    }
 	
-	public void printContenidoReducido(){
-		System.out.println("Autor: " + autor + " titulo: " + titulo);
-		contenido.printContenidoReducido();
-	}
+    public void printContenidoReducido(){
+	System.out.println("Autor: " + autor + " titulo: " + titulo);
+	contenido.printContenidoReducido();
+    }
 }

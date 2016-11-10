@@ -64,7 +64,7 @@ public class DriverContenido {
                         System.out.println("El contenido reducido está vacío");
                     else{
                         for (String key : m.keySet()){
-                            System.out.println(key + " con frecuencia " + m.get(key).getFrecuencia() + " y TF-IDF " + m.get(key).getTfDf());
+                            System.out.println(key + " con frecuencia " + m.get(key).getFrecuencia() + " y TF-IDF " + m.get(key).getTFIDF());
                         }
                     }
                   break;

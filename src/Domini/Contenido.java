@@ -11,6 +11,9 @@ import java.util.HashMap;
  */
 public class Contenido {
     
+    private String contenidoOriginal;
+    private Map<String,Palabra> contenidoReducido;
+    
     public static ArrayList<String> espanol = new ArrayList<>(Arrays.asList("a","actualmente","adelante","además","afirmó","agregó","ahora","ahí","al","algo","alguna","algunas","alguno","algunos","algún","alrededor","ambos","ante","anterior","antes","apenas","aproximadamente","aquí","aseguró",
         "así","aunque","ayer","añadió","aún","bajo","bien","buen","buena","buenas","bueno","buenos","cada","casi","cerca","cierto","cinco","comentó","como","con","conocer","considera","consideró","contra","cosas",
         "creo","cual","cuales","cualquier","cuando","cuanto","cuatro","cuenta","cómo","da","dado","dan","dar","de","debe","deben","debido","decir","dejó","del","demás","dentro","desde","después","dice",
@@ -56,9 +59,6 @@ public class Contenido {
         "wants","was","wasn't","way","we","we'd","we'll","we're","we've","welcome","well","went","were","weren't","what","what's","whatever","when","whence","whenever","where","where's","whereafter","whereas","whereby","wherein","whereupon","wherever","whether","which","while",
         "whither","who","who's","whoever","whole","whom","whose","why","will","willing","wish","with","within","without","won't","wonder","would","would","wouldn't","x","y","yes","yet","you","you'd","you'll","you're","you've","your",
         "yours","yourself","yourselves","z","zero"));
-    
-    private String contenidoOriginal;
-    private Map<String,Palabra> contenidoReducido;
 
     public Contenido(){
         contenidoOriginal = "";
@@ -161,35 +161,35 @@ public class Contenido {
             	if (type.equals("FREC"))
             		cont += v.get(key).getFrecuencia()*u.get(key).getFrecuencia();
             	else{
-            		cont += v.get(key).getTfDf()*u.get(key).getTfDf();
+            		cont += v.get(key).getTFIDF()*u.get(key).getTFIDF();
         		}
             }
         }
         return cont;
     }
     
-    private double module(Map<String,Palabra> v,String type) {
+    private double module(Map<String,Palabra> v, String type) {
         double cont = 0.0;
         for (String key : v.keySet()) {
         	if (type.equals("FREC"))
         		cont += v.get(key).getFrecuencia()*v.get(key).getFrecuencia();
         	else{
-        		cont += v.get(key).getTfDf()*v.get(key).getTfDf();
+        		cont += v.get(key).getTFIDF()*v.get(key).getTFIDF();
     		}
         }
        return cont;
     }
 
-    public void calcularTFiDF(int numDocs,Diccionario diccionario) {
+    public void calcularTFIDF(int numDocs, Diccionario diccionario) {
             for (String key : contenidoReducido.keySet())	{
                     int numApariciones = diccionario.getNumAparicionesPalabra(key);
-                    contenidoReducido.get(key).calcularTfDf(numDocs, numApariciones);
+                    contenidoReducido.get(key).calcularTFIDF(numDocs, numApariciones);
             }	
 
     }
 
     public void printContenidoReducido() {
         for (String key : contenidoReducido.keySet())
-                System.out.println("key: " + key + " frecs = " + contenidoReducido.get(key).getFrecuencia() + " TF-IDF: " + contenidoReducido.get(key).getTfDf());
+                System.out.println("key: " + key + " frecs = " + contenidoReducido.get(key).getFrecuencia() + " TF-IDF: " + contenidoReducido.get(key).getTFIDF());
     }
 }
