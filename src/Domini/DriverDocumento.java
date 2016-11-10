@@ -16,7 +16,7 @@ public class DriverDocumento {
         String autor = sc.nextLine();       
         System.out.println("Introduzca el título del documento:");
         String titulo = sc.nextLine();
-        System.out.println("Introduzca el contenido del documento(la entrada acaba con una linea vacía):");
+        System.out.println("Introduzca el contenido del documento (la entrada debe acabar con una linea vacía):");
         String contenido = "";
         String aux = "";
         while (!(aux=sc.nextLine()).isEmpty()){
@@ -40,21 +40,21 @@ public class DriverDocumento {
             try{
                 switch(op){
                     case 1:
-                        System.out.println("Introduzca el nuevo autor(la entrada acaba con un punto):");
+                        System.out.println("Introduzca el nuevo autor:");
                         sc.nextLine(); 
                         autor = sc.nextLine(); 
                         doc.setAutor(autor);
                         System.out.println("Autor cambiado con éxito.");
                         break;
                     case 2:
-                        System.out.println("Introduzca el nuevo título(la entrada acaba con un punto):");
+                        System.out.println("Introduzca el nuevo título:");
                         sc.nextLine(); 
                         titulo = sc.nextLine();
                         doc.setTitulo(titulo);
                         System.out.println("Título cambiado con éxito.");
                         break;
                     case 3:
-                        System.out.println("Introduzca el nuevo contenido(la entrada acaba con un punto):");
+                        System.out.println("Introduzca el nuevo contenido (la entrada debe acabar con una linea vacía):");
                         contenido = "";
                         aux = "";
                         while (!(aux=sc.nextLine()).isEmpty()){
@@ -89,7 +89,7 @@ public class DriverDocumento {
                         System.out.println("Introduzca el título del documento:");
                         //sc.nextLine(); 
                         titulo = sc.nextLine();
-                        System.out.println("Introduzca el contenido del documento:(la entrada acaba con una linea vacía)");
+                        System.out.println("Introduzca el contenido del documento (la entrada debe acabar con una linea vacía):");
                         contenido = "";
                         aux = "";
                         while (!(aux=sc.nextLine()).isEmpty()){
