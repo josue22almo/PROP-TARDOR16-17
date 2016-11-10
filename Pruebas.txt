@@ -20,3 +20,38 @@ CONSULTAR TITULOS AUTOR
 6 Samuel .
 6 Pere .
 6 Raul .
+
+
+Autor: Josue Alcantara 
+Titulo: Moreno 2 
+Contenido: aaa bbb ccc 
+
+Autor: Josue 
+Titulo: Moreno 
+Contenido: ccc aaa bbb 
+
+Autor: Sarah Ester 
+Titulo: Ester 1 
+Contenido: bbb ccc 
+
+Autor: Raul 
+Titulo: Raul 1 
+Contenido: aaa 
+
+Autor: Samuel 
+Titulo: Samuel 2 
+Contenido: aaa bbb ccc aaa 
+
+Autor: Pere 
+Titulo: Pere 2 
+Contenido: aaa aaa bbb ccc ccc ccc ddd 
+
+Autor: Sarah Ester 
+Titulo: Ester 2 
+Contenido: ccc ddd aaa aaa aaa 
+
+Autor: Samuel 
+Titulo: Samuel 1 
+Contenido: ddd aaa eee eee ccc 
+
+

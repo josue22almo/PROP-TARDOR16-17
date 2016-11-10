@@ -26,6 +26,15 @@ public class Trie {
                 titulos.add(prefijo);
             }
         }
+        if (trie.get(prefijo) == null) {  
+                ArrayList<String> titulos = new ArrayList<>();
+                titulos.add(prefijo);
+                trie.put(prefijo,titulos);
+            }
+            else {
+                ArrayList<String> titulos = trie.get(prefijo);
+                titulos.add(prefijo);
+            }
     }
     
     public void eliminarPrefijo(String prefijo){
@@ -33,23 +42,24 @@ public class Trie {
             String subPrefijo = prefijo.substring(0, i);
             ArrayList<String> list = trie.get(subPrefijo);
             list.remove(prefijo);
+            if (list.isEmpty()) trie.remove(subPrefijo);
         }
+        trie.remove(prefijo);
     }
     
     public ArrayList<String> consultarListaDelPrefijo(String prefijo) throws Exception{
-        if (trie.get(prefijo) != null) 
-            return trie.get(prefijo);
-        else throw new Exception("No existen autores con el prefijo " + prefijo +  " prefijo");
+        //if (trie.containsKey(prefijo)) 
+        System.out.println(trie.containsKey(prefijo));
+        return  trie.get(prefijo);
+        //else throw new Exception("No existen autores con el prefijo " + prefijo +  " prefijo");
     }
     
     public void print(){
         for (String key : trie.keySet()){
-            System.out.println("El prefijo " + key + " contiene:");
+            System.out.println("El prefijo " + key + " tiene ");
             for (int i=0; i < trie.get(key).size(); ++i){
                 System.out.println(trie.get(key).get(i));
             } 
-            System.out.println();
-            System.out.println();
         }
     }
 }
