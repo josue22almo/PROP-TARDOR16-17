@@ -15,10 +15,10 @@ public class CjtoDocumentos {
     
     private ArrayList<Documento> vecDocumentos; //para getDocumentosParecidos
     private Map<String, String> vecDoc1; //para consultarContenido 
-    private Map<String, ArrayList<String> > vecDoc2; //para consultarTitulosAutor
-    private int numDocs;  
+    private Map<String, ArrayList<String> > vecDoc2; //para consultarTitulosAutor 
     private Trie triePrefijosAutor; //para consultarAutoresPorPrefijo
     private static Diccionario diccionario;
+    private int numDocs; 
     
     public CjtoDocumentos() {        
         
