@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author josue.inaldo.alcantara
+ * @author florencia.rimolo
  */
 public class DriverPalabra {
     public static void main(String[] args) throws IOException {
@@ -73,6 +73,9 @@ public class DriverPalabra {
                 case 10:
                     System.out.println("Salir");                    
                     return;
+                default:
+                    System.out.println("Operación incorrecta");  
+                    break;
              }                
         }       
     }

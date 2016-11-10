@@ -15,6 +15,7 @@ public class DriverContenido {
         
         Contenido cont = new Contenido();
         while(true){            
+            System.out.println();
             System.out.println("Indique qué desea hacer:");
             System.out.println("1. Instanciar contenido vacío");
             System.out.println("2. Instanciar contenido con un String");
@@ -33,6 +34,7 @@ public class DriverContenido {
                     System.out.println("2.Instanciar cotenido con un string, escriba un contenido");
                     String contenido = "";
                     String aux = "";
+                    sc.nextLine();
                     while (!(aux=sc.nextLine()).isEmpty()){
                         contenido += aux;
                         contenido += '\n';
@@ -48,6 +50,7 @@ public class DriverContenido {
                     System.out.println("4.Set contenidoOriginal");
                     contenido = "";
                     aux = "";
+                    sc.nextLine();
                     while (!(aux=sc.nextLine()).isEmpty()){
                         contenido += aux;
                         contenido += '\n';
@@ -57,14 +60,19 @@ public class DriverContenido {
                 case 5:
                     System.out.println("5.Get contenidoReducido(resultado es un map, lo imprime por pantalla)");
                     Map <String,Palabra> m = cont.getContenidoReducido();
-                    for (String key : m.keySet()){
-                        System.out.println(key + " con frecuencia " + m.get(key).getFrecuencia() + " y TF-IDF " + m.get(key).getTfDf());
+                    if (m.isEmpty())
+                        System.out.println("El contenido reducido está vacío");
+                    else{
+                        for (String key : m.keySet()){
+                            System.out.println(key + " con frecuencia " + m.get(key).getFrecuencia() + " y TF-IDF " + m.get(key).getTfDf());
+                        }
                     }
                   break;
                 case 6:
                     System.out.println("6. Calcular distancia respecto a otro contenido");
                     contenido = "";
                     aux = "";
+                    sc.nextLine();
                     while (!(aux=sc.nextLine()).isEmpty()){
                         contenido += aux;
                         contenido += '\n';
@@ -76,6 +84,9 @@ public class DriverContenido {
                 case 7:
                     System.out.println("Salir");                    
                     return;
+                default:
+                    System.out.println("Operación incorrecta");  
+                    break;
              }
         }        
     }   

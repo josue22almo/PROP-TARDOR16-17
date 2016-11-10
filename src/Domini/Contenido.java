@@ -90,10 +90,12 @@ public class Contenido {
     } 
     
     public double calcularDistancia(Map<String,Palabra> v, String type){
-        if (v.isEmpty() || contenidoReducido.isEmpty()) return 0;
+        if (v.isEmpty() && contenidoReducido.isEmpty()) return 0.0;
+        if (v.isEmpty() || contenidoReducido.isEmpty()) return 1.0;
         double escalar = productEscalar(v,contenidoReducido,type);
         double modU = module(contenidoReducido,type);
         double modV = module(v,type);
+        System.out.println("cos = " + escalar/(modU*modV));
         return 1 - escalar/(modU*modV);
     }
     
@@ -178,17 +180,16 @@ public class Contenido {
        return cont;
     }
 
-	public void calcularTFiDF(int numDocs,Diccionario diccionario) {
-		for (String key : contenidoReducido.keySet())	{
-			int numApariciones = diccionario.getNumAparicionesPalabra(key);
-			contenidoReducido.get(key).calcularTfDf(numDocs, numApariciones);
-		}	
-		
-	}
+    public void calcularTFiDF(int numDocs,Diccionario diccionario) {
+            for (String key : contenidoReducido.keySet())	{
+                    int numApariciones = diccionario.getNumAparicionesPalabra(key);
+                    contenidoReducido.get(key).calcularTfDf(numDocs, numApariciones);
+            }	
 
-	public void printContenidoReducido() {
-		for (String key : contenidoReducido.keySet())
-			System.out.println("key: " + key + " frecs = " + contenidoReducido.get(key).getFrecuencia() + " TF-IDF: " + contenidoReducido.get(key).getTfDf());
-		
-	}
+    }
+
+    public void printContenidoReducido() {
+        for (String key : contenidoReducido.keySet())
+                System.out.println("key: " + key + " frecs = " + contenidoReducido.get(key).getFrecuencia() + " TF-IDF: " + contenidoReducido.get(key).getTfDf());
+    }
 }

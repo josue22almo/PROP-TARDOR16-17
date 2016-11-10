@@ -3,7 +3,7 @@ package Domini;
 
 /**
  *
- * @author josue.inaldo.alcantara
+ * @author florencia.rimolo
  */
 public class Palabra {
     private String palabra;

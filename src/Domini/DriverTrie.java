@@ -48,7 +48,10 @@ public class DriverTrie {
                         trie.print();
                         break;
                     case 5:
-                        return;                    
+                        return;
+                    default:
+                        System.out.println("Operación incorrecta");  
+                        break;
                 }
             }
         }catch(Exception e){
