@@ -22,7 +22,6 @@ public class Documento {
         this.titulo = titulo;  
         this.contenido = new Contenido(contenido);
     }
-    
 
     public void setAutor(String autor) {
         this.autor = autor;
