@@ -17,7 +17,7 @@ public class DriverPalabra {
             System.out.println("Indique qué desea hacer:");
             System.out.println("1. Instanciar palabra vacía");
             System.out.println("2. Instanciar palabra con un String");
-            System.out.println("3. Dar valor al atributo palabra de p");
+            System.out.println("3. Modificar palabra");
             System.out.println("4. Get palabra");
             System.out.println("5. Set TF-IDF");
             System.out.println("6. Get frecuencia");
@@ -38,12 +38,11 @@ public class DriverPalabra {
                     p = new Palabra(s);
                     break;
                 case 3:
-                    System.out.println("3. Dar valor al atributo palabra de p, escribre una palabra y apreta enter ");
+                    System.out.println("Nueva palabra:");
                     s = sc.next();
                     p = new Palabra(s);
                     break;
                 case 4:
-                    System.out.println("4. Get palabra");
                     System.out.println("La palabra es " + p.getPalabra());
                     break;
                 case 5:

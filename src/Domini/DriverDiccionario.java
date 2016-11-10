@@ -14,24 +14,31 @@ public class DriverDiccionario {
             Diccionario diccionario = new Diccionario();
             Scanner sc = new Scanner(System.in);
             while(true){
-                System.out.println("Escriba las palabras(enter para finalizar entrada)");
-                String j;
-                Map <String,Palabra> m = new TreeMap<>();
-                while (!(j = sc.next()).isEmpty()){
-                    Palabra p = new Palabra (j);
-                    m.put(j, p);
-                }
                 System.out.println("Indique qué desea hacer:");
                 System.out.println("1. Añadir palabras al diccionario");
                 System.out.println("2. Eliminar palabras del diccionario");
-                System.out.println("3. Escribir diccionario");
+                System.out.println("3. Consultar diccionario");
                 System.out.println("4. Salir");
+                String j;
+                Map <String,Palabra> m = new TreeMap<>();
                 int op = sc.nextInt();
+                sc.nextLine();
                 switch(op){
-                    case 1:                     
+                    case 1:
+                        System.out.println("Escriba las palabras que desea añadir, cada una en una linea (la entrada debe acabar con una linea vacía):");
+                        while (!(j = sc.nextLine()).isEmpty()){
+                            Palabra p = new Palabra (j);
+                            m.put(j, p);
+                        }
                         diccionario.anadirPalabras(m);
                         break;
-                    case 2:                    
+                    case 2:
+                        System.out.println("Escriba las palabras que desea eliminar, cada una en una linea (la entrada debe acabar con una linea vacía):");
+                        m = new TreeMap<>();
+                        while (!(j = sc.nextLine()).isEmpty()){
+                            Palabra p = new Palabra (j);
+                            m.put(j, p);
+                        }
                         diccionario.eliminarPalabras(m);
                         break;
                     case 3:
@@ -44,7 +51,7 @@ public class DriverDiccionario {
                         break;
                 }
                 System.out.println("¿Desea realizar otra operación? (s/n)");
-                String resp = sc.next();
+                String resp = sc.nextLine();
                 if (resp.equals("n")) return;
                 sc.nextLine();
             }

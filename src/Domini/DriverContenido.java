@@ -44,7 +44,7 @@ public class DriverContenido {
                         System.out.println(cont.getContenidoOriginal());
                         break;
                     case 4:
-                        System.out.println("El nuevo contenido original sera:");
+                        System.out.println("El nuevo contenido original será:");
                         contenido = "";
                         aux = "";
                         while (!(aux=sc.nextLine()).isEmpty()){

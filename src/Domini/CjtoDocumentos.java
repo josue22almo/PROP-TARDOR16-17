@@ -32,14 +32,14 @@ public class CjtoDocumentos {
     
     public void altaDocumento (String autor, String titulo, String contenido) throws Exception {
         
-        
-        
         if (existeDocumento(autor, titulo))
             throw new Exception("El documento ya existe"); 
         
         if (vecDoc2.get(autor) == null)//no existe el autor, lo añadimos a nuestro trie
         	triePrefijosAutor.anadirPrefijo(autor);
+        
         Documento doc = new Documento(autor,titulo,contenido);
+        
         //Se da de alta en vecDocumentos
         altaVecDocumentos(doc);
         
@@ -86,6 +86,7 @@ public class CjtoDocumentos {
     public void modificaAutorDoc(String autor, String titulo, String autorModif) throws Exception {
         
         comprobarSiDocumentoExiste(autor,titulo);
+        
         //Se modifica en vecDocumentos       
         String at = autor + " " + titulo;
         String contenido = vecDoc1.get(at);
@@ -96,6 +97,8 @@ public class CjtoDocumentos {
     public void modificaTituloDoc(String autor, String titulo, String tituloModif) throws Exception {
         
         comprobarSiDocumentoExiste(autor,titulo);
+        
+        //Se modifica en vecDocumentos  
         String at = autor + " " + titulo;
         String contenido = vecDoc1.get(at);
         bajaDocumento(autor,titulo);
@@ -124,6 +127,7 @@ public class CjtoDocumentos {
     public String consultarContenido(String autor, String titulo) throws Exception {
         
         comprobarSiDocumentoExiste(autor,titulo);
+        
         String at = autor + " " + titulo;
         return vecDoc1.get(at);   
     }
@@ -245,8 +249,6 @@ public class CjtoDocumentos {
     private boolean existeDocumento(String autor, String titulo) {        
         
         if (vecDoc2.containsKey(autor)){
-            /*ArrayList<String> titulos = vecDoc2.get(autor);
-            return titulos.contains(titulo);*/
             if (vecDoc2.get(autor) == null) return false;
             else {
                 ArrayList<String> titulos = vecDoc2.get(autor);
