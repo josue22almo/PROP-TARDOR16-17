@@ -12,6 +12,7 @@ public class DriverPalabra {
     public static void main(String[] args) throws IOException {
         Palabra p = new Palabra();
         Scanner sc = new Scanner(System.in);
+        try {
         while(true){
             System.out.println("Indique qué desea hacer:");
             System.out.println("1. Instanciar palabra vacía");
@@ -76,7 +77,14 @@ public class DriverPalabra {
                 default:
                     System.out.println("Operación incorrecta");  
                     break;
-             }                
-        }       
+            }            
+            System.out.println("¿Desea realizar otra operación? (s/n)");
+            String resp = sc.next();
+            if (resp.equals("n")) return;
+            sc.nextLine();
+        }
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 }
