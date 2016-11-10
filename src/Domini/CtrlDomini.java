@@ -16,6 +16,21 @@ public class CtrlDomini {
     
     public CtrlDomini(){}
     
+    public void altarConjuntoDocumentos (String path) throws Exception{
+        ArrayList<BufferedReader> docs = ctrlPersistencia.leerCarpeta(path);
+        for (int i = 0; i < docs.size(); ++i){
+                String autor = docs.get(i).readLine();
+                String titulo = docs.get(i).readLine();
+                String contenido = "";
+                String aux;                
+                 while ((aux = docs.get(i).readLine()) != null){
+                    contenido += aux;
+                    contenido += '\n';
+                }
+                System.out.println(autor + '\n' + titulo + "\n" + contenido);
+            }
+    }
+    
     public void altaConjuntoDocumentosDirectorio(String folder) throws Exception{
         ArrayList<BufferedReader> docs = ctrlPersistencia.leerCarpeta(folder);        
         for (int i = 0; i < docs.size();++i){
