@@ -96,8 +96,6 @@ public class DriverDocumento {
                             }
                             Documento doc2 = new Documento(autor, titulo, contenido);
                             System.out.println("Distancia con FREC: " + doc.calcularDistancia(doc2, "FREC"));
-                            System.out.println("Distancia con TF-IDF: " + doc.calcularDistancia(doc2, "TF-IDF")); //da 0 porque se calcula en CjtoDocumentos cada 
-                                                                                                                  // vez que se da de alta a un documento
                             break;
                         case 9:
                             return;
