@@ -96,8 +96,15 @@ public class Contenido {
         double escalar = productEscalar(v,contenidoReducido,type);
         double modU = module(contenidoReducido,type);
         double modV = module(v,type);
-        double cos = (escalar/(modU*modV));
-        return 1 - cos;
+        double cos = escalar/(modU*modV);
+        return 1.0 - cos;
+    }
+    
+    public void calcularTFIDF(int numDocs, Diccionario diccionario) {
+        for (String key : contenidoReducido.keySet())	{
+                int numApariciones = diccionario.getNumAparicionesPalabra(key);
+                contenidoReducido.get(key).calcularTFIDF(numDocs, numApariciones);
+        }	
     }
     
     private void calcularContenidoReducido(){
@@ -179,14 +186,6 @@ public class Contenido {
     		}
         }
        return Math.sqrt(cont);
-    }
-
-    public void calcularTFIDF(int numDocs, Diccionario diccionario) {
-            for (String key : contenidoReducido.keySet())	{
-                    int numApariciones = diccionario.getNumAparicionesPalabra(key);
-                    contenidoReducido.get(key).calcularTFIDF(numDocs, numApariciones);
-            }	
-
     }
 
     public void printContenidoReducido() {
