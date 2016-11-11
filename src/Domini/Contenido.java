@@ -80,7 +80,8 @@ public class Contenido {
     public void setContenidoOriginal(String contenidoOriginal) {
        // System.out.println("Set contenido original");
         this.contenidoOriginal = contenidoOriginal; 
-        contenidoReducido.clear();
+        if (!contenidoOriginal.isEmpty())
+            contenidoReducido.clear();
         calcularContenidoReducido();
     }
 
@@ -95,8 +96,8 @@ public class Contenido {
         double escalar = productEscalar(v,contenidoReducido,type);
         double modU = module(contenidoReducido,type);
         double modV = module(v,type);
-        System.out.println("cos = " + escalar/(modU*modV));
-        return 1 - escalar/(modU*modV);
+        double cos = (escalar/(modU*modV));
+        return 1 - cos;
     }
     
     private void calcularContenidoReducido(){
@@ -177,7 +178,7 @@ public class Contenido {
         		cont += v.get(key).getTFIDF()*v.get(key).getTFIDF();
     		}
         }
-       return cont;
+       return Math.sqrt(cont);
     }
 
     public void calcularTFIDF(int numDocs, Diccionario diccionario) {
