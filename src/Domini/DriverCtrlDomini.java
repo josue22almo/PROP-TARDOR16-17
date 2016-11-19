@@ -40,16 +40,17 @@ public class DriverCtrlDomini {
                 sc.nextLine();
                 switch(op){
                     case 1:
-                        System.out.println("Escriba la dirección");
+                        System.out.println("Escriba la ruta del directorio.");
                         String directorio = sc.nextLine();
                             c.altaConjuntoDocumentosDirectorio(directorio);
+                        break;
                     case 2:
                         System.out.println("Alta documento");
                         System.out.println("Autor:");
                         autor = sc.nextLine();
                         System.out.println("Titulo:");
                         titulo = sc.nextLine();
-                        System.out.println("Contenido (la entrada debe acabar con una linea vacía):");
+                        System.out.println("Contenido (la entrada debe acabar con una línea vacía):");
                         contenido = "";
                         aux = "";
                         while (!(aux=sc.nextLine()).isEmpty()){
