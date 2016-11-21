@@ -11,10 +11,10 @@ import java.util.ArrayList;
  */
 public class DriverCtrlPersistencia {
     
-    public static void main(String[] args) throws FileNotFoundException, IOException{
+    public static void main(String[] args) throws IOException{
         CtrlPersistencia ctrl = new CtrlPersistencia();
 
-        String folder = "/home2/users/alumnes/1192808/dades/prop/Docs";
+        String folder = "/home/florenciarf/Dropbox/Informatica/prop/proj/Documentos";
         ArrayList<BufferedReader> list = ctrl.leerCarpeta(folder);
         for (int i = 0; i < list.size(); ++i){
             String autor = list.get(i).readLine();

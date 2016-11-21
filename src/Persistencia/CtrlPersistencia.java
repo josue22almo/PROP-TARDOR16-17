@@ -16,17 +16,23 @@ public class CtrlPersistencia {
     public CtrlPersistencia(){
     }
 
-    public ArrayList<BufferedReader> leerCarpeta(String folder) throws FileNotFoundException, IOException{
-        File fichero = new File(folder);
-        //if (!fichero.isDirectory())
-        //    throw new Exception("La direccion que ha pasado no corresponde a un directorio.");
-        File[] archivos = fichero.listFiles();
+    public ArrayList<BufferedReader> leerCarpeta(String folder) throws IOException{
+        File fichero = null;
+        File[] archivos = null;
         ArrayList<BufferedReader> result = new ArrayList<>();
-        for (int i = 0; i < archivos.length; ++i){
-            FileReader f = new FileReader(archivos[i].getPath());
-            BufferedReader b = new BufferedReader(f);
-            result.add(b);
+        BufferedReader b = null;
+        try {
+            fichero = new File(folder);
+            archivos = fichero.listFiles();
+            for (int i = 0; i < archivos.length; ++i){
+                b = new BufferedReader(new FileReader(archivos[i].getPath()));
+                result.add(b);
+            }
+            
+        } catch (NullPointerException e) {
+            System.out.println("La dirección que ha pasado no corresponde a un directorio.");
         }
         return result;
     }
 }
+
