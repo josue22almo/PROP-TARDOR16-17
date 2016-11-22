@@ -12,14 +12,16 @@ public class Documento {
     private String autor;
     private String titulo;
     private Contenido contenido;
+    private int id;
     
     public Documento(){}
     
-    public Documento(String autor, String titulo, String contenido) throws Exception{
+    public Documento(int id, String autor, String titulo, String contenido) throws Exception{
         
         if (autor.isEmpty() || titulo.isEmpty() || contenido.isEmpty())
             throw new Exception("Uno o más parámetros del documento está vacío");
         
+        this.id = id;
         this.autor = autor;
         this.titulo = titulo;  
         this.contenido = new Contenido(contenido);
@@ -39,7 +41,10 @@ public class Documento {
         
         this.contenido.setContenidoOriginal(contenido);
     }
-        
+    
+    public int getID () {
+        return this.id;
+    }
     public String getAutor() {
         
         return this.autor;

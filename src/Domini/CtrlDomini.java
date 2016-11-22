@@ -2,6 +2,7 @@ package Domini;
 
 import Persistencia.CtrlPersistencia;
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -13,8 +14,14 @@ public class CtrlDomini {
     
     private CtrlPersistencia ctrlPersistencia = new CtrlPersistencia();
     private CjtoDocumentos cd = new CjtoDocumentos();
-    
-    public CtrlDomini(){}
+    public static ArrayList<String> espanol;
+    public static ArrayList<String> catalan;
+    public static ArrayList<String> ingles;
+    public CtrlDomini () throws IOException {
+        espanol = ctrlPersistencia.leerPalabrasFuncionales("/home/florenciarf/Dropbox/Informatica/prop/proj/");
+        catalan = ctrlPersistencia.leerPalabrasFuncionales("/home/florenciarf/Dropbox/Informatica/prop/proj/");
+        ingles = ctrlPersistencia.leerPalabrasFuncionales("/home/florenciarf/Dropbox/Informatica/prop/proj/");
+    }
   
     public void altaConjuntoDocumentosDirectorio(String folder) throws Exception{       
         ArrayList<BufferedReader> docs = ctrlPersistencia.leerCarpeta(folder);

@@ -34,5 +34,21 @@ public class CtrlPersistencia {
         }
         return result;
     }
+    
+    public ArrayList<String> leerPalabrasFuncionales(String archivo) throws IOException {
+      String cadena;
+      ArrayList<String> pf = new ArrayList<>();
+      try {
+      FileReader f = new FileReader(archivo);
+      BufferedReader b = new BufferedReader(f);
+      while((cadena = b.readLine())!=null) {
+          pf.add(cadena);
+      }
+      b.close();
+      } catch (FileNotFoundException e) {
+          System.out.println("El fichero no existe.");
+      }
+      return pf;
+    } 
 }
 

@@ -13,18 +13,21 @@ import java.util.TreeMap;
  */
 public class CjtoDocumentos {
     
-    private ArrayList<Documento> vecDocumentos; //para getDocumentosParecidos
-    private Map<String, String> vecDoc1; //para consultarContenido 
-    private Map<String, ArrayList<String> > vecDoc2; //para consultarTitulosAutor 
+    private Map <Integer, Documento> vecDocumentos; //para getDocumentosParecidos
+    //private Map<String, String> vecDoc1; //para consultarContenido 
+    //private Map<String, ArrayList<String> > vecDoc2; //para consultarTitulosAutor
+    private ArrayList< TreeMap < Double, Integer > > dists;
+    private Map<String, Integer> ids;
     private Trie triePrefijosAutor; //para consultarAutoresPorPrefijo
     private static Diccionario diccionario;
     private int numDocs; 
     
     public CjtoDocumentos() {        
-        
-        this.vecDocumentos = new ArrayList<>();
-        this.vecDoc1 = new HashMap<>(); 
-        this.vecDoc2 = new HashMap<>();
+        this.ids = new HashMap<> ();
+        this.vecDocumentos = new TreeMap<>();
+        this.dists = new ArrayList< TreeMap<Double, Integer>> ();
+        //this.vecDoc1 = new HashMap<>(); 
+        //this.vecDoc2 = new HashMap<>();
         this.triePrefijosAutor = new Trie();
         this.diccionario = new Diccionario();
         this.numDocs = 0;
@@ -38,7 +41,10 @@ public class CjtoDocumentos {
         if (vecDoc2.get(autor) == null)//no existe el autor, lo añadimos a nuestro trie
         	triePrefijosAutor.anadirPrefijo(autor);
         
-        Documento doc = new Documento(autor,titulo,contenido);
+        int id;
+        if (vecDocumentos == null) id = 1;
+        else id = vecDocumentos.get(vecDocumentos.size()-1).getID();
+        Documento doc = new Documento(id,autor,titulo,contenido);
         
         //Se da de alta en vecDocumentos
         altaVecDocumentos(doc);
@@ -246,16 +252,8 @@ public class CjtoDocumentos {
         titulos.remove(titulo);
     }
     
-    private boolean existeDocumento(String autor, String titulo) {        
-        
-        if (vecDoc2.containsKey(autor)){
-            if (vecDoc2.get(autor) == null) return false;
-            else {
-                ArrayList<String> titulos = vecDoc2.get(autor);
-                return titulos.contains(titulo);
-            }
-        }
-        return false;
+    private boolean existeDocumento(String autor, String titulo) {                
+        return (ids.containsKey(autor+" "+titulo));
     }
 
     private void calcularTFIDFtodosLosDocumentos() {
