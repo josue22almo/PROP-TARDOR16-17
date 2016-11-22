@@ -80,8 +80,4 @@ public class Documento {
 	contenido.calcularTFIDF(numDocs,diccionario);
     }
 	
-    public void printContenidoReducido(){
-	System.out.println("Autor: " + autor + " titulo: " + titulo);
-	contenido.printContenidoReducido();
-    }
 }

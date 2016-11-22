@@ -149,7 +149,19 @@ public class DriverCjtoDocumentos {
                        break;
                     case 11: 
                         System.out.println("Consultar todo el conjunto de documentos");
-                        c.print();
+                        System.out.println("vecDocumentos es:");
+                        for(Documento doc : vecDocumentos){
+                            System.out.println("Autor: " + doc.getAutor() + '\n'+ " Titulo: " + doc.getTitulo() + '\n' + " Contenido: " + doc.getContenidoOriginal());
+                        }
+                        System.out.println("vecDoc1 es:");
+                        for(String t : vecDoc1.keySet()){
+                            System.out.println("Autor y titulo: " + '\n' + t + " Contenido: " + vecDoc1.get(t));
+                        }
+                        System.out.println("vecDoc2 es:");
+                        for(String a : vecDoc2.keySet()){
+                            for (int i = 0; i < vecDoc2.get(a).size(); ++i)
+                                System.out.println("Autor: " + a + '\n'+ " Titulo: " + vecDoc2.get(a).get(i));
+                        }
                         break;
                     case 12:
                         System.out.println("Salir");

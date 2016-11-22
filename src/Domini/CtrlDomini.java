@@ -87,8 +87,4 @@ public class CtrlDomini {
         return m;
     }
     
-    public void print(){        
-        cd.print();
-    }
-    
 }

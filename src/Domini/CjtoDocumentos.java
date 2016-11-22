@@ -271,7 +271,7 @@ public class CjtoDocumentos {
             throw new Exception("El documento no existe");
     }
     
-     public void print() {
+    /*public void print() {
         
         System.out.println("vecDocumentos es:");
         for(Documento doc : vecDocumentos){
@@ -286,5 +286,5 @@ public class CjtoDocumentos {
             for (int i = 0; i < vecDoc2.get(a).size(); ++i)
                 System.out.println("Autor: " + a + '\n'+ " Titulo: " + vecDoc2.get(a).get(i));
         }
-    }
+    }*/
 }

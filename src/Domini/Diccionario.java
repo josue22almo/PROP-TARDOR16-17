@@ -41,9 +41,9 @@ public class Diccionario {
     	return diccionario.get(key);
     }
     
-    void print() {
+    /*void print() {
         System.out.println("Tamaño del diccionario " + diccionario.size());
         for (String key : diccionario.keySet())
             System.out.println(key + " aparece en " + diccionario.get(key));
-    }
+    }*/
 }

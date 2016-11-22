@@ -42,7 +42,7 @@ public class DriverDiccionario {
                         diccionario.eliminarPalabras(m);
                         break;
                     case 3:
-                        diccionario.print();
+                        //diccionario.print();
                         break;
                     case 4:
                         return;

@@ -188,8 +188,8 @@ public class Contenido {
        return Math.sqrt(cont);
     }
 
-    public void printContenidoReducido() {
+   /* public void printContenidoReducido() {
         for (String key : contenidoReducido.keySet())
                 System.out.println("key: " + key + " frecs = " + contenidoReducido.get(key).getFrecuencia() + " TF-IDF: " + contenidoReducido.get(key).getTFIDF());
-    }
+    }*/
 }
