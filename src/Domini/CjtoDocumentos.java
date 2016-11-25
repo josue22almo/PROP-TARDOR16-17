@@ -13,11 +13,11 @@ import java.util.TreeMap;
  */
 public class CjtoDocumentos {
     
-    private Map <Integer, Documento> vecDocumentos; //para getDocumentosParecidos
+    private Map <Integer, Documento> vecDocumentos; // Integer-> ID
     //private Map<String, String> vecDoc1; //para consultarContenido 
     //private Map<String, ArrayList<String> > vecDoc2; //para consultarTitulosAutor
-    private ArrayList< TreeMap < Double, Integer > > dists;
-    private Map<String, Integer> ids;
+    private ArrayList< TreeMap < ArrayList <Double> , Integer > > dists; // Double-> distancia, Integer->ID
+    private Map<String, Integer> ids;    // String -> autor+titulo, Integer-> ID
     private Trie triePrefijosAutor; //para consultarAutoresPorPrefijo
     private static Diccionario diccionario;
     private int numDocs; 
@@ -25,7 +25,7 @@ public class CjtoDocumentos {
     public CjtoDocumentos() {        
         this.ids = new HashMap<> ();
         this.vecDocumentos = new TreeMap<>();
-        this.dists = new ArrayList< TreeMap<Double, Integer>> ();
+        this.dists = new ArrayList< TreeMap< ArrayList < Double >, Integer>> ();
         //this.vecDoc1 = new HashMap<>(); 
         //this.vecDoc2 = new HashMap<>();
         this.triePrefijosAutor = new Trie();
@@ -45,16 +45,24 @@ public class CjtoDocumentos {
         if (vecDocumentos == null) id = 1;
         else id = vecDocumentos.get(vecDocumentos.size()-1).getID();
         Documento doc = new Documento(id,autor,titulo,contenido);
-        
+        dists.add(id-1,null);
+        for (int i = 0; i < dists.size(); i++) {
+            TreeMap < ArrayList <Double>, Integer > d = new TreeMap<> ();
+            dists.add(i, d);                   // en cada posicion del array vamos a tener que 
+                                               // recalcularlo todo, por eso "borramos" todo lo que habia
+        }
+        calcularDistancias();
         //Se da de alta en vecDocumentos
-        altaVecDocumentos(doc);
+        //altaVecDocumentos(doc);
         
         //Se da de alta en vecDoc1
-        altaVecDoc1(autor,titulo,contenido);
+        //altaVecDoc1(autor,titulo,contenido);
         
         //Se da de alta en vecDoc2
-        altaVecDoc2(autor,titulo);
+        //altaVecDoc2(autor,titulo);
         
+        // Lo metemos en el map de IDs
+        ids.put(autor+" "+titulo, id);
         //Añadimos palabras al diccionario
         diccionario.anadirPalabras(doc.getContenidoReducido());
         
@@ -195,6 +203,31 @@ public class CjtoDocumentos {
         
         return v_docs;
     }
+    
+    public void calcularDistancias() {
+        //Map<Double,ArrayList<Documento>> docs;
+        //docs = new TreeMap<>();
+        
+        
+        //int pos = posicion(autor, titulo);        
+        //Documento origen = vecDocumentos.get(0);
+        
+        //Se calcula la distancia de todos los documentos respecto a todos los documentos
+        for (int i = 0; i < vecDocumentos.size(); i++){
+            for (int j = 0; j < vecDocumentos.size(); j++) {
+                if (i != j) {
+                    double distFrec = vecDocumentos.get(i).calcularDistancia(vecDocumentos.get(j),"FREC");
+                    double distTfIDf = vecDocumentos.get(i).calcularDistancia(vecDocumentos.get(j),"TF-IDF");
+
+                    int idDoc = vecDocumentos.get(i).getID();
+                    ArrayList<Double> distancias= new ArrayList<Double> ();
+                    distancias.add(distFrec);
+                    distancias.add(distTfIDf);
+                    dists.get(i).put(distancias, idDoc);
+                }
+            }
+        }  
+    }
 
     private int posicion(String autor, String titulo) {        
         
@@ -204,10 +237,10 @@ public class CjtoDocumentos {
         return -1;
     }
 
-    private void altaVecDocumentos(Documento doc) {
+    /*private void altaVecDocumentos(Documento doc) {
       
         vecDocumentos.add(doc);
-    }
+    }*/
     
     private void altaVecDoc1(String autor, String titulo, String contenido) {
         
@@ -263,11 +296,12 @@ public class CjtoDocumentos {
         }
     }
 
-    private void comprobarSiDocumentoExiste(String autor, String titulo) throws Exception {
+    /*private void comprobarSiDocumentoExiste(String autor, String titulo) throws Exception {
         
         if (!existeDocumento(autor, titulo))
             throw new Exception("El documento no existe");
-    }
+    }*/
+    
     
     /*public void print() {
         

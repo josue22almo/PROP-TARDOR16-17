@@ -3,12 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/florenciarf/Dropbox/Informatica/prop/PROP-TARDOR16-17/src/Domini/DriverPalabra.java</file>
-            <file>file:/home/florenciarf/Dropbox/Informatica/prop/PROP-TARDOR16-17/src/Domini/CtrlDomini.java</file>
-            <file>file:/home/florenciarf/Dropbox/Informatica/prop/PROP-TARDOR16-17/src/Domini/DriverDocumento.java</file>
-            <file>file:/home/florenciarf/Dropbox/Informatica/prop/PROP-TARDOR16-17/src/Domini/Contenido.java</file>
-            <file>file:/home/florenciarf/Dropbox/Informatica/prop/PROP-TARDOR16-17/src/Domini/Palabra.java</file>
-            <file>file:/home/florenciarf/Dropbox/Informatica/prop/PROP-TARDOR16-17/src/Domini/Documento.java</file>
+            <file>file:/home/florenciarf/Dropbox/Informatica/prop/proj/src/Persistencia/CtrlPersistencia.java</file>
+            <file>file:/home/florenciarf/Dropbox/Informatica/prop/proj/src/Domini/CtrlDomini.java</file>
+            <file>file:/home/florenciarf/Dropbox/Informatica/prop/proj/src/Domini/CjtoDocumentos.java</file>
+            <file>file:/home/florenciarf/Dropbox/Informatica/prop/proj/src/Domini/Contenido.java</file>
+            <file>file:/home/florenciarf/Dropbox/Informatica/prop/proj/src/Domini/Documento.java</file>
         </group>
     </open-files>
 </project-private>
