@@ -113,6 +113,28 @@ public class CjtoDocumentos {
         //Calculamos todas las distancias de todos los documentos respecto a todos los otros
         calcularDistancias();
         
+        //Recalculamos id's
+            //en vecDocumentos
+        for (int id_nou = id; id_nou < vecDocumentos.size(); id_nou++){
+            Documento documento = vecDocumentos.get(id_nou);
+            vecDocumentos.remove(id_nou);
+            vecDocumentos.put(id_nou-1,documento);
+        }
+            //en ids
+        Iterator it = ids.keySet().iterator();
+        while(it.hasNext()){
+            String aut = (String) it.next();
+            Iterator it2 = ids.get(aut).keySet().iterator();
+            while(it2.hasNext()){
+                String tit = (String) it2.next();
+                int id2 = ids.get(aut).get(tit);
+                if (id2 > id){
+                    ids.get(autor).remove(tit);
+                    ids.get(aut).put(tit,id2-1);
+                }
+            }
+        }
+        
     }
     
     public void modificaAutorDoc(String autor, String titulo, String autorModif) throws Exception {
@@ -210,21 +232,15 @@ public class CjtoDocumentos {
         return doc.getContenidoOriginal();
     }
    
-    public ArrayList<Documento> getDocumentosParecidos(String autor, String titulo, int k, String type) throws Exception {
+    /*public ArrayList<Documento> getDocumentosParecidos(String autor, String titulo, int k, String type) throws Exception {
     	
         if (!type.equals("TF-IDF") && !type.equals("FREC"))
     		throw new Exception("El tipo que ha especificado no es válido. Ha de ser FREC o TF-IDF.");
         
-        Map<Double,ArrayList<Documento>> docs;
-        docs = new TreeMap<>();
-        
         if (!existeDocumento(autor, titulo))
-            throw new Exception("El documento no existe");
+            throw new Exception("El documento no existe");*/
         
-        int id = ids.get(autor).get(titulo);        
-        Documento origen = vecDocumentos.get(id);
-        
-        /*//Se calcula la distancia de los otros documentos respecto al documento T
+        /*Se calcula la distancia de los otros documentos respecto al documento T
         for (int i = 0; i < vecDocumentos.size(); i++){
             if (i != pos) {
                 double dist = origen.calcularDistancia(vecDocumentos.get(i),type);
@@ -244,8 +260,9 @@ public class CjtoDocumentos {
                 }
             }
         }*/
-        
-        dists.get(i);
+    
+        /*int id = ids.get(autor).get(titulo);
+        Map < ArrayList <Double> , Integer > docs = dists.get(id);
         
         //retornar solo los k primeros elementos
         ArrayList<Documento> v_docs = new ArrayList<>();
@@ -253,28 +270,24 @@ public class CjtoDocumentos {
         int aux = k;
         while(it.hasNext() && aux > 0){
             Double key = (Double) it.next();
-            ArrayList<Documento> dd = docs.get(key);
-            for (int i = 0; i < dd.size() && aux > 0; i++ ){
-                v_docs.add(dd.get(i));
-                --aux;
-            }
+            v_docs.add(vecDocumentos.get(docs.get(key)));
+            --aux;
         }
         return v_docs;
-    }
+    }*/
     
-    public ArrayList<Documento> getDocumentosBool(String frase) throws Exception {
+    /*public ArrayList<Documento> getDocumentosBool(String frase) throws Exception {
         
         ArrayList<Documento> v_docs =  new ArrayList<>();
         
         
         
         return v_docs;
-    }
+    }*/
     
     public void calcularDistancias() {
         //Map<Double,ArrayList<Documento>> docs;
         //docs = new TreeMap<>();
-        
         
         //int pos = posicion(autor, titulo);        
         //Documento origen = vecDocumentos.get(0);
@@ -300,18 +313,25 @@ public class CjtoDocumentos {
         return (ids.containsKey(autor) && ids.get(autor).containsKey(titulo));
     }
 
-    /*private int posicion(String autor, String titulo) {        
-        
-        for(int i = 0; i< vecDocumentos.size(); i++){
-            if (vecDocumentos.get(i).equals(autor, titulo)) return i;
-        }
-        return -1;
-    }*/
-
-    /*private void altaVecDocumentos(Documento doc) {
-      
-        vecDocumentos.add(doc);
-    }*/
+    public Map <Integer, Documento> getVecDocumentos(){
+        return this.vecDocumentos;
+    }
+    
+    public ArrayList< TreeMap < ArrayList <Double> , Integer > > getDists(){
+        return this.dists;
+    }
+    
+    public Map<String, Map<String,Integer> > getIds(){
+        return this.ids;
+    }
+    
+    public Trie getTriePrefijosAutor(){
+        return this.triePrefijosAutor;
+    }
+    
+    public int getNumDocs(){
+        return this.numDocs;
+    }
     
     /*private void altaVecDoc1(String autor, String titulo, String contenido) {
         
@@ -334,16 +354,6 @@ public class CjtoDocumentos {
         }
     }*/
 
-    /*private void bajaVecDocumentos(String autor, String titulo) {
-        
-        //Eliminamos las palabras no repetidas en otros documentos del diccionario
-        int id = ids.get(autor).get(titulo);
-        Documento doc = vecDocumentos.get(id);
-        diccionario.eliminarPalabras(doc.getContenidoReducido());
-        //Finalmente eliminamos el Documento de vecDocumentos
-        vecDocumentos.remove(id);
-    }*/
-
     /*private void bajaVecDoc1(String autor, String titulo) {
         
         String at = autor + " " + titulo;
@@ -354,38 +364,6 @@ public class CjtoDocumentos {
         
         ArrayList<String> titulos = vecDoc2.get(autor);
         titulos.remove(titulo);
-    }*/
+    }*/    
     
-
-    /*private void calcularTFIDFtodosLosDocumentos(int ids) {
-       
-        for (Documento doc : vecDocumentos){
-        	doc.calcularTFIDF(numDocs,diccionario);
-        }
-    }*/
-
-
-    /*private void comprobarSiDocumentoExiste(String autor, String titulo) throws Exception {
-        
-        if (!existeDocumento(autor, titulo))
-            throw new Exception("El documento no existe");
-    }*/
-    
-    
-    /*public void print() {
-        
-        System.out.println("vecDocumentos es:");
-        for(Documento doc : vecDocumentos){
-            System.out.println("Autor: " + doc.getAutor() + '\n'+ " Titulo: " + doc.getTitulo() + '\n' + " Contenido: " + doc.getContenidoOriginal());
-        }
-        System.out.println("vecDoc1 es:");
-        for(String t : vecDoc1.keySet()){
-            System.out.println("Autor y titulo: " + '\n' + t + " Contenido: " + vecDoc1.get(t));
-        }
-        System.out.println("vecDoc2 es:");
-        for(String a : vecDoc2.keySet()){
-            for (int i = 0; i < vecDoc2.get(a).size(); ++i)
-                System.out.println("Autor: " + a + '\n'+ " Titulo: " + vecDoc2.get(a).get(i));
-        }
-    }*/
 }

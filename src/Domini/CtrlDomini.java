@@ -5,7 +5,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.TreeMap;
 /**
  *
  * @author florencia.rimolo
@@ -75,10 +77,31 @@ public class CtrlDomini {
     }
     
     public Map<String,String> getDocumentosParecidos(String autor, String titulo, int k, String type) throws Exception{
+        
+        if (!type.equals("TF-IDF") && !type.equals("FREC"))
+    		throw new Exception("El tipo que ha especificado no es válido. Ha de ser FREC o TF-IDF.");
+        
+        if (!cd.existeDocumento(autor, titulo))
+            throw new Exception("El documento no existe");
+        
+        Map<String, Map<String,Integer> > ids = cd.getIds();
+        int id = ids.get(autor).get(titulo);
+        
+        ArrayList< TreeMap < ArrayList <Double> , Integer > > dists = cd.getDists();
+        Map < ArrayList <Double> , Integer > docs = dists.get(id);
+        
+        //retornar solo los k primeros elementos
+        Map <Integer, Documento> vecDocumentos = cd.getVecDocumentos();
         Map<String,String> m = new HashMap<>();
-        ArrayList <Documento> l = cd.getDocumentosParecidos(autor, titulo, k,type);
-        for (Documento d : l)
-            m.put(d.getAutor(),d.getTitulo());
+        Iterator it = docs.keySet().iterator();
+        int aux = k;
+        
+        while(it.hasNext() && aux > 0){
+            Double key = (Double) it.next();
+            Documento doc = vecDocumentos.get(docs.get(key));
+            m.put(doc.getAutor(),doc.getTitulo());
+            --aux;
+        } 
         return m;
     }
     
@@ -88,9 +111,9 @@ public class CtrlDomini {
     
     public Map<String,String> getDocumentosBool(String frase) throws Exception{
         Map<String,String> m = new HashMap<>();
-        ArrayList <Documento> l = cd.getDocumentosBool(frase);
+        /*ArrayList <Documento> l = cd.getDocumentosBool(frase);
         for (Documento d : l)
-            m.put(d.getAutor(),d.getTitulo());
+            m.put(d.getAutor(),d.getTitulo());*/
         return m;
     }
     

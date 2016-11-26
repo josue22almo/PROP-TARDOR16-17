@@ -3,6 +3,8 @@ package Domini;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Scanner;
 
 /**
@@ -150,17 +152,29 @@ public class DriverCjtoDocumentos {
                     case 11: 
                         System.out.println("Consultar todo el conjunto de documentos");
                         System.out.println("vecDocumentos es:");
-                        for(Documento doc : vecDocumentos){
-                            System.out.println("Autor: " + doc.getAutor() + '\n'+ " Titulo: " + doc.getTitulo() + '\n' + " Contenido: " + doc.getContenidoOriginal());
+                        Map <Integer, Documento> vecDocumentos = c.getVecDocumentos();
+                        Iterator it = vecDocumentos.keySet().iterator();
+                        while(it.hasNext()){
+                            Integer id = (Integer) it.next();
+                            Documento doc = vecDocumentos.get(id);
+                            System.out.println("Id: " + id + '\n' + "Autor: " + doc.getAutor() + '\n');
+                            System.out.println(" Titulo: " + doc.getTitulo() + '\n' + " Contenido: " + doc.getContenidoOriginal());
+                            System.out.println();
                         }
-                        System.out.println("vecDoc1 es:");
-                        for(String t : vecDoc1.keySet()){
-                            System.out.println("Autor y titulo: " + '\n' + t + " Contenido: " + vecDoc1.get(t));
-                        }
-                        System.out.println("vecDoc2 es:");
-                        for(String a : vecDoc2.keySet()){
-                            for (int i = 0; i < vecDoc2.get(a).size(); ++i)
-                                System.out.println("Autor: " + a + '\n'+ " Titulo: " + vecDoc2.get(a).get(i));
+                        System.out.println();
+                        System.out.println("ids es:");
+                        Map<String, Map<String,Integer> > ids = c.getIds();
+                        Iterator it2 = ids.keySet().iterator();
+                        while(it2.hasNext()){
+                            String a = (String) it2.next();
+                            Map<String,Integer> ts = ids.get(a);
+                            Iterator it3 = ts.keySet().iterator();
+                            while(it3.hasNext()){
+                                String t = (String) it3.next();
+                                System.out.println("Id: " + ids.get(a).get(t) + '\n' + "Autor: " + a + '\n');
+                                System.out.println(" Titulo: " + t + '\n');
+                                System.out.println();
+                            }
                         }
                         break;
                     case 12:
