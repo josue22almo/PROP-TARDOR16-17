@@ -245,6 +245,8 @@ public class CjtoDocumentos {
             }
         }*/
         
+        dists.get(i);
+        
         //retornar solo los k primeros elementos
         ArrayList<Documento> v_docs = new ArrayList<>();
         Iterator it = docs.keySet().iterator();
