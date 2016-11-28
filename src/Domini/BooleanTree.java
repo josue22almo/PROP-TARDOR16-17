@@ -39,7 +39,7 @@ public class BooleanTree {
             //signed_term -> NOT term()
             nextToken();
             ExpressionNode term = term();
-            result = new SignedNode(term,true);
+            result = new NegatedNode(term,true);
         }else result = term();  //signed_term -> term
         return result;
     }
