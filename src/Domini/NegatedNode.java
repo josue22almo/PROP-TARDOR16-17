@@ -1,7 +1,6 @@
 
 package Domini;
 
-import java.util.LinkedList;
 
 /**
  *
@@ -9,10 +8,7 @@ import java.util.LinkedList;
  */
 public class NegatedNode extends OperationExpressionNode {
 
-    LinkedList<ExpressionNode> operands;
-
     public NegatedNode() {
-        this.operands = new LinkedList<>();
     }
 
     NegatedNode(ExpressionNode exp, boolean signed) {
