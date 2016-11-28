@@ -6,14 +6,81 @@ import java.util.Map;
 import java.util.TreeMap;
 /**
  *
- * @author josue.inaldo.alcantara
+ * @author jessica.sobreviela
  */
 public class Trie {
-    private Map <String,ArrayList<String>> trie = new TreeMap<>();
+    private Map <String,ArrayList<String>> trie;
+    private Nodo raiz;
     
-    public Trie(){}
+    public Trie(){
+        this.trie = new TreeMap<>();
+        this.raiz = new Nodo(' ', null);
+    }
     
-    public void anadirPrefijo(String prefijo){
+    public void añadirAutor(String autor) {
+        Nodo n = raiz;
+        for(int i=0; i < autor.length(); i++) {
+            char c = autor.charAt(i);
+            Nodo sub = n.getHijo(c);
+            if (sub != null) n = sub;
+            else {
+                n.añadeHijo(new Nodo(c, n));
+                n = n.getHijo(c);
+            }
+            if (i == autor.length()-1) n.setFi(true);
+        }
+    }
+    
+    public void eliminarAutor(String autor){
+        Nodo n = raiz;
+        boolean aux = false, acabado = false;
+        Nodo aux_padre, aux_hijo;
+        for(int i=0; i < autor.length() && !acabado; i++) {
+            char c = autor.charAt(i);
+            Nodo sub = n.getHijo(c);
+            if (sub != null){
+                if (sub.getFi() && i == autor.length()-1) {
+                    acabado=true;
+                }
+                else {
+                    aux_padre = n;
+                    aux_hijo = sub;
+                    n = sub;
+                }
+            }
+            else n.eliminarHijo(sub);
+        }
+    }
+ 
+    public ArrayList<String> consultarListaDelPrefijo(String prefijo) {
+        ArrayList<String> aux = new ArrayList<>();
+        Nodo n = raiz;
+        for(int i=0; i < prefijo.length(); i++) {
+            char c = prefijo.charAt(i);
+            Nodo sub = n.getHijo(c);
+            if (sub == null) return null;
+            if (i == prefijo.length()-1){
+                aux = consultarSubArbol(sub);
+            }
+        }
+        return aux;
+    }
+    
+    public ArrayList<String> consultarSubArbol(Nodo sub) {
+        ArrayList<String> aux = new ArrayList<>();
+        for(int i=0; i < sub.getSize(); i++) {
+            
+            /*char c = sub[i];
+            Nodo sub = n.getHijo(c);
+            if (sub == null) return null;
+            if (i == prefijo.length()-1){
+                aux = consultarSubArbol(sub);
+            }*/
+        }
+        return aux;
+    }
+    
+    /*public void anadirAutor(String prefijo){
         for (int i = 0; i < prefijo.length(); ++i){
             String subPrefijo = prefijo.substring(0, i);
             if (trie.get(subPrefijo) == null) {  
@@ -37,7 +104,7 @@ public class Trie {
             }
     }
     
-    public void eliminarPrefijo(String prefijo){
+    public void eliminarAutor(String prefijo){
         for (int i = 0; i < prefijo.length(); ++i){
             String subPrefijo = prefijo.substring(0, i);
             ArrayList<String> list = trie.get(subPrefijo);
@@ -64,5 +131,5 @@ public class Trie {
                 } 
             }
         }
-    }
+    }*/
 }

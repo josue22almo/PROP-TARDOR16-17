@@ -18,7 +18,7 @@ public class CjtoDocumentos {
     //private Map<String, ArrayList<String> > vecDoc2; //para consultarTitulosAutor
     private ArrayList< TreeMap < ArrayList <Double> , Integer > > dists; // Double-> distancia, Integer->ID
     private Map<String, Map<String,Integer> > ids; // 1rString -> autor, 2nString -> titulo, Integer-> ID
-    private Trie triePrefijosAutor; //para consultarAutoresPorPrefijo
+    private Trie trie; //para consultarAutoresPorPrefijo
     private static Diccionario diccionario;
     private int numDocs; 
     
@@ -28,7 +28,7 @@ public class CjtoDocumentos {
         this.dists = new ArrayList<> ();
         //this.vecDoc1 = new HashMap<>(); 
         //this.vecDoc2 = new HashMap<>();
-        this.triePrefijosAutor = new Trie();
+        this.trie = new Trie();
         this.diccionario = new Diccionario();
         this.numDocs = 0;
     }
@@ -37,6 +37,9 @@ public class CjtoDocumentos {
         
         if (existeDocumento(autor, titulo))
             throw new Exception("El documento ya existe"); 
+        
+        //Si no existe el autor, lo añadimos a nuestro trie
+        if (ids.get(autor) == null) trie.añadirAutor(autor);
         
         //Calculamos el id
         int id;
@@ -76,9 +79,6 @@ public class CjtoDocumentos {
         //Añadimos palabras al diccionario
         diccionario.anadirPalabras(doc.getContenidoReducido());
         
-        /*if (vecDoc2.get(autor) == null)//no existe el autor, lo añadimos a nuestro trie
-        	triePrefijosAutor.anadirPrefijo(autor);*/
-        
         //Un documento más
         ++numDocs;
         
@@ -104,8 +104,7 @@ public class CjtoDocumentos {
         if (!ids.containsKey(autor)) ids.remove(autor);
         
         //Si después de eliminar el documento ya no existe el autor, lo eliminamos de nuestro trie:
-        /*if (vecDoc2.get(autor) == null)
-            triePrefijosAutor.eliminarPrefijo(autor);*/
+        if (ids.get(autor) == null) trie.eliminarAutor(autor);
         
         //Un documento menos
         --numDocs; 
@@ -147,6 +146,9 @@ public class CjtoDocumentos {
         bajaDocumento(autor,titulo);
         altaDocumento(autorModif,titulo,contenido);*/
         
+        //Si no existe autorModif, lo añadimos a nuestro trie
+        if (ids.get(autorModif) == null) trie.añadirAutor(autorModif);
+        
         //Se modifica en vecDocumentos
         int id = ids.get(autor).get(titulo);
         vecDocumentos.get(id).setAutor(autorModif);
@@ -164,6 +166,9 @@ public class CjtoDocumentos {
             ids.put(autor, titulos_e_ids_NuevoAutor);
         }
         titulos_e_ids_AnteriorAutor.remove(titulo);
+        
+        //Si despúes de eliminar autor ya no existe, lo eliminamos de nuestro trie
+        if (ids.get(autor) == null) trie.eliminarAutor(autor);
     }
     
     public void modificaTituloDoc(String autor, String titulo, String tituloModif) throws Exception {
@@ -219,7 +224,7 @@ public class CjtoDocumentos {
    
     public ArrayList<String> consultarAutoresPorPrefijo(String prefijo) throws Exception {
          
-        return triePrefijosAutor.consultarListaDelPrefijo(prefijo);
+        return trie.consultarListaDelPrefijo(prefijo);
     }
     
     public String consultarContenido(String autor, String titulo) throws Exception {
@@ -326,7 +331,7 @@ public class CjtoDocumentos {
     }
     
     public Trie getTriePrefijosAutor(){
-        return this.triePrefijosAutor;
+        return this.trie;
     }
     
     public int getNumDocs(){

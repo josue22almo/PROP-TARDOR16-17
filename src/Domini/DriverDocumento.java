@@ -24,7 +24,7 @@ public class DriverDocumento {
                 contenido += aux;
                 contenido += '\n';
             }
-            Documento doc = new Documento(autor,titulo,contenido);        
+            Documento doc = new Documento(1,autor,titulo,contenido);        
             while (true) {
                 System.out.println("Indique qué desea hacer:");
                 System.out.println("1. Modificar autor");
@@ -94,7 +94,7 @@ public class DriverDocumento {
                                 contenido += aux;
                                 contenido += '\n';
                             }
-                            Documento doc2 = new Documento(autor, titulo, contenido);
+                            Documento doc2 = new Documento(2,autor, titulo, contenido);
                             System.out.println("Distancia con FREC: " + doc.calcularDistancia(doc2, "FREC"));
                             break;
                         case 9:
