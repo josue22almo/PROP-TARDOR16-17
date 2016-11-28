@@ -1,5 +1,5 @@
 
-package parserexpression;
+package Domini;
 
 /**
  *
@@ -8,17 +8,15 @@ package parserexpression;
 
 import java.util.LinkedList;
 
-public class ParserExpression {
+public class BooleanTree {
     private LinkedList<Token> tokens;
     private Token top;
 
-    public ParserExpression() {
+    public BooleanTree() {
         this.tokens = new LinkedList<>();
     }
     
-    
-    
-    public ExpressionNode parse(LinkedList<Token> tokens) throws Exception{
+    public ExpressionNode satisfy(LinkedList<Token> tokens) throws Exception{
         this.tokens = (LinkedList)tokens.clone();
         top = this.tokens.get(0);
         ExpressionNode result = expression();
@@ -41,7 +39,7 @@ public class ParserExpression {
             //signed_term -> NOT term()
             nextToken();
             ExpressionNode term = term();
-            result = new NegatedNode(term,true);
+            result = new SignedNode(term,true);
         }else result = term();  //signed_term -> term
         return result;
     }

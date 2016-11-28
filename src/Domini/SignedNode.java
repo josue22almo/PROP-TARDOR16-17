@@ -1,5 +1,5 @@
 
-package parserexpression;
+package Domini;
 
 import java.util.LinkedList;
 
@@ -7,15 +7,15 @@ import java.util.LinkedList;
  *
  * @author Josue Inaldo Alcantara Moreno
  */
-public class NegatedNode extends OperationExpressionNode {
+public class SignedNode extends OperationExpressionNode {
 
     LinkedList<ExpressionNode> operands;
 
-    public NegatedNode() {
+    public SignedNode() {
         this.operands = new LinkedList<>();
     }
 
-    NegatedNode(ExpressionNode exp, boolean signed) {
+    SignedNode(ExpressionNode exp, boolean signed) {
         super(exp,signed);
     }
     

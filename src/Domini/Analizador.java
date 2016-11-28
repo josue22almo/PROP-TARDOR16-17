@@ -1,5 +1,5 @@
 
-package parserexpression;
+package Domini;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -89,14 +89,5 @@ public class Analizador {
     
     public LinkedList<Token> getTokens(){
         return tokens;
-    }
-    
-    @Override
-    public String toString(){
-        String s ="";
-        for (int i = 0; i < tokens.size();++i){
-            s += Integer.toString(tokens.get(i).token) + " " + tokens.get(i).sequence + "\n";
-        }
-        return s;
     }
 }

@@ -155,7 +155,7 @@ public class Main {
                         break;
                     case 12: 
                         System.out.println("Consultar todo el conjunto de documentos");
-                        c.print();
+//                        c.print();
                         break;
                     case 13:
                         System.out.println("Salir");
