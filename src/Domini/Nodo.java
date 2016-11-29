@@ -13,14 +13,14 @@ import java.util.TreeMap;
  * @author jessica
  */
 public class Nodo {
-    private char letra;
+    //private char letra;
     private boolean fi;
     private Nodo padre;
-    private final Map< Character , Nodo> hijo;
+    private Map< Character,Nodo > hijo;
             
-    public Nodo(char c, Nodo padre)
+    public Nodo(Nodo padre)
     {
-        this.letra = c;
+        //this.letra = c;
         this.padre = padre;
         this.hijo = new TreeMap<>();
     }
@@ -28,13 +28,21 @@ public class Nodo {
     public Nodo getHijo(char c) {
         return hijo.get(c);
     }
+    
+    public Map <Character, Nodo> getMapHijo(){
+        return this.hijo;
+    }
  
-    public void añadeHijo(Nodo n) {
-        hijo.put(n.letra,n);
+    public void añadeHijo(char c, Nodo n) {
+        hijo.put(c,n);
     }
     
-    public void eliminarHijo(Nodo n){
-        hijo.remove(n.letra);
+    /*public void añadeHijoSinMap(char c, Nodo n){
+        
+    }*/
+    
+    public void eliminarHijo(char c){
+        hijo.remove(c);
     }
     
     public boolean getFi(){
@@ -45,7 +53,7 @@ public class Nodo {
         this.fi = f;
     }
     
-    public Integer getSize(){
+    /*public Integer getSize(){
         return hijo.size();
-    }
+    }*/
 }

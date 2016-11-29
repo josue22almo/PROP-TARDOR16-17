@@ -26,10 +26,8 @@ public class DriverCjtoDocumentos {
                 System.out.println("6. Consultar titulos de los documentos de un autor");
                 System.out.println("7. Consultar autores que empiezan por un prefijo");
                 System.out.println("8. Consultar contenido de un documento"); 
-                System.out.println("9. Consultar lista de los k documentos más parecidos a T");
-                System.out.println("10. Consultar lista de los documentos con una expresión booleana");
-                System.out.println("11. Consultar todo el conjunto de documentos");
-                System.out.println("12. Salir");
+                System.out.println("9. Consultar todo el conjunto de documentos");
+                System.out.println("10. Salir");
                 String autor;
                 String titulo;
                 String contenido;
@@ -125,31 +123,7 @@ public class DriverCjtoDocumentos {
                         contenido = c.consultarContenido(autor,titulo); 
                         System.out.println(contenido);
                         break;
-                    case 9:
-                        System.out.println("Consultar k mas parecidos a T");
-                        System.out.println("Autor:");
-                        autor = sc.nextLine();
-                        System.out.println("Titulo:");
-                        titulo = sc.nextLine();
-                        System.out.println("Número de documentos:");
-                        k = sc.nextInt();
-                        System.out.println("Escribe FREC o TFIDF");
-                        aux = sc.nextLine();
-                        ArrayList<Documento> docs = c.getDocumentosParecidos(autor,titulo,k,aux); 
-                        for (int i=0; i < docs.size(); ++i){
-                            System.out.println("Autor: " + docs.get(i).getAutor());
-                            System.out.println("Titulo: " + docs.get(i).getTitulo());
-                            System.out.println("Contenido: " + docs.get(i).getContenidoOriginal());
-                            System.out.println();
-                        }
-                        break;
-                    case 10:
-                        System.out.println("Consultar expresion booleana");
-                        System.out.println("Frase booleana:");
-                        String booleano = sc.nextLine();
-                        c.getDocumentosBool(booleano);
-                       break;
-                    case 11: 
+                    case 9: 
                         System.out.println("Consultar todo el conjunto de documentos");
                         System.out.println("vecDocumentos es:");
                         Map <Integer, Documento> vecDocumentos = c.getVecDocumentos();
@@ -177,7 +151,7 @@ public class DriverCjtoDocumentos {
                             }
                         }
                         break;
-                    case 12:
+                    case 10:
                         System.out.println("Salir");
                         return;   
                     default:

@@ -2,6 +2,7 @@
 package Domini;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.TreeMap;
 /**
@@ -14,7 +15,7 @@ public class Trie {
     
     public Trie(){
         this.trie = new TreeMap<>();
-        this.raiz = new Nodo(' ', null);
+        this.raiz = new Nodo(null);
     }
     
     public void añadirAutor(String autor) {
@@ -24,7 +25,9 @@ public class Trie {
             Nodo sub = n.getHijo(c);
             if (sub != null) n = sub;
             else {
-                n.añadeHijo(new Nodo(c, n));
+                //if (i == autor.length()-1) n.añadeHijoSinMap(c, n);
+                //else 
+                n.añadeHijo(c, new Nodo(n));
                 n = n.getHijo(c);
             }
             if (i == autor.length()-1) n.setFi(true);
@@ -34,7 +37,8 @@ public class Trie {
     public void eliminarAutor(String autor){
         Nodo n = raiz;
         boolean aux = false, acabado = false;
-        Nodo aux_padre, aux_hijo;
+        Nodo aux_padre = n;
+        char aux_c = autor.charAt(0);
         for(int i=0; i < autor.length() && !acabado; i++) {
             char c = autor.charAt(i);
             Nodo sub = n.getHijo(c);
@@ -42,13 +46,17 @@ public class Trie {
                 if (sub.getFi() && i == autor.length()-1) {
                     acabado=true;
                 }
-                else {
+                else if (!sub.getFi() && i == autor.length()-1){
+                    aux_padre.eliminarHijo(aux_c);
+                    acabado = true;
+                }
+                else if (sub.getFi()){
                     aux_padre = n;
-                    aux_hijo = sub;
+                    aux_c = c;
                     n = sub;
                 }
             }
-            else n.eliminarHijo(sub);
+            else n.eliminarHijo(c);
         }
     }
  
@@ -59,28 +67,58 @@ public class Trie {
             char c = prefijo.charAt(i);
             Nodo sub = n.getHijo(c);
             if (sub == null) return null;
-            if (i == prefijo.length()-1){
-                aux = consultarSubArbol(sub);
+            else if (i == prefijo.length()-1) aux = consultarSubArbol(prefijo, sub);
+        }
+        return aux;
+    }
+    
+    public ArrayList<String> consultarSubArbol(String prefijo, Nodo sub) {
+        ArrayList<String> aux = new ArrayList<>();
+        Iterator it = sub.getMapHijo().keySet().iterator();
+        while(it.hasNext()){
+            Character c = (Character) it.next();
+            Nodo a = sub.getHijo(c);
+            String autor = consultarAutor(prefijo, sub);
+            aux.add(autor);
+        }
+        return aux;
+    }
+    
+        /*inorden(nodo)
+        si nodo == nulo entonces retorna
+        inorden(nodo.izquierda)
+        imprime nodo.valor
+        inorden(nodo.derecha)*/
+    
+    public String consultarAutor(String prefijo, Nodo a){
+        if (a != null){
+            String autor="";
+            Iterator it = a.getMapHijo().keySet().iterator();
+            while(it.hasNext()){
+                Character c = (Character) it.next();
+                Nodo aa = a.getHijo(c);
+                autor = consultarAutor(prefijo, aa);
+            }
+            return prefijo+autor;
+        }
+        return null;
+    }
+    
+    public void print(){
+        if (trie.isEmpty()) 
+            System.out.println("El trie está vacío");
+        else{
+            for (String key : trie.keySet()){
+                System.out.println("El prefijo " + key + " tiene ");
+                for (int i=0; i < trie.get(key).size(); ++i){
+                    System.out.println(trie.get(key).get(i));
+                }
             }
         }
-        return aux;
     }
-    
-    public ArrayList<String> consultarSubArbol(Nodo sub) {
-        ArrayList<String> aux = new ArrayList<>();
-        for(int i=0; i < sub.getSize(); i++) {
-            
-            /*char c = sub[i];
-            Nodo sub = n.getHijo(c);
-            if (sub == null) return null;
-            if (i == prefijo.length()-1){
-                aux = consultarSubArbol(sub);
-            }*/
-        }
-        return aux;
-    }
-    
-    /*public void anadirAutor(String prefijo){
+}
+
+/*public void anadirAutor(String prefijo){
         for (int i = 0; i < prefijo.length(); ++i){
             String subPrefijo = prefijo.substring(0, i);
             if (trie.get(subPrefijo) == null) {  
@@ -118,18 +156,4 @@ public class Trie {
         if (trie.containsKey(prefijo)) 
             return  trie.get(prefijo);
         throw new Exception("No existen autores con el prefijo " + prefijo);
-    }
-    
-    public void print(){
-        if (trie.isEmpty()) 
-            System.out.println("El trie está vacío");
-        else{
-            for (String key : trie.keySet()){
-                System.out.println("El prefijo " + key + " tiene ");
-                for (int i=0; i < trie.get(key).size(); ++i){
-                    System.out.println(trie.get(key).get(i));
-                } 
-            }
-        }
     }*/
-}

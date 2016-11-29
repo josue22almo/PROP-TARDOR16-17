@@ -17,8 +17,8 @@ public class DriverTrie {
         try{
             while(true){
                 System.out.println("Indique qué desea hacer y aprete enter:");
-                System.out.println("1. Añadir prefijo");
-                System.out.println("2. Eliminar prefijo");
+                System.out.println("1. Añadir autor");
+                System.out.println("2. Eliminar autor");
                 System.out.println("3. Consultar lista del prefijo");
                 System.out.println("4. Escribir trie");  
                 System.out.println("5. Salir");  
@@ -26,17 +26,17 @@ public class DriverTrie {
                 sc.nextLine();                
                 switch(op){
                     case 1:
-                        System.out.println("Escribar el prefijo");
+                        System.out.println("Escriba el autor a añadir");
                         String prefijo = sc.nextLine();
-                        trie.anadirPrefijo(prefijo);
+                        trie.añadirAutor(prefijo);
                         break;
                     case 2:
-                        System.out.println("Escribar el prefijo");
+                        System.out.println("Escriba el autor a eliminar");
                         prefijo = sc.nextLine();
-                        trie.eliminarPrefijo(prefijo);
+                        trie.eliminarAutor(prefijo);
                         break;
                     case 3:
-                        System.out.println("Escribar el prefijo");
+                        System.out.println("Escriba el prefijo");
                         prefijo = sc.nextLine();
                         System.out.println("La lista del prefijo " + prefijo + " es:");
                         ArrayList <String> list = trie.consultarListaDelPrefijo(prefijo);
