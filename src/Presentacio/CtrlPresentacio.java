@@ -5,13 +5,14 @@
  */
 package Presentacio;
 import Domini.*;
+import java.io.IOException;
 
 /**
  *
  * @author florencia.rimolo
  */
 public class CtrlPresentacio {
-    public CtrlPresentacio() {
+    public CtrlPresentacio() throws IOException {
         CtrlDomini cd = new CtrlDomini();
     }
 }

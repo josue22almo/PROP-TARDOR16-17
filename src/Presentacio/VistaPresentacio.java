@@ -5,10 +5,16 @@
  */
 package Presentacio;
 
+import java.io.IOException;
+
 /**
  *
  * @author florencia.rimolo
  */
 public class VistaPresentacio {
+    private CtrlPresentacio cp;
     
+    public VistaPresentacio() throws IOException {
+        cp = new CtrlPresentacio();
+    }
 }

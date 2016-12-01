@@ -1,6 +1,6 @@
 
-package Domini;
 
+import Domini.CtrlDomini;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
@@ -12,7 +12,9 @@ import java.util.Scanner;
  */
 public class Main {
     public static void main(String[] args) throws IOException, Exception{
-        CtrlDomini c = new CtrlDomini();
+        Ventana ventana = new Ventana();
+        ventana.setVisible(true);
+        /*CtrlDomini c = new CtrlDomini();
         Scanner sc = new Scanner(System.in);
         try {
             while(true){
@@ -171,6 +173,6 @@ public class Main {
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());          
-        }    
+        }  */  
     }
 }
