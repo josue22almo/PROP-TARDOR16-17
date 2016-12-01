@@ -1,35 +1,67 @@
 Clara Fajardo
 El sevillano que triunfa en Silicon Valley gracias a la nube
-Doscientos años después de la Gold Rush (la fiebre del oro), el Oeste de Estados Unidos sigue atrayendo a aventureros que buscan su oportunidad dorada. Hoy el oro es la tecnología y quien consigue entenderla y mejorarla encuentra su hueco a las puertas del Pacífico, en San Francisco. Éste es el caso del ingeniero sevillano Daniel López, fundador de Bitnami, firma repartida entre San Francisco y Sevilla, dedicada a la programación y computación en la nube que ya tiene en su cartera de clientes a gigantes como Google, Amazon o Microsoft.
+Doscientos años después de la Gold Rush (la fiebre del oro), el Oeste de Estados Unidos sigue atrayendo a aventureros que buscan su oportunidad dorada. Hoy el oro es 
+la tecnología y quien consigue entenderla y mejorarla encuentra su hueco a las puertas del Pacífico, en San Francisco. Éste es el caso del ingeniero sevillano Daniel López, 
+fundador de Bitnami, firma repartida entre San Francisco y Sevilla, dedicada a la programación y computación en la nube que ya tiene en su cartera de clientes a gigantes 
+como Google, Amazon o Microsoft.
 
-En un contexto en el que el concepto de ‘alquiler’ u ‘ocupación temporal’ explica que compañías como Uber, Lyft o Cabify estén sustituyendo a métodos tradicionales de transporte urbano como el coche propio o el taxi, aparecen también nuevos productos de ‘no propiedad’ relacionados con la seguridad, el ahorro y la eficiencia.
+En un contexto en el que el concepto de ‘alquiler’ u ‘ocupación temporal’ explica que compañías como Uber, Lyft o Cabify estén sustituyendo a métodos tradicionales de 
+transporte urbano como el coche propio o el taxi, aparecen también nuevos productos de ‘no propiedad’ relacionados con la seguridad, el ahorro y la eficiencia.
 
 “Haz algo que la gente quiera”
-Un ejemplo es el almacenamiento en la nube (en cloud) con servicios como los que ofrece Dropbox o Gmail, que pueden ayudarnos a comprender el siguiente paso, el escalón en el que se halla inmerso Daniel López: la programación en la nube. Tras años trabajando en la industria y observando el mercado y sus necesidades, Daniel se dio cuenta de que tanto para Mac como para Windows existían aplicaciones de servidor fáciles de usar pero en cambio para Linux (software libre) apenas nada, con lo cual ese fue el punto en el que se centró y por el que nació Bitnami.
-Volviendo a la noción de ‘no posesión’, Daniel explica que la nube tiene muchas más opciones que la acumulación de información y puede alojar desde los paquetes completos de Microsoft Office, hasta la creación de una página web en Wordpress sin necesidad de instalar nada en tu propio ordenador, es decir, en local. “En vez de comprar y mantener tus servidores, puedes alquilárselos a un proveedor por horas, días o meses; pagas por el tiempo de utilización, cuando uno está off se para el contador”, aclara el fundador de Bitnami.
-“Nosotros hemos sido pioneros en el software en la nube, por eso somos el proveedor número uno de los app store de las principales empresas de computación en la nube, como Microsoft y Amazon, en gran parte porque detectamos a tiempo la tendencia. Así como ahora nadie duda de la utilidad de las aplicaciones móviles de la Apple Store o Google Play, nosotros estamos convencidos de que cuestiones como el teletrabajo o las tareas en remoto mediante el cloud computing se terminarán imponiendo por comodidad, eficiencia y ahorro”. Los clientes principales de Bitnami son empresas, por lo que su producto está mayormente vinculado a la gestión de contenido, documentos y bases de datos.
+Un ejemplo es el almacenamiento en la nube (en cloud) con servicios como los que ofrece Dropbox o Gmail, que pueden ayudarnos a comprender el siguiente paso, el 
+escalón en el que se halla inmerso Daniel López: la programación en la nube. Tras años trabajando en la industria y observando el mercado y sus necesidades, Daniel se 
+dio cuenta de que tanto para Mac como para Windows existían aplicaciones de servidor fáciles de usar pero en cambio para Linux (software libre) apenas nada, con lo 
+cual ese fue el punto en el que se centró y por el que nació Bitnami.
+Volviendo a la noción de ‘no posesión’, Daniel explica que la nube tiene muchas más opciones que la acumulación de información y puede alojar desde los paquetes 
+completos de Microsoft Office, hasta la creación de una página web en Wordpress sin necesidad de instalar nada en tu propio ordenador, es decir, en local. “En vez de 
+comprar y mantener tus servidores, puedes alquilárselos a un proveedor por horas, días o meses; pagas por el tiempo de utilización, cuando uno está off se para el 
+contador”, aclara el fundador de Bitnami.
+“Nosotros hemos sido pioneros en el software en la nube, por eso somos el proveedor número uno de los app store de las principales empresas de computación en la 
+nube, como Microsoft y Amazon, en gran parte porque detectamos a tiempo la tendencia. Así como ahora nadie duda de la utilidad de las aplicaciones móviles de la 
+Apple Store o Google Play, nosotros estamos convencidos de que cuestiones como el teletrabajo o las tareas en remoto mediante el cloud computing se terminarán 
+imponiendo por comodidad, eficiencia y ahorro”. Los clientes principales de Bitnami son empresas, por lo que su producto está mayormente vinculado a la gestión de 
+contenido, documentos y bases de datos.
 
 La clave, el producto
 
-Primero hizo un Erasmus en Dinamarca y de ahí saltó al otro lado del charco. Daniel López opina que cuando uno está convencido de su producto debe ir a por todas, sin supeditarse a si le dan una subvención o no. Su trayectoria trabajando en Silicon Valley generó en él la inquietud de dar con la eficiencia para las empresas y estimó que la clave estaba en generar productos en vez de servicios en los que se pagan horas y horas por el asesoramiento y desarrollo, a veces inútil, en la implantación de software de gestión para empresas, como ocurre en muchas multinacionales de asesoría tecnológica.
+Primero hizo un Erasmus en Dinamarca y de ahí saltó al otro lado del charco. Daniel López opina que cuando uno está convencido de su producto debe ir a por todas, sin 
+supeditarse a si le dan una subvención o no. Su trayectoria trabajando en Silicon Valley generó en él la inquietud de dar con la eficiencia para las empresas y estimó que la 
+clave estaba en generar productos en vez de servicios en los que se pagan horas y horas por el asesoramiento y desarrollo, a veces inútil, en la implantación de software 
+de gestión para empresas, como ocurre en muchas multinacionales de asesoría tecnológica.
 
-“Crear una empresa de producto es más duro al principio, requiere más esfuerzo y, sobre todo, el apoyo institucional en España no está asegurado porque rompe la dinámica del suministro al mastodonte de la administración pública; pero merece la pena porque cuando saltas todas esas trabas e inviertes tu tiempo en tu producto y funciona es una gran satisfacción”, recomienda. Además permite vender a nivel global, por lo que el crecimiento potencial es muchísimo mayor.
+“Crear una empresa de producto es más duro al principio, requiere más esfuerzo y, sobre todo, el apoyo institucional en España no está asegurado porque rompe la 
+dinámica del suministro al mastodonte de la administración pública; pero merece la pena porque cuando saltas todas esas trabas e inviertes tu tiempo en tu producto y 
+funciona es una gran satisfacción”, recomienda. Además permite vender a nivel global, por lo que el crecimiento potencial es muchísimo mayor.
 
 “Buscamos desarrolladores”
 DANIEL LÓPEZ
 Empresario sevillano en Silicon Valley
 
-El crecimiento de Bitnami desde su creación en 2008 está siendo exponencial y necesitan ingenieros desarrolladores para sumarlos a su plantilla. Daniel López, decepcionado con el modelo productivo europeo y español, sostiene que uno de sus anhelos es transmitir que su historia es posible también para muchos españoles y andaluces. Le gustaría, dice, ser inspiración porque no se considera un fuera de serie, sino simplemente alguien “que emigró a uno de los centros de la innovación tecnológica actual y tuvo suerte con su trabajo y esfuerzo”.
+El crecimiento de Bitnami desde su creación en 2008 está siendo exponencial y necesitan ingenieros desarrolladores para sumarlos a su plantilla. Daniel López, 
+decepcionado con el modelo productivo europeo y español, sostiene que uno de sus anhelos es transmitir que su historia es posible también para muchos españoles y 
+andaluces. Le gustaría, dice, ser inspiración porque no se considera un fuera de serie, sino simplemente alguien “que emigró a uno de los centros de la innovación 
+tecnológica actual y tuvo suerte con su trabajo y esfuerzo”.
 
-Daniel López anima claramente a salir al extranjero y a empaparse de lo que se cuece en el Oeste americano, donde está la mayor concentración del talento en el terreno de la informática “como sucede en la City de Londres con las finanzas o la industria cinematográfica en Los Ángeles”.
+Daniel López anima claramente a salir al extranjero y a empaparse de lo que se cuece en el Oeste americano, donde está la mayor concentración del talento en el terreno 
+de la informática “como sucede en la City de Londres con las finanzas o la industria cinematográfica en Los Ángeles”.
 El mito de la información desprotegida
 
-Entre las dudas más frecuentes que genera el concepto del cloud están la confidencialidad y disponibilidad de la información que se “sube” y se deposita en servidores de cualquier parte del mundo. “Es mucho más probable que el mantenimiento y seguridad de los servidores de Google o Amazon esté garantizado, que el de un equipo propio ya sea particular o de empresa”, asevera el sevillano. Además, añade, la ubicación de varias granjas de servidores repartidas a lo largo y ancho del planeta implica que es un servicio 24 horas, menos expuesto a averías.
+Entre las dudas más frecuentes que genera el concepto del cloud están la confidencialidad y disponibilidad de la información que se “sube” y se deposita en servidores de 
+cualquier parte del mundo. “Es mucho más probable que el mantenimiento y seguridad de los servidores de Google o Amazon esté garantizado, que el de un equipo 
+propio ya sea particular o de empresa”, asevera el sevillano. Además, añade, la ubicación de varias granjas de servidores repartidas a lo largo y ancho del planeta implica 
+que es un servicio 24 horas, menos expuesto a averías.
 
-Ayuda mucho pensar en el sistema eléctrico para comprender del todo el mundo de la nube. Para ello, Daniel López pone el ejemplo de los antiguos generadores de electricidad en casa. “Ya casi nadie lo tiene, alquila a la empresa de electricidad que corresponda el uso de su producto por una tarifa concreta, es decir lo mismo que ocurre con el cloud: en ciertas franjas horarias en las que el consumo es menor, existen ofertas que rebajan sensiblemente el precio final”, relata.
+Ayuda mucho pensar en el sistema eléctrico para comprender del todo el mundo de la nube. Para ello, Daniel López pone el ejemplo de los antiguos generadores de 
+electricidad en casa. “Ya casi nadie lo tiene, alquila a la empresa de electricidad que corresponda el uso de su producto por una tarifa concreta, es decir lo mismo que 
+ocurre con el cloud: en ciertas franjas horarias en las que el consumo es menor, existen ofertas que rebajan sensiblemente el precio final”, relata.
 
-Siguiendo esta lógica, vaticina que en un futuro cercano lo fundamental será tener una buena conexión a internet para encontrar “ahí arriba” los programas que necesitemos usar y por los que velarán empresas como Bitnami despreocupándonos de discos duros estropeados o accidentes domésticos como el café sobre el teclado.
+Siguiendo esta lógica, vaticina que en un futuro cercano lo fundamental será tener una buena conexión a internet para encontrar “ahí arriba” los programas que 
+necesitemos usar y por los que velarán empresas como Bitnami despreocupándonos de discos duros estropeados o accidentes domésticos como el café sobre el teclado.
 
 Y llegó Trump…
 
-Para Daniel López, desde el punto de vista empresarial entramos en una etapa mucho más aislacionista y de incertidumbre total con la llegada a la presidencia de Donald Trump. “California en general y San Francisco en particular han sido tradicionalmente demócratas. La victoria de Trump ha sido una sorpresa para muchísima gente y algunos de mis conocidos están en estado de shock. Personalmente creo que el primer gran reto para Trump va a ser el mismo que si hubiera ganado Hillary: unir a un país que está completamente dividido tras las elecciones “.
+Para Daniel López, desde el punto de vista empresarial entramos en una etapa mucho más aislacionista y de incertidumbre total con la llegada a la presidencia de Donald 
+Trump. “California en general y San Francisco en particular han sido tradicionalmente demócratas. La victoria de Trump ha sido una sorpresa para muchísima gente y 
+algunos de mis conocidos están en estado de shock. Personalmente creo que el primer gran reto para Trump va a ser el mismo que si hubiera ganado Hillary: unir a un país 
+que está completamente dividido tras las elecciones “.

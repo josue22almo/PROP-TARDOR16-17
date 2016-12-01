@@ -38,41 +38,36 @@ public class CjtoDocumentos {
         if (existeDocumento(autor, titulo))
             throw new Exception("El documento ya existe"); 
         
-        //Si no existe el autor, lo añadimos a nuestro trie
-        if (ids.get(autor) == null) trie.añadirAutor(autor);
-        
         //Calculamos el id
         int id;
-        if (vecDocumentos == null) id = 1;
-        else id = vecDocumentos.get(vecDocumentos.size()-1).getID();
+        if (vecDocumentos.isEmpty()) id = 1;
+        else id = vecDocumentos.get(vecDocumentos.size()-1).getID()+1;
         Documento doc = new Documento(id,autor,titulo,contenido);
         
-        //Se da de alta en vecDocumentos
-        vecDocumentos.put(id,doc);
+        //Si no existe el autor, lo añadimos a nuestro trie
+        /*if (ids.get(autor) == null) {
+            trie.añadirAutor(autor);
+        }*/
         
-        if (dists == null) {
-            dists.add(id-1,null);
-            //calcularDistancias();
-        }
-        else {
-            /*for (int i = 0; i < dists.size(); i++) {
-                TreeMap < ArrayList <Double>, Integer > d = new TreeMap<> ();
-                dists.add(i, d);                   // en cada posicion del array vamos a tener que 
-                                                   // recalcularlo todo, por eso "borramos" todo lo que habia
-            }*/
-            dists.add(id-1,null);
-            
-            //calcularTFIDFtodosLosDocumentos(id-1);
-        }
+
+        
+        //Se da de alta en vecDocumentos
+        Integer idInt = (Integer) id;
+        vecDocumentos.put(idInt,doc);
+        
+        // Se añade en dists 
+        dists.add(id-1,new TreeMap<>());
         
         // Lo metemos en el map de IDs
         if (ids.containsKey(autor)) {
-            Map<String,Integer> titulos_autor = ids.get(autor);
-            titulos_autor.put(titulo, id);
+            Integer id2 = (Integer) id;
+            ids.get(autor).put(titulo, id2);
         }
         else {
+            trie.añadirAutor(autor);
             Map<String,Integer> titulos_autor = new HashMap<>();
-            titulos_autor.put(titulo,id);
+            Integer id2 = (Integer) id;
+            titulos_autor.put(titulo,id2);
             ids.put(autor, titulos_autor);
         }
         
