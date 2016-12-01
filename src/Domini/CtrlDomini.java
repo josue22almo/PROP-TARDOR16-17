@@ -30,10 +30,8 @@ public class CtrlDomini {
         for (int i = 0; i < docs.size(); ++i){
             String autor = docs.get(i).readLine();
             docs.get(i).readLine();
-            //autor += '\n';
             String titulo = docs.get(i).readLine();
             docs.get(i).readLine();
-            //titulo += '\n';
             String contenido = "";
             String aux;                
             while ((aux = docs.get(i).readLine()) != null){
@@ -76,28 +74,28 @@ public class CtrlDomini {
         return cd.consultarContenido(autor, titulo);
     }
     
-    public Map<String,String> getDocumentosParecidos(String autor, String titulo, int k, String type) throws Exception{
+    public Map<String,String> getDocumentosParecidos(String autor, String titulo, int k, String type) throws Exception {
         
         if (!type.equals("TF-IDF") && !type.equals("FREC"))
-    		throw new Exception("El tipo que ha especificado no es válido. Ha de ser FREC o TF-IDF.");
+            throw new Exception("El tipo que ha especificado no es válido. Ha de ser FREC o TF-IDF.");
         
         if (!cd.existeDocumento(autor, titulo))
-            throw new Exception("El documento no existe");
+            throw new Exception("El documento no existe.");
         
-        Map<String, Map<String,Integer> > ids = cd.getIds();
-        int id = ids.get(autor).get(titulo);
+        // Cogemos el id que corresponde a este autor y titulo
+        int id = cd.getIds().get(autor).get(titulo); 
+                                                        
+        // Cogemos el map con las distancias respecto al documento con id = id
+        Map < ArrayList <Double> , Integer > docs = cd.getDists().get(id-1);
         
-        ArrayList< TreeMap < ArrayList <Double> , Integer > > dists = cd.getDists();
-        Map < ArrayList <Double> , Integer > docs = dists.get(id);
-        
-        //retornar solo los k primeros elementos
+        //Retornar solo los k primeros elementos
         Map <Integer, Documento> vecDocumentos = cd.getVecDocumentos();
         Map<String,String> m = new HashMap<>();
         Iterator it = docs.keySet().iterator();
         int aux = k;
         
         while(it.hasNext() && aux > 0){
-            Double key = (Double) it.next();
+            ArrayList<Double> key = (ArrayList<Double>) it.next();
             Documento doc = vecDocumentos.get(docs.get(key));
             m.put(doc.getAutor(),doc.getTitulo());
             --aux;

@@ -4,14 +4,11 @@
  * and open the template in the editor.
  */
 package Presentacio;
-import Domini.*;
 
 /**
  *
  * @author florencia.rimolo
  */
-public class CtrlPresentacio {
-    public CtrlPresentacio() {
-        CtrlDomini cd = new CtrlDomini();
-    }
+public class VistaPresentacio {
+    
 }
