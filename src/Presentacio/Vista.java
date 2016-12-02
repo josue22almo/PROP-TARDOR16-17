@@ -41,9 +41,8 @@ public class Vista extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gestión de documentos");
+        setPreferredSize(new java.awt.Dimension(4000, 3000));
         getContentPane().setLayout(null);
-
-        jLabel1.setIcon(new javax.swing.ImageIcon("/home/florenciarf/Descargas/recycled_texture_background_by_sandeep_m-d6aeau9_PZ9chud.jpg")); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 4280, 2800);
 
@@ -66,7 +65,7 @@ public class Vista extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
-        System.exit(WIDTH);
+        System.exit(0);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
