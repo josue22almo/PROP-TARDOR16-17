@@ -115,4 +115,8 @@ public class CtrlDomini {
         return m;
     }
     
+    public CjtoDocumentos getCjtoDocumentos(){
+        return cd;
+    }
+    
 }

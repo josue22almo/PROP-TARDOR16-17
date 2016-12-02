@@ -364,6 +364,8 @@ public class CjtoDocumentos {
         
         ArrayList<String> titulos = vecDoc2.get(autor);
         titulos.remove(titulo);
-    }*/    
+    }*/ 
+    
+    
     
 }

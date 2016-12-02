@@ -1,8 +1,11 @@
 
 
+import Domini.CjtoDocumentos;
 import Domini.CtrlDomini;
+import Domini.Documento;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -155,7 +158,32 @@ public class Main {
                     break;
                 case 12: 
                     System.out.println("Consultar todo el conjunto de documentos");
-                    //c.print();
+                    System.out.println("vecDocumentos es:");
+                    CjtoDocumentos cd = c.getCjtoDocumentos();
+                    Map <Integer, Documento> vecDocumentos = cd.getVecDocumentos();
+                    Iterator it = vecDocumentos.keySet().iterator();
+                    while(it.hasNext()){
+                        Integer id = (Integer) it.next();
+                        Documento doc = vecDocumentos.get(id);
+                        System.out.println("Id: " + id + '\n' + "Autor: " + doc.getAutor() + '\n');
+                        System.out.println(" Titulo: " + doc.getTitulo() + '\n' + " Contenido: " + doc.getContenidoOriginal());
+                        System.out.println();
+                    }
+                    System.out.println();
+                    System.out.println("ids es:");
+                    Map<String, Map<String,Integer> > ids = cd.getIds();
+                    Iterator it2 = ids.keySet().iterator();
+                    while(it2.hasNext()){
+                        String a = (String) it2.next();
+                        Map<String,Integer> ts = ids.get(a);
+                        Iterator it3 = ts.keySet().iterator();
+                        while(it3.hasNext()){
+                            String t = (String) it3.next();
+                            System.out.println("Id: " + ids.get(a).get(t) + '\n' + "Autor: " + a + '\n');
+                            System.out.println(" Titulo: " + t + '\n');
+                            System.out.println();
+                        }
+                    }
                     break;
                 case 13:
                     System.out.println("Salir");
