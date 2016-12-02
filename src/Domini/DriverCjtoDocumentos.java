@@ -15,7 +15,8 @@ public class DriverCjtoDocumentos {
     public static void main(String[] args) throws IOException, Exception{
         CjtoDocumentos c = new CjtoDocumentos();
         Scanner sc = new Scanner(System.in);
-        try{
+        //try{
+        CtrlDomini ctrlDomini = new CtrlDomini();
             while(true){
                 System.out.println("Indique qué desea hacer:");
                 System.out.println("1. Dar de alta un documento");
@@ -163,8 +164,8 @@ public class DriverCjtoDocumentos {
                 if (resp.equals("n")) return;
                 sc.nextLine();
             }
-        }catch (Exception e){
+        /*}catch (Exception e){
             System.out.println(e.getMessage());
-        }
+        }*/
     }
 }
