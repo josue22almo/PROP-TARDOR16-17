@@ -6,6 +6,7 @@
 package Presentacio;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -42,6 +43,8 @@ public class Vista extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         list1 = new java.awt.List();
         label1 = new java.awt.Label();
+        list2 = new java.awt.List();
+        Titulos = new java.awt.Label();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -63,14 +66,31 @@ public class Vista extends javax.swing.JFrame {
         Buscar.setBounds(80, 170, 100, 19);
         Buscar.getAccessibleContext().setAccessibleName("Buscar");
 
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jTextField1);
         jTextField1.setBounds(200, 170, 170, 19);
+
+        list1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                list1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(list1);
         list1.setBounds(80, 260, 210, 290);
 
         label1.setText("Autores:");
         getContentPane().add(label1);
-        label1.setBounds(90, 230, 60, 19);
+        label1.setBounds(80, 230, 60, 19);
+        getContentPane().add(list2);
+        list2.setBounds(420, 260, 220, 290);
+
+        Titulos.setText("Títulos:");
+        getContentPane().add(Titulos);
+        Titulos.setBounds(420, 230, 50, 19);
 
         jMenu1.setText("Archivo");
 
@@ -107,6 +127,26 @@ public class Vista extends javax.swing.JFrame {
         VistaAñadirCarpeta vc = new VistaAñadirCarpeta();
         vc.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+        
+        list1ActionPerformed(evt);
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void list1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_list1ActionPerformed
+        // TODO add your handling code here:
+        String autor = jTextField1.getText();
+        ArrayList<String> autorPref = null;
+        try {
+            autorPref = this.cp.getAutorPref(autor);
+        } catch (Exception ex) {
+            Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        for (String aut: autorPref) {
+            list1.add(aut);
+        }
+    }//GEN-LAST:event_list1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -149,6 +189,7 @@ public class Vista extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Label Buscar;
+    private java.awt.Label Titulos;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -159,5 +200,6 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private java.awt.Label label1;
     private java.awt.List list1;
+    private java.awt.List list2;
     // End of variables declaration//GEN-END:variables
 }

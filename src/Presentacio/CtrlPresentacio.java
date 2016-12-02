@@ -6,13 +6,20 @@
 package Presentacio;
 import Domini.*;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  *
  * @author florencia.rimolo
  */
 public class CtrlPresentacio {
+    private CtrlDomini cd;
+    
     public CtrlPresentacio() throws IOException {
-        CtrlDomini cd = new CtrlDomini();
+        this.cd = new CtrlDomini();
+    }
+    
+    public ArrayList<String> getAutorPref(String autor) throws Exception {
+        return this.cd.consultarAutoresPorPrefijo(autor);
     }
 }
