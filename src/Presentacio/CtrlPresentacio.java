@@ -22,4 +22,12 @@ public class CtrlPresentacio {
     public ArrayList<String> getAutorPref(String autor) throws Exception {
         return this.cd.consultarAutoresPorPrefijo(autor);
     }
+    
+    public void altaCjtoDocsDirectorio(String folder) throws Exception {
+        this.cd.altaConjuntoDocumentosDirectorio(folder);
+    }
+    
+    public void altaDocumento(String autor, String titulo, String contenido) throws Exception {
+        this.cd.altaDocumento(autor, titulo, contenido);
+    }
 }
