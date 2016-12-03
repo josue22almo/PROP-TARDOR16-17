@@ -178,11 +178,17 @@ public class Vista extends javax.swing.JFrame {
         // TODO add your handling code here:
         VistaAnadirDocumento vAD = new VistaAnadirDocumento();
         vAD.setVisible(true);
+        /*while (!vAD.botonAceptarApretado()) {
+            if (vAD.botonCancelarApretado()) break;
+        }*/
+        
+        if (vAD.botonAceptarApretado()) {
         ArrayList<String> doc = vAD.getDocumento();
-        if (doc.size() == 3) try {
+        try {
             cp.altaDocumento(doc.get(0), doc.get(1), doc.get(2));
         } catch (Exception ex) {
             Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
+        }
         }
     }//GEN-LAST:event_anadirDocumento
 

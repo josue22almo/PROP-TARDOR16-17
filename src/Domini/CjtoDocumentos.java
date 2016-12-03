@@ -41,7 +41,7 @@ public class CjtoDocumentos {
         //Calculamos el id
         int id;
         if (vecDocumentos.isEmpty()) id = 1;
-        else id = vecDocumentos.get(vecDocumentos.size()-1).getID()+1;
+        else id = numDocs-1;
         Documento doc = new Documento(id,autor,titulo,contenido);
         
         //Si no existe el autor, lo añadimos a nuestro trie
@@ -56,7 +56,7 @@ public class CjtoDocumentos {
         vecDocumentos.put(idInt,doc);
         
         // Se añade en dists 
-        dists.add(id-1,new TreeMap<>());
+        dists.add(new TreeMap<>());
         
         // Lo metemos en el map de IDs
         if (ids.containsKey(autor)) {
@@ -300,10 +300,10 @@ public class CjtoDocumentos {
                     vecDocumentos.get(i).calcularTFIDF(numDocs, diccionario);
                     double distTfIDf = vecDocumentos.get(i).calcularDistancia(vecDocumentos.get(j),"TF-IDF");
                     int idDoc = vecDocumentos.get(i).getID();
-                    ArrayList<Double> distancias= new ArrayList<> ();
+                    ArrayList<Double> distancias= new ArrayList<> ();                    
+                    dists.get(i).put(distancias, idDoc);
                     distancias.add(distFrec);
                     distancias.add(distTfIDf);
-                    dists.get(i).put(distancias, idDoc);
                 }
             }
         }  

@@ -3,14 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/dades/florencia.rimolo/prop/src/Presentacio/PanelImagen.java</file>
-            <file>file:/dades/florencia.rimolo/prop/src/Domini/Trie.java</file>
+            <file>file:/dades/florencia.rimolo/prop/src/Presentacio/VistaAnadirDocumento.java</file>
             <file>file:/dades/florencia.rimolo/prop/src/Domini/CtrlDomini.java</file>
-            <file>file:/dades/florencia.rimolo/prop/src/Presentacio/VistaAñadirCarpeta.java</file>
+            <file>file:/dades/florencia.rimolo/prop/src/Domini/DriverCtrlDomini.java</file>
             <file>file:/dades/florencia.rimolo/prop/src/Presentacio/CtrlPresentacio.java</file>
             <file>file:/dades/florencia.rimolo/prop/src/Persistencia/CtrlPersistencia.java</file>
             <file>file:/dades/florencia.rimolo/prop/src/Presentacio/Vista.java</file>
-            <file>file:/dades/florencia.rimolo/prop/src/Domini/CjtoDocumentos.java</file>
         </group>
     </open-files>
 </project-private>

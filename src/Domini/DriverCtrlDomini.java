@@ -127,7 +127,8 @@ public class DriverCtrlDomini {
                     autor = sc.nextLine();
                     System.out.println("Título:");
                     titulo = sc.nextLine();
-                    contenido = c.consultarContenido(autor,titulo); 
+                    contenido = c.consultarContenido(autor,titulo);
+                    System.out.println("Contenido:");
                     System.out.println(contenido);
                     break;
                 case 10:

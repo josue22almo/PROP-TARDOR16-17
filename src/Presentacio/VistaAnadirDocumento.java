@@ -6,6 +6,7 @@
 package Presentacio;
 
 import java.util.ArrayList;
+import jdk.nashorn.internal.codegen.CompilerConstants;
 
 /**
  *
@@ -15,6 +16,8 @@ public class VistaAnadirDocumento extends javax.swing.JFrame {
     private String autor;
     private String titulo;
     private String contenido;
+    private boolean botonAceptarApretado;
+    private boolean botonCancelarApretado;
     /**
      * Creates new form VistaAnadirDocumento
      */
@@ -139,15 +142,20 @@ public class VistaAnadirDocumento extends javax.swing.JFrame {
     private void textFieldTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldTituloActionPerformed
         // TODO add your handling code here:
         this.titulo = textFieldTitulo.getText();
+        botonAceptarApretado = false;
+        botonCancelarApretado = false;
     }//GEN-LAST:event_textFieldTituloActionPerformed
 
     private void textFieldContenidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldContenidoActionPerformed
         // TODO add your handling code here:
         this.contenido = textFieldContenido.getText();
+        botonAceptarApretado = false;
     }//GEN-LAST:event_textFieldContenidoActionPerformed
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
         // TODO add your handling code here:
+        botonAceptarApretado = false;
+        botonCancelarApretado = true;
         this.setVisible(false);
         //System.exit(0);
     }//GEN-LAST:event_botonCancelarActionPerformed
@@ -157,12 +165,15 @@ public class VistaAnadirDocumento extends javax.swing.JFrame {
         textFieldAutorActionPerformed(evt);
         textFieldTituloActionPerformed(evt);
         textFieldContenidoActionPerformed(evt);
+        botonAceptarApretado = true;
         this.setVisible(false);
         
     }//GEN-LAST:event_botonAceptarActionPerformed
 
     private void textFieldAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldAutorActionPerformed
         // TODO add your handling code here:
+        botonAceptarApretado = false;
+        botonCancelarApretado = false;
         this.autor = textFieldAutor.getText();
     }//GEN-LAST:event_textFieldAutorActionPerformed
     
@@ -172,6 +183,14 @@ public class VistaAnadirDocumento extends javax.swing.JFrame {
         doc.add(this.titulo);
         doc.add(this.contenido);
         return doc;
+    }
+    
+    public boolean botonAceptarApretado() {
+        return this.botonAceptarApretado;
+    }
+    
+    public boolean botonCancelarApretado() {
+        return this.botonCancelarApretado;
     }
     /**
      * @param args the command line arguments
@@ -204,8 +223,10 @@ public class VistaAnadirDocumento extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new VistaAnadirDocumento().setVisible(true);
+                
             }
         });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

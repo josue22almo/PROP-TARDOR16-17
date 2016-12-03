@@ -20,10 +20,10 @@ public class CtrlDomini {
     public static ArrayList<String> catalan;
     public static ArrayList<String> ingles;
     public CtrlDomini () throws IOException {
-        espanol = ctrlPersistencia.leerPalabrasFuncionales("/home2/users/alumnes/1192808/prop/sp.txt");
-        catalan = ctrlPersistencia.leerPalabrasFuncionales("/home2/users/alumnes/1192808/prop/cat.txt");
-        ingles = ctrlPersistencia.leerPalabrasFuncionales("/home2/users/alumnes/1192808/prop/eng.txt");
-        System.out.println(espanol.size());
+        espanol = ctrlPersistencia.leerPalabrasFuncionales("/dades/florencia.rimolo/prop/sp.txt");
+        catalan = ctrlPersistencia.leerPalabrasFuncionales("/dades/florencia.rimolo/prop/cat.txt");
+        ingles = ctrlPersistencia.leerPalabrasFuncionales("/dades/florencia.rimolo/prop/eng.txt");
+        //System.out.println(espanol.size());
     }
   
     public void altaConjuntoDocumentosDirectorio(String folder) throws Exception{       
