@@ -140,7 +140,7 @@ public class DriverCtrlDomini {
                     System.out.println("Número de documentos:");
                     k = sc.nextInt();
                     sc.nextLine();
-                    System.out.println("Escribe FREC o TFIDF:");
+                    System.out.println("Escribe FREC o TF-IDF:");
                     aux = sc.nextLine();
                     Map<String,String> docs = c.getDocumentosParecidos(autor,titulo,k,aux); 
                     for (String key : docs.keySet()){

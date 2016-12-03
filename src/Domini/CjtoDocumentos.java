@@ -16,7 +16,8 @@ public class CjtoDocumentos {
     private Map <Integer, Documento> vecDocumentos; // Integer-> ID
     //private Map<String, String> vecDoc1; //para consultarContenido 
     //private Map<String, ArrayList<String> > vecDoc2; //para consultarTitulosAutor
-    private ArrayList< TreeMap < ArrayList <Double> , Integer > > dists; // Double-> distancia, Integer->ID
+    private ArrayList< TreeMap < Double , Integer > > distsFrec; // Double-> distancia, Integer->ID
+    private ArrayList< TreeMap < Double , Integer > > distsTFIDF;
     private Map<String, Map<String,Integer> > ids; // 1rString -> autor, 2nString -> titulo, Integer-> ID
     private Trie trie; //para consultarAutoresPorPrefijo
     private static Diccionario diccionario;
@@ -25,7 +26,8 @@ public class CjtoDocumentos {
     public CjtoDocumentos() {        
         this.ids = new HashMap<> ();
         this.vecDocumentos = new TreeMap<>();
-        this.dists = new ArrayList<> ();
+        this.distsFrec = new ArrayList<> ();
+        this.distsTFIDF = new ArrayList<> ();
         //this.vecDoc1 = new HashMap<>(); 
         //this.vecDoc2 = new HashMap<>();
         this.trie = new Trie();
@@ -56,7 +58,8 @@ public class CjtoDocumentos {
         vecDocumentos.put(idInt,doc);
         
         // Se añade en dists 
-        dists.add(new TreeMap<>());
+        distsFrec.add(new TreeMap<>());
+        distsTFIDF.add(new TreeMap<>());
         
         // Lo metemos en el map de IDs
         if (ids.containsKey(autor)) {
@@ -299,11 +302,9 @@ public class CjtoDocumentos {
                     double distFrec = vecDocumentos.get(i).calcularDistancia(vecDocumentos.get(j),"FREC");
                     vecDocumentos.get(i).calcularTFIDF(numDocs, diccionario);
                     double distTfIDf = vecDocumentos.get(i).calcularDistancia(vecDocumentos.get(j),"TF-IDF");
-                    int idDoc = vecDocumentos.get(i).getID();
-                    ArrayList<Double> distancias= new ArrayList<> ();                    
-                    dists.get(i).put(distancias, idDoc);
-                    distancias.add(distFrec);
-                    distancias.add(distTfIDf);
+                    int idDoc = vecDocumentos.get(i).getID();                  
+                    distsFrec.get(i).put(distFrec, idDoc);
+                    distsTFIDF.get(i).put(distTfIDf, idDoc);
                 }
             }
         }  
@@ -317,9 +318,13 @@ public class CjtoDocumentos {
         return this.vecDocumentos;
     }
     
-    public ArrayList< TreeMap < ArrayList <Double> , Integer > > getDists(){
-        return this.dists;
+    public ArrayList< TreeMap < Double , Integer > > getDistsFrec(){
+        return this.distsFrec;
     }
+    
+    public ArrayList< TreeMap < Double , Integer > > getDistsTFIDF(){
+        return this.distsTFIDF;
+    }    
     
     public Map<String, Map<String,Integer> > getIds(){
         return this.ids;
