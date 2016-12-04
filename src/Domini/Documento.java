@@ -3,7 +3,7 @@ package Domini;
 
 
 import java.util.Map;
-
+import java.util.ArrayList;
 /**
  *
  * @author florencia.rimolo
@@ -56,7 +56,6 @@ public class Documento {
     }
     
     public Contenido getContenido(){
-        
         return contenido;
     }
     
@@ -78,6 +77,10 @@ public class Documento {
     public boolean equals(String au, String tit){
         
         return autor.equals(au) && titulo.equals(tit);
+    }
+    
+    public ArrayList<Frase> getFrases(){
+        return contenido.getFrases();
     }
 
     public void calcularTFIDF(int numDocs, Diccionario diccionario) {

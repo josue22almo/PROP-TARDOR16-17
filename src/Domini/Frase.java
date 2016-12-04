@@ -22,20 +22,20 @@ public class Frase {
     }
 
     boolean contains(String frase) {
-        boolean b = string().contains(frase);
+        boolean b = toString().contains(frase);
         return b;
     }
     
     boolean contains(ArrayList<String> words) {
         boolean b = true;
         for (int i = 0; i < words.size() && b;++i){
-            b = string().contains(words.get(i));
+            b = toString().contains(words.get(i));
         }
-        //System.out.println("");
         return b;
     }
     
-    private String string(){
+    @Override
+    public String toString(){
         boolean first = true;
         String s = "";
         for(int i = 0; i < frase.size(); ++i){

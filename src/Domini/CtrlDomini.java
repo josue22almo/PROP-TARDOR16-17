@@ -20,10 +20,9 @@ public class CtrlDomini {
     public static ArrayList<String> catalan;
     public static ArrayList<String> ingles;
     public CtrlDomini () throws IOException {
-        espanol = ctrlPersistencia.leerPalabrasFuncionales("/dades/florencia.rimolo/prop/sp.txt");
-        catalan = ctrlPersistencia.leerPalabrasFuncionales("/dades/florencia.rimolo/prop/cat.txt");
-        ingles = ctrlPersistencia.leerPalabrasFuncionales("/dades/florencia.rimolo/prop/eng.txt");
-        //System.out.println(espanol.size());
+        espanol = ctrlPersistencia.leerPalabrasFuncionales("src/Texto/sp.txt");
+        catalan = ctrlPersistencia.leerPalabrasFuncionales("src/Texto/cat.txt");
+        ingles = ctrlPersistencia.leerPalabrasFuncionales("src/Texto/eng.txt");
     }
   
     public void altaConjuntoDocumentosDirectorio(String folder) throws Exception{       
@@ -112,11 +111,9 @@ public class CtrlDomini {
          return cd.consultarAutoresPorPrefijo(prefijo);
     }
     
-    public Map<String,String> getDocumentosBool(String frase) throws Exception{
+    public Map<String,String> getDocumentosBool(String expresion) throws Exception{
         Map<String,String> m = new HashMap<>();
-        /*ArrayList <Documento> l = cd.getDocumentosBool(frase);
-        for (Documento d : l)
-            m.put(d.getAutor(),d.getTitulo());*/
+        BooleanTree tree = new BooleanTree(expresion);
         return m;
     }
     

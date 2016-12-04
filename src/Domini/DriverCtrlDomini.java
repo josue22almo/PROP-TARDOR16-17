@@ -15,6 +15,7 @@ public class DriverCtrlDomini {
     public static void main(String[] args) throws IOException, Exception{
         CtrlDomini c = new CtrlDomini();
         Scanner sc = new Scanner(System.in);
+        c.altaConjuntoDocumentosDirectorio("Documentos");
         while(true){
             System.out.println("Indique qué desea hacer:");
             System.out.println("1. Dar de alta a un conjunto de documentos dado un directorio");
@@ -164,9 +165,9 @@ public class DriverCtrlDomini {
                     while(it.hasNext()){
                         Integer id = (Integer) it.next();
                         Documento doc = vecDocumentos.get(id);
-                        System.out.println("Id: " + id + '\n' + "Autor: " + doc.getAutor() + '\n');
-                        System.out.println(" Titulo: " + doc.getTitulo() + '\n' + " Contenido: " + doc.getContenidoOriginal());
-                        System.out.println();
+                        System.out.print("Id: " + id + '\n' + "Autor: " + doc.getAutor() + '\n');
+                        System.out.println("Titulo: " + doc.getTitulo() + '\n' + "Contenido: " + doc.getContenidoOriginal());
+//                        System.out.println();
                     }
                     System.out.println();
                     System.out.println("ids es:");
@@ -178,9 +179,9 @@ public class DriverCtrlDomini {
                         Iterator it3 = ts.keySet().iterator();
                         while(it3.hasNext()){
                             String t = (String) it3.next();
-                            System.out.println("Id: " + ids.get(a).get(t) + '\n' + "Autor: " + a + '\n');
-                            System.out.println(" Titulo: " + t + '\n');
-                            System.out.println();
+                            System.out.print("Id: " + ids.get(a).get(t) + '\n' + "Autor: " + a + '\n');
+                            System.out.println("Titulo: " + t + '\n');
+//                            System.out.println();
                         }
                     }                
                     break;

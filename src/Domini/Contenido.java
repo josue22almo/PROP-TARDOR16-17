@@ -2,9 +2,8 @@
 package Domini;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Map;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 /**
  *
  * @author josue.inaldo.alcantara
@@ -13,10 +12,13 @@ public class Contenido {
     
     private String contenidoOriginal;
     private Map<String,Palabra> contenidoReducido;
-    
+    private ArrayList<Frase> frases;
+
 
     public Contenido(){
         contenidoOriginal = "";
+        contenidoReducido = new LinkedHashMap<>();    
+        frases = new ArrayList<>();
     }
     
     //Crea un contenido con contenidoOriginal y a partir de contenidoOriginal calula contenidoReducido
@@ -35,8 +37,7 @@ public class Contenido {
     public void setContenidoOriginal(String contenidoOriginal) {
        // System.out.println("Set contenido original");
         this.contenidoOriginal = contenidoOriginal; 
-        if (!contenidoOriginal.isEmpty())
-            contenidoReducido.clear();
+        contenidoReducido.clear();
         calcularContenidoReducido();
     }
 
@@ -62,23 +63,65 @@ public class Contenido {
         }	
     }
     
+    public ArrayList<Frase> getFrases() {
+        return frases;
+    }
+    
+    /*Separa el String contenidoOriginal en palabras. Aprovecha para encontrar las palabras
+    no funcionales y sus frecuencias (contenidoReducido) y las frases*/
     private void calcularContenidoReducido(){
         String palabra = new String();
-        this.contenidoReducido = new HashMap<>();
+        this.contenidoReducido = new LinkedHashMap<>();
+        frases = new ArrayList<>();
+        Frase frase = new Frase();
         for(int i = 0; i < contenidoOriginal.length(); ++i){
-            if (charValido(contenidoOriginal.charAt(i))){
-                palabra = palabra + contenidoOriginal.charAt(i);
-            }
-            else{
-                if (palabraValida(palabra) && palabra.length() > 0){
-                    addPalabra(palabra);
+            char c = contenidoOriginal.charAt(i);
+            if(!esSignoDePuntuacion(c)){
+                if (charValido(c)){
+                    palabra = palabra + contenidoOriginal.charAt(i);
                 }
+                else{
+                    if (palabra.length() > 0){
+                        frase.addPalabra(preparedString(palabra));
+                        if (palabraValida(palabra)){
+                           addPalabra(palabra);
+                        }
+                        palabra = "";    
+                    }
+                    
+                }
+            }else{
+                frase.addPalabra(preparedString(palabra));
+                frases.add(frase);
                 palabra = "";
+                frase = new Frase();
             }
+            
         }
         if (palabra.length() > 0){
+            frase.addPalabra(preparedString(palabra));
+            frases.add(frase);
             addPalabra(palabra);
         }
+    }
+    
+    private String preparedString(String str){
+        String especialChars = "áàäéèëíìïóòöúùñÁÀÄÉÈËÍÌÏÓÒÖÚÙÜÑçÇ";
+        String ascii = "aaaeeeiiiooouuunAAAEEEIIIOOOUUUNcC";
+        String s = str;        
+        for (int j = 0; j < especialChars.length();++j){
+            String t = "" + especialChars.charAt(j);
+            while(s.contains(t)){
+                String y = "" + s.charAt(s.indexOf(t));
+                String replace = "" + ascii.charAt(j);
+                s = s.replace(y, replace);
+            }
+        }        
+        return s;
+    }
+    
+    private boolean esSignoDePuntuacion(char c){
+        return c == '.' || c == '!' || c == '?';
     }
     
     /*Mira si la palabra ya está añadida. 
@@ -142,9 +185,4 @@ public class Contenido {
         }
        return Math.sqrt(cont);
     }
-
-   /* public void printContenidoReducido() {
-        for (String key : contenidoReducido.keySet())
-                System.out.println("key: " + key + " frecs = " + contenidoReducido.get(key).getFrecuencia() + " TF-IDF: " + contenidoReducido.get(key).getTFIDF());
-    }*/
 }
