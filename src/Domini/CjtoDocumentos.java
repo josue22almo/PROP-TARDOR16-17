@@ -16,9 +16,9 @@ public class CjtoDocumentos {
     private Map <Integer, Documento> vecDocumentos; // Integer-> ID
     //private Map<String, String> vecDoc1; //para consultarContenido 
     //private Map<String, ArrayList<String> > vecDoc2; //para consultarTitulosAutor
-    private ArrayList< TreeMap < Double , Integer > > distsFrec; // Double-> distancia, Integer->ID
-    private ArrayList< TreeMap < Double , Integer > > distsTFIDF;
-    private Map<String, Map<String,Integer> > ids; // 1rString -> autor, 2nString -> titulo, Integer-> ID
+    private Map < Integer, TreeMap < Double , Integer > > distsFrec; // Double-> distancia, Integer->ID
+    private Map < Integer, TreeMap < Double , Integer > > distsTFIDF;
+    private Map < String, Map<String,Integer> > ids; // 1rString -> autor, 2nString -> titulo, Integer-> ID
     private Trie trie; //para consultarAutoresPorPrefijo
     private static Diccionario diccionario;
     private int numDocs; 
@@ -26,8 +26,8 @@ public class CjtoDocumentos {
     public CjtoDocumentos() {        
         this.ids = new HashMap<> ();
         this.vecDocumentos = new TreeMap<>();
-        this.distsFrec = new ArrayList<> ();
-        this.distsTFIDF = new ArrayList<> ();
+        this.distsFrec = new TreeMap<> ();
+        this.distsTFIDF = new TreeMap<> ();
         //this.vecDoc1 = new HashMap<>(); 
         //this.vecDoc2 = new HashMap<>();
         this.trie = new Trie();
@@ -58,8 +58,8 @@ public class CjtoDocumentos {
         vecDocumentos.put(idInt,doc);
         
         // Se añade en dists 
-        distsFrec.add(new TreeMap<>());
-        distsTFIDF.add(new TreeMap<>());
+        distsFrec.put(id,new TreeMap<>());
+        distsTFIDF.put(id,new TreeMap<>());
         
         // Lo metemos en el map de IDs
         if (ids.containsKey(autor)) {
@@ -235,59 +235,6 @@ public class CjtoDocumentos {
         return doc.getContenidoOriginal();
     }
    
-    /*public ArrayList<Documento> getDocumentosParecidos(String autor, String titulo, int k, String type) throws Exception {
-    	
-        if (!type.equals("TF-IDF") && !type.equals("FREC"))
-    		throw new Exception("El tipo que ha especificado no es válido. Ha de ser FREC o TF-IDF.");
-        
-        if (!existeDocumento(autor, titulo))
-            throw new Exception("El documento no existe");*/
-        
-        /*Se calcula la distancia de los otros documentos respecto al documento T
-        for (int i = 0; i < vecDocumentos.size(); i++){
-            if (i != pos) {
-                double dist = origen.calcularDistancia(vecDocumentos.get(i),type);
-                
-                //Añadimos al TreeMap la distancia y el documento y ya queda ordenado 
-                
-                //Si en el map no hay documentos con distancia = dist:
-                if (!docs.containsKey(dist)) {
-                    ArrayList<Documento> d = new ArrayList<>();
-                    d.add(vecDocumentos.get(i));
-                    docs.put(dist,d);
-                }
-                //Si en el map ya hay documentos con distancia = dist:
-                else {
-                    ArrayList<Documento> d = docs.get(dist);
-                    d.add(vecDocumentos.get(i));
-                }
-            }
-        }*/
-    
-        /*int id = ids.get(autor).get(titulo);
-        Map < ArrayList <Double> , Integer > docs = dists.get(id);
-        
-        //retornar solo los k primeros elementos
-        ArrayList<Documento> v_docs = new ArrayList<>();
-        Iterator it = docs.keySet().iterator();
-        int aux = k;
-        while(it.hasNext() && aux > 0){
-            Double key = (Double) it.next();
-            v_docs.add(vecDocumentos.get(docs.get(key)));
-            --aux;
-        }
-        return v_docs;
-    }*/
-    
-    /*public ArrayList<Documento> getDocumentosBool(String frase) throws Exception {
-        
-        ArrayList<Documento> v_docs =  new ArrayList<>();
-        
-        
-        
-        return v_docs;
-    }*/
-    
     public void calcularDistancias() {
         //Map<Double,ArrayList<Documento>> docs;
         //docs = new TreeMap<>();
@@ -302,9 +249,10 @@ public class CjtoDocumentos {
                     double distFrec = vecDocumentos.get(i).calcularDistancia(vecDocumentos.get(j),"FREC");
                     vecDocumentos.get(i).calcularTFIDF(numDocs, diccionario);
                     double distTfIDf = vecDocumentos.get(i).calcularDistancia(vecDocumentos.get(j),"TF-IDF");
-                    int idDoc = vecDocumentos.get(i).getID();                  
-                    distsFrec.get(i).put(distFrec, idDoc);
-                    distsTFIDF.get(i).put(distTfIDf, idDoc);
+                    int idDoc = vecDocumentos.get(i).getID();
+                    int idDoc2 = vecDocumentos.get(j).getID();
+                    distsFrec.get(idDoc).put(distFrec, idDoc2);
+                    distsTFIDF.get(idDoc).put(distTfIDf, idDoc2);
                 }
             }
         }  
@@ -318,11 +266,11 @@ public class CjtoDocumentos {
         return this.vecDocumentos;
     }
     
-    public ArrayList< TreeMap < Double , Integer > > getDistsFrec(){
+    public Map<Integer, TreeMap < Double , Integer > > getDistsFrec(){
         return this.distsFrec;
     }
     
-    public ArrayList< TreeMap < Double , Integer > > getDistsTFIDF(){
+    public Map<Integer, TreeMap < Double , Integer > > getDistsTFIDF(){
         return this.distsTFIDF;
     }    
     
