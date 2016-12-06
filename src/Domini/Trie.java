@@ -86,8 +86,9 @@ public class Trie {
                 Character c = (Character) it.next();
                 autor+=c;
                 Nodo a = sub.getHijo(c);
-                consultarSubArbol(a, aux, autor);
                 if (a.getFi()) aux.add(autor);
+                consultarSubArbol(a, aux, autor);
+                
             }
         }
     }
