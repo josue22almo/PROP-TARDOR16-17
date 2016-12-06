@@ -16,6 +16,10 @@ public class Trie {
         this.raiz = new Nodo(null);
     }
     
+    /**
+     *
+     * @param autor
+     */
     public void añadirAutor(String autor) {
         Nodo n = raiz;
         for(int i=0; i < autor.length(); i++) {
@@ -23,8 +27,9 @@ public class Trie {
             //Nodo sub = n.getHijo(c);
             if (!n.getMapHijo().containsKey(c)) n.añadeHijo(c, new Nodo(n));
             n = n.getHijo(c);
-            if (i == autor.length()-1) n.setFi(true);
+            //if (i == autor.length()-1) n.setFi(true);
         }
+        n.setFi(true);
     }
     
     public void eliminarAutor(String autor){
@@ -76,9 +81,7 @@ public class Trie {
         if (sub.getFi()) aux.add(autor);
         //if (sub != null){
         if (!sub.getMapHijo().isEmpty()){
-            Iterator it = sub.getMapHijo().keySet().iterator();
-            while(it.hasNext()){
-                Character c = (Character) it.next();
+            for (Character c : sub.getMapHijo().keySet()) {
                 autor+=c;
                 Nodo a = sub.getHijo(c);
                 consultarSubArbol(a, aux, autor); 

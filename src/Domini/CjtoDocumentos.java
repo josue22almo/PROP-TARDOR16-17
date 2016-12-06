@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 import java.util.TreeMap;
 
 /**
@@ -19,7 +21,8 @@ public class CjtoDocumentos {
     private Map < String, Map<String,Integer> > ids; // 1rString -> autor, 2nString -> titulo, Integer-> ID
     private Trie trie; //para consultarAutoresPorPrefijo
     private static Diccionario diccionario;
-    private int numDocs; 
+    private int numDocs;
+    private int histDocs;
     
     public CjtoDocumentos() {        
         this.ids = new HashMap<> ();
@@ -39,10 +42,9 @@ public class CjtoDocumentos {
             throw new Exception("El documento ya existe"); 
         
         //Calculamos el id
-        int id;
-        if (vecDocumentos.isEmpty()) id = 1;
-        else id = numDocs-1;
-        Documento doc = new Documento(id,autor,titulo,contenido);
+        ++histDocs;
+        int id = histDocs;
+        Documento doc = new Documento(histDocs,autor,titulo,contenido);
        
         //Se da de alta en vecDocumentos
         Integer idInt = (Integer) id;
@@ -230,16 +232,16 @@ public class CjtoDocumentos {
         //Documento origen = vecDocumentos.get(0);
         
         //Se calcula la distancia de todos los documentos respecto a todos los documentos
-        for (int i = 0; i < vecDocumentos.size(); i++){
-            for (int j = 0; j < vecDocumentos.size(); j++) {
-                if (i != j) {
-                    double distFrec = vecDocumentos.get(i).calcularDistancia(vecDocumentos.get(j),"FREC");
-                    vecDocumentos.get(i).calcularTFIDF(numDocs, diccionario);
-                    double distTfIDf = vecDocumentos.get(i).calcularDistancia(vecDocumentos.get(j),"TF-IDF");
-                    int idDoc = vecDocumentos.get(i).getID();
-                    int idDoc2 = vecDocumentos.get(j).getID();
-                    distsFrec.get(idDoc).put(distFrec, idDoc2);
-                    distsTFIDF.get(idDoc).put(distTfIDf, idDoc2);
+        for (Integer doc1: vecDocumentos.keySet()){
+            for (Integer doc2: vecDocumentos.keySet()) {
+                if (doc1 != doc2) {
+                    double distFrec = vecDocumentos.get(doc1).calcularDistancia(vecDocumentos.get(doc2),"FREC");
+                    vecDocumentos.get(doc1).calcularTFIDF(numDocs, diccionario);
+                    double distTfIDf = vecDocumentos.get(doc1).calcularDistancia(vecDocumentos.get(doc2),"TF-IDF");
+                    //int idDoc = vecDocumentos.get(doc1).getID();
+                    //int idDoc2 = vecDocumentos.get(doc2).getID();
+                    distsFrec.get(doc1).put(distFrec, doc2);
+                    distsTFIDF.get(doc1).put(distTfIDf, doc2);
                 }
             }
         }  
