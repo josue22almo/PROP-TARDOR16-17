@@ -31,7 +31,7 @@ public class Trie {
                 n = n.getHijo(c);
             }
             if (i == autor.length()-1){
-                n.añadeHijo(c, new Nodo(n));
+                n.añadeHijo(c,null);
                 n.setFi(true);
             }
         }
@@ -67,7 +67,7 @@ public class Trie {
         ArrayList<String> aux = new ArrayList<>();
         Nodo n = raiz;
         if (prefijo==""){
-            consultarSubArbol(n, aux, prefijo);
+            consultarSubArbol(n, aux, "");
             return aux;
         }
         for(int i=0; i < prefijo.length(); i++) {
@@ -80,15 +80,14 @@ public class Trie {
     }
     
     public void consultarSubArbol(Nodo sub, ArrayList<String> aux, String autor){
+        //if (sub.getFi()) aux.add(autor);
         if (sub != null){
             Iterator it = sub.getMapHijo().keySet().iterator();
             while(it.hasNext()){
                 Character c = (Character) it.next();
                 autor+=c;
                 Nodo a = sub.getHijo(c);
-                if (a.getFi()) aux.add(autor);
-                consultarSubArbol(a, aux, autor);
-                
+                consultarSubArbol(a, aux, autor); 
             }
         }
     }

@@ -23,6 +23,7 @@ public class Nodo {
         //this.letra = c;
         this.padre = padre;
         this.hijo = new TreeMap<>();
+        this.fi = false;
     }
  
     public Nodo getHijo(char c) {
@@ -36,10 +37,6 @@ public class Nodo {
     public void añadeHijo(char c, Nodo n) {
         hijo.put(c,n);
     }
-    
-    /*public void añadeHijoSinMap(char c, Nodo n){
-        
-    }*/
     
     public void eliminarHijo(char c){
         hijo.remove(c);
