@@ -22,17 +22,10 @@ public class Trie {
         Nodo n = raiz;
         for(int i=0; i < autor.length(); i++) {
             char c = autor.charAt(i);
-            Nodo sub = n.getHijo(c);
-            if (!n.getMapHijo().isEmpty()) n = sub;
-            else {
-                //if (i == autor.length()-1) n.añadeHijoSinMap(c, n);
-                n.añadeHijo(c, new Nodo(n));
-                n = n.getHijo(c);
-            }
-            if (i == autor.length()-1){
-                n.añadeHijo(c,new Nodo(n));
-                n.setFi(true);
-            }
+            //Nodo sub = n.getHijo(c);
+            if (!n.getMapHijo().containsKey(c)) n.añadeHijo(c, new Nodo(n));
+            n = n.getHijo(c);
+            if (i == autor.length()-1) n.setFi(true);
         }
     }
     
@@ -66,7 +59,7 @@ public class Trie {
     public ArrayList<String> consultarListaDelPrefijo(String prefijo) {
         ArrayList<String> aux = new ArrayList<>();
         Nodo n = raiz;
-        if (prefijo==""){
+        if ("".equals(prefijo)){
             consultarSubArbol(n, aux, "");
             return aux;
         }

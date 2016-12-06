@@ -49,8 +49,4 @@ public class Nodo {
     public void setFi(boolean f){
         this.fi = f;
     }
-    
-    /*public Integer getSize(){
-        return hijo.size();
-    }*/
 }
