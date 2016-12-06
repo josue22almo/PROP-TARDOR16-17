@@ -13,14 +13,12 @@ import java.util.TreeMap;
  * @author jessica.sobreviela
  */
 public class Nodo {
-    //private char letra;
     private boolean fi;
     private Nodo padre;
     private Map< Character,Nodo > hijo;
             
     public Nodo(Nodo padre)
     {
-        //this.letra = c;
         this.padre = padre;
         this.hijo = new TreeMap<>();
         this.fi = false;
