@@ -15,7 +15,7 @@ public class DriverCtrlDomini {
     public static void main(String[] args) throws IOException, Exception{
         CtrlDomini c = new CtrlDomini();
         Scanner sc = new Scanner(System.in);
-        c.altaConjuntoDocumentosDirectorio("Documentos");
+        //c.altaConjuntoDocumentosDirectorio("Documentos");
         while(true){
             System.out.println("Indique qué desea hacer:");
             System.out.println("1. Dar de alta a un conjunto de documentos dado un directorio");
@@ -114,9 +114,10 @@ public class DriverCtrlDomini {
                 case 8:
                     System.out.println("Consultar autores por prefijo");
                     System.out.println("Prefijo:");
-                    String prefijo = "";
+                    String prefijo = sc.nextLine();
+                    /*String prefijo = "";
                     if (!(aux = sc.nextLine()).isEmpty())
-                        prefijo = aux;
+                        prefijo = aux;*/
                     ArrayList<String> aut = c.consultarAutoresPorPrefijo(prefijo); 
                     for (int i=0; i < aut.size(); ++i){
                         System.out.println(aut.get(i));
@@ -183,7 +184,7 @@ public class DriverCtrlDomini {
                             System.out.println("Titulo: " + t + '\n');
 //                            System.out.println();
                         }
-                    }                
+                    }            
                     break;
                 case 13:
                     System.out.println("Salir");

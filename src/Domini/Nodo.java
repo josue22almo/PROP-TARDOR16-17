@@ -10,7 +10,7 @@ import java.util.TreeMap;
 
 /**
  *
- * @author jessica
+ * @author jessica.sobreviela
  */
 public class Nodo {
     //private char letra;

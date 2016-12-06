@@ -30,7 +30,10 @@ public class Trie {
                 n.añadeHijo(c, new Nodo(n));
                 n = n.getHijo(c);
             }
-            if (i == autor.length()-1) n.setFi(true);
+            if (i == autor.length()-1){
+                n.añadeHijo(c, new Nodo(n));
+                n.setFi(true);
+            }
         }
     }
     
@@ -70,8 +73,8 @@ public class Trie {
         for(int i=0; i < prefijo.length(); i++) {
             char c = prefijo.charAt(i);
             Nodo sub = n.getHijo(c);
-            if (sub == null) return null;
-            else if (i == prefijo.length()-1) consultarSubArbol(sub, aux, prefijo);
+            n = sub;
+            if (i == prefijo.length()-1) consultarSubArbol(sub, aux, prefijo);
         }
         return aux;
     }
@@ -82,11 +85,10 @@ public class Trie {
             while(it.hasNext()){
                 Character c = (Character) it.next();
                 autor+=c;
-                if (sub.getFi()) aux.add(autor);
                 Nodo a = sub.getHijo(c);
                 consultarSubArbol(a, aux, autor);
+                if (a.getFi()) aux.add(autor);
             }
         }
-        aux.add(autor);
     }
 }
