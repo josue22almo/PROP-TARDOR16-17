@@ -86,8 +86,8 @@ public class CtrlDomini {
         int id = cd.getIds().get(autor).get(titulo); 
                                                         
         // Cogemos el map con las distancias respecto al documento con id = id
-        Map < Double , Integer > docs;
-        Map<String,String> m = new TreeMap<>();
+        Map < Double, Integer > docs;
+        Map < String, String > m = new TreeMap<>();
         if ("FREC".equals(type)) {
             docs = cd.getDistsFrec().get(id);
         }
@@ -95,7 +95,7 @@ public class CtrlDomini {
             docs = cd.getDistsTFIDF().get(id);
         }
         //Retornar solo los k primeros elementos
-        Map <Integer, Documento> vecDocumentos = cd.getVecDocumentos();
+        Map < Integer, Documento > vecDocumentos = cd.getVecDocumentos();
         Iterator it = docs.keySet().iterator();
         int aux = 0;
         while(it.hasNext() && aux < k){
