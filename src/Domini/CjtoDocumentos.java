@@ -43,10 +43,7 @@ public class CjtoDocumentos {
         if (vecDocumentos.isEmpty()) id = 1;
         else id = numDocs-1;
         Documento doc = new Documento(id,autor,titulo,contenido);
-        
-        //Si no existe el autor, lo añadimos a nuestro trie
-        if (ids.get(autor) == null) trie.añadirAutor(autor);
-        
+       
         //Se da de alta en vecDocumentos
         Integer idInt = (Integer) id;
         vecDocumentos.put(idInt,doc);
@@ -61,7 +58,9 @@ public class CjtoDocumentos {
             ids.get(autor).put(titulo, id2);
         }
         else {
+            //Si no existe el autor, lo añadimos a nuestro trie
             trie.añadirAutor(autor);
+            
             Map<String,Integer> titulos_autor = new HashMap<>();
             Integer id2 = (Integer) id;
             titulos_autor.put(titulo,id2);
@@ -136,9 +135,6 @@ public class CjtoDocumentos {
         /*bajaDocumento(autor,titulo);
         altaDocumento(autorModif,titulo,contenido);*/
         
-        //Si no existe autorModif, lo añadimos a nuestro trie
-        if (ids.get(autorModif) == null) trie.añadirAutor(autorModif);
-        
         //Se modifica en vecDocumentos
         int id = ids.get(autor).get(titulo);
         vecDocumentos.get(id).setAutor(autorModif);
@@ -151,6 +147,9 @@ public class CjtoDocumentos {
             titulos_e_ids_NuevoAutor.put(titulo, id);
         }
         else {
+            //Si no existe autorModif, lo añadimos a nuestro trie
+            trie.añadirAutor(autorModif);
+            
             Map<String,Integer> titulos_e_ids_NuevoAutor = new HashMap<>();
             titulos_e_ids_NuevoAutor.put(titulo,id);
             ids.put(autor, titulos_e_ids_NuevoAutor);
@@ -158,7 +157,7 @@ public class CjtoDocumentos {
         titulos_e_ids_AnteriorAutor.remove(titulo);
         
         //Si despúes de modificar el autor, autor ya no existe, lo eliminamos de nuestro trie:
-        if (ids.get(autor) == null) trie.eliminarAutor(autor);
+        if (!ids.containsKey(autor)) trie.eliminarAutor(autor);
     }
     
     public void modificaTituloDoc(String autor, String titulo, String tituloModif) throws Exception {

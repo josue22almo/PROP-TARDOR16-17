@@ -23,10 +23,7 @@ public class Trie {
         for(int i=0; i < autor.length(); i++) {
             char c = autor.charAt(i);
             Nodo sub = n.getHijo(c);
-            if (!n.getMapHijo().isEmpty()){
-                n = sub;
-                System.out.println("Esta letra ya esta puesta");
-            }
+            if (!n.getMapHijo().isEmpty()) n = sub;
             else {
                 //if (i == autor.length()-1) n.añadeHijoSinMap(c, n);
                 n.añadeHijo(c, new Nodo(n));
