@@ -14,8 +14,6 @@ import java.util.TreeMap;
 public class CjtoDocumentos {
     
     private Map <Integer, Documento> vecDocumentos; // Integer-> ID
-    //private Map<String, String> vecDoc1; //para consultarContenido 
-    //private Map<String, ArrayList<String> > vecDoc2; //para consultarTitulosAutor
     private Map < Integer, TreeMap < Double , Integer > > distsFrec; // Double-> distancia, Integer->ID
     private Map < Integer, TreeMap < Double , Integer > > distsTFIDF;
     private Map < String, Map<String,Integer> > ids; // 1rString -> autor, 2nString -> titulo, Integer-> ID
@@ -47,11 +45,7 @@ public class CjtoDocumentos {
         Documento doc = new Documento(id,autor,titulo,contenido);
         
         //Si no existe el autor, lo añadimos a nuestro trie
-        /*if (ids.get(autor) == null) {
-            trie.añadirAutor(autor);
-        }*/
-        
-
+        if (ids.get(autor) == null) trie.añadirAutor(autor);
         
         //Se da de alta en vecDocumentos
         Integer idInt = (Integer) id;
@@ -139,9 +133,7 @@ public class CjtoDocumentos {
         if (!existeDocumento(autor, titulo))
             throw new Exception("El documento no existe");
          
-        /*String at = autor + " " + titulo;
-        String contenido = vecDoc1.get(at);
-        bajaDocumento(autor,titulo);
+        /*bajaDocumento(autor,titulo);
         altaDocumento(autorModif,titulo,contenido);*/
         
         //Si no existe autorModif, lo añadimos a nuestro trie
@@ -165,7 +157,7 @@ public class CjtoDocumentos {
         }
         titulos_e_ids_AnteriorAutor.remove(titulo);
         
-        //Si despúes de eliminar autor ya no existe, lo eliminamos de nuestro trie
+        //Si despúes de modificar el autor, autor ya no existe, lo eliminamos de nuestro trie:
         if (ids.get(autor) == null) trie.eliminarAutor(autor);
     }
     
@@ -174,9 +166,7 @@ public class CjtoDocumentos {
         if (!existeDocumento(autor, titulo))
             throw new Exception("El documento no existe");  
         
-        /*String at = autor + " " + titulo;
-        String contenido = vecDoc1.get(at);
-        bajaDocumento(autor,titulo);
+        /*bajaDocumento(autor,titulo);
         altaDocumento(autor,tituloModif,contenido);*/
         
         //Se modifica en vecDocumentos
@@ -195,8 +185,8 @@ public class CjtoDocumentos {
         if (!existeDocumento(autor, titulo))
             throw new Exception("El documento no existe");
         
-        //bajaDocumento(autor,titulo);
-        //altaDocumento(autor,titulo,contenidoModif); 
+        /*bajaDocumento(autor,titulo);
+        altaDocumento(autor,titulo,contenidoModif); */
         
         int id = ids.get(autor).get(titulo);
         Documento doc = vecDocumentos.get(id);
@@ -239,7 +229,6 @@ public class CjtoDocumentos {
         //Map<Double,ArrayList<Documento>> docs;
         //docs = new TreeMap<>();
         
-        //int pos = posicion(autor, titulo);        
         //Documento origen = vecDocumentos.get(0);
         
         //Se calcula la distancia de todos los documentos respecto a todos los documentos
@@ -284,41 +273,5 @@ public class CjtoDocumentos {
     
     public int getNumDocs(){
         return this.numDocs;
-    }
-    
-    /*private void altaVecDoc1(String autor, String titulo, String contenido) {
-        
-        String at = autor + " " + titulo;
-        vecDoc1.put(at,contenido);
-    }
-
-    private void altaVecDoc2(String autor, String titulo) {
-        
-        //Si el autor no esta en el map:
-        if (vecDoc2.get(autor) == null) {
-            ArrayList<String> titulos = new ArrayList<String>();
-            titulos.add(titulo);
-            vecDoc2.put(autor,titulos);
-        }
-        //Si el autor ya esta en el map:
-        else {
-            ArrayList<String> titulos = vecDoc2.get(autor);
-            titulos.add(titulo);
-        }
-    }*/
-
-    /*private void bajaVecDoc1(String autor, String titulo) {
-        
-        String at = autor + " " + titulo;
-        vecDoc1.remove(at);
-    }
-
-    private void bajaVecDoc2(String autor, String titulo) {
-        
-        ArrayList<String> titulos = vecDoc2.get(autor);
-        titulos.remove(titulo);
-    }*/ 
-    
-    
-    
+    }   
 }
