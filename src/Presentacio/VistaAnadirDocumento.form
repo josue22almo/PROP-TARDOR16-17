@@ -38,12 +38,9 @@
                       </Group>
                       <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="textFieldAutor" max="32767" attributes="0"/>
-                                  <Component id="textFieldTitulo" pref="153" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="textFieldAutor" max="32767" attributes="0"/>
+                              <Component id="textFieldTitulo" pref="153" max="32767" attributes="0"/>
                           </Group>
                           <Component id="textFieldContenido" max="32767" attributes="0"/>
                       </Group>

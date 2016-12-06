@@ -74,7 +74,7 @@ public class Vista extends javax.swing.JFrame {
             }
         });
         getContentPane().add(textFieldBuscaAutores);
-        textFieldBuscaAutores.setBounds(200, 170, 170, 19);
+        textFieldBuscaAutores.setBounds(200, 170, 170, 27);
 
         listaAutores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,7 +101,7 @@ public class Vista extends javax.swing.JFrame {
             }
         });
         getContentPane().add(botonAnadirDocumento);
-        botonAnadirDocumento.setBounds(660, 160, 190, 25);
+        botonAnadirDocumento.setBounds(660, 160, 190, 29);
 
         opcion1Menu.setText("Archivo");
 

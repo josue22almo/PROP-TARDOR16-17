@@ -30,4 +30,8 @@ public class CtrlPresentacio {
     public void altaDocumento(String autor, String titulo, String contenido) throws Exception {
         this.cd.altaDocumento(autor, titulo, contenido);
     }
+    
+    public String consultarContenido(String autor, String titulo) throws Exception {
+        return this.cd.consultarContenido(autor, titulo);
+    }
 }
