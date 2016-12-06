@@ -211,9 +211,7 @@ public class CjtoDocumentos {
     }
    
     public ArrayList<String> consultarAutoresPorPrefijo(String prefijo) throws Exception {
-        ArrayList<String> a = new ArrayList<>();
-        a=trie.consultarListaDelPrefijo(prefijo);
-        return a;
+        return trie.consultarListaDelPrefijo(prefijo);
     }
     
     public String consultarContenido(String autor, String titulo) throws Exception {
