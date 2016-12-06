@@ -28,7 +28,7 @@ public class Trie {
         Nodo n = raiz;
         Nodo nodoaux = n;
         char aux_c = autor.charAt(0), c = autor.charAt(0);
-        for(int i=0; i < autor.length(); i++) {
+        for(int i = 0; i < autor.length(); i++) {
             c = autor.charAt(i);
             Nodo sub = n.getHijo(c);
             if (sub.getFi()){
