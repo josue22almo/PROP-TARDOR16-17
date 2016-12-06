@@ -89,10 +89,10 @@ public class CtrlDomini {
         Map < Double , Integer > docs;
         Map<String,String> m = new TreeMap<>();
         if ("FREC".equals(type)) {
-            docs = cd.getDistsFrec().get(id-1);
+            docs = cd.getDistsFrec().get(id);
         }
         else {
-            docs = cd.getDistsTFIDF().get(id-1);
+            docs = cd.getDistsTFIDF().get(id);
         }
         //Retornar solo los k primeros elementos
         Map <Integer, Documento> vecDocumentos = cd.getVecDocumentos();
