@@ -107,9 +107,7 @@ public class DriverCtrlDomini {
                     System.out.println("Consular títulos autor");
                     autor = sc.nextLine();
                     ArrayList<String> tit = c.consultarTitulosAutor(autor); 
-                    for (int i=0; i < tit.size(); ++i){
-                        System.out.println(tit.get(i));
-                    }
+                    for (int i=0; i < tit.size(); ++i) System.out.println(tit.get(i));
                     break;
                 case 8:
                     System.out.println("Consultar autores por prefijo");
@@ -117,8 +115,7 @@ public class DriverCtrlDomini {
                     String prefijo = "";
                     if (!(aux = sc.nextLine()).isEmpty()) prefijo = aux;
                     ArrayList<String> aut = c.consultarAutoresPorPrefijo(prefijo); 
-                    for (int i = 0; i < aut.size(); ++i)
-                        System.out.println(aut.get(i));
+                    for (int i=0; i < aut.size(); ++i) System.out.println(aut.get(i));
                     break;
                 case 9:
                     System.out.println("Consultar contenido");

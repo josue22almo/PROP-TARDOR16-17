@@ -23,15 +23,19 @@ public class Trie {
         for(int i=0; i < autor.length(); i++) {
             char c = autor.charAt(i);
             Nodo sub = n.getHijo(c);
-            if (sub != null) n = sub;
+            if (sub != null){
+                n = sub;
+                
+            }
             else {
                 //if (i == autor.length()-1) n.añadeHijoSinMap(c, n);
                 //else 
+                System.out.println("Esta letra ya esta puesta");
                 n.añadeHijo(c, new Nodo(n));
                 n = n.getHijo(c);
             }
             if (i == autor.length()-1){
-                n.añadeHijo(c,null);
+                n.añadeHijo(c,new Nodo(n));
                 n.setFi(true);
             }
         }
@@ -74,13 +78,14 @@ public class Trie {
             char c = prefijo.charAt(i);
             Nodo sub = n.getHijo(c);
             n = sub;
+            if (sub == null) return null;
             if (i == prefijo.length()-1) consultarSubArbol(sub, aux, prefijo);
         }
         return aux;
     }
     
     public void consultarSubArbol(Nodo sub, ArrayList<String> aux, String autor){
-        //if (sub.getFi()) aux.add(autor);
+        if (sub.getFi()) aux.add(autor);
         if (sub != null){
             Iterator it = sub.getMapHijo().keySet().iterator();
             while(it.hasNext()){
