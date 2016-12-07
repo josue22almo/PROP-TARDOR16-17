@@ -27,9 +27,9 @@ public class Trie {
     public void eliminarAutor(String autor){
         Nodo n = raiz;
         Nodo nodoaux = n;
-        char aux_c = autor.charAt(0), c = autor.charAt(0);
+        char aux_c = autor.charAt(0);
         for(int i = 0; i < autor.length(); i++) {
-            c = autor.charAt(i);
+            char c = autor.charAt(i);
             Nodo sub = n.getHijo(c);
             if (sub.getFi()){
                 nodoaux = n;
@@ -54,12 +54,17 @@ public class Trie {
             if (n.getMapHijo().isEmpty()) return null;
             n = sub;
         }
-        consultarSubArbol(sub, aux, prefijo);
+        consultarSubArbol(sub, aux, "");
+        for (int i = 0; i < aux.size(); i++){
+            String a = aux.get(i);
+            aux.remove(a);
+            aux.add(prefijo+a);
+        }
         return aux;
     }
     
     public void consultarSubArbol(Nodo sub, ArrayList<String> aux, String autor){
-        if (sub.getFi()) aux.add(autor);
+        
         if (!sub.getMapHijo().isEmpty()){
             for (Character c : sub.getMapHijo().keySet()) {
                 autor+=c;
@@ -67,5 +72,6 @@ public class Trie {
                 consultarSubArbol(a, aux, autor); 
             }
         }
+        if (sub.getFi()) aux.add(autor);
     }
 }
