@@ -30,7 +30,7 @@ public class Trie {
         for(int i = 0; i < autor.length(); i++) {
             char c = autor.charAt(i);
             Nodo sub = n.getHijo(c);
-            if (sub.getFi() && i <= autor.length()-2){
+            if (n.getFi() && i <= autor.length()-2){
                 nodoaux = n;
                 aux_c = c;
             }
@@ -40,6 +40,7 @@ public class Trie {
             }
             n = sub;
         }
+        if (n.getFi()) n.setFi(false);
         if (n.getMapHijo().isEmpty()) nodoaux.eliminarHijo(aux_c);
     }
  
