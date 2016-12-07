@@ -90,10 +90,14 @@ public class CjtoDocumentos {
         //Se da de baja en ids
         Map <String, Integer> titulos_e_ids = ids.get(autor);
         titulos_e_ids.remove(titulo);
-        if (!ids.containsKey(autor)) ids.remove(autor);
         
-        //Si después de eliminar el documento ya no existe el autor, lo eliminamos de nuestro trie:
-        if (!ids.containsKey(autor)) trie.eliminarAutor(autor);
+        //Si el autor ya no tiene documentos, se elimina
+        if (ids.get(autor).isEmpty()){
+            ids.remove(autor);
+            
+            //Lo eliminamos de nuestro trie:
+            trie.eliminarAutor(autor);
+        }
         
         //Un documento menos
         --numDocs; 
@@ -101,7 +105,7 @@ public class CjtoDocumentos {
         //Calculamos todas las distancias de todos los documentos respecto a todos los otros
         calcularDistancias();
         
-        //Recalculamos id's
+        /*//Recalculamos id's
             //en vecDocumentos
         for (int id_nou = id; id_nou < vecDocumentos.size(); id_nou++){
             Documento documento = vecDocumentos.get(id_nou);
@@ -121,7 +125,7 @@ public class CjtoDocumentos {
                     ids.get(aut).put(tit,id2-1);
                 }
             }
-        }
+        }*/
         
     }
     
@@ -129,33 +133,36 @@ public class CjtoDocumentos {
         
         if (!existeDocumento(autor, titulo))
             throw new Exception("El documento no existe");
-         
-        /*bajaDocumento(autor,titulo);
-        altaDocumento(autorModif,titulo,contenido);*/
         
         //Se modifica en vecDocumentos
         int id = ids.get(autor).get(titulo);
         vecDocumentos.get(id).setAutor(autorModif);
         
         //Se modifica en ids
-        Map <String, Integer> titulos_e_ids_AnteriorAutor = ids.get(autor);
+        Map<String,Integer> titulos_e_ids_NuevoAutor;
         
         if (ids.containsKey(autorModif)) {
-            Map<String,Integer> titulos_e_ids_NuevoAutor = ids.get(autorModif);
+            titulos_e_ids_NuevoAutor = ids.get(autorModif);
             titulos_e_ids_NuevoAutor.put(titulo, id);
         }
         else {
             //Si no existe autorModif, lo añadimos a nuestro trie
             trie.añadirAutor(autorModif);
             
-            Map<String,Integer> titulos_e_ids_NuevoAutor = new HashMap<>();
+            titulos_e_ids_NuevoAutor = new HashMap<>();
             titulos_e_ids_NuevoAutor.put(titulo,id);
-            ids.put(autor, titulos_e_ids_NuevoAutor);
+            ids.put(autorModif, titulos_e_ids_NuevoAutor);
         }
+        Map <String, Integer> titulos_e_ids_AnteriorAutor = ids.get(autor);
         titulos_e_ids_AnteriorAutor.remove(titulo);
         
-        //Si despúes de modificar el autor, autor ya no existe, lo eliminamos de nuestro trie:
-        if (!ids.containsKey(autor)) trie.eliminarAutor(autor);
+        //Si el autor anterior ya no tiene documentos, se elimina
+        if (ids.get(autor).isEmpty()){
+            ids.remove(autor);
+            
+            //Lo eliminamos de nuestro trie:
+            trie.eliminarAutor(autor);
+        }
     }
     
     public void modificaTituloDoc(String autor, String titulo, String tituloModif) throws Exception {
@@ -163,13 +170,9 @@ public class CjtoDocumentos {
         if (!existeDocumento(autor, titulo))
             throw new Exception("El documento no existe");  
         
-        /*bajaDocumento(autor,titulo);
-        altaDocumento(autor,tituloModif,contenido);*/
-        
         //Se modifica en vecDocumentos
         int id = ids.get(autor).get(titulo);
         Documento doc = vecDocumentos.get(id);
-        String contenido = doc.getContenidoOriginal();
         doc.setTitulo(tituloModif);
         
         //Se modifica en ids
@@ -182,9 +185,6 @@ public class CjtoDocumentos {
         if (!existeDocumento(autor, titulo))
             throw new Exception("El documento no existe");
         
-        /*bajaDocumento(autor,titulo);
-        altaDocumento(autor,titulo,contenidoModif); */
-        
         int id = ids.get(autor).get(titulo);
         Documento doc = vecDocumentos.get(id);
         doc.setContenido(contenidoModif);
@@ -193,7 +193,7 @@ public class CjtoDocumentos {
     
     public ArrayList<String> consultarTitulosAutor(String autor) throws Exception {
         
-        if (ids.get(autor) == null)
+        if (!ids.containsKey(autor))
         	throw new Exception("No existe el autor");
         
         ArrayList<String> titulos = new ArrayList<>();
