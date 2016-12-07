@@ -54,24 +54,20 @@ public class Trie {
             if (n.getMapHijo().isEmpty()) return null;
             n = sub;
         }
-        consultarSubArbol(sub, aux, "");
-        for (int i = 0; i < aux.size(); i++){
-            String a = aux.get(i);
-            aux.remove(a);
-            aux.add(prefijo+a);
-        }
+        consultarSubArbol(sub, aux, prefijo);
         return aux;
     }
     
     public void consultarSubArbol(Nodo sub, ArrayList<String> aux, String autor){
-        
+        if (sub.getFi()) aux.add(autor);
         if (!sub.getMapHijo().isEmpty()){
             for (Character c : sub.getMapHijo().keySet()) {
+                String aut=autor;
                 autor+=c;
                 Nodo a = sub.getHijo(c);
-                consultarSubArbol(a, aux, autor); 
+                consultarSubArbol(a, aux, autor);
+                autor=aut;
             }
         }
-        if (sub.getFi()) aux.add(autor);
     }
 }
