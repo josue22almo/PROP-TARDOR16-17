@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
 import java.util.TreeMap;
 
 /**
@@ -24,13 +22,11 @@ public class CjtoDocumentos {
     private int numDocs;
     private int histDocs;
     
-    public CjtoDocumentos() {        
+    public CjtoDocumentos() {      
         this.ids = new HashMap<> ();
         this.vecDocumentos = new TreeMap<>();
         this.distsFrec = new TreeMap<> ();
         this.distsTFIDF = new TreeMap<> ();
-        //this.vecDoc1 = new HashMap<>(); 
-        //this.vecDoc2 = new HashMap<>();
         this.trie = new Trie();
         this.diccionario = new Diccionario();
         this.numDocs = 0;
@@ -60,13 +56,13 @@ public class CjtoDocumentos {
             ids.get(autor).put(titulo, id2);
         }
         else {
-            //Si no existe el autor, lo añadimos a nuestro trie
-            trie.añadirAutor(autor);
-            
             Map<String,Integer> titulos_autor = new HashMap<>();
             Integer id2 = (Integer) id;
             titulos_autor.put(titulo,id2);
             ids.put(autor, titulos_autor);
+
+            //Si no existe el autor, lo añadimos a nuestro trie
+            trie.añadirAutor(autor);
         }
         
         //Añadimos palabras al diccionario
@@ -97,7 +93,7 @@ public class CjtoDocumentos {
         if (!ids.containsKey(autor)) ids.remove(autor);
         
         //Si después de eliminar el documento ya no existe el autor, lo eliminamos de nuestro trie:
-        if (ids.get(autor) == null) trie.eliminarAutor(autor);
+        if (!ids.containsKey(autor)) trie.eliminarAutor(autor);
         
         //Un documento menos
         --numDocs; 
