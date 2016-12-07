@@ -37,8 +37,7 @@ public class Trie {
             }
             n = sub;
         }
-        if (!n.getFi()) nodoaux.eliminarHijo(aux_c);
-        else n.eliminarHijo(c);
+        nodoaux.eliminarHijo(aux_c);
     }
  
     public ArrayList<String> consultarListaDelPrefijo(String prefijo) {
@@ -48,13 +47,14 @@ public class Trie {
             consultarSubArbol(n, aux, "");
             return aux;
         }
+        Nodo sub = n.getHijo(prefijo.charAt(0));
         for(int i=0; i < prefijo.length(); i++) {
             char c = prefijo.charAt(i);
-            Nodo sub = n.getHijo(c);
-            n = sub;
+            sub = n.getHijo(c);
             if (n.getMapHijo().isEmpty()) return null;
-            if (i == prefijo.length()-1) consultarSubArbol(sub, aux, prefijo);
+            n = sub;
         }
+        consultarSubArbol(sub, aux, prefijo);
         return aux;
     }
     

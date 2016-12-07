@@ -26,6 +26,7 @@ public class CtrlDomini {
     }
   
     public void altaConjuntoDocumentosDirectorio(String folder) throws Exception{       
+        
         ArrayList<BufferedReader> docs = ctrlPersistencia.leerCarpeta(folder);
         for (int i = 0; i < docs.size(); ++i){
             String autor = docs.get(i).readLine();
@@ -43,34 +44,42 @@ public class CtrlDomini {
     }
     
     public void altaDocumento(String autor, String titulo, String contenido) throws Exception {
+        
         cd.altaDocumento(autor, titulo, contenido);
     }
     
     public void bajaDocumento(String autor, String titulo) throws Exception {
+        
         cd.bajaDocumento(autor, titulo);
     }
     
     public void modificaAutorDoc(String autor, String titulo, String autorModif) throws Exception{
+        
         cd.modificaAutorDoc(autor, titulo, autorModif);
     }
     
     public void modificaTituloDoc(String autor, String titulo, String tituloModif) throws Exception{
+        
         cd.modificaTituloDoc(autor, titulo, tituloModif);
     }
     
     public void modificaContenidoDoc(String autor, String titulo, String contenidoModif) throws Exception{
+        
         cd.modificaContenidoDoc(autor, titulo, contenidoModif);
     }
     
     public ArrayList<String> consultarTitulosAutor(String autor) throws Exception{
+        
         return cd.consultarTitulosAutor(autor);        
     }
     
     public ArrayList<String> consultarAutores(String prefijo) throws Exception{
+        
         return cd.consultarAutoresPorPrefijo(prefijo);
     }
     
     public String consultarContenido(String autor, String titulo) throws Exception{
+        
         return cd.consultarContenido(autor, titulo);
     }
     
@@ -108,16 +117,19 @@ public class CtrlDomini {
     }
     
     public ArrayList<String> consultarAutoresPorPrefijo(String prefijo) throws Exception{
-         return cd.consultarAutoresPorPrefijo(prefijo);
+         
+        return cd.consultarAutoresPorPrefijo(prefijo);
     }
     
     public Map<String,String> getDocumentosBool(String expresion) throws Exception{
+        
         Map<String,String> m = new HashMap<>();
         BooleanTree tree = new BooleanTree(expresion);
         return m;
     }
     
     public CjtoDocumentos getCjtoDocumentos(){
+        
         return cd;
     }
     

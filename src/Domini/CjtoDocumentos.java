@@ -212,6 +212,7 @@ public class CjtoDocumentos {
     }
    
     public ArrayList<String> consultarAutoresPorPrefijo(String prefijo) throws Exception {
+        
         return trie.consultarListaDelPrefijo(prefijo);
     }
     
