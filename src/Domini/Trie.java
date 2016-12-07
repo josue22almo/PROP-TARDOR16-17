@@ -34,6 +34,10 @@ public class Trie {
                 nodoaux = n;
                 aux_c = c;
             }
+            if (n.getMapHijo().size() > 1){
+                nodoaux = n;
+                aux_c = c;
+            }
             n = sub;
         }
         if (n.getMapHijo().isEmpty()) nodoaux.eliminarHijo(aux_c);
