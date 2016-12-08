@@ -8,13 +8,20 @@ import java.util.ArrayList;
 
 public class Frase {
     private ArrayList<String> frase;
+    private boolean first;
+    private String stringFrase;
     
     public Frase() {
         this.frase = new ArrayList<>();
+        first = true;
     }
         
     public void addPalabra (String palabra){
         frase.add(palabra);
+        if(first){
+            stringFrase += palabra;
+            first = false;
+        }else stringFrase += " " + palabra;
     }
     
     public ArrayList<String> getFrase(){
@@ -22,29 +29,14 @@ public class Frase {
     }
 
     boolean contains(String frase) {
-        boolean b = toString().contains(frase);
+        boolean b = stringFrase.contains(frase);
         return b;
     }
     
     boolean contains(ArrayList<String> words) {
         boolean b = true;
         for (int i = 0; i < words.size() && b;++i){
-            b = toString().contains(words.get(i));
+            b = frase.contains(words.get(i));
         }
         return b;
-    }
-    
-    @Override
-    public String toString(){
-        boolean first = true;
-        String s = "";
-        for(int i = 0; i < frase.size(); ++i){
-            if (first){
-                first = false;
-                s += frase.get(i);
-            }else s += " " + frase.get(i);
-        }
-        return s;
-    }
-
-}
+    }}
