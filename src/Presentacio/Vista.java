@@ -7,7 +7,6 @@ package Presentacio;
 
 import Domini.CjtoDocumentos;
 import Domini.Documento;
-import java.awt.List;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -61,6 +60,8 @@ public class Vista extends javax.swing.JFrame {
         titulos = new java.awt.Label();
         botonAnadirDocumento = new javax.swing.JButton();
         scrollPaneAutores = new JScrollPane(listaAutores);
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         barraMenu = new javax.swing.JMenuBar();
         opcion1Menu = new javax.swing.JMenu();
         menuAnadir = new javax.swing.JMenuItem();
@@ -77,9 +78,12 @@ public class Vista extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(4000, 3000));
         getContentPane().setLayout(null);
 
-        buscar.setText("Buscar autores:");
+        buscar.setBackground(new java.awt.Color(11, 116, 163));
+        buscar.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        buscar.setForeground(new java.awt.Color(254, 254, 254));
+        buscar.setText("Buscar autor:");
         getContentPane().add(buscar);
-        buscar.setBounds(80, 170, 100, 19);
+        buscar.setBounds(80, 170, 160, 27);
         buscar.getAccessibleContext().setAccessibleName("Buscar");
 
         textFieldBuscaAutores.addActionListener(new java.awt.event.ActionListener() {
@@ -88,26 +92,56 @@ public class Vista extends javax.swing.JFrame {
             }
         });
         getContentPane().add(textFieldBuscaAutores);
-        textFieldBuscaAutores.setBounds(200, 170, 170, 29);
+        textFieldBuscaAutores.setBounds(240, 170, 290, 29);
 
+        autores.setBackground(new java.awt.Color(14, 115, 161));
+        autores.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        autores.setForeground(new java.awt.Color(255, 255, 255));
         autores.setText("Autores:");
         getContentPane().add(autores);
-        autores.setBounds(80, 230, 60, 19);
+        autores.setBounds(80, 250, 90, 27);
 
         titulos.setText("Títulos:");
         getContentPane().add(titulos);
-        titulos.setBounds(360, 230, 50, 19);
+        titulos.setBounds(530, 230, 50, 19);
 
-        botonAnadirDocumento.setText("Añadir documento");
+        botonAnadirDocumento.setBackground(new java.awt.Color(174, 178, 194));
+        botonAnadirDocumento.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
+        botonAnadirDocumento.setForeground(new java.awt.Color(0, 0, 0));
+        botonAnadirDocumento.setText("Añadir documento...");
+        botonAnadirDocumento.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         botonAnadirDocumento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 anadirDocumento(evt);
             }
         });
         getContentPane().add(botonAnadirDocumento);
-        botonAnadirDocumento.setBounds(660, 160, 190, 31);
+        botonAnadirDocumento.setBounds(950, 171, 190, 40);
         getContentPane().add(scrollPaneAutores);
-        scrollPaneAutores.setBounds(80, 260, 210, 290);
+        scrollPaneAutores.setBounds(80, 290, 290, 400);
+
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon("/home/florenciarf/Descargas/Logomakr_6y9ohG.png")); // NOI18N
+        jLabel2.setToolTipText("");
+        jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(170, -10, 980, 180);
+
+        jLabel1.setIcon(new javax.swing.JLabel() {
+            public javax.swing.Icon getIcon() {
+                try {
+                    return new javax.swing.ImageIcon(
+                        new java.net.URL("url:http://www.celer-comex.com.ar/images/fondo.jpg")
+                    );
+                } catch (java.net.MalformedURLException e) {
+                }
+                return null;
+            }
+        }.getIcon());
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(-340, -220, 3000, 1579);
 
         opcion1Menu.setText("Archivo");
 
@@ -210,9 +244,9 @@ public class Vista extends javax.swing.JFrame {
                     Vista vista = new Vista();
                     vista.setVisible(true);
                     try {
-                        //cp.altaDocumento("flor", "h", "j");
-                        //cp.altaDocumento("jess", "d", "f");
-                        autoresPref = cp.getAutorPref(autor);
+                        cp.altaDocumento("flor", "h", "j");
+                        cp.altaDocumento("jess", "d", "f");
+                        autoresPref = cp.getAutorPref("");
                     } catch (Exception ex) {
                         Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -231,6 +265,8 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JMenuBar barraMenu;
     private javax.swing.JButton botonAnadirDocumento;
     private java.awt.Label buscar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar2;
