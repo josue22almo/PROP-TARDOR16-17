@@ -18,6 +18,7 @@ import javax.swing.JFileChooser;
 public class Vista extends javax.swing.JFrame {
 
     private CtrlPresentacio cp;
+    private String autor;
     /**
      * Creates new form Vista
      * @throws java.io.IOException
@@ -74,7 +75,7 @@ public class Vista extends javax.swing.JFrame {
             }
         });
         getContentPane().add(textFieldBuscaAutores);
-        textFieldBuscaAutores.setBounds(200, 170, 170, 27);
+        textFieldBuscaAutores.setBounds(200, 170, 170, 29);
 
         listaAutores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,7 +102,7 @@ public class Vista extends javax.swing.JFrame {
             }
         });
         getContentPane().add(botonAnadirDocumento);
-        botonAnadirDocumento.setBounds(660, 160, 190, 29);
+        botonAnadirDocumento.setBounds(660, 160, 190, 31);
 
         opcion1Menu.setText("Archivo");
 
@@ -157,23 +158,25 @@ public class Vista extends javax.swing.JFrame {
 
     private void textFieldAutor(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldAutor
         // TODO add your handling code here:
-        listAutor(evt);
+        this.autor = textFieldBuscaAutores.getText();
     }//GEN-LAST:event_textFieldAutor
 
     private void listAutor(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listAutor
         // TODO add your handling code here:
-        String autor = textFieldBuscaAutores.getText();
+        
         ArrayList<String> autorPref = null;
         try {
-            autorPref = this.cp.getAutorPref(autor);
+            autorPref = this.cp.getAutorPref(this.autor);
+            for (String aut: autorPref) {
+            listaAutores.add(aut);
+            listaAutores.select(1);
+        }
         } catch (Exception ex) {
             Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
         }
-        for (String aut: autorPref) {
-            listaAutores.add(aut);
-        }
     }//GEN-LAST:event_listAutor
 
+    @SuppressWarnings("empty-statement")
     private void anadirDocumento(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anadirDocumento
         // TODO add your handling code here:
         VistaAnadirDocumento vAD = new VistaAnadirDocumento();
@@ -181,14 +184,15 @@ public class Vista extends javax.swing.JFrame {
         /*while (!vAD.botonAceptarApretado()) {
             if (vAD.botonCancelarApretado()) break;
         }*/
-        
+        //System.out.println("Boton aceptar apretado");
         if (vAD.botonAceptarApretado()) {
-        ArrayList<String> doc = vAD.getDocumento();
-        try {
-            cp.altaDocumento(doc.get(0), doc.get(1), doc.get(2));
-        } catch (Exception ex) {
-            Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            System.out.println("Boton aceptar apretado");
+            ArrayList<String> doc = vAD.getDocumento();
+            try {
+                cp.altaDocumento(doc.get(0), doc.get(1), doc.get(2));
+            } catch (Exception ex) {
+                Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_anadirDocumento
 

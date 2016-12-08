@@ -160,9 +160,6 @@ public class VistaAnadirDocumento extends javax.swing.JFrame {
 
     private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
         // TODO add your handling code here:
-        textFieldAutorActionPerformed(evt);
-        textFieldTituloActionPerformed(evt);
-        textFieldContenidoActionPerformed(evt);
         botonAceptarApretado = true;
         this.setVisible(false);
         
