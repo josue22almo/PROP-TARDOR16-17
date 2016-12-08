@@ -39,4 +39,5 @@ public class Frase {
             b = frase.contains(words.get(i));
         }
         return b;
-    }}
+    }
+}
