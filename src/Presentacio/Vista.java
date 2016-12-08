@@ -7,13 +7,17 @@ package Presentacio;
 
 import Domini.CjtoDocumentos;
 import Domini.Documento;
+import java.awt.List;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
+import javax.swing.JList;
+import javax.swing.JScrollPane;
 
 /**
  *
@@ -21,16 +25,22 @@ import javax.swing.JFileChooser;
  */
 public class Vista extends javax.swing.JFrame {
 
-    private CtrlPresentacio cp;
-    private String autor;
+    private static CtrlPresentacio cp;
+    private static String autor;
+    private static ArrayList<String> autoresPref;
+    private static JList listaAutores;
+    static DefaultListModel model;
     /**
      * Creates new form Vista
      * @throws java.io.IOException
      */
     public Vista() throws IOException {
+        
+        Vista.cp = new CtrlPresentacio();
+        Vista.autoresPref = new ArrayList<>();
+        model = new DefaultListModel();
+        Vista.listaAutores = new JList(model);
         initComponents();
-        this.cp = new CtrlPresentacio();
-        //add(this.jScrollPane1);
     }
 
     /**
@@ -48,9 +58,9 @@ public class Vista extends javax.swing.JFrame {
         buscar = new java.awt.Label();
         textFieldBuscaAutores = new javax.swing.JTextField();
         autores = new java.awt.Label();
-        listaTitulos = new java.awt.List();
         titulos = new java.awt.Label();
         botonAnadirDocumento = new javax.swing.JButton();
+        scrollPaneAutores = new JScrollPane(listaAutores);
         barraMenu = new javax.swing.JMenuBar();
         opcion1Menu = new javax.swing.JMenu();
         menuAnadir = new javax.swing.JMenuItem();
@@ -83,8 +93,6 @@ public class Vista extends javax.swing.JFrame {
         autores.setText("Autores:");
         getContentPane().add(autores);
         autores.setBounds(80, 230, 60, 19);
-        getContentPane().add(listaTitulos);
-        listaTitulos.setBounds(360, 260, 220, 290);
 
         titulos.setText("Títulos:");
         getContentPane().add(titulos);
@@ -98,6 +106,8 @@ public class Vista extends javax.swing.JFrame {
         });
         getContentPane().add(botonAnadirDocumento);
         botonAnadirDocumento.setBounds(660, 160, 190, 31);
+        getContentPane().add(scrollPaneAutores);
+        scrollPaneAutores.setBounds(80, 260, 210, 290);
 
         opcion1Menu.setText("Archivo");
 
@@ -142,8 +152,8 @@ public class Vista extends javax.swing.JFrame {
               System.out.println("getCurrentDirectory(): " + chooser.getCurrentDirectory());
               System.out.println("getSelectedFile() : " + chooser.getSelectedFile());
                 try {
-                    this.cp.altaCjtoDocsDirectorio(chooser.getSelectedFile().getCanonicalPath());
-                    CjtoDocumentos cd = this.cp.getCtrlDomini().getCjtoDocumentos();
+                    Vista.cp.altaCjtoDocsDirectorio(chooser.getSelectedFile().getCanonicalPath());
+                    CjtoDocumentos cd = Vista.cp.getCtrlDomini().getCjtoDocumentos();
                     Map <Integer, Documento> vecDocumentos = cd.getVecDocumentos();
                     Iterator it = vecDocumentos.keySet().iterator();
                     while(it.hasNext()){
@@ -163,14 +173,7 @@ public class Vista extends javax.swing.JFrame {
 
     private void textFieldAutor(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldAutor
         // TODO add your handling code here:
-        this.autor = textFieldBuscaAutores.getText();
-        try {
-            ArrayList<String> autoresPref = this.cp.getAutorPref(this.autor);
-            for (String aut: autoresPref) {
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        //Vista.autor = textFieldBuscaAutores.getText();
     }//GEN-LAST:event_textFieldAutor
 
 
@@ -199,33 +202,23 @@ public class Vista extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Vista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Vista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Vista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Vista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    new Vista().setVisible(true);
+                    Vista vista = new Vista();
+                    vista.setVisible(true);
+                    try {
+                        //cp.altaDocumento("flor", "h", "j");
+                        //cp.altaDocumento("jess", "d", "f");
+                        autoresPref = cp.getAutorPref(autor);
+                    } catch (Exception ex) {
+                        Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    autoresPref.forEach((aut) -> {
+                        model.addElement(aut);
+                    });
                 } catch (IOException ex) {
                     Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -241,10 +234,10 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar2;
-    private java.awt.List listaTitulos;
     private javax.swing.JMenuItem menuAnadir;
     private javax.swing.JMenuItem menuCerrar;
     private javax.swing.JMenu opcion1Menu;
+    private javax.swing.JScrollPane scrollPaneAutores;
     private javax.swing.JTextField textFieldBuscaAutores;
     private java.awt.Label titulos;
     // End of variables declaration//GEN-END:variables

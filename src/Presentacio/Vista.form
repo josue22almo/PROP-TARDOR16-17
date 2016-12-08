@@ -110,13 +110,6 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="java.awt.List" name="listaTitulos">
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="360" y="260" width="220" height="290"/>
-        </Constraint>
-      </Constraints>
-    </Component>
     <Component class="java.awt.Label" name="titulos">
       <Properties>
         <Property name="text" type="java.lang.String" value="T&#xed;tulos:"/>
@@ -140,5 +133,17 @@
         </Constraint>
       </Constraints>
     </Component>
+    <Container class="javax.swing.JScrollPane" name="scrollPaneAutores">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JScrollPane(listaAutores)"/>
+      </AuxValues>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="80" y="260" width="210" height="290"/>
+        </Constraint>
+      </Constraints>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+    </Container>
   </SubComponents>
 </Form>
