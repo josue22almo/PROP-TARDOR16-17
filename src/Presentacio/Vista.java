@@ -5,8 +5,12 @@
  */
 package Presentacio;
 
+import Domini.CjtoDocumentos;
+import Domini.Documento;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
@@ -26,7 +30,7 @@ public class Vista extends javax.swing.JFrame {
     public Vista() throws IOException {
         initComponents();
         this.cp = new CtrlPresentacio();
-        
+        //add(this.jScrollPane1);
     }
 
     /**
@@ -43,7 +47,6 @@ public class Vista extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         buscar = new java.awt.Label();
         textFieldBuscaAutores = new javax.swing.JTextField();
-        listaAutores = new java.awt.List();
         autores = new java.awt.Label();
         listaTitulos = new java.awt.List();
         titulos = new java.awt.Label();
@@ -76,14 +79,6 @@ public class Vista extends javax.swing.JFrame {
         });
         getContentPane().add(textFieldBuscaAutores);
         textFieldBuscaAutores.setBounds(200, 170, 170, 29);
-
-        listaAutores.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                listAutor(evt);
-            }
-        });
-        getContentPane().add(listaAutores);
-        listaAutores.setBounds(80, 260, 210, 290);
 
         autores.setText("Autores:");
         getContentPane().add(autores);
@@ -148,6 +143,16 @@ public class Vista extends javax.swing.JFrame {
               System.out.println("getSelectedFile() : " + chooser.getSelectedFile());
                 try {
                     this.cp.altaCjtoDocsDirectorio(chooser.getSelectedFile().getCanonicalPath());
+                    CjtoDocumentos cd = this.cp.getCtrlDomini().getCjtoDocumentos();
+                    Map <Integer, Documento> vecDocumentos = cd.getVecDocumentos();
+                    Iterator it = vecDocumentos.keySet().iterator();
+                    while(it.hasNext()){
+                        Integer id = (Integer) it.next();
+                        Documento doc = vecDocumentos.get(id);
+                        System.out.print("Id: " + id + '\n' + "Autor: " + doc.getAutor() + '\n');
+                        System.out.println("Titulo: " + doc.getTitulo() + '\n' + "Contenido: " + doc.getContenidoOriginal());
+                        //System.out.println();
+                    }
                 } catch (Exception ex) {
                     Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -159,22 +164,15 @@ public class Vista extends javax.swing.JFrame {
     private void textFieldAutor(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldAutor
         // TODO add your handling code here:
         this.autor = textFieldBuscaAutores.getText();
-    }//GEN-LAST:event_textFieldAutor
-
-    private void listAutor(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listAutor
-        // TODO add your handling code here:
-        
-        ArrayList<String> autorPref = null;
         try {
-            autorPref = this.cp.getAutorPref(this.autor);
-            for (String aut: autorPref) {
-            listaAutores.add(aut);
-            listaAutores.select(1);
-        }
+            ArrayList<String> autoresPref = this.cp.getAutorPref(this.autor);
+            for (String aut: autoresPref) {
+            }
         } catch (Exception ex) {
             Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_listAutor
+    }//GEN-LAST:event_textFieldAutor
+
 
     @SuppressWarnings("empty-statement")
     private void anadirDocumento(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anadirDocumento
@@ -243,7 +241,6 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar2;
-    private java.awt.List listaAutores;
     private java.awt.List listaTitulos;
     private javax.swing.JMenuItem menuAnadir;
     private javax.swing.JMenuItem menuCerrar;

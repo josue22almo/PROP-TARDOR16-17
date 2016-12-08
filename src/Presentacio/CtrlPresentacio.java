@@ -34,4 +34,8 @@ public class CtrlPresentacio {
     public String consultarContenido(String autor, String titulo) throws Exception {
         return this.cd.consultarContenido(autor, titulo);
     }
+    
+    public CtrlDomini getCtrlDomini() {
+        return this.cd;
+    }
 }

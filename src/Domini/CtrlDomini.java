@@ -73,11 +73,6 @@ public class CtrlDomini {
         return cd.consultarTitulosAutor(autor);        
     }
     
-    public ArrayList<String> consultarAutores(String prefijo) throws Exception{
-        
-        return cd.consultarAutoresPorPrefijo(prefijo);
-    }
-    
     public String consultarContenido(String autor, String titulo) throws Exception{
         
         return cd.consultarContenido(autor, titulo);
