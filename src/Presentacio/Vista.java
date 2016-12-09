@@ -95,7 +95,7 @@ public class Vista extends javax.swing.JFrame {
         buscar.setForeground(new java.awt.Color(254, 254, 254));
         buscar.setText("Buscar autor:");
         getContentPane().add(buscar);
-        buscar.setBounds(80, 170, 160, 26);
+        buscar.setBounds(80, 170, 160, 27);
         buscar.getAccessibleContext().setAccessibleName("Buscar");
 
         textFieldBuscaAutores.setForeground(new java.awt.Color(0, 0, 0));
@@ -113,7 +113,7 @@ public class Vista extends javax.swing.JFrame {
         autores.setForeground(new java.awt.Color(255, 255, 255));
         autores.setText("Autores:");
         getContentPane().add(autores);
-        autores.setBounds(80, 250, 90, 26);
+        autores.setBounds(80, 250, 90, 27);
 
         titulos.setBackground(new java.awt.Color(14, 115, 161));
         titulos.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -126,27 +126,29 @@ public class Vista extends javax.swing.JFrame {
         botonAnadirDocumento.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         botonAnadirDocumento.setForeground(new java.awt.Color(0, 0, 0));
         botonAnadirDocumento.setText("Añadir documento...");
-        botonAnadirDocumento.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        botonAnadirDocumento.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
         botonAnadirDocumento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 anadirDocumento(evt);
             }
         });
         getContentPane().add(botonAnadirDocumento);
-        botonAnadirDocumento.setBounds(950, 171, 190, 40);
+        botonAnadirDocumento.setBounds(970, 320, 190, 40);
 
-        scrollPaneAutores.setBackground(new java.awt.Color(0, 0, 0));
+        scrollPaneAutores.setBackground(new java.awt.Color(174, 178, 194));
         scrollPaneAutores.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        scrollPaneAutores.setForeground(new java.awt.Color(0, 0, 0));
+        scrollPaneAutores.setForeground(new java.awt.Color(174, 178, 194));
         scrollPaneAutores.setToolTipText("");
         scrollPaneAutores.setEnabled(false);
+        scrollPaneAutores.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         getContentPane().add(scrollPaneAutores);
         scrollPaneAutores.setBounds(80, 290, 290, 400);
 
         botonAceptar.setBackground(new java.awt.Color(174, 178, 194));
-        botonAceptar.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        botonAceptar.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        botonAceptar.setForeground(new java.awt.Color(0, 0, 0));
         botonAceptar.setText("Aceptar");
-        botonAceptar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        botonAceptar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
         botonAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 aceptarActionPerformed(evt);
@@ -158,20 +160,24 @@ public class Vista extends javax.swing.JFrame {
         logo.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         logo.setForeground(new java.awt.Color(255, 255, 255));
         logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        logo.setIcon(new javax.swing.ImageIcon("/home/florenciarf/Descargas/Logomakr_6y9ohG.png")); // NOI18N
         logo.setToolTipText("");
         logo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         getContentPane().add(logo);
         logo.setBounds(170, -10, 980, 180);
 
-        scrollPaneTitulos.setBackground(new java.awt.Color(0, 0, 0));
+        scrollPaneTitulos.setBackground(new java.awt.Color(174, 178, 194));
         scrollPaneTitulos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         scrollPaneTitulos.setForeground(new java.awt.Color(174, 178, 194));
+        scrollPaneTitulos.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         getContentPane().add(scrollPaneTitulos);
         scrollPaneTitulos.setBounds(590, 280, 320, 410);
 
         mostrarTitulos.setBackground(new java.awt.Color(174, 178, 194));
+        mostrarTitulos.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
+        mostrarTitulos.setForeground(new java.awt.Color(0, 0, 0));
         mostrarTitulos.setText("Mostrar títulos >>");
-        mostrarTitulos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        mostrarTitulos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
         mostrarTitulos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mostrarTitulosActionPerformed(evt);
@@ -181,16 +187,17 @@ public class Vista extends javax.swing.JFrame {
         mostrarTitulos.setBounds(390, 450, 170, 30);
 
         botonConsultar.setBackground(new java.awt.Color(174, 178, 194));
+        botonConsultar.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         botonConsultar.setForeground(new java.awt.Color(0, 0, 0));
-        botonConsultar.setText("Consultar");
-        botonConsultar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        botonConsultar.setText("Consultar contenido");
+        botonConsultar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
         botonConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonConsultarActionPerformed(evt);
             }
         });
         getContentPane().add(botonConsultar);
-        botonConsultar.setBounds(950, 250, 190, 40);
+        botonConsultar.setBounds(970, 410, 190, 40);
 
         fondo.setIcon(new javax.swing.JLabel() {
             public javax.swing.Icon getIcon() {
@@ -351,8 +358,8 @@ public class Vista extends javax.swing.JFrame {
         } catch (Exception ex) {
             Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
         }
-        DialogoConsultar consultar = new DialogoConsultar(this, rootPaneCheckingEnabled, this.autorSelect, this.tituloSelect,contenido);
-        consultar.setVisible(true);
+        VistaConsultarContenido consCont = new VistaConsultarContenido(this.autorSelect, this.tituloSelect,contenido);
+        consCont.setVisible(true);
     }//GEN-LAST:event_botonConsultarActionPerformed
 
     /**

@@ -54,6 +54,7 @@ public class VistaConsultarContenido extends javax.swing.JFrame {
         textoTitulo = new javax.swing.JTextPane();
         jScrollPane4 = new javax.swing.JScrollPane();
         textoContenido = new javax.swing.JTextPane();
+        jLabel2 = new javax.swing.JLabel();
 
         jLabel1.setText("jLabel1");
 
@@ -74,10 +75,21 @@ public class VistaConsultarContenido extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Contenido");
+        setPreferredSize(new java.awt.Dimension(850, 510));
+        setResizable(false);
+        getContentPane().setLayout(null);
 
+        Autor.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
+        Autor.setForeground(new java.awt.Color(255, 255, 255));
         Autor.setText("Autor:");
+        getContentPane().add(Autor);
+        Autor.setBounds(50, 30, 60, 30);
 
-        Titulo.setText("Titulo:");
+        Titulo.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
+        Titulo.setForeground(new java.awt.Color(255, 255, 255));
+        Titulo.setText("Título:");
+        getContentPane().add(Titulo);
+        Titulo.setBounds(50, 87, 60, 20);
 
         Aceptar.setText("Aceptar");
         Aceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -85,63 +97,53 @@ public class VistaConsultarContenido extends javax.swing.JFrame {
                 AceptarActionPerformed(evt);
             }
         });
+        getContentPane().add(Aceptar);
+        Aceptar.setBounds(639, 460, 110, 31);
 
+        Contenido.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
+        Contenido.setForeground(new java.awt.Color(255, 255, 255));
         Contenido.setText("Contenido:");
+        getContentPane().add(Contenido);
+        Contenido.setBounds(50, 140, 90, 20);
 
         textoAutor.setEditable(false);
+        textoAutor.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         jScrollPane1.setViewportView(textoAutor);
+        textoAutor.getAccessibleContext().setAccessibleName("");
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(169, 38, 450, 30);
 
         textoTitulo.setEditable(false);
+        textoTitulo.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         jScrollPane3.setViewportView(textoTitulo);
 
+        getContentPane().add(jScrollPane3);
+        jScrollPane3.setBounds(169, 82, 450, 30);
+
         textoContenido.setEditable(false);
+        textoContenido.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         jScrollPane4.setViewportView(textoContenido);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(Titulo)
-                                .addComponent(Autor))
-                            .addComponent(Contenido))
-                        .addGap(53, 53, 53)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
-                            .addComponent(jScrollPane3)
-                            .addComponent(jScrollPane1)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Aceptar)))
-                .addGap(30, 30, 30))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(Autor)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(27, 27, 27)
-                        .addComponent(Titulo))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(Contenido)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addComponent(Aceptar)
-                .addGap(20, 20, 20))
-        );
+        getContentPane().add(jScrollPane4);
+        jScrollPane4.setBounds(169, 135, 580, 290);
+
+        jLabel2.setIcon(new javax.swing.JLabel() {
+            public javax.swing.Icon getIcon() {
+                try {
+                    return new javax.swing.ImageIcon(
+                        new java.net.URL("url:http://www.celer-comex.com.ar/images/fondo.jpg")
+                    );
+                } catch (java.net.MalformedURLException e) {
+                }
+                return null;
+            }
+        }.getIcon());
+        jLabel2.setMaximumSize(new java.awt.Dimension(3000, 1579));
+        jLabel2.setMinimumSize(new java.awt.Dimension(3000, 1579));
+        jLabel2.setPreferredSize(new java.awt.Dimension(3000, 1579));
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(0, 0, 1060, 550);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -193,6 +195,7 @@ public class VistaConsultarContenido extends javax.swing.JFrame {
     private javax.swing.JLabel Contenido;
     private javax.swing.JLabel Titulo;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

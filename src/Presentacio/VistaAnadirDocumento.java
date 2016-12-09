@@ -44,97 +44,99 @@ public class VistaAnadirDocumento extends javax.swing.JFrame {
         textFieldContenido = new javax.swing.JTextField();
         botonAceptar = new javax.swing.JButton();
         botonCancelar = new javax.swing.JButton();
+        fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Añadir documento");
-        setPreferredSize(new java.awt.Dimension(1000, 500));
+        setPreferredSize(new java.awt.Dimension(1070, 600));
+        setResizable(false);
+        getContentPane().setLayout(null);
 
+        labelAutor.setBackground(new java.awt.Color(11, 116, 163));
+        labelAutor.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        labelAutor.setForeground(new java.awt.Color(255, 255, 255));
         labelAutor.setText("Autor:");
+        getContentPane().add(labelAutor);
+        labelAutor.setBounds(60, 80, 60, 30);
 
+        labelTitulo.setBackground(new java.awt.Color(11, 116, 163));
+        labelTitulo.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        labelTitulo.setForeground(new java.awt.Color(255, 255, 255));
         labelTitulo.setText("Título:");
+        getContentPane().add(labelTitulo);
+        labelTitulo.setBounds(60, 150, 49, 29);
 
+        labelContenido.setBackground(new java.awt.Color(11, 116, 163));
+        labelContenido.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        labelContenido.setForeground(new java.awt.Color(255, 255, 255));
         labelContenido.setText("Contenido:");
+        getContentPane().add(labelContenido);
+        labelContenido.setBounds(50, 210, 82, 22);
+        labelContenido.getAccessibleContext().setAccessibleName("");
 
         textFieldAutor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textFieldAutorActionPerformed(evt);
             }
         });
+        getContentPane().add(textFieldAutor);
+        textFieldAutor.setBounds(150, 80, 310, 29);
 
         textFieldTitulo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textFieldTituloActionPerformed(evt);
             }
         });
+        getContentPane().add(textFieldTitulo);
+        textFieldTitulo.setBounds(150, 150, 310, 29);
 
         textFieldContenido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textFieldContenidoActionPerformed(evt);
             }
         });
+        getContentPane().add(textFieldContenido);
+        textFieldContenido.setBounds(150, 210, 895, 290);
 
+        botonAceptar.setBackground(new java.awt.Color(174, 178, 194));
+        botonAceptar.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
+        botonAceptar.setForeground(new java.awt.Color(0, 0, 0));
         botonAceptar.setText("Aceptar");
+        botonAceptar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
         botonAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonAceptarActionPerformed(evt);
             }
         });
+        getContentPane().add(botonAceptar);
+        botonAceptar.setBounds(840, 550, 90, 30);
 
+        botonCancelar.setBackground(new java.awt.Color(174, 178, 194));
+        botonCancelar.setForeground(new java.awt.Color(0, 0, 0));
         botonCancelar.setText("Cancelar");
+        botonCancelar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
         botonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCancelarActionPerformed(evt);
             }
         });
+        getContentPane().add(botonCancelar);
+        botonCancelar.setBounds(960, 550, 90, 30);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelContenido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(41, 41, 41)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(textFieldAutor)
-                                .addComponent(textFieldTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE))
-                            .addComponent(textFieldContenido)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(355, Short.MAX_VALUE)
-                        .addComponent(botonAceptar)
-                        .addGap(37, 37, 37)
-                        .addComponent(botonCancelar)))
-                .addGap(40, 40, 40))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(68, 68, 68)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textFieldAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(textFieldTitulo)
-                    .addComponent(labelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelContenido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textFieldContenido, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonAceptar)
-                    .addComponent(botonCancelar))
-                .addGap(25, 25, 25))
-        );
-
-        labelContenido.getAccessibleContext().setAccessibleName("");
+        fondo.setIcon(new javax.swing.JLabel() {
+            public javax.swing.Icon getIcon() {
+                try {
+                    return new javax.swing.ImageIcon(
+                        new java.net.URL("url:http://www.celer-comex.com.ar/images/fondo.jpg")
+                    );
+                } catch (java.net.MalformedURLException e) {
+                }
+                return null;
+            }
+        }.getIcon());
+        fondo.setToolTipText("");
+        getContentPane().add(fondo);
+        fondo.setBounds(0, 0, 1100, 650);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -236,6 +238,7 @@ public class VistaAnadirDocumento extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAceptar;
     private javax.swing.JButton botonCancelar;
+    private javax.swing.JLabel fondo;
     private java.awt.Label labelAutor;
     private java.awt.Label labelContenido;
     private java.awt.Label labelTitulo;
