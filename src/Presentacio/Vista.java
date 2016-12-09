@@ -293,7 +293,7 @@ public class Vista extends javax.swing.JFrame {
             if (vAD.botonCancelarApretado()) break;
         }*/
         //System.out.println("Boton aceptar apretado");
-        if (vAD.botonAceptarApretado()) {
+        if (!vAD.getDocumento().isEmpty()) {
             System.out.println("Boton aceptar apretado");
             ArrayList<String> doc = vAD.getDocumento();
             try {
@@ -301,6 +301,10 @@ public class Vista extends javax.swing.JFrame {
             } catch (Exception ex) {
                 Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
+        }
+        if (vAD.botonAceptarApretado()) {
+
         }
     }//GEN-LAST:event_anadirDocumento
 

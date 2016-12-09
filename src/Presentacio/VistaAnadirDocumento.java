@@ -18,11 +18,13 @@ public class VistaAnadirDocumento extends javax.swing.JFrame {
     private String contenido;
     private boolean botonAceptarApretado;
     private boolean botonCancelarApretado;
+    private ArrayList<String> doc;
     /**
      * Creates new form VistaAnadirDocumento
      */
     public VistaAnadirDocumento() {
         initComponents();
+        this.doc = new ArrayList<>();
     }
 
     /**
@@ -160,8 +162,20 @@ public class VistaAnadirDocumento extends javax.swing.JFrame {
 
     private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
         // TODO add your handling code here:
+        textFieldAutorActionPerformed(evt);
+        textFieldContenidoActionPerformed(evt);
+        textFieldTituloActionPerformed(evt);
+        doc.add(this.autor);
+        doc.add(this.titulo);
+        doc.add(this.contenido);
         botonAceptarApretado = true;
         this.setVisible(false);
+        for (String s: doc) {
+            System.out.println(s);
+        }
+        System.out.println(this.autor);
+        System.out.println(this.titulo);
+        System.out.println(this.contenido);
         
     }//GEN-LAST:event_botonAceptarActionPerformed
 
@@ -171,15 +185,10 @@ public class VistaAnadirDocumento extends javax.swing.JFrame {
         botonCancelarApretado = false;
         this.autor = textFieldAutor.getText();
     }//GEN-LAST:event_textFieldAutorActionPerformed
-    
+
     public ArrayList<String> getDocumento() {
-        ArrayList<String> doc = new ArrayList<>();
-        doc.add(this.autor);
-        doc.add(this.titulo);
-        doc.add(this.contenido);
-        return doc;
+        return this.doc;
     }
-    
     public boolean botonAceptarApretado() {
         return this.botonAceptarApretado;
     }
