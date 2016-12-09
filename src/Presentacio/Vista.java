@@ -60,8 +60,9 @@ public class Vista extends javax.swing.JFrame {
         titulos = new java.awt.Label();
         botonAnadirDocumento = new javax.swing.JButton();
         scrollPaneAutores = new JScrollPane(listaAutores);
-        jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        logo = new javax.swing.JLabel();
+        fondo = new javax.swing.JLabel();
         barraMenu = new javax.swing.JMenuBar();
         opcion1Menu = new javax.swing.JMenu();
         menuAnadir = new javax.swing.JMenuItem();
@@ -83,7 +84,7 @@ public class Vista extends javax.swing.JFrame {
         buscar.setForeground(new java.awt.Color(254, 254, 254));
         buscar.setText("Buscar autor:");
         getContentPane().add(buscar);
-        buscar.setBounds(80, 170, 160, 27);
+        buscar.setBounds(80, 170, 160, 26);
         buscar.getAccessibleContext().setAccessibleName("Buscar");
 
         textFieldBuscaAutores.addActionListener(new java.awt.event.ActionListener() {
@@ -92,14 +93,14 @@ public class Vista extends javax.swing.JFrame {
             }
         });
         getContentPane().add(textFieldBuscaAutores);
-        textFieldBuscaAutores.setBounds(240, 170, 290, 29);
+        textFieldBuscaAutores.setBounds(250, 170, 290, 30);
 
         autores.setBackground(new java.awt.Color(14, 115, 161));
         autores.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         autores.setForeground(new java.awt.Color(255, 255, 255));
         autores.setText("Autores:");
         getContentPane().add(autores);
-        autores.setBounds(80, 250, 90, 27);
+        autores.setBounds(80, 250, 90, 26);
 
         titulos.setText("Títulos:");
         getContentPane().add(titulos);
@@ -120,16 +121,27 @@ public class Vista extends javax.swing.JFrame {
         getContentPane().add(scrollPaneAutores);
         scrollPaneAutores.setBounds(80, 290, 290, 400);
 
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon("/home/florenciarf/Descargas/Logomakr_6y9ohG.png")); // NOI18N
-        jLabel2.setToolTipText("");
-        jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(170, -10, 980, 180);
+        jButton1.setBackground(new java.awt.Color(174, 178, 194));
+        jButton1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jButton1.setText("Aceptar");
+        jButton1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aceptarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(570, 170, 120, 30);
 
-        jLabel1.setIcon(new javax.swing.JLabel() {
+        logo.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        logo.setForeground(new java.awt.Color(255, 255, 255));
+        logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        logo.setToolTipText("");
+        logo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(logo);
+        logo.setBounds(170, -10, 980, 180);
+
+        fondo.setIcon(new javax.swing.JLabel() {
             public javax.swing.Icon getIcon() {
                 try {
                     return new javax.swing.ImageIcon(
@@ -140,8 +152,8 @@ public class Vista extends javax.swing.JFrame {
                 return null;
             }
         }.getIcon());
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(-340, -220, 3000, 1579);
+        getContentPane().add(fondo);
+        fondo.setBounds(-340, -220, 3000, 1579);
 
         opcion1Menu.setText("Archivo");
 
@@ -207,7 +219,7 @@ public class Vista extends javax.swing.JFrame {
 
     private void textFieldAutor(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldAutor
         // TODO add your handling code here:
-        //Vista.autor = textFieldBuscaAutores.getText();
+        Vista.autor = textFieldBuscaAutores.getText();
     }//GEN-LAST:event_textFieldAutor
 
 
@@ -231,6 +243,20 @@ public class Vista extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_anadirDocumento
 
+    private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
+        // TODO add your handling code here:
+        textFieldAutor(evt);
+        model.clear();
+        try {
+            autoresPref = cp.getAutorPref(autor);
+        } catch (Exception ex) {
+            Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        for (String aut: autoresPref) {
+            model.addElement(aut);
+        }
+    }//GEN-LAST:event_aceptarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -243,7 +269,7 @@ public class Vista extends javax.swing.JFrame {
                 try {
                     Vista vista = new Vista();
                     vista.setVisible(true);
-                    try {
+                    /*try {
                         cp.altaDocumento("flor", "h", "j");
                         cp.altaDocumento("jess", "d", "f");
                         autoresPref = cp.getAutorPref("");
@@ -252,7 +278,7 @@ public class Vista extends javax.swing.JFrame {
                     }
                     autoresPref.forEach((aut) -> {
                         model.addElement(aut);
-                    });
+                    });*/
                 } catch (IOException ex) {
                     Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -265,11 +291,12 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JMenuBar barraMenu;
     private javax.swing.JButton botonAnadirDocumento;
     private java.awt.Label buscar;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel fondo;
+    private javax.swing.JButton jButton1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JLabel logo;
     private javax.swing.JMenuItem menuAnadir;
     private javax.swing.JMenuItem menuCerrar;
     private javax.swing.JMenu opcion1Menu;
