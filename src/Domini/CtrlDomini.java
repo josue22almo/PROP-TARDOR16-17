@@ -123,8 +123,11 @@ public class CtrlDomini {
         Map <Integer, Documento> m = cd.getVecDocumentos();
         for (Integer id : m.keySet()) {
             Documento d = m.get(id);
-            if (tree.satisfyExpression(d)) result.put(d.getAutor(),d.getTitulo());
+            boolean b = tree.satisfyExpression(d);
+            if (b) 
+                result.put(d.getAutor(),d.getTitulo());
         }
+        if (m.isEmpty()) throw new Exception("No hay ningún documento que cumpla la expresión");
         return result;
     }
     

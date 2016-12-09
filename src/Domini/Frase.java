@@ -14,6 +14,7 @@ public class Frase {
     public Frase() {
         this.frase = new ArrayList<>();
         first = true;
+        stringFrase = "";
     }
         
     public void addPalabra (String palabra){
