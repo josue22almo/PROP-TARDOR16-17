@@ -5,9 +5,6 @@
  */
 package Presentacio;
 
-import java.util.ArrayList;
-import jdk.nashorn.internal.codegen.CompilerConstants;
-
 /**
  *
  * @author jessica.sobreviela
