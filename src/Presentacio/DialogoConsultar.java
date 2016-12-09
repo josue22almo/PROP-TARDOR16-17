@@ -19,6 +19,7 @@ public class DialogoConsultar extends javax.swing.JDialog {
      * @param modal
      * @param autor
      * @param titulo
+     * @param contenido
      */
     public DialogoConsultar(java.awt.Frame parent, boolean modal, String autor, String titulo, String contenido) {
         super(parent, modal);
