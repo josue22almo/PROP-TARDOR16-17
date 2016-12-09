@@ -44,7 +44,8 @@ public class Trie {
         if (n.getMapHijo().isEmpty()) nodoaux.eliminarHijo(aux_c);
     }
  
-    public ArrayList<String> consultarListaDelPrefijo(String prefijo) {
+    public ArrayList<String> consultarListaDelPrefijo(String prefijo) throws Exception {
+        
         ArrayList<String> aux = new ArrayList<>();
         Nodo n = raiz;
         if ("".equals(prefijo)){
@@ -59,6 +60,10 @@ public class Trie {
             n = sub;
         }
         consultarSubArbol(sub, aux, prefijo);
+        
+        if (aux.isEmpty())
+            throw new Exception("La búsqueda no ha producido resultados");
+        
         return aux;
     }
     
