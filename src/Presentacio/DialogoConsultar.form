@@ -61,6 +61,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Parecidos"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonParecidosActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="botonExpBool">
       <Properties>

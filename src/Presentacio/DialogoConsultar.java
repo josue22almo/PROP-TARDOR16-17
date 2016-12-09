@@ -51,6 +51,11 @@ public class DialogoConsultar extends javax.swing.JDialog {
         });
 
         botonParecidos.setText("Parecidos");
+        botonParecidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonParecidosActionPerformed(evt);
+            }
+        });
 
         botonExpBool.setText("Expresión booleana");
 
@@ -87,6 +92,11 @@ public class DialogoConsultar extends javax.swing.JDialog {
         consCont.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_botonContenidoActionPerformed
+
+    private void botonParecidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonParecidosActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_botonParecidosActionPerformed
 
     /**
      * @param args the command line arguments
