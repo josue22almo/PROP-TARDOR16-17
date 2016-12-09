@@ -39,6 +39,7 @@ public class CtrlPresentacio {
         return this.cd.consultarTitulosAutor(autor);
     }
     
+    
     public CtrlDomini getCtrlDomini() {
         return this.cd;
     }

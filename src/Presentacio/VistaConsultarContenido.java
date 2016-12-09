@@ -10,22 +10,25 @@ package Presentacio;
  * @author jessica.sobreviela
  */
 public class VistaConsultarContenido extends javax.swing.JFrame {
-    private String autor;
-    private String titulo;
-    private String contenido;
+    private static String autor;
+    private static String titulo;
+    private static String contenido;
     
     /**
      * Creates new form VistaConsultarContenido
+     * @param autor
+     * @param titulo
+     * @param contenido
      */
     public VistaConsultarContenido(String autor, String titulo, String contenido) {
         initComponents();
+        VistaConsultarContenido.autor=autor;
+        VistaConsultarContenido.titulo=titulo;
+        VistaConsultarContenido.contenido=contenido;
         textoAutor.setText(autor);
         textoTitulo.setText(titulo);
         textoContenido.setText(contenido);
-        
-        this.autor=autor;
-        this.titulo=titulo;
-        this.contenido=contenido;
+       
     }
 
     /**
@@ -70,6 +73,7 @@ public class VistaConsultarContenido extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTextArea2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Contenido");
 
         Autor.setText("Autor:");
 

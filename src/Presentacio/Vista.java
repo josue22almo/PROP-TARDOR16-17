@@ -33,6 +33,8 @@ public class Vista extends javax.swing.JFrame {
     private static JList listaTitulos;
     static DefaultListModel modelAutores;
     static DefaultListModel modelTitulos;
+    private String autorSelect;
+    private String tituloSelect;
     /**
      * Creates new form Vista
      * @throws java.io.IOException
@@ -70,6 +72,7 @@ public class Vista extends javax.swing.JFrame {
         logo = new javax.swing.JLabel();
         scrollPaneTitulos = new JScrollPane(listaTitulos);
         mostrarTitulos = new javax.swing.JButton();
+        botonConsultar = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
         barraMenu = new javax.swing.JMenuBar();
         opcion1Menu = new javax.swing.JMenu();
@@ -95,8 +98,9 @@ public class Vista extends javax.swing.JFrame {
         buscar.setBounds(80, 170, 160, 26);
         buscar.getAccessibleContext().setAccessibleName("Buscar");
 
-        textFieldBuscaAutores.setBackground(new java.awt.Color(174, 178, 194));
+        textFieldBuscaAutores.setForeground(new java.awt.Color(0, 0, 0));
         textFieldBuscaAutores.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        textFieldBuscaAutores.setCaretColor(new java.awt.Color(0, 0, 0));
         textFieldBuscaAutores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textFieldAutor(evt);
@@ -132,9 +136,9 @@ public class Vista extends javax.swing.JFrame {
         getContentPane().add(botonAnadirDocumento);
         botonAnadirDocumento.setBounds(950, 171, 190, 40);
 
-        scrollPaneAutores.setBackground(new java.awt.Color(174, 178, 194));
+        scrollPaneAutores.setBackground(new java.awt.Color(0, 0, 0));
         scrollPaneAutores.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        scrollPaneAutores.setForeground(new java.awt.Color(174, 178, 194));
+        scrollPaneAutores.setForeground(new java.awt.Color(0, 0, 0));
         scrollPaneAutores.setToolTipText("");
         scrollPaneAutores.setEnabled(false);
         getContentPane().add(scrollPaneAutores);
@@ -160,20 +164,34 @@ public class Vista extends javax.swing.JFrame {
         getContentPane().add(logo);
         logo.setBounds(170, -10, 980, 180);
 
-        scrollPaneTitulos.setBackground(new java.awt.Color(174, 178, 194));
+        scrollPaneTitulos.setBackground(new java.awt.Color(0, 0, 0));
         scrollPaneTitulos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         scrollPaneTitulos.setForeground(new java.awt.Color(174, 178, 194));
         getContentPane().add(scrollPaneTitulos);
-        scrollPaneTitulos.setBounds(590, 280, 320, 400);
+        scrollPaneTitulos.setBounds(590, 280, 320, 410);
 
+        mostrarTitulos.setBackground(new java.awt.Color(174, 178, 194));
         mostrarTitulos.setText("Mostrar títulos >>");
+        mostrarTitulos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         mostrarTitulos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mostrarTitulosActionPerformed(evt);
             }
         });
         getContentPane().add(mostrarTitulos);
-        mostrarTitulos.setBounds(390, 450, 170, 25);
+        mostrarTitulos.setBounds(390, 450, 170, 30);
+
+        botonConsultar.setBackground(new java.awt.Color(174, 178, 194));
+        botonConsultar.setForeground(new java.awt.Color(0, 0, 0));
+        botonConsultar.setText("Consultar");
+        botonConsultar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        botonConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonConsultarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(botonConsultar);
+        botonConsultar.setBounds(950, 250, 190, 40);
 
         fondo.setIcon(new javax.swing.JLabel() {
             public javax.swing.Icon getIcon() {
@@ -305,12 +323,12 @@ public class Vista extends javax.swing.JFrame {
 
     private void mostrarTitulosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarTitulosActionPerformed
         // TODO add your handling code here:
-        String autores = listaAutores.getSelectedValue().toString();
+        this.autorSelect = listaAutores.getSelectedValue().toString();
         System.out.println(autores);
         ArrayList<String> titulosAutor = new ArrayList<>();
         modelTitulos.clear();
         try {
-            titulosAutor = Vista.cp.consultarTitulosAutor(autores);
+            titulosAutor = Vista.cp.consultarTitulosAutor(this.autorSelect);
         } catch (Exception ex) {
             String excepcion = "Este autor no tiene ningún documento.";
             JOptionPane.showMessageDialog(rootPane,excepcion);
@@ -320,6 +338,19 @@ public class Vista extends javax.swing.JFrame {
             modelTitulos.addElement(titulo);
         }
     }//GEN-LAST:event_mostrarTitulosActionPerformed
+
+    private void botonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarActionPerformed
+        // TODO add your handling code here:
+        this.tituloSelect = listaTitulos.getSelectedValue().toString();
+        String contenido = "";
+        try {
+            contenido = Vista.cp.consultarContenido(this.autorSelect, this.tituloSelect);
+        } catch (Exception ex) {
+            Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        DialogoConsultar consultar = new DialogoConsultar(this, rootPaneCheckingEnabled, this.autorSelect, this.tituloSelect,contenido);
+        consultar.setVisible(true);
+    }//GEN-LAST:event_botonConsultarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -355,6 +386,7 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JMenuBar barraMenu;
     private javax.swing.JButton botonAceptar;
     private javax.swing.JButton botonAnadirDocumento;
+    private javax.swing.JButton botonConsultar;
     private java.awt.Label buscar;
     private javax.swing.JLabel fondo;
     private javax.swing.JMenu jMenu2;
