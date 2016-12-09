@@ -152,7 +152,14 @@ public class DriverCtrlDomini {
                     System.out.println("Consultar expresión booleana");
                     System.out.println("Frase booleana:");
                     String booleano = sc.nextLine();
-                    c.getDocumentosBool(booleano);
+                    Map <String, String> m = c.getDocumentosBool(booleano);
+                    Iterator iter = m.keySet().iterator();
+                    while(iter.hasNext()){
+                        Integer autorr = (Integer) iter.next();
+                        System.out.print("Autor: " + autorr + '\n');
+                        System.out.println("Titulo: " + m.get(autorr));
+                        //System.out.println();
+                    }
                     break;
                 case 13: 
                     System.out.println("Consultar todo el conjunto de documentos");

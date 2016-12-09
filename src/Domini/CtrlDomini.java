@@ -118,9 +118,14 @@ public class CtrlDomini {
     
     public Map<String,String> getDocumentosBool(String expresion) throws Exception{
         
-        Map<String,String> m = new HashMap<>();
+        Map<String,String> result = new HashMap<>();
         BooleanTree tree = new BooleanTree(expresion);
-        return m;
+        Map <Integer, Documento> m = cd.getVecDocumentos();
+        for (Integer id : m.keySet()) {
+            Documento d = m.get(id);
+            if (tree.satisfyExpression(d)) result.put(d.getAutor(),d.getTitulo());
+        }
+        return result;
     }
     
     public CjtoDocumentos getCjtoDocumentos(){
