@@ -100,7 +100,6 @@ public class Vista extends javax.swing.JFrame {
 
         textFieldBuscaAutores.setForeground(new java.awt.Color(0, 0, 0));
         textFieldBuscaAutores.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        textFieldBuscaAutores.setCaretColor(new java.awt.Color(0, 0, 0));
         textFieldBuscaAutores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textFieldAutor(evt);
