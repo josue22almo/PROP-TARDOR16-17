@@ -191,10 +191,11 @@ public class CjtoDocumentos {
         calcularDistancias(); 
     }
     
-    public ArrayList<String> consultarTitulosAutor(String autor) throws Exception {
-        
-        if (!ids.containsKey(autor))
-        	throw new Exception("No existe el autor");
+    public ArrayList<String> consultarTitulosAutor(String autor) {
+        // CREO QUE YA NO HACE FALTA PORQUE EN NUESTRA APLICACIÓN
+        // SELECCIONAMOS EL AUTOR EN LA LISTA
+        //if (!ids.containsKey(autor))
+        //	throw new Exception("No existe el autor");
         
         ArrayList<String> titulos = new ArrayList<>();
         Map<String,Integer> titulos_e_ids = ids.get(autor);

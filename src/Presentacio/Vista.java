@@ -10,6 +10,7 @@ import Domini.Documento;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -68,6 +69,7 @@ public class Vista extends javax.swing.JFrame {
         botonAceptar = new javax.swing.JButton();
         logo = new javax.swing.JLabel();
         scrollPaneTitulos = new JScrollPane(listaTitulos);
+        mostrarTitulos = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
         barraMenu = new javax.swing.JMenuBar();
         opcion1Menu = new javax.swing.JMenu();
@@ -162,7 +164,16 @@ public class Vista extends javax.swing.JFrame {
         scrollPaneTitulos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         scrollPaneTitulos.setForeground(new java.awt.Color(174, 178, 194));
         getContentPane().add(scrollPaneTitulos);
-        scrollPaneTitulos.setBounds(510, 290, 320, 400);
+        scrollPaneTitulos.setBounds(590, 280, 320, 400);
+
+        mostrarTitulos.setText("Mostrar títulos >>");
+        mostrarTitulos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mostrarTitulosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(mostrarTitulos);
+        mostrarTitulos.setBounds(390, 450, 170, 25);
 
         fondo.setIcon(new javax.swing.JLabel() {
             public javax.swing.Icon getIcon() {
@@ -292,10 +303,24 @@ public class Vista extends javax.swing.JFrame {
         
     }//GEN-LAST:event_aceptarActionPerformed
 
-    private static void mostrarTitulos() {
-        String autor = listaAutores.getSelectedValue().toString();
-        if (autor != null) System.out.println(autor);
-    }
+    private void mostrarTitulosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarTitulosActionPerformed
+        // TODO add your handling code here:
+        String autores = listaAutores.getSelectedValue().toString();
+        System.out.println(autores);
+        ArrayList<String> titulosAutor = new ArrayList<>();
+        modelTitulos.clear();
+        try {
+            titulosAutor = Vista.cp.consultarTitulosAutor(autores);
+        } catch (Exception ex) {
+            String excepcion = "Este autor no tiene ningún documento.";
+            JOptionPane.showMessageDialog(rootPane,excepcion);
+        }
+        
+        for (String titulo: titulosAutor) {
+            modelTitulos.addElement(titulo);
+        }
+    }//GEN-LAST:event_mostrarTitulosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -308,7 +333,6 @@ public class Vista extends javax.swing.JFrame {
                 try {
                     Vista vista = new Vista();
                     vista.setVisible(true);
-                    mostrarTitulos();
                     /*try {
                         cp.altaDocumento("flor", "h", "j");
                         cp.altaDocumento("jess", "d", "f");
@@ -339,6 +363,7 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JLabel logo;
     private javax.swing.JMenuItem menuAnadir;
     private javax.swing.JMenuItem menuCerrar;
+    private javax.swing.JButton mostrarTitulos;
     private javax.swing.JMenu opcion1Menu;
     private javax.swing.JScrollPane scrollPaneAutores;
     private javax.swing.JScrollPane scrollPaneTitulos;

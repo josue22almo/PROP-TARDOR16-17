@@ -35,6 +35,10 @@ public class CtrlPresentacio {
         return this.cd.consultarContenido(autor, titulo);
     }
     
+    public ArrayList<String> consultarTitulosAutor(String autor) throws Exception {
+        return this.cd.consultarTitulosAutor(autor);
+    }
+    
     public CtrlDomini getCtrlDomini() {
         return this.cd;
     }
