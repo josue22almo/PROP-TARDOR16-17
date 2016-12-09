@@ -17,7 +17,6 @@ public class VistaConsultarContenido extends javax.swing.JFrame {
     private String titulo;
     private String contenido;
     private boolean botonAceptarApretado;
-    private boolean botonCancelarApretado;
     /**
      * Creates new form VistaConsultarContenido
      */
@@ -34,34 +33,19 @@ public class VistaConsultarContenido extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
         Autor = new javax.swing.JLabel();
-        TextFieldAutor = new javax.swing.JTextField();
         Titulo = new javax.swing.JLabel();
-        TextFieldTitulo = new javax.swing.JTextField();
         Aceptar = new javax.swing.JButton();
         Contenido = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        TextContenido = new javax.swing.JTextPane();
+
+        jLabel1.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         Autor.setText("Autor:");
 
-        TextFieldAutor.setText("TextFieldAutor");
-        TextFieldAutor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextFieldAutorActionPerformed(evt);
-            }
-        });
-
         Titulo.setText("Titulo:");
-
-        TextFieldTitulo.setText("TextFieldTitulo");
-        TextFieldTitulo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextFieldTituloActionPerformed(evt);
-            }
-        });
 
         Aceptar.setText("Aceptar");
         Aceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -72,78 +56,47 @@ public class VistaConsultarContenido extends javax.swing.JFrame {
 
         Contenido.setText("Contenido:");
 
-        jScrollPane1.setViewportView(TextContenido);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Aceptar)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(Autor)
-                                .addComponent(Titulo))
-                            .addComponent(Contenido))
-                        .addGap(31, 31, 31)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TextFieldAutor)
-                            .addComponent(TextFieldTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1))))
-                .addGap(61, 61, 61))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Contenido)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(Titulo)
+                        .addComponent(Autor)))
+                .addContainerGap(284, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Aceptar)
+                .addGap(30, 30, 30))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Autor)
-                    .addComponent(TextFieldAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Titulo)
-                    .addComponent(TextFieldTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(47, 47, 47)
+                .addComponent(Autor)
                 .addGap(18, 18, 18)
+                .addComponent(Titulo)
+                .addGap(18, 18, 18)
+                .addComponent(Contenido)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
                 .addComponent(Aceptar)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Contenido)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addGap(32, 32, 32))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void TextFieldAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldAutorActionPerformed
-        // TODO add your handling code here:
-        this.autor = TextFieldAutor.getText();
-        botonAceptarApretado = false;
-        botonCancelarApretado = false;
-    }//GEN-LAST:event_TextFieldAutorActionPerformed
-
-    private void TextFieldTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldTituloActionPerformed
-        // TODO add your handling code here:
-        this.titulo = TextFieldTitulo.getText();
-        botonAceptarApretado = false;
-        botonCancelarApretado = false;
-    }//GEN-LAST:event_TextFieldTituloActionPerformed
-
     private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
         // TODO add your handling code here:
         botonAceptarApretado = true;
-        botonCancelarApretado = false;
     }//GEN-LAST:event_AceptarActionPerformed
 
     public boolean botonAceptarApretado() {
         return this.botonAceptarApretado;
-    }
-    
-    public boolean botonCancelarApretado() {
-        return this.botonCancelarApretado;
     }
     
     /**
@@ -185,10 +138,7 @@ public class VistaConsultarContenido extends javax.swing.JFrame {
     private javax.swing.JButton Aceptar;
     private javax.swing.JLabel Autor;
     private javax.swing.JLabel Contenido;
-    private javax.swing.JTextPane TextContenido;
-    private javax.swing.JTextField TextFieldAutor;
-    private javax.swing.JTextField TextFieldTitulo;
     private javax.swing.JLabel Titulo;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
