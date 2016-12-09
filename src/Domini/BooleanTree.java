@@ -46,7 +46,6 @@ public class BooleanTree {
         add("\\x20", 10); //space
         analizarExpresion(str);
         tree = createTree();
-//        System.out.println();
     }
   
     public boolean satisfyExpression(Documento doc){

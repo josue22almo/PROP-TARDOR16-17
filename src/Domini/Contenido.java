@@ -100,9 +100,9 @@ public class Contenido {
         }
         if (palabra.length() > 0){
             frase.addPalabra(preparedString(palabra));
-            frases.add(frase);
             addPalabra(palabra);
         }
+        frases.add(frase);
     }
     
     private String preparedString(String str){
