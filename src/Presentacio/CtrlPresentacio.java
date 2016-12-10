@@ -5,6 +5,7 @@
  */
 package Presentacio;
 import Domini.*;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -27,6 +28,10 @@ public class CtrlPresentacio {
         this.cd.altaConjuntoDocumentosDirectorio(folder);
     }
     
+    public void altaDocumentoPorRuta (File archivo) throws Exception {
+        this.cd.altaDocumentoPorRuta(archivo);
+    } 
+    
     public void altaDocumento(String autor, String titulo, String contenido) throws Exception {
         this.cd.altaDocumento(autor, titulo, contenido);
     }
@@ -38,7 +43,6 @@ public class CtrlPresentacio {
     public ArrayList<String> consultarTitulosAutor(String autor) throws Exception {
         return this.cd.consultarTitulosAutor(autor);
     }
-    
     
     public CtrlDomini getCtrlDomini() {
         return this.cd;

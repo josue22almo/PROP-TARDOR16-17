@@ -2,6 +2,7 @@ package Domini;
 
 import Persistencia.CtrlPersistencia;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,7 +26,7 @@ public class CtrlDomini {
         ingles = ctrlPersistencia.leerPalabrasFuncionales("src/Texto/eng.txt");
     }
   
-    public void altaConjuntoDocumentosDirectorio(String folder) throws Exception{       
+    public void altaConjuntoDocumentosDirectorio(String folder) throws Exception {       
         
         ArrayList<BufferedReader> docs = ctrlPersistencia.leerCarpeta(folder);
         for (int i = 0; i < docs.size(); ++i){
@@ -41,6 +42,21 @@ public class CtrlDomini {
             }
             cd.altaDocumento(autor, titulo, contenido);
         }
+    }
+    
+    public void altaDocumentoPorRuta(File archivo) throws Exception {
+        BufferedReader doc = ctrlPersistencia.leerDocumento(archivo);
+            String autor = doc.readLine();
+            doc.readLine();
+            String titulo = doc.readLine();
+            doc.readLine();
+            String contenido = "";
+            String aux;                
+            while ((aux = doc.readLine()) != null){
+                contenido += aux;
+                contenido += '\n';
+            }
+            cd.altaDocumento(autor, titulo, contenido);        
     }
     
     public void altaDocumento(String autor, String titulo, String contenido) throws Exception {

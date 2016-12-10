@@ -7,6 +7,7 @@ package Presentacio;
 
 import Domini.CjtoDocumentos;
 import Domini.Documento;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -14,11 +15,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
+
 
 /**
  *
@@ -35,6 +39,7 @@ public class Vista extends javax.swing.JFrame {
     static DefaultListModel modelTitulos;
     private String autorSelect;
     private String tituloSelect;
+    static ImageIcon logoFondo;
     /**
      * Creates new form Vista
      * @throws java.io.IOException
@@ -47,6 +52,9 @@ public class Vista extends javax.swing.JFrame {
         Vista.listaAutores = new JList(modelAutores);
         modelTitulos = new DefaultListModel();
         Vista.listaTitulos = new JList(modelTitulos);
+        logoFondo = new ImageIcon(ImageIO.read(getClass().getResource("/presentacio/fondo.png")));
+        //ImageIcon fondoLabel = (new ImageIcon(getClass().getResource("fondo.png")));
+        fondo.setIcon(logoFondo);
         initComponents();
     }
 
@@ -95,7 +103,7 @@ public class Vista extends javax.swing.JFrame {
         buscar.setForeground(new java.awt.Color(254, 254, 254));
         buscar.setText("Buscar autor:");
         getContentPane().add(buscar);
-        buscar.setBounds(80, 170, 160, 26);
+        buscar.setBounds(80, 170, 160, 27);
         buscar.getAccessibleContext().setAccessibleName("Buscar");
 
         textFieldBuscaAutores.setForeground(new java.awt.Color(0, 0, 0));
@@ -113,7 +121,7 @@ public class Vista extends javax.swing.JFrame {
         autores.setForeground(new java.awt.Color(255, 255, 255));
         autores.setText("Autores:");
         getContentPane().add(autores);
-        autores.setBounds(80, 250, 90, 26);
+        autores.setBounds(80, 250, 90, 27);
 
         titulos.setBackground(new java.awt.Color(14, 115, 161));
         titulos.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -150,7 +158,7 @@ public class Vista extends javax.swing.JFrame {
         logo.setToolTipText("");
         logo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         getContentPane().add(logo);
-        logo.setBounds(170, -10, 980, 180);
+        logo.setBounds(170, -10, 980, 170);
 
         scrollPaneTitulos.setBackground(new java.awt.Color(174, 178, 194));
         scrollPaneTitulos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -205,8 +213,10 @@ public class Vista extends javax.swing.JFrame {
         opcion1Menu.setBackground(new java.awt.Color(11, 116, 163));
         opcion1Menu.setForeground(new java.awt.Color(255, 255, 255));
         opcion1Menu.setText("Archivo");
+        opcion1Menu.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
 
         menuAnadir.setBackground(new java.awt.Color(11, 116, 163));
+        menuAnadir.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         menuAnadir.setForeground(new java.awt.Color(255, 255, 255));
         menuAnadir.setText("Añadir por carpeta...");
         menuAnadir.addActionListener(new java.awt.event.ActionListener() {
@@ -261,7 +271,7 @@ public class Vista extends javax.swing.JFrame {
               System.out.println("getCurrentDirectory(): " + chooser.getCurrentDirectory());
               System.out.println("getSelectedFile() : " + chooser.getSelectedFile());
                 try {
-                    Vista.cp.altaCjtoDocsDirectorio(chooser.getSelectedFile().getCanonicalPath());
+                    Vista.cp.altaCjtoDocsDirectorio(chooser.getSelectedFile().getCanonicalPath()); 
                     CjtoDocumentos cd = Vista.cp.getCtrlDomini().getCjtoDocumentos();
                     Map <Integer, Documento> vecDocumentos = cd.getVecDocumentos();
                     Iterator it = vecDocumentos.keySet().iterator();
@@ -272,6 +282,13 @@ public class Vista extends javax.swing.JFrame {
                         System.out.println("Titulo: " + doc.getTitulo() + '\n' + "Contenido: " + doc.getContenidoOriginal());
                         //System.out.println();
                     }
+                    String exito = "Documentos creados con éxito.";
+                    JOptionPane.showMessageDialog(rootPane,exito);  
+                } catch (FileNotFoundException ex) {
+                    String excepcion = "No hay ningún documento en este directorio.";
+                    JOptionPane.showMessageDialog(rootPane,excepcion);                    
+                } catch (IOException ex) {
+                    Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (Exception ex) {
                     Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -343,7 +360,13 @@ public class Vista extends javax.swing.JFrame {
             chooser.setAcceptAllFileFilterUsed(false);
 
             if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
-                
+                try {
+                    Vista.cp.altaDocumentoPorRuta(chooser.getSelectedFile());
+                    String exito = "Documento creado con éxito.";
+                    JOptionPane.showMessageDialog(rootPane,exito);  
+                } catch (Exception ex) {
+                    Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
     }//GEN-LAST:event_anadirDocActionPerformed
 
