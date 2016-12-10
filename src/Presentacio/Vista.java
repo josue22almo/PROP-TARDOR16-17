@@ -66,7 +66,6 @@ public class Vista extends javax.swing.JFrame {
         textFieldBuscaAutores = new javax.swing.JTextField();
         autores = new java.awt.Label();
         titulos = new java.awt.Label();
-        botonAnadirDocumento = new javax.swing.JButton();
         scrollPaneAutores = new JScrollPane(listaAutores);
         botonAceptar = new javax.swing.JButton();
         logo = new javax.swing.JLabel();
@@ -77,6 +76,7 @@ public class Vista extends javax.swing.JFrame {
         barraMenu = new javax.swing.JMenuBar();
         opcion1Menu = new javax.swing.JMenu();
         menuAnadir = new javax.swing.JMenuItem();
+        anadirDoc = new javax.swing.JMenuItem();
         menuCerrar = new javax.swing.JMenuItem();
 
         jMenu2.setText("File");
@@ -95,7 +95,7 @@ public class Vista extends javax.swing.JFrame {
         buscar.setForeground(new java.awt.Color(254, 254, 254));
         buscar.setText("Buscar autor:");
         getContentPane().add(buscar);
-        buscar.setBounds(80, 170, 160, 27);
+        buscar.setBounds(80, 170, 160, 26);
         buscar.getAccessibleContext().setAccessibleName("Buscar");
 
         textFieldBuscaAutores.setForeground(new java.awt.Color(0, 0, 0));
@@ -113,7 +113,7 @@ public class Vista extends javax.swing.JFrame {
         autores.setForeground(new java.awt.Color(255, 255, 255));
         autores.setText("Autores:");
         getContentPane().add(autores);
-        autores.setBounds(80, 250, 90, 27);
+        autores.setBounds(80, 250, 90, 26);
 
         titulos.setBackground(new java.awt.Color(14, 115, 161));
         titulos.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -121,19 +121,6 @@ public class Vista extends javax.swing.JFrame {
         titulos.setText("Títulos:");
         getContentPane().add(titulos);
         titulos.setBounds(510, 250, 70, 20);
-
-        botonAnadirDocumento.setBackground(new java.awt.Color(174, 178, 194));
-        botonAnadirDocumento.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
-        botonAnadirDocumento.setForeground(new java.awt.Color(0, 0, 0));
-        botonAnadirDocumento.setText("Añadir documento...");
-        botonAnadirDocumento.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
-        botonAnadirDocumento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                anadirDocumento(evt);
-            }
-        });
-        getContentPane().add(botonAnadirDocumento);
-        botonAnadirDocumento.setBounds(970, 320, 190, 40);
 
         scrollPaneAutores.setBackground(new java.awt.Color(174, 178, 194));
         scrollPaneAutores.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -160,7 +147,6 @@ public class Vista extends javax.swing.JFrame {
         logo.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         logo.setForeground(new java.awt.Color(255, 255, 255));
         logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        logo.setIcon(new javax.swing.ImageIcon("/home/florenciarf/Descargas/Logomakr_6y9ohG.png")); // NOI18N
         logo.setToolTipText("");
         logo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         getContentPane().add(logo);
@@ -197,7 +183,7 @@ public class Vista extends javax.swing.JFrame {
             }
         });
         getContentPane().add(botonConsultar);
-        botonConsultar.setBounds(970, 410, 190, 40);
+        botonConsultar.setBounds(980, 280, 190, 40);
 
         fondo.setIcon(new javax.swing.JLabel() {
             public javax.swing.Icon getIcon() {
@@ -229,6 +215,16 @@ public class Vista extends javax.swing.JFrame {
             }
         });
         opcion1Menu.add(menuAnadir);
+
+        anadirDoc.setBackground(new java.awt.Color(11, 116, 163));
+        anadirDoc.setForeground(new java.awt.Color(255, 255, 255));
+        anadirDoc.setText("Añadir documento...");
+        anadirDoc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                anadirDocActionPerformed(evt);
+            }
+        });
+        opcion1Menu.add(anadirDoc);
 
         menuCerrar.setBackground(new java.awt.Color(11, 116, 163));
         menuCerrar.setForeground(new java.awt.Color(255, 255, 255));
@@ -290,30 +286,6 @@ public class Vista extends javax.swing.JFrame {
     }//GEN-LAST:event_textFieldAutor
 
 
-    @SuppressWarnings("empty-statement")
-    private void anadirDocumento(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anadirDocumento
-        // TODO add your handling code here:
-        VistaAnadirDocumento vAD = new VistaAnadirDocumento();
-        vAD.setVisible(true);
-        /*while (!vAD.botonAceptarApretado()) {
-            if (vAD.botonCancelarApretado()) break;
-        }*/
-        //System.out.println("Boton aceptar apretado");
-        if (!vAD.getDocumento().isEmpty()) {
-            System.out.println("Boton aceptar apretado");
-            ArrayList<String> doc = vAD.getDocumento();
-            try {
-                cp.altaDocumento(doc.get(0), doc.get(1), doc.get(2));
-            } catch (Exception ex) {
-                Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-        }
-        if (vAD.botonAceptarApretado()) {
-
-        }
-    }//GEN-LAST:event_anadirDocumento
-
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
         // TODO add your handling code here:
         textFieldAutor(evt);
@@ -362,6 +334,19 @@ public class Vista extends javax.swing.JFrame {
         consCont.setVisible(true);
     }//GEN-LAST:event_botonConsultarActionPerformed
 
+    private void anadirDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anadirDocActionPerformed
+        // TODO add your handling code here:
+            JFileChooser chooser = new JFileChooser();
+            chooser.setCurrentDirectory(new java.io.File("."));
+            chooser.setDialogTitle("Seleccionar documento");
+            chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+            chooser.setAcceptAllFileFilterUsed(false);
+
+            if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+                
+            }
+    }//GEN-LAST:event_anadirDocActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -392,10 +377,10 @@ public class Vista extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem anadirDoc;
     private java.awt.Label autores;
     private javax.swing.JMenuBar barraMenu;
     private javax.swing.JButton botonAceptar;
-    private javax.swing.JButton botonAnadirDocumento;
     private javax.swing.JButton botonConsultar;
     private java.awt.Label buscar;
     private javax.swing.JLabel fondo;

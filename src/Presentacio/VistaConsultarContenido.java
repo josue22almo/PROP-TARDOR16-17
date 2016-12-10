@@ -91,20 +91,23 @@ public class VistaConsultarContenido extends javax.swing.JFrame {
         getContentPane().add(Titulo);
         Titulo.setBounds(50, 87, 60, 20);
 
+        Aceptar.setBackground(new java.awt.Color(174, 178, 194));
+        Aceptar.setForeground(new java.awt.Color(0, 0, 0));
         Aceptar.setText("Aceptar");
+        Aceptar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
         Aceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AceptarActionPerformed(evt);
             }
         });
         getContentPane().add(Aceptar);
-        Aceptar.setBounds(639, 460, 110, 31);
+        Aceptar.setBounds(639, 460, 110, 30);
 
         Contenido.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         Contenido.setForeground(new java.awt.Color(255, 255, 255));
         Contenido.setText("Contenido:");
         getContentPane().add(Contenido);
-        Contenido.setBounds(50, 140, 90, 20);
+        Contenido.setBounds(50, 140, 90, 18);
 
         textoAutor.setEditable(false);
         textoAutor.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
@@ -139,9 +142,6 @@ public class VistaConsultarContenido extends javax.swing.JFrame {
                 return null;
             }
         }.getIcon());
-        jLabel2.setMaximumSize(new java.awt.Dimension(3000, 1579));
-        jLabel2.setMinimumSize(new java.awt.Dimension(3000, 1579));
-        jLabel2.setPreferredSize(new java.awt.Dimension(3000, 1579));
         getContentPane().add(jLabel2);
         jLabel2.setBounds(0, 0, 1060, 550);
 
