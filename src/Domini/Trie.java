@@ -10,14 +10,14 @@ public class Trie {
     private Nodo raiz;
     
     public Trie(){
-        this.raiz = new Nodo(null);
+        this.raiz = new Nodo();//null
     }
     
     public void añadirAutor(String autor) {
         Nodo n = raiz;
         for(int i=0; i < autor.length(); i++) {
             char c = autor.charAt(i);
-            if (!n.getMapHijo().containsKey(c)) n.añadeHijo(c, new Nodo(n));
+            if (!n.getMapHijo().containsKey(c)) n.añadeHijo(c, new Nodo()); //n
             n = n.getHijo(c);
         }
         n.setFi(true);
