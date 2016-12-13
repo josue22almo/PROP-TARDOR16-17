@@ -8,6 +8,7 @@ import Domini.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Map;
 
 /**
  *
@@ -42,6 +43,10 @@ public class CtrlPresentacio {
     
     public ArrayList<String> consultarTitulosAutor(String autor) throws Exception {
         return this.cd.consultarTitulosAutor(autor);
+    }
+    
+    public Map<String,String> consultarDocumentosExprBooleana(String exprBooleana) throws Exception {
+        return this.cd.getDocumentosBool(exprBooleana);
     }
     
     public CtrlDomini getCtrlDomini() {
