@@ -41,6 +41,10 @@ public class CtrlPresentacio {
         return this.cd.consultarContenido(autor, titulo);
     }
     
+    public Map<String,String> consultarParecidos(String autor, String titulo, Integer k, String type) throws Exception {
+        return this.cd.getDocumentosParecidos(autor, titulo, k, type);
+    }
+    
     public ArrayList<String> consultarTitulosAutor(String autor) throws Exception {
         return this.cd.consultarTitulosAutor(autor);
     }

@@ -11,7 +11,6 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,8 +20,7 @@ import javax.swing.JOptionPane;
 public class VistaExprBooleana extends javax.swing.JFrame {
     
     private static CtrlPresentacio cp;
-    private static JList listaDocumentos;
-    static DefaultListModel modelDocumentos;
+    private static String listaDocumentos;
     private static String expresion;
     private static Map< String, String> documentos;
     
@@ -32,8 +30,6 @@ public class VistaExprBooleana extends javax.swing.JFrame {
     public VistaExprBooleana() throws IOException {
         initComponents();
         VistaExprBooleana.cp = new CtrlPresentacio();
-        modelDocumentos = new DefaultListModel();
-        VistaExprBooleana.listaDocumentos = new JList(modelDocumentos);
         VistaExprBooleana.documentos = new TreeMap<>();
     }
 
@@ -77,6 +73,7 @@ public class VistaExprBooleana extends javax.swing.JFrame {
 
         Resultado.setText("Resultado:");
 
+        jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane2.setViewportView(jTextArea1);
@@ -133,7 +130,7 @@ public class VistaExprBooleana extends javax.swing.JFrame {
     private void ConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultarActionPerformed
         // TODO add your handling code here:
         VistaExprBooleana.expresion = textoExpresion.getText();
-        modelDocumentos.clear();
+        
         try {
             if (expresion == null) expresion = "";
             documentos = cp.consultarDocumentosExprBooleana(expresion);
@@ -143,8 +140,9 @@ public class VistaExprBooleana extends javax.swing.JFrame {
         }
         for (String autor : documentos.keySet()) {
             String titulo = documentos.get(autor);
-            modelDocumentos.addElement("Autor: " + autor + " Titulo: " + titulo);
+            listaDocumentos+=(titulo + ", " + autor + "\n");
         }
+        jTextArea1.setText(listaDocumentos);
     }//GEN-LAST:event_ConsultarActionPerformed
 
     /**

@@ -52,9 +52,9 @@ public class Vista extends javax.swing.JFrame {
         Vista.listaAutores = new JList(modelAutores);
         modelTitulos = new DefaultListModel();
         Vista.listaTitulos = new JList(modelTitulos);
-        logoFondo = new ImageIcon(ImageIO.read(getClass().getResource("/presentacio/fondo.png")));
+        //logoFondo = new ImageIcon(ImageIO.read(getClass().getResource("/presentacio/fondo.png")));
         //ImageIcon fondoLabel = (new ImageIcon(getClass().getResource("fondo.png")));
-        fondo.setIcon(logoFondo);
+        //fondo.setIcon(logoFondo);
         initComponents();
     }
 
@@ -76,7 +76,6 @@ public class Vista extends javax.swing.JFrame {
         titulos = new java.awt.Label();
         scrollPaneAutores = new JScrollPane(listaAutores);
         botonAceptar = new javax.swing.JButton();
-        logo = new javax.swing.JLabel();
         scrollPaneTitulos = new JScrollPane(listaTitulos);
         mostrarTitulos = new javax.swing.JButton();
         botonConsultar = new javax.swing.JButton();
@@ -95,7 +94,6 @@ public class Vista extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gestión de documentos");
-        setPreferredSize(new java.awt.Dimension(4000, 3000));
         getContentPane().setLayout(null);
 
         buscar.setBackground(new java.awt.Color(11, 116, 163));
@@ -151,14 +149,6 @@ public class Vista extends javax.swing.JFrame {
         });
         getContentPane().add(botonAceptar);
         botonAceptar.setBounds(570, 170, 120, 30);
-
-        logo.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
-        logo.setForeground(new java.awt.Color(255, 255, 255));
-        logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        logo.setToolTipText("");
-        logo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(logo);
-        logo.setBounds(170, -10, 980, 170);
 
         scrollPaneTitulos.setBackground(new java.awt.Color(174, 178, 194));
         scrollPaneTitulos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -410,7 +400,6 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar2;
-    private javax.swing.JLabel logo;
     private javax.swing.JMenuItem menuAnadir;
     private javax.swing.JMenuItem menuCerrar;
     private javax.swing.JButton mostrarTitulos;
