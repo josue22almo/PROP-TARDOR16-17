@@ -103,7 +103,7 @@ public class Vista extends javax.swing.JFrame {
         buscar.setForeground(new java.awt.Color(254, 254, 254));
         buscar.setText("Buscar autor:");
         getContentPane().add(buscar);
-        buscar.setBounds(80, 170, 160, 27);
+        buscar.setBounds(80, 170, 160, 26);
         buscar.getAccessibleContext().setAccessibleName("Buscar");
 
         textFieldBuscaAutores.setForeground(new java.awt.Color(0, 0, 0));
@@ -121,7 +121,7 @@ public class Vista extends javax.swing.JFrame {
         autores.setForeground(new java.awt.Color(255, 255, 255));
         autores.setText("Autores:");
         getContentPane().add(autores);
-        autores.setBounds(80, 250, 90, 27);
+        autores.setBounds(80, 250, 90, 26);
 
         titulos.setBackground(new java.awt.Color(14, 115, 161));
         titulos.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
