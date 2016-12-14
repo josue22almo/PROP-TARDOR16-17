@@ -8,5 +8,4 @@ package Domini;
 public abstract class ValueExpressionNode implements ExpressionNode{
     
     public ValueExpressionNode(){}
-    public abstract void addWord(String word);
 }

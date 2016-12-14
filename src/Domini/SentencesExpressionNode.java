@@ -14,15 +14,11 @@ public class SentencesExpressionNode extends ValueExpressionNode{
         super();
         frase = "";
     }
-    
-    @Override
-    public void addWord(String word) {
-        if(first){
-            frase += word;
-            first = false;
-        }else frase += " " + word;
-    }
 
+    SentencesExpressionNode(String frase) {
+        this.frase = frase;
+    }
+ 
     @Override
     public int getType() {
         return Values.SENTENCES_NODE;

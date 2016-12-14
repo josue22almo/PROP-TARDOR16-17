@@ -16,12 +16,11 @@ public class SetExpressionNode extends ValueExpressionNode{
         super();
         words = new ArrayList<>();
     }
-    
-    @Override
-    public void addWord(String word) {
-        words.add(word);
-    }
 
+    SetExpressionNode(ArrayList<String> words) {
+        this.words = (ArrayList)words.clone();
+    }
+    
     @Override
     public int getType() {
         return Values.SET_NODE;

@@ -163,22 +163,28 @@ public class BooleanTree {
     }
     
     private ExpressionNode argument_curly_brackets(){
-        SetExpressionNode result = new SetExpressionNode();
+        ArrayList<String> words = new ArrayList<>();
         while (top.token == Values.WORD){
             //argument -> WORD argument
-            result.addWord(top.sequence);
+            words.add(top.sequence);
             nextToken();
         } 
+        SetExpressionNode result = new SetExpressionNode(words);
         return result;
     }
     
     private ExpressionNode argument_comas(){
-        SentencesExpressionNode result = new SentencesExpressionNode();
+        String frase = "";
+        boolean first = false;
         while (top.token == Values.WORD){
             //argument -> WORD argument
-            result.addWord(top.sequence);
+            if(first){
+                frase += top.sequence;
+                first = false;
+            }else frase += " " + top.sequence;
             nextToken();
         } 
+        SentencesExpressionNode result = new SentencesExpressionNode(frase);
         return result;
     }
     

@@ -155,7 +155,7 @@ public class DriverCtrlDomini {
                     Map <String, String> m = c.getDocumentosBool(booleano);
                     Iterator iter = m.keySet().iterator();
                     while(iter.hasNext()){
-                        Integer autorr = (Integer) iter.next();
+                        String autorr = (String) iter.next();
                         System.out.print("Autor: " + autorr + '\n');
                         System.out.println("Titulo: " + m.get(autorr));
                         //System.out.println();
