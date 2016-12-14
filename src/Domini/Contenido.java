@@ -52,7 +52,10 @@ public class Contenido {
         double escalar = productEscalar(v,contenidoReducido,type);
         double modU = module(contenidoReducido,type);
         double modV = module(v,type);
-        double cos = escalar/(modU*modV);
+        double cos;
+        if (modU != 0 || modV != 0)
+            cos = escalar/(modU*modV);
+        else cos = 0;
         return 1.0 - cos;
     }
     

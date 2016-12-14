@@ -14,8 +14,8 @@ import java.util.TreeMap;
 public class CjtoDocumentos {
     
     private Map <Integer, Documento> vecDocumentos; // Integer-> ID
-    private Map < Integer, TreeMap < Double , Integer > > distsFrec; // Double-> distancia, Integer->ID
-    private Map < Integer, TreeMap < Double , Integer > > distsTFIDF;
+    private Map < Integer, TreeMap < Double , ArrayList<Integer> > > distsFrec; // Double-> distancia, Integer->ID
+    private Map < Integer, TreeMap < Double , ArrayList<Integer> > > distsTFIDF;
     private Map < String, Map<String,Integer> > ids; // 1rString -> autor, 2nString -> titulo, Integer-> ID
     private Trie trie; //para consultarAutoresPorPrefijo
     private static Diccionario diccionario;
@@ -101,6 +101,10 @@ public class CjtoDocumentos {
         
         //Un documento menos
         --numDocs; 
+        
+        //eliminamos sus entradas en distsTFIDF y distsFrec
+        distsFrec.remove(id);
+        distsTFIDF.remove(id);
         
         //Calculamos todas las distancias de todos los documentos respecto a todos los otros
         calcularDistancias();
@@ -231,15 +235,32 @@ public class CjtoDocumentos {
         
         //Se calcula la distancia de todos los documentos respecto a todos los documentos
         for (Integer doc1: vecDocumentos.keySet()){
+            distsFrec.get(doc1).clear();
+            distsTFIDF.get(doc1).clear();
+            vecDocumentos.get(doc1).calcularTFIDF(numDocs, diccionario);
             for (Integer doc2: vecDocumentos.keySet()) {
                 if (doc1 != doc2) {
-                    double distFrec = vecDocumentos.get(doc1).calcularDistancia(vecDocumentos.get(doc2),"FREC");
-                    vecDocumentos.get(doc1).calcularTFIDF(numDocs, diccionario);
+                    vecDocumentos.get(doc2).calcularTFIDF(numDocs, diccionario);
+                    double distFrec = vecDocumentos.get(doc1).calcularDistancia(vecDocumentos.get(doc2),"FREC");             
                     double distTfIDf = vecDocumentos.get(doc1).calcularDistancia(vecDocumentos.get(doc2),"TF-IDF");
                     //int idDoc = vecDocumentos.get(doc1).getID();
                     //int idDoc2 = vecDocumentos.get(doc2).getID();
-                    distsFrec.get(doc1).put(distFrec, doc2);
-                    distsTFIDF.get(doc1).put(distTfIDf, doc2);
+                    if (!distsFrec.get(doc1).containsKey(distFrec)){//si la distancia es nueva, creamos una nueva entrada
+                        ArrayList<Integer> ar = new ArrayList<>();
+                        ar.add(doc2);
+                        distsFrec.get(doc1).put(distFrec, ar);
+                    }else //la distancia no es nueva. Añadimos el documento a la lista de documentos con la misma distancia 
+                        distsFrec.get(doc1).get(distFrec).add(doc2);
+                    
+                    if (!distsTFIDF.get(doc1).containsKey(distTfIDf)){ //si la distancia es nueva, creamos una nueva entrada
+                        ArrayList<Integer> ar = new ArrayList<>();
+                        ar.add(doc2);
+                        distsTFIDF.get(doc1).put(distTfIDf, ar);
+                    }else //la distancia no es nueva. Añadimos el documento a la lista de documentos con la misma distancia 
+                        distsTFIDF.get(doc1).get(distTfIDf).add(doc2);
+                    
+                    //distsFrecs.get(doc1).put(distFrec, doc2);
+                    //distsTFIDF.get(doc1).put(distTfIDf, doc2);
                 }
             }
         }  
@@ -253,11 +274,11 @@ public class CjtoDocumentos {
         return this.vecDocumentos;
     }
     
-    public Map<Integer, TreeMap < Double , Integer > > getDistsFrec(){
+    public Map<Integer, TreeMap < Double , ArrayList<Integer> > > getDistsFrec(){
         return this.distsFrec;
     }
     
-    public Map<Integer, TreeMap < Double , Integer > > getDistsTFIDF(){
+    public Map<Integer, TreeMap < Double , ArrayList<Integer> > > getDistsTFIDF(){
         return this.distsTFIDF;
     }    
     

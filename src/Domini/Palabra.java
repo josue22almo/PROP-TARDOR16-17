@@ -32,7 +32,7 @@ public class Palabra {
     }
         
     public void calcularTFIDF(double numDocs, double numApariciones) {
-        this.tfidf = frecuencia*Math.log(numDocs/numApariciones);
+        this.tfidf = frecuencia*Math.log(numDocs/numApariciones);      
     }
 
     public double getFrecuencia() {
