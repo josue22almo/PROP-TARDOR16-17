@@ -38,7 +38,7 @@ public class CtrlPresentacio {
         this.cd.altaDocumento(autor, titulo, contenido);
     }
     
-    public String consultarContenido(String autor, String titulo) throws Exception {
+    public String consultarContenido(String autor, String titulo) {
         return this.cd.consultarContenido(autor, titulo);
     }
     
@@ -46,7 +46,7 @@ public class CtrlPresentacio {
         return this.cd.getDocumentosParecidos(autor, titulo, k, type);
     }
     
-    public ArrayList<String> consultarTitulosAutor(String autor) throws Exception {
+    public ArrayList<String> consultarTitulosAutor(String autor) throws Exception{
         return this.cd.consultarTitulosAutor(autor);
     }
     
@@ -54,15 +54,15 @@ public class CtrlPresentacio {
         return this.cd.getDocumentosBool(exprBooleana);
     }
     
-    public void modificarAutor(String autor, String titulo, String autorModif) throws Exception{
+    public void modificarAutor(String autor, String titulo, String autorModif) {
         cd.modificaAutorDoc(autor, titulo, autorModif);
     }
     
-    public void modificarTitulo(String autor, String titulo, String tituloModif) throws Exception{
+    public void modificarTitulo(String autor, String titulo, String tituloModif) {
         cd.modificaTituloDoc(autor, titulo, tituloModif);
     }
     
-    public void modificarContenido(String autor, String titulo, String contenidoModif) throws Exception{
+    public void modificarContenido(String autor, String titulo, String contenidoModif) {
         cd.modificaContenidoDoc(autor, titulo, contenidoModif);
     }
     

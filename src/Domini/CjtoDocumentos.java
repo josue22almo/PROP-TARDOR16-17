@@ -75,10 +75,10 @@ public class CjtoDocumentos {
         calcularDistancias();
     }      
     
-    public void bajaDocumento(String autor, String titulo) throws Exception {
+    public void bajaDocumento(String autor, String titulo)  {
         
-        if (!existeDocumento(autor, titulo))
-            throw new Exception("El documento no existe");
+        //if (!existeDocumento(autor, titulo))
+        //    throw new Exception("El documento no existe");
         
         //Eliminamos las palabras no repetidas en otros documentos del diccionario
         int id = ids.get(autor).get(titulo);
@@ -133,10 +133,10 @@ public class CjtoDocumentos {
         
     }
     
-    public void modificaAutorDoc(String autor, String titulo, String autorModif) throws Exception {
+    public void modificaAutorDoc(String autor, String titulo, String autorModif) {
         
-        if (!existeDocumento(autor, titulo))
-            throw new Exception("El documento no existe");
+        //if (!existeDocumento(autor, titulo))
+        //    throw new Exception("El documento no existe");
         
         //Se modifica en vecDocumentos
         int id = ids.get(autor).get(titulo);
@@ -169,10 +169,10 @@ public class CjtoDocumentos {
         }
     }
     
-    public void modificaTituloDoc(String autor, String titulo, String tituloModif) throws Exception {
+    public void modificaTituloDoc(String autor, String titulo, String tituloModif)  {
         
-        if (!existeDocumento(autor, titulo))
-            throw new Exception("El documento no existe");  
+        //if (!existeDocumento(autor, titulo))
+        //    throw new Exception("El documento no existe");  
         
         //Se modifica en vecDocumentos
         int id = ids.get(autor).get(titulo);
@@ -184,10 +184,10 @@ public class CjtoDocumentos {
         ids.get(autor).put(tituloModif,id);
     }    
     
-    public void modificaContenidoDoc(String autor, String titulo, String contenidoModif) throws Exception{
+    public void modificaContenidoDoc(String autor, String titulo, String contenidoModif) {
         
-        if (!existeDocumento(autor, titulo))
-            throw new Exception("El documento no existe");
+        //if (!existeDocumento(autor, titulo))
+        //    throw new Exception("El documento no existe");
         
         int id = ids.get(autor).get(titulo);
         Documento doc = vecDocumentos.get(id);
@@ -195,7 +195,7 @@ public class CjtoDocumentos {
         calcularDistancias(); 
     }
     
-    public ArrayList<String> consultarTitulosAutor(String autor) {
+    public ArrayList<String> consultarTitulosAutor(String autor) throws Exception {
         // CREO QUE YA NO HACE FALTA PORQUE EN NUESTRA APLICACIÓN
         // SELECCIONAMOS EL AUTOR EN LA LISTA
         //if (!ids.containsKey(autor))
@@ -209,6 +209,7 @@ public class CjtoDocumentos {
             String ti = (String) it.next();
             titulos.add(ti);
         }
+        if (titulos.isEmpty()) throw new Exception("Este autor no tiene documentos.");
         return titulos;
     }
    
@@ -217,10 +218,10 @@ public class CjtoDocumentos {
         return trie.consultarListaDelPrefijo(prefijo);
     }
     
-    public String consultarContenido(String autor, String titulo) throws Exception {
+    public String consultarContenido(String autor, String titulo) {
         
-        if (!existeDocumento(autor, titulo))
-            throw new Exception("El documento no existe");
+        //if (!existeDocumento(autor, titulo))
+        //    throw new Exception("El documento no existe");
         
         int id = ids.get(autor).get(titulo);
         Documento doc = vecDocumentos.get(id);

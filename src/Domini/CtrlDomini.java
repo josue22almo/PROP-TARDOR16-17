@@ -65,30 +65,30 @@ public class CtrlDomini {
         cd.altaDocumento(autor, titulo, contenido);
     }
     
-    public void bajaDocumento(String autor, String titulo) throws Exception {
+    public void bajaDocumento(String autor, String titulo) {
         
         cd.bajaDocumento(autor, titulo);
     }
     
-    public void modificaAutorDoc(String autor, String titulo, String autorModif) throws Exception{
+    public void modificaAutorDoc(String autor, String titulo, String autorModif) {
         
         cd.modificaAutorDoc(autor, titulo, autorModif);
     }
     
-    public void modificaTituloDoc(String autor, String titulo, String tituloModif) throws Exception{
+    public void modificaTituloDoc(String autor, String titulo, String tituloModif) {
         
         cd.modificaTituloDoc(autor, titulo, tituloModif);
     }
     
-    public void modificaContenidoDoc(String autor, String titulo, String contenidoModif) throws Exception{        
+    public void modificaContenidoDoc(String autor, String titulo, String contenidoModif) {        
         cd.modificaContenidoDoc(autor, titulo, contenidoModif);
     }
     
-    public ArrayList<String> consultarTitulosAutor(String autor) throws Exception{        
+    public ArrayList<String> consultarTitulosAutor(String autor) throws Exception {        
         return cd.consultarTitulosAutor(autor);        
     }
     
-    public String consultarContenido(String autor, String titulo) throws Exception{        
+    public String consultarContenido(String autor, String titulo) {        
         return cd.consultarContenido(autor, titulo);
     }
     
@@ -99,11 +99,11 @@ public class CtrlDomini {
     
     public Map<String,ArrayList<String>> getDocumentosParecidos(String autor, String titulo, int k, String type) throws Exception {
         
-        if (!type.equals("TF-IDF") && !type.equals("FREC"))
+        /*if (!type.equals("TF-IDF") && !type.equals("FREC"))
             throw new Exception("El tipo que ha especificado no es válido. Ha de ser FREC o TF-IDF.");
         
         if (!cd.existeDocumento(autor, titulo))
-            throw new Exception("El documento no existe.");
+            throw new Exception("El documento no existe.");*/
         
         // Cogemos el id que corresponde a este autor y titulo
         int id = cd.getIds().get(autor).get(titulo); 
@@ -142,7 +142,8 @@ public class CtrlDomini {
                 }
                 ++aux;
             }
-        } 
+        }
+        if (m.isEmpty()) throw new Exception("No hay ningún documento que cumpla los requisitos especificados.");
         return m;
     }
     

@@ -16,6 +16,9 @@ public class VistaModificar extends javax.swing.JFrame {
     
     private static String autor;
     private static String titulo;
+    private String nuevo_autor;
+    private String nuevo_titulo;
+    private String nuevo_contenido;
     private static CtrlPresentacio cp;
     
     /**
@@ -82,10 +85,21 @@ public class VistaModificar extends javax.swing.JFrame {
         });
         getContentPane().add(textFieldAutor);
         textFieldAutor.setBounds(250, 39, 220, 40);
+
+        textFieldTitulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldTituloActionPerformed(evt);
+            }
+        });
         getContentPane().add(textFieldTitulo);
         textFieldTitulo.setBounds(250, 90, 220, 40);
 
         textFieldContenido.setToolTipText("");
+        textFieldContenido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldContenidoActionPerformed(evt);
+            }
+        });
         getContentPane().add(textFieldContenido);
         textFieldContenido.setBounds(50, 170, 430, 180);
 
@@ -93,11 +107,11 @@ public class VistaModificar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
+            textFieldAutorActionPerformed(evt);
+            textFieldTituloActionPerformed(evt);
+            textFieldContenidoActionPerformed(evt);        
         try {
             // TODO add your handling code here:
-            String nuevo_autor = textFieldAutor.getText();
-            String nuevo_titulo = ModTitulo.getText();
-            String nuevo_contenido = ModContenido.getText();
             if (!nuevo_autor.isEmpty()) cp.modificarAutor(autor,titulo,nuevo_autor);
             if (!nuevo_titulo.isEmpty()) cp.modificarTitulo(autor,titulo,nuevo_titulo);
             if (!nuevo_contenido.isEmpty()) cp.modificarContenido(autor,titulo,nuevo_contenido);
@@ -109,7 +123,18 @@ public class VistaModificar extends javax.swing.JFrame {
 
     private void textFieldAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldAutorActionPerformed
         // TODO add your handling code here:
+        this.nuevo_autor = textFieldAutor.getText();
     }//GEN-LAST:event_textFieldAutorActionPerformed
+
+    private void textFieldTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldTituloActionPerformed
+        // TODO add your handling code here:
+        this.nuevo_titulo = textFieldTitulo.getText();
+    }//GEN-LAST:event_textFieldTituloActionPerformed
+
+    private void textFieldContenidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldContenidoActionPerformed
+        // TODO add your handling code here:
+        this.nuevo_contenido = textFieldContenido.getText();
+    }//GEN-LAST:event_textFieldContenidoActionPerformed
 
     /**
      * @param args the command line arguments

@@ -13,6 +13,7 @@ import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 
 /**
@@ -143,12 +144,14 @@ public class VistaParecidos extends javax.swing.JFrame {
         if (FREC.isSelected()) try {
             parecidos = cp.consultarParecidos(autor, titulo, k, "FREC");
         } catch (Exception ex) {
-            Logger.getLogger(VistaParecidos.class.getName()).log(Level.SEVERE, null, ex);
+            String excepcion = "No hay ningún documento que cumpla los requisitos especificados..";
+            JOptionPane.showMessageDialog(rootPane,excepcion); 
         }
         else try {
             parecidos = cp.consultarParecidos(autor, titulo, k, "TF-IDF");
         } catch (Exception ex) {
-            Logger.getLogger(VistaParecidos.class.getName()).log(Level.SEVERE, null, ex);
+            String excepcion = "No hay ningún documento que cumpla los requisitos especificados..";
+            JOptionPane.showMessageDialog(rootPane,excepcion); 
         }
         
         for (String autorParecido: parecidos.keySet()) {

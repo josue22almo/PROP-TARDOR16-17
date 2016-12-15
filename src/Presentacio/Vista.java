@@ -77,7 +77,7 @@ public class Vista extends javax.swing.JFrame {
         mostrarTitulos = new javax.swing.JButton();
         botonConsultar = new javax.swing.JButton();
         botonParecidos = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        botonModificar = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
         barraMenu = new javax.swing.JMenuBar();
         opcion1Menu = new javax.swing.JMenu();
@@ -195,13 +195,18 @@ public class Vista extends javax.swing.JFrame {
         getContentPane().add(botonParecidos);
         botonParecidos.setBounds(980, 350, 190, 40);
 
-        jButton1.setBackground(new java.awt.Color(174, 178, 194));
-        jButton1.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton1.setText("Modificar");
-        jButton1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
-        getContentPane().add(jButton1);
-        jButton1.setBounds(980, 420, 190, 40);
+        botonModificar.setBackground(new java.awt.Color(174, 178, 194));
+        botonModificar.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
+        botonModificar.setForeground(new java.awt.Color(0, 0, 0));
+        botonModificar.setText("Modificar");
+        botonModificar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
+        botonModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonModificarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(botonModificar);
+        botonModificar.setBounds(980, 420, 190, 40);
 
         fondo.setIcon(new javax.swing.JLabel() {
             public javax.swing.Icon getIcon() {
@@ -324,33 +329,39 @@ public class Vista extends javax.swing.JFrame {
 
     private void mostrarTitulosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarTitulosActionPerformed
         // TODO add your handling code here:
-        this.autorSelect = listaAutores.getSelectedValue().toString();
-        System.out.println(autores);
         ArrayList<String> titulosAutor = new ArrayList<>();
         modelTitulos.clear();
-        try {
-            titulosAutor = Vista.cp.consultarTitulosAutor(this.autorSelect);
-        } catch (Exception ex) {
-            String excepcion = "Este autor no tiene ningún documento.";
-            JOptionPane.showMessageDialog(rootPane,excepcion);
+        if (listaAutores.getSelectedValue() == null) {
+            String excepcion = "Primero seleccione un autor.";
+            JOptionPane.showMessageDialog(rootPane,excepcion);            
         }
-        
-        for (String titulo: titulosAutor) {
-            modelTitulos.addElement(titulo);
+        else {
+            try {
+                this.autorSelect = listaAutores.getSelectedValue().toString();
+                titulosAutor = Vista.cp.consultarTitulosAutor(this.autorSelect);
+            } catch (Exception ex) {
+                String excepcion = "Este autor no tiene ningún documento.";
+                JOptionPane.showMessageDialog(rootPane,excepcion);
+            }
+
+            for (String titulo: titulosAutor) {
+                modelTitulos.addElement(titulo);
+            }
         }
     }//GEN-LAST:event_mostrarTitulosActionPerformed
 
     private void botonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarActionPerformed
         // TODO add your handling code here:
-        this.tituloSelect = listaTitulos.getSelectedValue().toString();
         String contenido = "";
-        try {
-            contenido = Vista.cp.consultarContenido(this.autorSelect, this.tituloSelect);
-        } catch (Exception ex) {
-            Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
+        if (listaAutores.getSelectedValue() == null || listaTitulos.getSelectedValue().toString() == null) {
+            String excepcion = "Primero seleccione un autor y un título.";
+            JOptionPane.showMessageDialog(rootPane,excepcion);            
         }
-        VistaConsultarContenido consCont = new VistaConsultarContenido(this.autorSelect, this.tituloSelect,contenido);
-        consCont.setVisible(true);
+        else {
+            contenido = Vista.cp.consultarContenido(this.autorSelect, this.tituloSelect);
+            VistaConsultarContenido consCont = new VistaConsultarContenido(this.autorSelect, this.tituloSelect,contenido);
+            consCont.setVisible(true);
+        }
     }//GEN-LAST:event_botonConsultarActionPerformed
 
     private void anadirDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anadirDocActionPerformed
@@ -384,6 +395,13 @@ public class Vista extends javax.swing.JFrame {
             Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_botonParecidosActionPerformed
+
+    private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
+        // TODO add your handling code here:
+        this.tituloSelect = listaTitulos.getSelectedValue().toString();
+        VistaModificar vm = new VistaModificar(cp, autorSelect, tituloSelect);
+        vm.setVisible(true);
+    }//GEN-LAST:event_botonModificarActionPerformed
     
     public CtrlPresentacio getCtrPresentacio() {
         return Vista.cp;
@@ -430,10 +448,10 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JMenuBar barraMenu;
     private javax.swing.JButton botonAceptar;
     private javax.swing.JButton botonConsultar;
+    private javax.swing.JButton botonModificar;
     private javax.swing.JButton botonParecidos;
     private java.awt.Label buscar;
     private javax.swing.JLabel fondo;
-    private javax.swing.JButton jButton1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar2;
