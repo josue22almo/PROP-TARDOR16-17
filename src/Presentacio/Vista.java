@@ -77,6 +77,7 @@ public class Vista extends javax.swing.JFrame {
         mostrarTitulos = new javax.swing.JButton();
         botonConsultar = new javax.swing.JButton();
         botonParecidos = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
         barraMenu = new javax.swing.JMenuBar();
         opcion1Menu = new javax.swing.JMenu();
@@ -193,6 +194,14 @@ public class Vista extends javax.swing.JFrame {
         });
         getContentPane().add(botonParecidos);
         botonParecidos.setBounds(980, 350, 190, 40);
+
+        jButton1.setBackground(new java.awt.Color(174, 178, 194));
+        jButton1.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 0, 0));
+        jButton1.setText("Modificar");
+        jButton1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
+        getContentPane().add(jButton1);
+        jButton1.setBounds(980, 420, 190, 40);
 
         fondo.setIcon(new javax.swing.JLabel() {
             public javax.swing.Icon getIcon() {
@@ -424,6 +433,7 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JButton botonParecidos;
     private java.awt.Label buscar;
     private javax.swing.JLabel fondo;
+    private javax.swing.JButton jButton1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar2;
