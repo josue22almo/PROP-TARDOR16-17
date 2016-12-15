@@ -17,9 +17,11 @@ import java.util.Map;
  */
 public class CtrlPresentacio {
     private CtrlDomini cd;
+    private String ruta;
     
-    public CtrlPresentacio() throws IOException, Exception {
-        this.cd = new CtrlDomini();
+    public CtrlPresentacio(String ruta) throws IOException, Exception {
+        this.cd = new CtrlDomini(ruta);
+        this.ruta = ruta;
     }
     
     public ArrayList<String> getAutorPref(String autor) throws Exception {

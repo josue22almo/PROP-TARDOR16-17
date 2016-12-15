@@ -15,16 +15,17 @@ import java.util.TreeMap;
  */
 public class CtrlDomini {
     
-    private CtrlPersistencia ctrlPersistencia = new CtrlPersistencia();
+    private CtrlPersistencia ctrlPersistencia;
     private CjtoDocumentos cd = new CjtoDocumentos();
     public static ArrayList<String> espanol;
     public static ArrayList<String> catalan;
     public static ArrayList<String> ingles;
     
-    public CtrlDomini () throws IOException, Exception {
+    public CtrlDomini (String ruta) throws IOException, Exception {
         espanol = ctrlPersistencia.leerPalabrasFuncionales("src/Texto/sp.txt");
         catalan = ctrlPersistencia.leerPalabrasFuncionales("src/Texto/cat.txt");
         ingles = ctrlPersistencia.leerPalabrasFuncionales("src/Texto/eng.txt");
+        this.ctrlPersistencia = new CtrlPersistencia(ruta);
         cargarDocumentos();
     }
   
