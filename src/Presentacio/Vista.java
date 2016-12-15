@@ -19,6 +19,7 @@ import javax.imageio.ImageIO;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
@@ -82,8 +83,8 @@ public class Vista extends javax.swing.JFrame {
         fondo = new javax.swing.JLabel();
         barraMenu = new javax.swing.JMenuBar();
         opcion1Menu = new javax.swing.JMenu();
-        menuAnadir = new javax.swing.JMenuItem();
         anadirDoc = new javax.swing.JMenuItem();
+        menuAnadir = new javax.swing.JMenuItem();
         menuCerrar = new javax.swing.JMenuItem();
 
         jMenu2.setText("File");
@@ -101,7 +102,7 @@ public class Vista extends javax.swing.JFrame {
         buscar.setForeground(new java.awt.Color(254, 254, 254));
         buscar.setText("Buscar autor:");
         getContentPane().add(buscar);
-        buscar.setBounds(80, 170, 160, 26);
+        buscar.setBounds(80, 170, 160, 27);
         buscar.getAccessibleContext().setAccessibleName("Buscar");
 
         textFieldBuscaAutores.setForeground(new java.awt.Color(0, 0, 0));
@@ -119,7 +120,7 @@ public class Vista extends javax.swing.JFrame {
         autores.setForeground(new java.awt.Color(255, 255, 255));
         autores.setText("Autores:");
         getContentPane().add(autores);
-        autores.setBounds(80, 250, 90, 26);
+        autores.setBounds(80, 250, 90, 27);
 
         titulos.setBackground(new java.awt.Color(14, 115, 161));
         titulos.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -205,6 +206,17 @@ public class Vista extends javax.swing.JFrame {
         opcion1Menu.setText("Archivo");
         opcion1Menu.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
 
+        anadirDoc.setBackground(new java.awt.Color(11, 116, 163));
+        anadirDoc.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
+        anadirDoc.setForeground(new java.awt.Color(255, 255, 255));
+        anadirDoc.setText("Añadir documento...");
+        anadirDoc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                anadirDocActionPerformed(evt);
+            }
+        });
+        opcion1Menu.add(anadirDoc);
+
         menuAnadir.setBackground(new java.awt.Color(11, 116, 163));
         menuAnadir.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         menuAnadir.setForeground(new java.awt.Color(255, 255, 255));
@@ -216,17 +228,8 @@ public class Vista extends javax.swing.JFrame {
         });
         opcion1Menu.add(menuAnadir);
 
-        anadirDoc.setBackground(new java.awt.Color(11, 116, 163));
-        anadirDoc.setForeground(new java.awt.Color(255, 255, 255));
-        anadirDoc.setText("Añadir documento...");
-        anadirDoc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                anadirDocActionPerformed(evt);
-            }
-        });
-        opcion1Menu.add(anadirDoc);
-
         menuCerrar.setBackground(new java.awt.Color(11, 116, 163));
+        menuCerrar.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         menuCerrar.setForeground(new java.awt.Color(255, 255, 255));
         menuCerrar.setText("Cerrar");
         menuCerrar.addActionListener(new java.awt.event.ActionListener() {
@@ -262,16 +265,6 @@ public class Vista extends javax.swing.JFrame {
               System.out.println("getSelectedFile() : " + chooser.getSelectedFile());
                 try {
                     Vista.cp.altaCjtoDocsDirectorio(chooser.getSelectedFile().getCanonicalPath()); 
-                    CjtoDocumentos cd = Vista.cp.getCtrlDomini().getCjtoDocumentos();
-                    Map <Integer, Documento> vecDocumentos = cd.getVecDocumentos();
-                    Iterator it = vecDocumentos.keySet().iterator();
-                    while(it.hasNext()){
-                        Integer id = (Integer) it.next();
-                        Documento doc = vecDocumentos.get(id);
-                        System.out.print("Id: " + id + '\n' + "Autor: " + doc.getAutor() + '\n');
-                        System.out.println("Titulo: " + doc.getTitulo() + '\n' + "Contenido: " + doc.getContenidoOriginal());
-                        //System.out.println();
-                    }
                     String exito = "Documentos creados con éxito.";
                     JOptionPane.showMessageDialog(rootPane,exito);  
                 } catch (FileNotFoundException ex) {
@@ -355,7 +348,9 @@ public class Vista extends javax.swing.JFrame {
                     String exito = "Documento creado con éxito.";
                     JOptionPane.showMessageDialog(rootPane,exito);  
                 } catch (Exception ex) {
-                    Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
+                    //Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
+                    String yaExiste = "Este documento ya existe.";
+                    JOptionPane.showMessageDialog(rootPane,yaExiste);
                 }
             }
     }//GEN-LAST:event_anadirDocActionPerformed
@@ -371,17 +366,8 @@ public class Vista extends javax.swing.JFrame {
             public void run() {
                 try {
                     Vista vista = new Vista();
+                    vista.setExtendedState(JFrame.MAXIMIZED_BOTH);
                     vista.setVisible(true);
-                    /*try {
-                        cp.altaDocumento("flor", "h", "j");
-                        cp.altaDocumento("jess", "d", "f");
-                        autoresPref = cp.getAutorPref("");
-                    } catch (Exception ex) {
-                        Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    autoresPref.forEach((aut) -> {
-                        model.addElement(aut);
-                    });*/
                 } catch (IOException ex) {
                     Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
                 }
