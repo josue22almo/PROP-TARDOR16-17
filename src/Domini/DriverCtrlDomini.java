@@ -30,7 +30,8 @@ public class DriverCtrlDomini {
             System.out.println("11. Consultar lista de los k documentos más parecidos a T");
             System.out.println("12. Consultar lista de los documentos con una expresión booleana");
             System.out.println("13. Consultar todo el conjunto de documentos");
-            System.out.println("14. Salir");
+            System.out.println("14. Set path carpeta de guardado");
+            System.out.println("15. Salir");
             String autor;
             String titulo;
             String contenido;
@@ -193,6 +194,11 @@ public class DriverCtrlDomini {
                     }            
                     break;
                 case 14:
+                    System.out.println("Escribe la dirección de guardado");
+                    String path = sc.nextLine();
+                    c.setPath(path);
+                    break;   
+                case 15:
                     System.out.println("Salir");
                     return;   
                 default:
@@ -202,7 +208,6 @@ public class DriverCtrlDomini {
             System.out.println("¿Desea realizar otra operación? (s/n)");
             String resp = sc.nextLine();
             if (resp.equals("n")){
-                c.guardarDocumentos();
                 return;
             }
             System.out.println();

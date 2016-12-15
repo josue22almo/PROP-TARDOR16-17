@@ -19,7 +19,7 @@ public class CtrlPresentacio {
     private CtrlDomini cd;
     
     public CtrlPresentacio() throws IOException, Exception {
-        //this.cd = new CtrlDomini(ruta);
+        this.cd = new CtrlDomini();
     }
     
     public ArrayList<String> getAutorPref(String autor) throws Exception {
@@ -54,20 +54,20 @@ public class CtrlPresentacio {
         return this.cd.getDocumentosBool(exprBooleana);
     }
     
-    public void modificarAutor(String autor, String titulo, String autorModif) {
+    public void modificarAutor(String autor, String titulo, String autorModif) throws IOException {
         cd.modificaAutorDoc(autor, titulo, autorModif);
     }
     
-    public void modificarTitulo(String autor, String titulo, String tituloModif) {
+    public void modificarTitulo(String autor, String titulo, String tituloModif) throws IOException {
         cd.modificaTituloDoc(autor, titulo, tituloModif);
     }
     
-    public void modificarContenido(String autor, String titulo, String contenidoModif) {
+    public void modificarContenido(String autor, String titulo, String contenidoModif) throws IOException {
         cd.modificaContenidoDoc(autor, titulo, contenidoModif);
     }
     
     public void setRuta (String ruta) throws Exception {
-        this.cd = new CtrlDomini(ruta);
+        this.cd.setPath(ruta);
     }
     public CtrlDomini getCtrlDomini() {
         return this.cd;

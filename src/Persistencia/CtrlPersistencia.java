@@ -15,7 +15,10 @@ public class CtrlPersistencia {
 
     private String path;
     
-    public CtrlPersistencia(String path){
+    public CtrlPersistencia(){
+    }
+
+    public void setPath(String path) {
         this.path = path;
     }
 
@@ -24,7 +27,7 @@ public class CtrlPersistencia {
         File[] archivos;
         ArrayList<BufferedReader> result = new ArrayList<>();
         BufferedReader b;
-       // try {
+        try {
             directorio = new File(rutaCarpeta);
             archivos = directorio.listFiles();
 //           S if (archivos.length == 0) throw new Exception("La carpeta esta vacia");
@@ -33,9 +36,9 @@ public class CtrlPersistencia {
                 result.add(b);
             }
             
-        /*} catch (NullPointerException e) {
+        } catch (NullPointerException e) {
             System.out.println("No se ha encontrado ningún documento en este directorio.");
-        }*/
+        }
         return result;
     }
     
@@ -46,7 +49,7 @@ public class CtrlPersistencia {
     public ArrayList<String> leerPalabrasFuncionales(String archivo) throws Exception {
       String cadena;
       ArrayList<String> pf = new ArrayList<>();
-     // try {
+      try {
       FileReader f = new FileReader(archivo);
       if (f == null) throw new Exception("No existe el fichero " + archivo);
       BufferedReader b = new BufferedReader(f);
@@ -54,30 +57,30 @@ public class CtrlPersistencia {
           pf.add(cadena);
       }
       b.close();
-      /*} catch (FileNotFoundException e) {
+      } catch (FileNotFoundException e) {
           System.out.println("El fichero no existe.");
-      }*/
+      }
       return pf;
     } 
     
     public void guardarDocumento (String autor, String titulo, String contenido) throws IOException{
         //if (first) eliminarDatos();
-//        try{
-            PrintWriter writer = new PrintWriter(path + "/" + autor + "-" + titulo + ".txt", "UTF-8");
+        try{
+            PrintWriter writer = new PrintWriter(path + autor + "-" + titulo + ".txt", "UTF-8");
             writer.println(autor);
             writer.println();
             writer.println(titulo);
             writer.println();
             writer.println(contenido);
             writer.close();
-        /*}catch(IOException e){
+        }catch(IOException e){
         
-        }*/
+        }
     }
      
     
     public void eliminarDocumento(String autor, String titulo){
-        File file = new File(path + "/" + autor + "-" + titulo);
+        File file = new File(path + autor + "-" + titulo + ".txt");
         file.delete();
     }
     
