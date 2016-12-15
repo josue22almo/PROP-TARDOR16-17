@@ -391,23 +391,23 @@ public class Vista extends javax.swing.JFrame {
             String excepcion = "Primero seleccione un autor y un título.";
             JOptionPane.showMessageDialog(rootPane,excepcion);            
         }
-            else {
-                this.tituloSelect = listaTitulos.getSelectedValue().toString();
-            try {
-                // TODO add your handling code here:
-                VistaParecidos vp = new VistaParecidos(cp, autorSelect, tituloSelect);
-                vp.setVisible(true);
-            } catch (IOException ex) {
-                Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        else {
+            this.tituloSelect = listaTitulos.getSelectedValue().toString();
+            VistaParecidos vp = new VistaParecidos(cp, autorSelect, tituloSelect);
+            vp.setVisible(true);
         }
     }//GEN-LAST:event_botonParecidosActionPerformed
 
     private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
-        // TODO add your handling code here:
-        this.tituloSelect = listaTitulos.getSelectedValue().toString();
-        VistaModificar vm = new VistaModificar(cp, autorSelect, tituloSelect);
-        vm.setVisible(true);
+        if (listaAutores.getSelectedValue() == null || listaTitulos.getSelectedValue().toString() == null) {
+        String excepcion = "Primero seleccione un autor y un título.";
+        JOptionPane.showMessageDialog(rootPane,excepcion);            
+        }
+        else {
+            this.tituloSelect = listaTitulos.getSelectedValue().toString();
+            VistaModificar vm = new VistaModificar(cp, autorSelect, tituloSelect);
+            vm.setVisible(true);
+        }
     }//GEN-LAST:event_botonModificarActionPerformed
     
     public CtrlPresentacio getCtrPresentacio() {
