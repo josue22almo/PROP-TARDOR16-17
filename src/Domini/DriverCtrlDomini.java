@@ -141,11 +141,13 @@ public class DriverCtrlDomini {
                     sc.nextLine();
                     System.out.println("Escribe FREC o TF-IDF:");
                     aux = sc.nextLine();
-                    Map<String,String> docs = c.getDocumentosParecidos(autor,titulo,k,aux); 
+                    Map<String,ArrayList<String>> docs = c.getDocumentosParecidos(autor,titulo,k,aux); 
                     for (String key : docs.keySet()){
                         System.out.println("Autor: " + key);
-                        System.out.println("Título: " + docs.get(key));
-                        System.out.println();
+                        for (int i=0; i<docs.get(key).size(); i++){
+                            System.out.println("Título: " + docs.get(key).get(i));
+                            System.out.println();
+                        }
                     } 
                     break;
                 case 12:

@@ -92,7 +92,12 @@ public class CtrlDomini {
         return cd.consultarContenido(autor, titulo);
     }
     
-    public Map<String,String> getDocumentosParecidos(String autor, String titulo, int k, String type) throws Exception {
+    public ArrayList<String> consultarAutoresPorPrefijo(String prefijo) throws Exception{
+         
+        return cd.consultarAutoresPorPrefijo(prefijo);
+    }
+    
+    public Map<String,ArrayList<String>> getDocumentosParecidos(String autor, String titulo, int k, String type) throws Exception {
         
         if (!type.equals("TF-IDF") && !type.equals("FREC"))
             throw new Exception("El tipo que ha especificado no es válido. Ha de ser FREC o TF-IDF.");
@@ -105,7 +110,7 @@ public class CtrlDomini {
                                                         
         // Cogemos el map con las distancias respecto al documento con id = id
         Map < Double, ArrayList<Integer> > docs;
-        Map < String, String > m = new TreeMap<>();
+        Map < String, ArrayList<String> > m = new TreeMap<>();
         if ("FREC".equals(type)) {
             docs = cd.getDistsFrec().get(id);
         }
@@ -125,16 +130,20 @@ public class CtrlDomini {
             for (int i = 0; i < d.size() && aux <= k; ++i){
                 Integer j = d.get(i);
                 Documento doc = vecDocumentos.get(j);
-                m.put(doc.getAutor(),doc.getTitulo());
+                ArrayList<String> tit;
+                if (m.containsKey(doc.getAutor())){
+                    tit = m.get(autor);
+                    tit.add(doc.getTitulo());
+                }
+                else {
+                    tit = new ArrayList<>();
+                    tit.add(doc.getTitulo());
+                    m.put(doc.getAutor(),tit);   
+                }
                 ++aux;
             }
         } 
         return m;
-    }
-    
-    public ArrayList<String> consultarAutoresPorPrefijo(String prefijo) throws Exception{
-         
-        return cd.consultarAutoresPorPrefijo(prefijo);
     }
     
     public Map<String,String> getDocumentosBool(String expresion) throws Exception{
