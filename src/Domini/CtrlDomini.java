@@ -127,7 +127,7 @@ public class CtrlDomini {
             m.put(doc.getAutor(),doc.getTitulo());
             ++aux;*/
             ArrayList <Integer> d = docs.get(key);
-            for (int i = 0; i < d.size() && aux <= k; ++i){
+            for (int i = 0; i < d.size() && aux < k; ++i){
                 Integer j = d.get(i);
                 Documento doc = vecDocumentos.get(j);
                 ArrayList<String> tit;
