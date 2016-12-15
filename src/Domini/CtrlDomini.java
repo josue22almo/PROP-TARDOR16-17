@@ -21,12 +21,12 @@ public class CtrlDomini {
     public static ArrayList<String> catalan;
     public static ArrayList<String> ingles;
     
-    public CtrlDomini (String ruta) throws Exception {
+    public CtrlDomini () throws IOException, Exception {
+        ctrlPersistencia  = new CtrlPersistencia();
         espanol = ctrlPersistencia.leerPalabrasFuncionales("src/Texto/sp.txt");
         catalan = ctrlPersistencia.leerPalabrasFuncionales("src/Texto/cat.txt");
         ingles = ctrlPersistencia.leerPalabrasFuncionales("src/Texto/eng.txt");
-        this.ctrlPersistencia = new CtrlPersistencia(ruta);
-        cargarDocumentos();
+        ctrlPersistencia.cargarDatos();
     }
   
     public void altaConjuntoDocumentosDirectorio(String folder) throws Exception {    
@@ -43,6 +43,7 @@ public class CtrlDomini {
                 contenido += '\n';
             }
             cd.altaDocumento(autor, titulo, contenido);
+            ctrlPersistencia.guardarDocumento(autor, titulo, contenido);
         }
     }
     
@@ -59,30 +60,38 @@ public class CtrlDomini {
                 contenido += '\n';
             }
             cd.altaDocumento(autor, titulo, contenido);        
+            ctrlPersistencia.guardarDocumento(autor, titulo, contenido);
     }
     
     public void altaDocumento(String autor, String titulo, String contenido) throws Exception {
         
         cd.altaDocumento(autor, titulo, contenido);
+        ctrlPersistencia.guardarDocumento(autor, titulo, contenido);
     }
     
     public void bajaDocumento(String autor, String titulo) {
         
         cd.bajaDocumento(autor, titulo);
+        ctrlPersistencia.eliminarDocumento(autor, titulo);
     }
     
-    public void modificaAutorDoc(String autor, String titulo, String autorModif) {
-        
+    public void modificaAutorDoc(String autor, String titulo, String autorModif) throws IOException {
+        String contenido = cd.consultarContenido(autor, titulo);
         cd.modificaAutorDoc(autor, titulo, autorModif);
+        ctrlPersistencia.eliminarDocumento(autor, titulo);
+        ctrlPersistencia.guardarDocumento(autorModif, titulo, contenido);
     }
     
-    public void modificaTituloDoc(String autor, String titulo, String tituloModif) {
-        
+    public void modificaTituloDoc(String autor, String titulo, String tituloModif) throws IOException {
+        String contenido = cd.consultarContenido(autor, titulo);
         cd.modificaTituloDoc(autor, titulo, tituloModif);
+        ctrlPersistencia.eliminarDocumento(autor, titulo);
+        ctrlPersistencia.guardarDocumento(autor, tituloModif, contenido);
     }
     
-    public void modificaContenidoDoc(String autor, String titulo, String contenidoModif) {        
+    public void modificaContenidoDoc(String autor, String titulo, String contenidoModif) throws IOException {        
         cd.modificaContenidoDoc(autor, titulo, contenidoModif);
+        ctrlPersistencia.guardarDocumento(autor, titulo, contenidoModif);
     }
     
     public ArrayList<String> consultarTitulosAutor(String autor) throws Exception {        
@@ -167,31 +176,7 @@ public class CtrlDomini {
         return cd;
     }
     
-    public void guardarDocumentos(){
-        Map <Integer, Documento> vecDocumentos = cd.getVecDocumentos();
-        boolean first = true;
-        for (Integer key : vecDocumentos.keySet()){
-            Documento doc = vecDocumentos.get(key);
-            String autor = doc.getAutor();
-            String titulo = doc.getTitulo();
-            String contenido = doc.getContenidoOriginal();
-            ctrlPersistencia.guardarDocumento(autor, titulo, contenido,first);
-            first = false;
-        }
-    }
-    
-    private void cargarDocumentos() throws IOException, Exception{
-        ArrayList<BufferedReader> docs = ctrlPersistencia.leerCarpeta("Datos");
-        for (int i = 0; i < docs.size(); ++i){
-            String autor = docs.get(i).readLine();
-            String titulo = docs.get(i).readLine();
-            String contenido = "";
-            String aux;                
-            while ((aux = docs.get(i).readLine()) != null){
-                contenido += aux;
-                contenido += '\n';
-            }
-            cd.altaDocumento(autor, titulo, contenido);
-        }
+    public void setPath(String path){
+        ctrlPersistencia.setPath(path);
     }
 }
