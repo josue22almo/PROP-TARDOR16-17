@@ -35,11 +35,12 @@ public class Vista extends javax.swing.JFrame {
     private String autorSelect;
     private String tituloSelect;
     static ImageIcon logoFondo;
+    private static String rutaCarpeta;
     /**
      * Creates new form Vista
      * @throws java.io.IOException
      */
-    public Vista() throws IOException {
+    public Vista() throws IOException, Exception {
         
         Vista.cp = new CtrlPresentacio();
         Vista.autoresPref = new ArrayList<>();
@@ -390,7 +391,19 @@ public class Vista extends javax.swing.JFrame {
                     Vista vista = new Vista();
                     vista.setExtendedState(JFrame.MAXIMIZED_BOTH);
                     vista.setVisible(true);
+                    JFileChooser chooser = new JFileChooser();
+                    chooser.setCurrentDirectory(new java.io.File("."));
+                    chooser.setDialogTitle("Seleccione la carpeta en la que desea guardar sus documentos:");
+                    chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+                    chooser.setAcceptAllFileFilterUsed(false);
+                    if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+                      System.out.println("getCurrentDirectory(): " + chooser.getCurrentDirectory());
+                      System.out.println("getSelectedFile() : " + chooser.getSelectedFile());
+                      Vista.rutaCarpeta = chooser.getSelectedFile().getPath();
+                    }
                 } catch (IOException ex) {
+                    Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (Exception ex) {
                     Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
