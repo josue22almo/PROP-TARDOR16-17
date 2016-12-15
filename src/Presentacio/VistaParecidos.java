@@ -6,6 +6,7 @@
 package Presentacio;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,7 +27,7 @@ public class VistaParecidos extends javax.swing.JFrame {
     private static String type;
     private static JList lista;
     static DefaultListModel model;
-    private Map<String,String> parecidos;
+    private Map<String, ArrayList<String>> parecidos;
     public static CtrlPresentacio cp;
 
     /**
@@ -89,7 +90,7 @@ public class VistaParecidos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Consultar);
-        Consultar.setBounds(321, 170, 100, 31);
+        Consultar.setBounds(321, 170, 100, 29);
 
         Aceptar.setText("Aceptar");
         Aceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -98,7 +99,7 @@ public class VistaParecidos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Aceptar);
-        Aceptar.setBounds(510, 400, 69, 31);
+        Aceptar.setBounds(510, 400, 67, 29);
         getContentPane().add(scrollPaneResult);
         scrollPaneResult.setBounds(141, 228, 430, 150);
 
@@ -118,7 +119,7 @@ public class VistaParecidos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(FREC);
-        FREC.setBounds(217, 100, 110, 23);
+        FREC.setBounds(217, 100, 110, 24);
 
         TFIDF.setText("Tf-Idf");
         TFIDF.addActionListener(new java.awt.event.ActionListener() {
@@ -127,7 +128,7 @@ public class VistaParecidos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(TFIDF);
-        TFIDF.setBounds(217, 129, 65, 23);
+        TFIDF.setBounds(217, 129, 65, 24);
 
         textFieldNumDocs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -144,21 +145,20 @@ public class VistaParecidos extends javax.swing.JFrame {
         // TODO add your handling code here:
         textFieldNumDocsActionPerformed(evt);
         if (FREC.isSelected()) try {
-            parecidos = cp.getDocumentosParecidos(autor, titulo, k, "FREC");
+            parecidos = cp.consultarParecidos(autor, titulo, k, "FREC");
         } catch (Exception ex) {
             Logger.getLogger(VistaParecidos.class.getName()).log(Level.SEVERE, null, ex);
         }
         else try {
-            parecidos = cp.getDocumentosParecidos(autor, titulo, k, "TF-IDF");
+            parecidos = cp.consultarParecidos(autor, titulo, k, "TF-IDF");
         } catch (Exception ex) {
             Logger.getLogger(VistaParecidos.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         for (String autorParecido: parecidos.keySet()) {
-            model.addElement("Autor: "+autorParecido+". Título: "+parecidos.get(autorParecido)+".");
-        }
-        
-        
+            for (int i = 0; i < parecidos.get(autorParecido).size(); i++)
+                model.addElement("Autor: "+autorParecido+". Título: "+ parecidos.get(autorParecido).get(i)+".");
+        }        
     }//GEN-LAST:event_ConsultarActionPerformed
 
     private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
