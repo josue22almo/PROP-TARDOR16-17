@@ -63,19 +63,26 @@ public class VistaParecidos extends javax.swing.JFrame {
         Metodo = new javax.swing.JLabel();
         Consultar = new javax.swing.JButton();
         Aceptar = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        scrollPaneResult = new JScrollPane(lista);
         jTextArea1 = new javax.swing.JTextArea();
         Resultado = new javax.swing.JLabel();
         FREC = new javax.swing.JRadioButton();
         TFIDF = new javax.swing.JRadioButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        textFieldNumDocs = new javax.swing.JTextPane();
+        textFieldNumDocs = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(750, 600));
+        setPreferredSize(new java.awt.Dimension(750, 600));
+        setResizable(false);
+        getContentPane().setLayout(null);
 
         numk.setText("Cantidad de documentos requeridos:");
+        getContentPane().add(numk);
+        numk.setBounds(49, 51, 257, 17);
 
         Metodo.setText("Método:");
+        getContentPane().add(Metodo);
+        Metodo.setBounds(49, 89, 59, 17);
 
         Consultar.setText("Consultar");
         Consultar.addActionListener(new java.awt.event.ActionListener() {
@@ -83,6 +90,8 @@ public class VistaParecidos extends javax.swing.JFrame {
                 ConsultarActionPerformed(evt);
             }
         });
+        getContentPane().add(Consultar);
+        Consultar.setBounds(315, 149, 120, 31);
 
         Aceptar.setText("Aceptar");
         Aceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -90,13 +99,20 @@ public class VistaParecidos extends javax.swing.JFrame {
                 AceptarActionPerformed(evt);
             }
         });
+        getContentPane().add(Aceptar);
+        Aceptar.setBounds(589, 500, 100, 31);
 
         jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        scrollPaneResult.setViewportView(jTextArea1);
+
+        getContentPane().add(scrollPaneResult);
+        scrollPaneResult.setBounds(140, 220, 550, 260);
 
         Resultado.setText("Resultado:");
+        getContentPane().add(Resultado);
+        Resultado.setBounds(49, 187, 73, 17);
 
         FREC.setText("Frecuencias");
         FREC.addActionListener(new java.awt.event.ActionListener() {
@@ -104,6 +120,8 @@ public class VistaParecidos extends javax.swing.JFrame {
                 FRECActionPerformed(evt);
             }
         });
+        getContentPane().add(FREC);
+        FREC.setBounds(134, 86, 110, 23);
 
         TFIDF.setText("TF-IDF");
         TFIDF.addActionListener(new java.awt.event.ActionListener() {
@@ -111,65 +129,10 @@ public class VistaParecidos extends javax.swing.JFrame {
                 TFIDFActionPerformed(evt);
             }
         });
-
-        jScrollPane3.setViewportView(textFieldNumDocs);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(Aceptar)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                            .addComponent(Resultado)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                            .addComponent(Metodo)
-                                            .addGap(26, 26, 26)))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(FREC)
-                                        .addComponent(TFIDF)))))
-                        .addGap(1, 1, 1))
-                    .addComponent(Consultar)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(numk)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(41, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(numk)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Metodo)
-                    .addComponent(FREC))
-                .addGap(13, 13, 13)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(Consultar))
-                    .addComponent(TFIDF))
-                .addGap(7, 7, 7)
-                .addComponent(Resultado)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(Aceptar)
-                .addContainerGap(20, Short.MAX_VALUE))
-        );
+        getContentPane().add(TFIDF);
+        TFIDF.setBounds(134, 122, 71, 23);
+        getContentPane().add(textFieldNumDocs);
+        textFieldNumDocs.setBounds(350, 50, 80, 29);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -254,10 +217,9 @@ public class VistaParecidos extends javax.swing.JFrame {
     private javax.swing.JLabel Resultado;
     private javax.swing.JRadioButton TFIDF;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel numk;
-    private javax.swing.JTextPane textFieldNumDocs;
+    private javax.swing.JScrollPane scrollPaneResult;
+    private javax.swing.JTextField textFieldNumDocs;
     // End of variables declaration//GEN-END:variables
 }
