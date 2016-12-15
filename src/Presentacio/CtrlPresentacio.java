@@ -54,6 +54,18 @@ public class CtrlPresentacio {
         return this.cd.getDocumentosBool(exprBooleana);
     }
     
+    public void modificarAutor(String autor, String titulo, String autorModif) throws Exception{
+        cd.modificaAutorDoc(autor, titulo, autorModif);
+    }
+    
+    public void modificarTitulo(String autor, String titulo, String tituloModif) throws Exception{
+        cd.modificaTituloDoc(autor, titulo, tituloModif);
+    }
+    
+    public void modificarContenido(String autor, String titulo, String contenidoModif) throws Exception{
+        cd.modificaContenidoDoc(autor, titulo, contenidoModif);
+    }
+    
     public CtrlDomini getCtrlDomini() {
         return this.cd;
     }

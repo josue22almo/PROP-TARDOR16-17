@@ -21,8 +21,8 @@ import javax.swing.JScrollPane;
  */
 public class VistaParecidos extends javax.swing.JFrame {
     
-    private static String autor;
-    private static String titulo;
+    static String autor;
+    static String titulo;
     private static int k;
     private static String type;
     private static JList lista;
