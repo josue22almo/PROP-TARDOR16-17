@@ -50,12 +50,25 @@ public class VistaExprBooleana extends javax.swing.JFrame {
         Resultado = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(700, 600));
+        setPreferredSize(new java.awt.Dimension(700, 600));
+        setResizable(false);
+        getContentPane().setLayout(null);
 
+        LabelExpresion.setBackground(new java.awt.Color(255, 255, 255));
+        LabelExpresion.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
+        LabelExpresion.setForeground(new java.awt.Color(255, 255, 255));
         LabelExpresion.setText("Expresión:");
+        getContentPane().add(LabelExpresion);
+        LabelExpresion.setBounds(34, 52, 100, 20);
 
         jScrollPane1.setViewportView(textoExpresion);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(171, 48, 350, 30);
 
         Aceptar.setText("Aceptar");
         Aceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -63,6 +76,8 @@ public class VistaExprBooleana extends javax.swing.JFrame {
                 AceptarActionPerformed(evt);
             }
         });
+        getContentPane().add(Aceptar);
+        Aceptar.setBounds(570, 530, 100, 31);
 
         Consultar.setText("Consultar");
         Consultar.addActionListener(new java.awt.event.ActionListener() {
@@ -70,54 +85,37 @@ public class VistaExprBooleana extends javax.swing.JFrame {
                 ConsultarActionPerformed(evt);
             }
         });
+        getContentPane().add(Consultar);
+        Consultar.setBounds(540, 50, 110, 31);
 
+        Resultado.setBackground(new java.awt.Color(255, 255, 255));
+        Resultado.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
+        Resultado.setForeground(new java.awt.Color(255, 255, 255));
         Resultado.setText("Resultado:");
+        getContentPane().add(Resultado);
+        Resultado.setBounds(34, 132, 100, 20);
 
         jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane2.setViewportView(jTextArea1);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Aceptar)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Resultado)
-                            .addComponent(LabelExpresion, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(37, 37, 37)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane1)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)))
-                    .addComponent(Consultar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(LabelExpresion)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addComponent(Resultado)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(Consultar)
-                        .addGap(24, 24, 24)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(Aceptar)
-                        .addGap(24, 24, 24))))
-        );
+        getContentPane().add(jScrollPane2);
+        jScrollPane2.setBounds(171, 139, 500, 330);
+
+        jLabel1.setIcon(new javax.swing.JLabel() {
+            public javax.swing.Icon getIcon() {
+                try {
+                    return new javax.swing.ImageIcon(
+                        new java.net.URL("url:http://www.celer-comex.com.ar/images/fondo.jpg")
+                    );
+                } catch (java.net.MalformedURLException e) {
+                }
+                return null;
+            }
+        }.getIcon());
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(-40, 0, 3000, 1579);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -191,6 +189,7 @@ public class VistaExprBooleana extends javax.swing.JFrame {
     private javax.swing.JButton Consultar;
     private javax.swing.JLabel LabelExpresion;
     private javax.swing.JLabel Resultado;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;

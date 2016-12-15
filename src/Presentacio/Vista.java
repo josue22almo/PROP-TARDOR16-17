@@ -5,6 +5,7 @@
  */
 package Presentacio;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -400,6 +401,10 @@ public class Vista extends javax.swing.JFrame {
                       System.out.println("getCurrentDirectory(): " + chooser.getCurrentDirectory());
                       System.out.println("getSelectedFile() : " + chooser.getSelectedFile());
                       Vista.rutaCarpeta = chooser.getSelectedFile().getPath();
+                      File directorio = new File(rutaCarpeta);
+                      File [] archivos;
+                      archivos = directorio.listFiles();
+                      if (archivos.length != 0) Vista.cp.altaCjtoDocsDirectorio(rutaCarpeta);
                     }
                 } catch (IOException ex) {
                     Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
