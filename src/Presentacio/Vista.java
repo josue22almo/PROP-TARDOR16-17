@@ -74,7 +74,7 @@ public class Vista extends javax.swing.JFrame {
         scrollPaneTitulos = new JScrollPane(listaTitulos);
         mostrarTitulos = new javax.swing.JButton();
         botonConsultar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        botonParecidos = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
         barraMenu = new javax.swing.JMenuBar();
         opcion1Menu = new javax.swing.JMenu();
@@ -179,14 +179,18 @@ public class Vista extends javax.swing.JFrame {
         getContentPane().add(botonConsultar);
         botonConsultar.setBounds(980, 280, 190, 40);
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botonParecidos.setBackground(new java.awt.Color(174, 178, 194));
+        botonParecidos.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
+        botonParecidos.setForeground(new java.awt.Color(0, 0, 0));
+        botonParecidos.setText("Consultar parecidos");
+        botonParecidos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
+        botonParecidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botonParecidosActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(980, 350, 190, 40);
+        getContentPane().add(botonParecidos);
+        botonParecidos.setBounds(980, 350, 190, 40);
 
         fondo.setIcon(new javax.swing.JLabel() {
             public javax.swing.Icon getIcon() {
@@ -359,7 +363,7 @@ public class Vista extends javax.swing.JFrame {
             }
     }//GEN-LAST:event_anadirDocActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void botonParecidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonParecidosActionPerformed
         this.tituloSelect = listaTitulos.getSelectedValue().toString();
         try {
             // TODO add your handling code here:
@@ -368,7 +372,7 @@ public class Vista extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_botonParecidosActionPerformed
     
     public CtrlPresentacio getCtrPresentacio() {
         return Vista.cp;
@@ -399,9 +403,9 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JMenuBar barraMenu;
     private javax.swing.JButton botonAceptar;
     private javax.swing.JButton botonConsultar;
+    private javax.swing.JButton botonParecidos;
     private java.awt.Label buscar;
     private javax.swing.JLabel fondo;
-    private javax.swing.JButton jButton1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar2;
