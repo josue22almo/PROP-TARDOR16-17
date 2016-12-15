@@ -61,8 +61,6 @@ public class VistaParecidos extends javax.swing.JFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         numk = new javax.swing.JLabel();
         Metodo = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        textFieldNumDocs = new javax.swing.JEditorPane();
         Consultar = new javax.swing.JButton();
         Aceptar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -70,14 +68,14 @@ public class VistaParecidos extends javax.swing.JFrame {
         Resultado = new javax.swing.JLabel();
         FREC = new javax.swing.JRadioButton();
         TFIDF = new javax.swing.JRadioButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        textFieldNumDocs = new javax.swing.JTextPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         numk.setText("Cantidad de documentos requeridos:");
 
         Metodo.setText("Método:");
-
-        jScrollPane1.setViewportView(textFieldNumDocs);
 
         Consultar.setText("Consultar");
         Consultar.addActionListener(new java.awt.event.ActionListener() {
@@ -114,6 +112,8 @@ public class VistaParecidos extends javax.swing.JFrame {
             }
         });
 
+        jScrollPane3.setViewportView(textFieldNumDocs);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -121,35 +121,37 @@ public class VistaParecidos extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(numk)
-                            .addGap(27, 27, 27)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(Aceptar)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(Resultado)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(Metodo)
-                                        .addGap(26, 26, 26)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(FREC)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(TFIDF)))))
-                    .addComponent(Consultar))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                            .addComponent(Resultado)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                            .addComponent(Metodo)
+                                            .addGap(26, 26, 26)))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(FREC)
+                                        .addComponent(TFIDF)))))
+                        .addGap(1, 1, 1))
+                    .addComponent(Consultar)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(numk)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(41, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(43, 43, 43)
+                .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(numk)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Metodo)
@@ -159,20 +161,14 @@ public class VistaParecidos extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addComponent(Consultar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(TFIDF)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addComponent(Resultado)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(Aceptar)
-                        .addGap(21, 21, 21))))
+                    .addComponent(TFIDF))
+                .addGap(7, 7, 7)
+                .addComponent(Resultado)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(Aceptar)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
@@ -258,10 +254,10 @@ public class VistaParecidos extends javax.swing.JFrame {
     private javax.swing.JLabel Resultado;
     private javax.swing.JRadioButton TFIDF;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel numk;
-    private javax.swing.JEditorPane textFieldNumDocs;
+    private javax.swing.JTextPane textFieldNumDocs;
     // End of variables declaration//GEN-END:variables
 }
