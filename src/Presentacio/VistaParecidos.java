@@ -20,7 +20,7 @@ import javax.swing.JScrollPane;
  * @author jessica.sobreviela
  */
 public class VistaParecidos extends javax.swing.JFrame {
-
+    
     private static String autor;
     private static String titulo;
     private static int k;
@@ -29,7 +29,7 @@ public class VistaParecidos extends javax.swing.JFrame {
     static DefaultListModel model;
     private Map<String, ArrayList<String>> parecidos;
     public static CtrlPresentacio cp;
-
+    
     /**
      * Creates new form VistaParecidos
      * @param cp
@@ -37,7 +37,7 @@ public class VistaParecidos extends javax.swing.JFrame {
      * @param titulo
      * @throws java.io.IOException
      */
-    public VistaParecidos(CtrlPresentacio cp, String autor, String titulo) throws IOException{
+    public VistaParecidos(CtrlPresentacio cp, String autor, String titulo) throws IOException {
         VistaParecidos.autor = autor;
         VistaParecidos.titulo = titulo;
         model = new DefaultListModel();
@@ -59,29 +59,25 @@ public class VistaParecidos extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        buttonGroup2 = new javax.swing.ButtonGroup();
-        textoNumDocs = new javax.swing.JLabel();
-        textoResult = new javax.swing.JLabel();
+        numk = new javax.swing.JLabel();
+        Metodo = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        textFieldNumDocs = new javax.swing.JEditorPane();
         Consultar = new javax.swing.JButton();
         Aceptar = new javax.swing.JButton();
-        scrollPaneResult = new JScrollPane(lista);
-        textoBusqueda = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        Resultado = new javax.swing.JLabel();
         FREC = new javax.swing.JRadioButton();
         TFIDF = new javax.swing.JRadioButton();
-        textFieldNumDocs = new java.awt.TextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("\"k\" documentos más parecidos");
-        setPreferredSize(new java.awt.Dimension(600, 500));
-        getContentPane().setLayout(null);
 
-        textoNumDocs.setText("Número de documentos:");
-        getContentPane().add(textoNumDocs);
-        textoNumDocs.setBounds(50, 61, 173, 17);
+        numk.setText("Cantidad de documentos requeridos:");
 
-        textoResult.setText("Resultado:");
-        getContentPane().add(textoResult);
-        textoResult.setBounds(68, 207, 73, 17);
+        Metodo.setText("Método:");
+
+        jScrollPane1.setViewportView(textFieldNumDocs);
 
         Consultar.setText("Consultar");
         Consultar.addActionListener(new java.awt.event.ActionListener() {
@@ -89,8 +85,6 @@ public class VistaParecidos extends javax.swing.JFrame {
                 ConsultarActionPerformed(evt);
             }
         });
-        getContentPane().add(Consultar);
-        Consultar.setBounds(321, 170, 100, 29);
 
         Aceptar.setText("Aceptar");
         Aceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -98,52 +92,95 @@ public class VistaParecidos extends javax.swing.JFrame {
                 AceptarActionPerformed(evt);
             }
         });
-        getContentPane().add(Aceptar);
-        Aceptar.setBounds(510, 400, 67, 29);
-        getContentPane().add(scrollPaneResult);
-        scrollPaneResult.setBounds(141, 228, 430, 150);
 
-        textoBusqueda.setText("Método de búsqueda :");
-        getContentPane().add(textoBusqueda);
-        textoBusqueda.setBounds(50, 103, 155, 17);
+        jTextArea1.setEditable(false);
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane2.setViewportView(jTextArea1);
+
+        Resultado.setText("Resultado:");
 
         FREC.setText("Frecuencias");
-        FREC.addContainerListener(new java.awt.event.ContainerAdapter() {
-            public void componentAdded(java.awt.event.ContainerEvent evt) {
-                FRECComponentAdded(evt);
-            }
-        });
         FREC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 FRECActionPerformed(evt);
             }
         });
-        getContentPane().add(FREC);
-        FREC.setBounds(217, 100, 110, 24);
 
-        TFIDF.setText("Tf-Idf");
+        TFIDF.setText("TF-IDF");
         TFIDF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TFIDFActionPerformed(evt);
             }
         });
-        getContentPane().add(TFIDF);
-        TFIDF.setBounds(217, 129, 65, 24);
 
-        textFieldNumDocs.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldNumDocsActionPerformed(evt);
-            }
-        });
-        getContentPane().add(textFieldNumDocs);
-        textFieldNumDocs.setBounds(250, 59, 130, 20);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(numk)
+                            .addGap(27, 27, 27)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(Aceptar)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(Resultado)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(Metodo)
+                                        .addGap(26, 26, 26)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(FREC)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(TFIDF)))))
+                    .addComponent(Consultar))
+                .addContainerGap(41, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(numk)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Metodo)
+                    .addComponent(FREC))
+                .addGap(13, 13, 13)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(Consultar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(TFIDF)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(Resultado)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(Aceptar)
+                        .addGap(21, 21, 21))))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void ConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultarActionPerformed
         // TODO add your handling code here:
-        textFieldNumDocsActionPerformed(evt);
+        k = Integer.parseInt(textFieldNumDocs.getText());
         if (FREC.isSelected()) try {
             parecidos = cp.consultarParecidos(autor, titulo, k, "FREC");
         } catch (Exception ex) {
@@ -166,22 +203,13 @@ public class VistaParecidos extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_AceptarActionPerformed
 
-    private void TFIDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFIDFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TFIDFActionPerformed
-
     private void FRECActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FRECActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_FRECActionPerformed
 
-    private void FRECComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_FRECComponentAdded
+    private void TFIDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFIDFActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_FRECComponentAdded
-
-    private void textFieldNumDocsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldNumDocsActionPerformed
-        // TODO add your handling code here:
-        k = Integer.parseInt(textFieldNumDocs.getText());
-    }//GEN-LAST:event_textFieldNumDocsActionPerformed
+    }//GEN-LAST:event_TFIDFActionPerformed
 
     /**
      * @param args the command line arguments
@@ -226,13 +254,14 @@ public class VistaParecidos extends javax.swing.JFrame {
     private javax.swing.JButton Aceptar;
     private javax.swing.JButton Consultar;
     private javax.swing.JRadioButton FREC;
+    private javax.swing.JLabel Metodo;
+    private javax.swing.JLabel Resultado;
     private javax.swing.JRadioButton TFIDF;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.ButtonGroup buttonGroup2;
-    private javax.swing.JScrollPane scrollPaneResult;
-    private java.awt.TextField textFieldNumDocs;
-    private javax.swing.JLabel textoBusqueda;
-    private javax.swing.JLabel textoNumDocs;
-    private javax.swing.JLabel textoResult;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel numk;
+    private javax.swing.JEditorPane textFieldNumDocs;
     // End of variables declaration//GEN-END:variables
 }
