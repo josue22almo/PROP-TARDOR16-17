@@ -45,16 +45,18 @@ public class VistaModificar extends javax.swing.JFrame {
         Aceptar = new javax.swing.JButton();
         Titulo = new javax.swing.JLabel();
         Contenido = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        ModAutor = new javax.swing.JEditorPane();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        ModTitulo = new javax.swing.JEditorPane();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        ModContenido = new javax.swing.JTextArea();
+        textFieldAutor = new javax.swing.JTextField();
+        textFieldTitulo = new javax.swing.JTextField();
+        textFieldContenido = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(750, 600));
+        setPreferredSize(new java.awt.Dimension(750, 600));
+        getContentPane().setLayout(null);
 
         Autor.setText("Nuevo Autor (opcional) :");
+        getContentPane().add(Autor);
+        Autor.setBounds(51, 49, 166, 17);
 
         Aceptar.setText("Aceptar");
         Aceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -62,68 +64,30 @@ public class VistaModificar extends javax.swing.JFrame {
                 AceptarActionPerformed(evt);
             }
         });
+        getContentPane().add(Aceptar);
+        Aceptar.setBounds(559, 470, 90, 31);
 
         Titulo.setText("Nuevo Título (opcional) :");
+        getContentPane().add(Titulo);
+        Titulo.setBounds(51, 97, 167, 17);
 
         Contenido.setText("Nuevo Contenido (opcional) :");
+        getContentPane().add(Contenido);
+        Contenido.setBounds(51, 140, 200, 17);
 
-        jScrollPane1.setViewportView(ModAutor);
+        textFieldAutor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldAutorActionPerformed(evt);
+            }
+        });
+        getContentPane().add(textFieldAutor);
+        textFieldAutor.setBounds(250, 39, 220, 40);
+        getContentPane().add(textFieldTitulo);
+        textFieldTitulo.setBounds(250, 90, 220, 40);
 
-        jScrollPane2.setViewportView(ModTitulo);
-
-        ModContenido.setColumns(20);
-        ModContenido.setRows(5);
-        jScrollPane3.setViewportView(ModContenido);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Autor)
-                                    .addComponent(Titulo))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jScrollPane2)
-                                        .addGap(2, 2, 2))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(Aceptar)
-                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(2, 2, 2)))
-                        .addGap(39, 39, 39))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(Contenido)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Autor)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Titulo)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addComponent(Contenido)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(Aceptar)
-                .addContainerGap(30, Short.MAX_VALUE))
-        );
+        textFieldContenido.setToolTipText("");
+        getContentPane().add(textFieldContenido);
+        textFieldContenido.setBounds(50, 170, 430, 180);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -131,7 +95,7 @@ public class VistaModificar extends javax.swing.JFrame {
     private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
         try {
             // TODO add your handling code here:
-            String nuevo_autor = ModAutor.getText();
+            String nuevo_autor = textFieldAutor.getText();
             String nuevo_titulo = ModTitulo.getText();
             String nuevo_contenido = ModContenido.getText();
             if (!nuevo_autor.isEmpty()) cp.modificarAutor(autor,titulo,nuevo_autor);
@@ -142,6 +106,10 @@ public class VistaModificar extends javax.swing.JFrame {
             Logger.getLogger(VistaModificar.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_AceptarActionPerformed
+
+    private void textFieldAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldAutorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldAutorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -182,12 +150,9 @@ public class VistaModificar extends javax.swing.JFrame {
     private javax.swing.JButton Aceptar;
     private javax.swing.JLabel Autor;
     private javax.swing.JLabel Contenido;
-    private javax.swing.JEditorPane ModAutor;
-    private javax.swing.JTextArea ModContenido;
-    private javax.swing.JEditorPane ModTitulo;
     private javax.swing.JLabel Titulo;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextField textFieldAutor;
+    private javax.swing.JTextField textFieldContenido;
+    private javax.swing.JTextField textFieldTitulo;
     // End of variables declaration//GEN-END:variables
 }
