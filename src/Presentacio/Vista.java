@@ -5,17 +5,11 @@
  */
 package Presentacio;
 
-import Domini.CjtoDocumentos;
-import Domini.Documento;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.imageio.ImageIO;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -31,7 +25,7 @@ import javax.swing.JScrollPane;
  */
 public class Vista extends javax.swing.JFrame {
 
-    private static CtrlPresentacio cp;
+    public static CtrlPresentacio cp;
     private static String autor;
     private static ArrayList<String> autoresPref;
     private static JList listaAutores;
@@ -80,6 +74,7 @@ public class Vista extends javax.swing.JFrame {
         scrollPaneTitulos = new JScrollPane(listaTitulos);
         mostrarTitulos = new javax.swing.JButton();
         botonConsultar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
         barraMenu = new javax.swing.JMenuBar();
         opcion1Menu = new javax.swing.JMenu();
@@ -183,6 +178,15 @@ public class Vista extends javax.swing.JFrame {
         });
         getContentPane().add(botonConsultar);
         botonConsultar.setBounds(980, 280, 190, 40);
+
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(980, 350, 190, 40);
 
         fondo.setIcon(new javax.swing.JLabel() {
             public javax.swing.Icon getIcon() {
@@ -355,6 +359,20 @@ public class Vista extends javax.swing.JFrame {
             }
     }//GEN-LAST:event_anadirDocActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.tituloSelect = listaTitulos.getSelectedValue().toString();
+        try {
+            // TODO add your handling code here:
+            VistaParecidos vp = new VistaParecidos(cp, autorSelect, tituloSelect);
+            vp.setVisible(true);
+        } catch (IOException ex) {
+            Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+    
+    public CtrlPresentacio getCtrPresentacio() {
+        return Vista.cp;
+    }
     /**
      * @param args the command line arguments
      */
@@ -383,6 +401,7 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JButton botonConsultar;
     private java.awt.Label buscar;
     private javax.swing.JLabel fondo;
+    private javax.swing.JButton jButton1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar2;
