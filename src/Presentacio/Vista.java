@@ -439,6 +439,7 @@ public class Vista extends javax.swing.JFrame {
                       File [] archivos;
                       archivos = directorio.listFiles();
                       if (archivos.length != 0) Vista.cp.altaCjtoDocsDirectorio(rutaCarpeta);
+                      Vista.cp.setRuta(rutaCarpeta);
                     }
                 } catch (Exception ex) {
                     Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);

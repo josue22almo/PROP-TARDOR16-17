@@ -21,7 +21,7 @@ public class CtrlDomini {
     public static ArrayList<String> catalan;
     public static ArrayList<String> ingles;
     
-    public CtrlDomini (String ruta) throws IOException, Exception {
+    public CtrlDomini (String ruta) throws Exception {
         espanol = ctrlPersistencia.leerPalabrasFuncionales("src/Texto/sp.txt");
         catalan = ctrlPersistencia.leerPalabrasFuncionales("src/Texto/cat.txt");
         ingles = ctrlPersistencia.leerPalabrasFuncionales("src/Texto/eng.txt");

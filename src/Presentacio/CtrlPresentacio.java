@@ -17,11 +17,9 @@ import java.util.Map;
  */
 public class CtrlPresentacio {
     private CtrlDomini cd;
-    private String ruta;
     
-    public CtrlPresentacio(String ruta) throws IOException, Exception {
-        this.cd = new CtrlDomini(ruta);
-        this.ruta = ruta;
+    public CtrlPresentacio() throws IOException, Exception {
+        //this.cd = new CtrlDomini(ruta);
     }
     
     public ArrayList<String> getAutorPref(String autor) throws Exception {
@@ -68,6 +66,9 @@ public class CtrlPresentacio {
         cd.modificaContenidoDoc(autor, titulo, contenidoModif);
     }
     
+    public void setRuta (String ruta) throws Exception {
+        this.cd = new CtrlDomini(ruta);
+    }
     public CtrlDomini getCtrlDomini() {
         return this.cd;
     }
