@@ -17,7 +17,7 @@ import java.util.Map;
 public class CtrlPresentacio {
     private CtrlDomini cd;
     
-    public CtrlPresentacio() throws IOException {
+    public CtrlPresentacio() throws IOException, Exception {
         this.cd = new CtrlDomini();
     }
     
