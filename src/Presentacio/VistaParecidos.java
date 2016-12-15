@@ -90,7 +90,7 @@ public class VistaParecidos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Consultar);
-        Consultar.setBounds(315, 149, 120, 31);
+        Consultar.setBounds(390, 160, 120, 29);
 
         Aceptar.setText("Aceptar");
         Aceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -99,7 +99,7 @@ public class VistaParecidos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Aceptar);
-        Aceptar.setBounds(589, 500, 100, 31);
+        Aceptar.setBounds(410, 540, 100, 29);
 
         Resultado.setText("Resultado:");
         getContentPane().add(Resultado);
@@ -112,7 +112,7 @@ public class VistaParecidos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(FREC);
-        FREC.setBounds(134, 86, 110, 23);
+        FREC.setBounds(134, 86, 110, 24);
 
         TFIDF.setText("TF-IDF");
         TFIDF.addActionListener(new java.awt.event.ActionListener() {
@@ -121,7 +121,7 @@ public class VistaParecidos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(TFIDF);
-        TFIDF.setBounds(134, 122, 71, 23);
+        TFIDF.setBounds(134, 122, 71, 24);
 
         textFieldNumDocs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,9 +129,9 @@ public class VistaParecidos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(textFieldNumDocs);
-        textFieldNumDocs.setBounds(350, 50, 80, 29);
+        textFieldNumDocs.setBounds(420, 50, 80, 27);
         getContentPane().add(scrollPaneResult);
-        scrollPaneResult.setBounds(150, 190, 460, 280);
+        scrollPaneResult.setBounds(50, 230, 460, 280);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
