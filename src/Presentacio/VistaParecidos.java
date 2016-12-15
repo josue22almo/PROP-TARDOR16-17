@@ -38,7 +38,7 @@ public class VistaParecidos extends javax.swing.JFrame {
      * @param titulo
      * @throws java.io.IOException
      */
-    public VistaParecidos(CtrlPresentacio cp, String autor, String titulo) throws IOException {
+    public VistaParecidos(CtrlPresentacio cp, String autor, String titulo) {
         VistaParecidos.autor = autor;
         VistaParecidos.titulo = titulo;
         model = new DefaultListModel();
@@ -208,12 +208,8 @@ public class VistaParecidos extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    new VistaParecidos(cp,autor,titulo).setVisible(true);
-                    model.addElement("hola");
-                } catch (IOException ex) {
-                    Logger.getLogger(VistaParecidos.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                new VistaParecidos(cp,autor,titulo).setVisible(true);
+                model.addElement("hola");
             }
         });
     }

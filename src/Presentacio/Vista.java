@@ -358,6 +358,7 @@ public class Vista extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane,excepcion);            
         }
         else {
+            this.tituloSelect = listaTitulos.getSelectedValue().toString();
             contenido = Vista.cp.consultarContenido(this.autorSelect, this.tituloSelect);
             VistaConsultarContenido consCont = new VistaConsultarContenido(this.autorSelect, this.tituloSelect,contenido);
             consCont.setVisible(true);
@@ -386,13 +387,19 @@ public class Vista extends javax.swing.JFrame {
     }//GEN-LAST:event_anadirDocActionPerformed
 
     private void botonParecidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonParecidosActionPerformed
-        this.tituloSelect = listaTitulos.getSelectedValue().toString();
-        try {
-            // TODO add your handling code here:
-            VistaParecidos vp = new VistaParecidos(cp, autorSelect, tituloSelect);
-            vp.setVisible(true);
-        } catch (IOException ex) {
-            Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
+        if (listaAutores.getSelectedValue() == null || listaTitulos.getSelectedValue().toString() == null) {
+            String excepcion = "Primero seleccione un autor y un título.";
+            JOptionPane.showMessageDialog(rootPane,excepcion);            
+        }
+            else {
+                this.tituloSelect = listaTitulos.getSelectedValue().toString();
+            try {
+                // TODO add your handling code here:
+                VistaParecidos vp = new VistaParecidos(cp, autorSelect, tituloSelect);
+                vp.setVisible(true);
+            } catch (IOException ex) {
+                Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_botonParecidosActionPerformed
 
