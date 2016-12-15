@@ -5,6 +5,7 @@
  */
 package Presentacio;
 
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -116,7 +117,7 @@ public class VistaModificar extends javax.swing.JFrame {
             if (!nuevo_titulo.isEmpty()) cp.modificarTitulo(autor,titulo,nuevo_titulo);
             if (!nuevo_contenido.isEmpty()) cp.modificarContenido(autor,titulo,nuevo_contenido);
             this.setVisible(false);
-        } catch (Exception ex) {
+        } catch (IOException ex) {
             Logger.getLogger(VistaModificar.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_AceptarActionPerformed
