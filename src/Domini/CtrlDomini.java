@@ -20,14 +20,15 @@ public class CtrlDomini {
     public static ArrayList<String> espanol;
     public static ArrayList<String> catalan;
     public static ArrayList<String> ingles;
-    public CtrlDomini () throws IOException {
+    
+    public CtrlDomini () throws IOException, Exception {
         espanol = ctrlPersistencia.leerPalabrasFuncionales("src/Texto/sp.txt");
         catalan = ctrlPersistencia.leerPalabrasFuncionales("src/Texto/cat.txt");
         ingles = ctrlPersistencia.leerPalabrasFuncionales("src/Texto/eng.txt");
+        cargarDocumentos();
     }
   
-    public void altaConjuntoDocumentosDirectorio(String folder) throws Exception {       
-        
+    public void altaConjuntoDocumentosDirectorio(String folder) throws Exception {    
         ArrayList<BufferedReader> docs = ctrlPersistencia.leerCarpeta(folder);
         for (int i = 0; i < docs.size(); ++i){
             String autor = docs.get(i).readLine();
@@ -79,18 +80,15 @@ public class CtrlDomini {
         cd.modificaTituloDoc(autor, titulo, tituloModif);
     }
     
-    public void modificaContenidoDoc(String autor, String titulo, String contenidoModif) throws Exception{
-        
+    public void modificaContenidoDoc(String autor, String titulo, String contenidoModif) throws Exception{        
         cd.modificaContenidoDoc(autor, titulo, contenidoModif);
     }
     
-    public ArrayList<String> consultarTitulosAutor(String autor) throws Exception{
-        
+    public ArrayList<String> consultarTitulosAutor(String autor) throws Exception{        
         return cd.consultarTitulosAutor(autor);        
     }
     
-    public String consultarContenido(String autor, String titulo) throws Exception{
-        
+    public String consultarContenido(String autor, String titulo) throws Exception{        
         return cd.consultarContenido(autor, titulo);
     }
     
@@ -154,9 +152,35 @@ public class CtrlDomini {
         return result;
     }
     
-    public CjtoDocumentos getCjtoDocumentos(){
-        
+    public CjtoDocumentos getCjtoDocumentos(){        
         return cd;
     }
     
+    public void guardarDocumentos(){
+        Map <Integer, Documento> vecDocumentos = cd.getVecDocumentos();
+        boolean first = true;
+        for (Integer key : vecDocumentos.keySet()){
+            Documento doc = vecDocumentos.get(key);
+            String autor = doc.getAutor();
+            String titulo = doc.getTitulo();
+            String contenido = doc.getContenidoOriginal();
+            ctrlPersistencia.guardarDocumento(autor, titulo, contenido,first);
+            first = false;
+        }
+    }
+    
+    private void cargarDocumentos() throws IOException, Exception{
+        ArrayList<BufferedReader> docs = ctrlPersistencia.leerCarpeta("Datos");
+        for (int i = 0; i < docs.size(); ++i){
+            String autor = docs.get(i).readLine();
+            String titulo = docs.get(i).readLine();
+            String contenido = "";
+            String aux;                
+            while ((aux = docs.get(i).readLine()) != null){
+                contenido += aux;
+                contenido += '\n';
+            }
+            cd.altaDocumento(autor, titulo, contenido);
+        }
+    }
 }

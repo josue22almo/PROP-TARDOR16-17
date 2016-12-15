@@ -14,7 +14,7 @@ public class DriverCtrlPersistencia {
     public static void main(String[] args) throws IOException{
         CtrlPersistencia ctrl = new CtrlPersistencia();
 
-        String folder = "/home/florenciarf/Dropbox/Informatica/prop/proj/Documentos";
+      /*  String folder = "/home/florenciarf/Dropbox/Informatica/prop/proj/Documentos";
         ArrayList<BufferedReader> list = ctrl.leerCarpeta(folder);
         for (int i = 0; i < list.size(); ++i){
             String autor = list.get(i).readLine();
@@ -31,6 +31,6 @@ public class DriverCtrlPersistencia {
             }
             System.out.println(autor + '\n' + titulo + "\n" + contenido);
             System.out.println("------------------------------------------" + '\n');
-        }
+        }*/
     }
 }

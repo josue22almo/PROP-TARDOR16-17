@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 /**
  *
@@ -54,5 +55,26 @@ public class CtrlPersistencia {
       }
       return pf;
     } 
+    
+    public void guardarDocumento (String autor, String titulo, String contenido, boolean first){
+        if (first) eliminarDatos();
+        try{
+            PrintWriter writer = new PrintWriter("Datos/" + autor + "-" + titulo + ".txt", "UTF-8");
+            writer.println(autor);
+            writer.println(titulo);
+            writer.println(contenido);
+            writer.close();
+        }catch(IOException e){
+        
+        }
+    }
+     
+    private void eliminarDatos(){
+        File folder = new File("Datos");
+        File[] files = folder.listFiles();
+        for (File file : files){
+            file.delete();
+        }
+    }
 }
 

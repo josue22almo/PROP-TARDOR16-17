@@ -199,7 +199,10 @@ public class DriverCtrlDomini {
             }
             System.out.println("¿Desea realizar otra operación? (s/n)");
             String resp = sc.nextLine();
-            if (resp.equals("n")) return;
+            if (resp.equals("n")){
+                c.guardarDocumentos();
+                return;
+            }
             System.out.println();
         } 
     }
