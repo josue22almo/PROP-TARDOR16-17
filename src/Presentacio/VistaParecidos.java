@@ -5,7 +5,14 @@
  */
 package Presentacio;
 
+import java.io.IOException;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.ButtonGroup;
+import javax.swing.DefaultListModel;
 import javax.swing.JList;
+import javax.swing.JScrollPane;
 
 /**
  *
@@ -15,23 +22,30 @@ public class VistaParecidos extends javax.swing.JFrame {
 
     private static String autor;
     private static String titulo;
-    private static Integer k;
+    private static int k;
     private static String type;
-    private static boolean tfidf;
-    private static boolean frec;
     private static JList lista;
+    static DefaultListModel model;
+    private Map<String,String> parecidos;
+    public static CtrlPresentacio cp;
 
     /**
      * Creates new form VistaParecidos
+     * @param cp
      * @param autor
      * @param titulo
+     * @throws java.io.IOException
      */
-    public VistaParecidos(String autor, String titulo) {
-        initComponents();
+    public VistaParecidos(CtrlPresentacio cp, String autor, String titulo) throws IOException{
         VistaParecidos.autor = autor;
         VistaParecidos.titulo = titulo;
-        VistaParecidos.tfidf = false;
-        VistaParecidos.frec = false;
+        model = new DefaultListModel();
+        VistaParecidos.lista = new JList(model);
+        VistaParecidos.cp = cp;
+        initComponents();
+        ButtonGroup group = new ButtonGroup();
+        group.add(FREC);
+        group.add(TFIDF);
     }
 
     /**
@@ -48,17 +62,16 @@ public class VistaParecidos extends javax.swing.JFrame {
         textoNumDocs = new javax.swing.JLabel();
         textoResult = new javax.swing.JLabel();
         Consultar = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        textPaneNumDocs = new javax.swing.JTextPane();
         Aceptar = new javax.swing.JButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        textAreaResult = new javax.swing.JTextArea();
+        scrollPaneResult = new JScrollPane(lista);
         textoBusqueda = new javax.swing.JLabel();
         FREC = new javax.swing.JRadioButton();
         TFIDF = new javax.swing.JRadioButton();
+        textFieldNumDocs = new java.awt.TextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("\"k\" documentos más parecidos");
+        setPreferredSize(new java.awt.Dimension(600, 500));
         getContentPane().setLayout(null);
 
         textoNumDocs.setText("Número de documentos:");
@@ -76,12 +89,7 @@ public class VistaParecidos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Consultar);
-        Consultar.setBounds(321, 170, 82, 31);
-
-        jScrollPane1.setViewportView(textPaneNumDocs);
-
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(250, 60, 80, 26);
+        Consultar.setBounds(321, 170, 100, 31);
 
         Aceptar.setText("Aceptar");
         Aceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -90,15 +98,9 @@ public class VistaParecidos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Aceptar);
-        Aceptar.setBounds(334, 333, 69, 31);
-
-        textAreaResult.setEditable(false);
-        textAreaResult.setColumns(20);
-        textAreaResult.setRows(5);
-        jScrollPane3.setViewportView(textAreaResult);
-
-        getContentPane().add(jScrollPane3);
-        jScrollPane3.setBounds(141, 228, 262, 87);
+        Aceptar.setBounds(510, 400, 69, 31);
+        getContentPane().add(scrollPaneResult);
+        scrollPaneResult.setBounds(141, 228, 430, 150);
 
         textoBusqueda.setText("Método de búsqueda :");
         getContentPane().add(textoBusqueda);
@@ -127,13 +129,34 @@ public class VistaParecidos extends javax.swing.JFrame {
         getContentPane().add(TFIDF);
         TFIDF.setBounds(217, 129, 65, 23);
 
+        textFieldNumDocs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldNumDocsActionPerformed(evt);
+            }
+        });
+        getContentPane().add(textFieldNumDocs);
+        textFieldNumDocs.setBounds(250, 59, 130, 20);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void ConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultarActionPerformed
         // TODO add your handling code here:
-        if (VistaParecidos.tfidf) VistaParecidos.type = "TF-IDF";
-        else VistaParecidos.type = "FREC";
+        textFieldNumDocsActionPerformed(evt);
+        if (FREC.isSelected()) try {
+            parecidos = cp.getDocumentosParecidos(autor, titulo, k, "FREC");
+        } catch (Exception ex) {
+            Logger.getLogger(VistaParecidos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        else try {
+            parecidos = cp.getDocumentosParecidos(autor, titulo, k, "TF-IDF");
+        } catch (Exception ex) {
+            Logger.getLogger(VistaParecidos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        for (String autorParecido: parecidos.keySet()) {
+            model.addElement("Autor: "+autorParecido+". Título: "+parecidos.get(autorParecido)+".");
+        }
         
         
     }//GEN-LAST:event_ConsultarActionPerformed
@@ -145,19 +168,20 @@ public class VistaParecidos extends javax.swing.JFrame {
 
     private void TFIDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFIDFActionPerformed
         // TODO add your handling code here:
-        VistaParecidos.tfidf = true;
-        VistaParecidos.frec = false;
     }//GEN-LAST:event_TFIDFActionPerformed
 
     private void FRECActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FRECActionPerformed
         // TODO add your handling code here:
-        VistaParecidos.tfidf = false;
-        VistaParecidos.frec = true;
     }//GEN-LAST:event_FRECActionPerformed
 
     private void FRECComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_FRECComponentAdded
         // TODO add your handling code here:
     }//GEN-LAST:event_FRECComponentAdded
+
+    private void textFieldNumDocsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldNumDocsActionPerformed
+        // TODO add your handling code here:
+        k = Integer.parseInt(textFieldNumDocs.getText());
+    }//GEN-LAST:event_textFieldNumDocsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -189,7 +213,11 @@ public class VistaParecidos extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VistaParecidos(autor,titulo).setVisible(true);
+                try {
+                    new VistaParecidos(cp,autor,titulo).setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(VistaParecidos.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -201,10 +229,8 @@ public class VistaParecidos extends javax.swing.JFrame {
     private javax.swing.JRadioButton TFIDF;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea textAreaResult;
-    private javax.swing.JTextPane textPaneNumDocs;
+    private javax.swing.JScrollPane scrollPaneResult;
+    private java.awt.TextField textFieldNumDocs;
     private javax.swing.JLabel textoBusqueda;
     private javax.swing.JLabel textoNumDocs;
     private javax.swing.JLabel textoResult;
