@@ -167,7 +167,7 @@ public class CtrlDomini {
         return cd;
     }
     
-    public void guardarDocumentos(){
+    public void guardarDocumentos() throws IOException{
         Map <Integer, Documento> vecDocumentos = cd.getVecDocumentos();
         boolean first = true;
         for (Integer key : vecDocumentos.keySet()){
@@ -175,7 +175,7 @@ public class CtrlDomini {
             String autor = doc.getAutor();
             String titulo = doc.getTitulo();
             String contenido = doc.getContenidoOriginal();
-            ctrlPersistencia.guardarDocumento(autor, titulo, contenido,first);
+            ctrlPersistencia.guardarDocumento(autor, titulo, contenido);
             first = false;
         }
     }
