@@ -142,7 +142,7 @@ public class CtrlDomini {
                 Documento doc = vecDocumentos.get(j);
                 ArrayList<String> tit;
                 if (m.containsKey(doc.getAutor())){
-                    tit = m.get(autor);
+                    tit = m.get(doc.getAutor());
                     tit.add(doc.getTitulo());
                 }
                 else {
