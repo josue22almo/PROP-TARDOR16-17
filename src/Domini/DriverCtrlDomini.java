@@ -44,10 +44,10 @@ public class DriverCtrlDomini {
                 case 1:
                     System.out.println("Escriba la ruta del directorio.");
                     String directorio = sc.nextLine();
-                    c.altaConjuntoDocumentosDirectorio(directorio);
+                    //c.altaConjuntoDocumentosDirectorio(directorio);
                     break;
                 case 2:
-                    c.altaConjuntoDocumentosDirectorio("Documentos");
+                    //c.altaConjuntoDocumentosDirectorio("Documentos");
                     break;
                 case 3:
                     System.out.println("Alta documento");
@@ -62,7 +62,7 @@ public class DriverCtrlDomini {
                         contenido += aux;
                         contenido += '\n';
                     }
-                    c.altaDocumento(autor,titulo,contenido);
+                    //c.altaDocumento(autor,titulo,contenido);
                     break;
                 case 4:
                     System.out.println("Baja documento");
@@ -182,7 +182,7 @@ public class DriverCtrlDomini {
                 case 14:
                     System.out.println("Escribe la dirección de guardado");
                     String path = sc.nextLine();
-                    c.setPath(path);
+                    //c.setPath(path);
                     break;   
                 case 15:
                     System.out.println("Salir");

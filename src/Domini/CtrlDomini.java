@@ -3,13 +3,10 @@ package Domini;
 import Persistencia.CtrlPersistencia;
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.TreeMap;
 /**
  *
  * @author florencia.rimolo
@@ -109,13 +106,7 @@ public class CtrlDomini {
     }
     
     public ArrayList<String> getDocumentosParecidos(String autor, String titulo, int k, String type) throws Exception {
-        
-        /*if (!type.equals("TF-IDF") && !type.equals("FREC"))
-            throw new Exception("El tipo que ha especificado no es válido. Ha de ser FREC o TF-IDF.");
-        
-        if (!cd.existeDocumento(autor, titulo))
-            throw new Exception("El documento no existe.");*/
-        
+               
         // Cogemos el id que corresponde a este autor y titulo
         int id = cd.getIds().get(autor).get(titulo); 
                                                         
