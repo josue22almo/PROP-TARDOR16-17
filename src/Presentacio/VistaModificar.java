@@ -45,40 +45,48 @@ public class VistaModificar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Autor = new javax.swing.JLabel();
-        Aceptar = new javax.swing.JButton();
-        Titulo = new javax.swing.JLabel();
-        Contenido = new javax.swing.JLabel();
+        labelAutor = new javax.swing.JLabel();
+        botonAceptar = new javax.swing.JButton();
+        labelTitulo = new javax.swing.JLabel();
+        labelContenido = new javax.swing.JLabel();
         textFieldAutor = new javax.swing.JTextField();
         textFieldTitulo = new javax.swing.JTextField();
         textFieldContenido = new javax.swing.JTextField();
-        Cancelar = new javax.swing.JButton();
+        botonCancelar = new javax.swing.JButton();
+        fondo = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Modificar documento");
         setMinimumSize(new java.awt.Dimension(750, 600));
         setPreferredSize(new java.awt.Dimension(750, 600));
+        setResizable(false);
         getContentPane().setLayout(null);
 
-        Autor.setText("Nuevo Autor (opcional) :");
-        getContentPane().add(Autor);
-        Autor.setBounds(51, 49, 166, 17);
+        labelAutor.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
+        labelAutor.setForeground(new java.awt.Color(255, 255, 255));
+        labelAutor.setText("Nuevo Autor (opcional) :");
+        getContentPane().add(labelAutor);
+        labelAutor.setBounds(51, 49, 186, 20);
 
-        Aceptar.setText("Aceptar");
-        Aceptar.addActionListener(new java.awt.event.ActionListener() {
+        botonAceptar.setText("Aceptar");
+        botonAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AceptarActionPerformed(evt);
+                botonAceptarActionPerformed(evt);
             }
         });
-        getContentPane().add(Aceptar);
-        Aceptar.setBounds(390, 390, 90, 31);
+        getContentPane().add(botonAceptar);
+        botonAceptar.setBounds(460, 540, 110, 31);
 
-        Titulo.setText("Nuevo Título (opcional) :");
-        getContentPane().add(Titulo);
-        Titulo.setBounds(51, 97, 167, 17);
+        labelTitulo.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
+        labelTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        labelTitulo.setText("Nuevo Título (opcional) :");
+        getContentPane().add(labelTitulo);
+        labelTitulo.setBounds(51, 97, 185, 20);
 
-        Contenido.setText("Nuevo Contenido (opcional) :");
-        getContentPane().add(Contenido);
-        Contenido.setBounds(51, 140, 200, 17);
+        labelContenido.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
+        labelContenido.setForeground(new java.awt.Color(255, 255, 255));
+        labelContenido.setText("Nuevo Contenido (opcional) :");
+        getContentPane().add(labelContenido);
+        labelContenido.setBounds(51, 140, 230, 20);
 
         textFieldAutor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,21 +111,35 @@ public class VistaModificar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(textFieldContenido);
-        textFieldContenido.setBounds(50, 170, 430, 180);
+        textFieldContenido.setBounds(50, 170, 650, 350);
 
-        Cancelar.setText("Cancelar");
-        Cancelar.addActionListener(new java.awt.event.ActionListener() {
+        botonCancelar.setText("Cancelar");
+        botonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CancelarActionPerformed(evt);
+                botonCancelarActionPerformed(evt);
             }
         });
-        getContentPane().add(Cancelar);
-        Cancelar.setBounds(244, 390, 110, 31);
+        getContentPane().add(botonCancelar);
+        botonCancelar.setBounds(590, 540, 110, 31);
+
+        fondo.setIcon(new javax.swing.JLabel() {
+            public javax.swing.Icon getIcon() {
+                try {
+                    return new javax.swing.ImageIcon(
+                        new java.net.URL("url:http://www.celer-comex.com.ar/images/fondo.jpg")
+                    );
+                } catch (java.net.MalformedURLException e) {
+                }
+                return null;
+            }
+        }.getIcon());
+        getContentPane().add(fondo);
+        fondo.setBounds(0, 0, 780, 600);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
+    private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
             textFieldAutorActionPerformed(evt);
             textFieldTituloActionPerformed(evt);
             textFieldContenidoActionPerformed(evt);        
@@ -135,7 +157,7 @@ public class VistaModificar extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(VistaModificar.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_AceptarActionPerformed
+    }//GEN-LAST:event_botonAceptarActionPerformed
 
     private void textFieldAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldAutorActionPerformed
         // TODO add your handling code here:
@@ -152,10 +174,10 @@ public class VistaModificar extends javax.swing.JFrame {
         this.nuevo_contenido = textFieldContenido.getText();
     }//GEN-LAST:event_textFieldContenidoActionPerformed
 
-    private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
+    private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-    }//GEN-LAST:event_CancelarActionPerformed
+    }//GEN-LAST:event_botonCancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -193,11 +215,12 @@ public class VistaModificar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Aceptar;
-    private javax.swing.JLabel Autor;
-    private javax.swing.JButton Cancelar;
-    private javax.swing.JLabel Contenido;
-    private javax.swing.JLabel Titulo;
+    private javax.swing.JButton botonAceptar;
+    private javax.swing.JButton botonCancelar;
+    private javax.swing.JLabel fondo;
+    private javax.swing.JLabel labelAutor;
+    private javax.swing.JLabel labelContenido;
+    private javax.swing.JLabel labelTitulo;
     private javax.swing.JTextField textFieldAutor;
     private javax.swing.JTextField textFieldContenido;
     private javax.swing.JTextField textFieldTitulo;

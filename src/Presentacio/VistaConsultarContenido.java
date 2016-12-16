@@ -44,17 +44,17 @@ public class VistaConsultarContenido extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
-        Autor = new javax.swing.JLabel();
-        Titulo = new javax.swing.JLabel();
-        Aceptar = new javax.swing.JButton();
-        Contenido = new javax.swing.JLabel();
+        labelAutor = new javax.swing.JLabel();
+        labelTitulo = new javax.swing.JLabel();
+        botonAceptar = new javax.swing.JButton();
+        labelContenido = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         textoAutor = new javax.swing.JTextPane();
         jScrollPane3 = new javax.swing.JScrollPane();
         textoTitulo = new javax.swing.JTextPane();
         jScrollPane4 = new javax.swing.JScrollPane();
         textoContenido = new javax.swing.JTextPane();
-        jLabel2 = new javax.swing.JLabel();
+        fondo = new javax.swing.JLabel();
 
         jLabel1.setText("jLabel1");
 
@@ -73,41 +73,40 @@ public class VistaConsultarContenido extends javax.swing.JFrame {
         jTextArea2.setRows(5);
         jScrollPane2.setViewportView(jTextArea2);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Contenido");
+        setTitle("Consultar");
         setPreferredSize(new java.awt.Dimension(850, 510));
         setResizable(false);
         getContentPane().setLayout(null);
 
-        Autor.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
-        Autor.setForeground(new java.awt.Color(255, 255, 255));
-        Autor.setText("Autor:");
-        getContentPane().add(Autor);
-        Autor.setBounds(50, 30, 60, 30);
+        labelAutor.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
+        labelAutor.setForeground(new java.awt.Color(255, 255, 255));
+        labelAutor.setText("Autor:");
+        getContentPane().add(labelAutor);
+        labelAutor.setBounds(50, 30, 60, 30);
 
-        Titulo.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
-        Titulo.setForeground(new java.awt.Color(255, 255, 255));
-        Titulo.setText("Título:");
-        getContentPane().add(Titulo);
-        Titulo.setBounds(50, 87, 60, 20);
+        labelTitulo.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
+        labelTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        labelTitulo.setText("Título:");
+        getContentPane().add(labelTitulo);
+        labelTitulo.setBounds(50, 87, 60, 20);
 
-        Aceptar.setBackground(new java.awt.Color(174, 178, 194));
-        Aceptar.setForeground(new java.awt.Color(0, 0, 0));
-        Aceptar.setText("Aceptar");
-        Aceptar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
-        Aceptar.addActionListener(new java.awt.event.ActionListener() {
+        botonAceptar.setBackground(new java.awt.Color(174, 178, 194));
+        botonAceptar.setForeground(new java.awt.Color(0, 0, 0));
+        botonAceptar.setText("Aceptar");
+        botonAceptar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
+        botonAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AceptarActionPerformed(evt);
+                botonAceptarActionPerformed(evt);
             }
         });
-        getContentPane().add(Aceptar);
-        Aceptar.setBounds(639, 460, 110, 30);
+        getContentPane().add(botonAceptar);
+        botonAceptar.setBounds(639, 460, 110, 30);
 
-        Contenido.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
-        Contenido.setForeground(new java.awt.Color(255, 255, 255));
-        Contenido.setText("Contenido:");
-        getContentPane().add(Contenido);
-        Contenido.setBounds(50, 140, 90, 20);
+        labelContenido.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
+        labelContenido.setForeground(new java.awt.Color(255, 255, 255));
+        labelContenido.setText("Contenido:");
+        getContentPane().add(labelContenido);
+        labelContenido.setBounds(50, 140, 90, 20);
 
         textoAutor.setEditable(false);
         textoAutor.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
@@ -131,7 +130,7 @@ public class VistaConsultarContenido extends javax.swing.JFrame {
         getContentPane().add(jScrollPane4);
         jScrollPane4.setBounds(169, 135, 580, 290);
 
-        jLabel2.setIcon(new javax.swing.JLabel() {
+        fondo.setIcon(new javax.swing.JLabel() {
             public javax.swing.Icon getIcon() {
                 try {
                     return new javax.swing.ImageIcon(
@@ -142,16 +141,16 @@ public class VistaConsultarContenido extends javax.swing.JFrame {
                 return null;
             }
         }.getIcon());
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(0, 0, 1060, 550);
+        getContentPane().add(fondo);
+        fondo.setBounds(0, 0, 1060, 550);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
+    private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-    }//GEN-LAST:event_AceptarActionPerformed
+    }//GEN-LAST:event_botonAceptarActionPerformed
 
     
     /**
@@ -190,18 +189,18 @@ public class VistaConsultarContenido extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Aceptar;
-    private javax.swing.JLabel Autor;
-    private javax.swing.JLabel Contenido;
-    private javax.swing.JLabel Titulo;
+    private javax.swing.JButton botonAceptar;
+    private javax.swing.JLabel fondo;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JLabel labelAutor;
+    private javax.swing.JLabel labelContenido;
+    private javax.swing.JLabel labelTitulo;
     private javax.swing.JTextPane textoAutor;
     private javax.swing.JTextPane textoContenido;
     private javax.swing.JTextPane textoTitulo;

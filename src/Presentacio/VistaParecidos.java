@@ -14,7 +14,7 @@ import javax.swing.JScrollPane;
 
 /**
  *
- * @author jessica.sobreviela
+ * @author florencia.rimolo
  */
 public class VistaParecidos extends javax.swing.JFrame {
     
@@ -57,20 +57,19 @@ public class VistaParecidos extends javax.swing.JFrame {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         numk = new javax.swing.JLabel();
-        Metodo = new javax.swing.JLabel();
-        Consultar = new javax.swing.JButton();
-        Aceptar = new javax.swing.JButton();
-        Resultado = new javax.swing.JLabel();
+        labelMetodo = new javax.swing.JLabel();
+        botonConsultar = new javax.swing.JButton();
+        botonAceptar = new javax.swing.JButton();
+        labelResultado = new javax.swing.JLabel();
         FREC = new javax.swing.JRadioButton();
         TFIDF = new javax.swing.JRadioButton();
         textFieldNumDocs = new javax.swing.JTextField();
         scrollPaneResult = new JScrollPane(lista);
-        Cancelar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        botonCancelar = new javax.swing.JButton();
+        fondo = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Consultar parecidos");
         setMinimumSize(new java.awt.Dimension(750, 600));
-        setPreferredSize(new java.awt.Dimension(750, 600));
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -78,39 +77,39 @@ public class VistaParecidos extends javax.swing.JFrame {
         getContentPane().add(numk);
         numk.setBounds(49, 51, 257, 17);
 
-        Metodo.setText("Método:");
-        getContentPane().add(Metodo);
-        Metodo.setBounds(49, 89, 59, 17);
+        labelMetodo.setText("Método:");
+        getContentPane().add(labelMetodo);
+        labelMetodo.setBounds(49, 89, 59, 17);
 
-        Consultar.setBackground(new java.awt.Color(174, 178, 194));
-        Consultar.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
-        Consultar.setForeground(new java.awt.Color(0, 0, 0));
-        Consultar.setText("Consultar");
-        Consultar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
-        Consultar.addActionListener(new java.awt.event.ActionListener() {
+        botonConsultar.setBackground(new java.awt.Color(174, 178, 194));
+        botonConsultar.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
+        botonConsultar.setForeground(new java.awt.Color(0, 0, 0));
+        botonConsultar.setText("Consultar");
+        botonConsultar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
+        botonConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ConsultarActionPerformed(evt);
+                botonConsultarActionPerformed(evt);
             }
         });
-        getContentPane().add(Consultar);
-        Consultar.setBounds(400, 160, 120, 22);
+        getContentPane().add(botonConsultar);
+        botonConsultar.setBounds(400, 160, 120, 22);
 
-        Aceptar.setBackground(new java.awt.Color(174, 178, 194));
-        Aceptar.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
-        Aceptar.setForeground(new java.awt.Color(0, 0, 0));
-        Aceptar.setText("Aceptar");
-        Aceptar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
-        Aceptar.addActionListener(new java.awt.event.ActionListener() {
+        botonAceptar.setBackground(new java.awt.Color(174, 178, 194));
+        botonAceptar.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
+        botonAceptar.setForeground(new java.awt.Color(0, 0, 0));
+        botonAceptar.setText("Aceptar");
+        botonAceptar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
+        botonAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AceptarActionPerformed(evt);
+                botonAceptarActionPerformed(evt);
             }
         });
-        getContentPane().add(Aceptar);
-        Aceptar.setBounds(450, 550, 100, 22);
+        getContentPane().add(botonAceptar);
+        botonAceptar.setBounds(450, 550, 100, 22);
 
-        Resultado.setText("Resultado:");
-        getContentPane().add(Resultado);
-        Resultado.setBounds(49, 187, 110, 17);
+        labelResultado.setText("Resultado:");
+        getContentPane().add(labelResultado);
+        labelResultado.setBounds(49, 187, 110, 17);
 
         FREC.setText("Frecuencias");
         FREC.addActionListener(new java.awt.event.ActionListener() {
@@ -140,20 +139,20 @@ public class VistaParecidos extends javax.swing.JFrame {
         getContentPane().add(scrollPaneResult);
         scrollPaneResult.setBounds(50, 230, 650, 240);
 
-        Cancelar.setBackground(new java.awt.Color(174, 178, 194));
-        Cancelar.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
-        Cancelar.setForeground(new java.awt.Color(0, 0, 0));
-        Cancelar.setText("Cancelar");
-        Cancelar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
-        Cancelar.addActionListener(new java.awt.event.ActionListener() {
+        botonCancelar.setBackground(new java.awt.Color(174, 178, 194));
+        botonCancelar.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
+        botonCancelar.setForeground(new java.awt.Color(0, 0, 0));
+        botonCancelar.setText("Cancelar");
+        botonCancelar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
+        botonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CancelarActionPerformed(evt);
+                botonCancelarActionPerformed(evt);
             }
         });
-        getContentPane().add(Cancelar);
-        Cancelar.setBounds(590, 550, 110, 22);
+        getContentPane().add(botonCancelar);
+        botonCancelar.setBounds(590, 550, 110, 22);
 
-        jLabel1.setIcon(new javax.swing.JLabel() {
+        fondo.setIcon(new javax.swing.JLabel() {
             public javax.swing.Icon getIcon() {
                 try {
                     return new javax.swing.ImageIcon(
@@ -164,14 +163,14 @@ public class VistaParecidos extends javax.swing.JFrame {
                 return null;
             }
         }.getIcon());
-        jLabel1.setPreferredSize(new java.awt.Dimension(750, 600));
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 750, 600);
+        fondo.setPreferredSize(new java.awt.Dimension(750, 600));
+        getContentPane().add(fondo);
+        fondo.setBounds(0, 0, 750, 600);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultarActionPerformed
+    private void botonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarActionPerformed
         // TODO add your handling code here:
         textFieldNumDocsActionPerformed(evt);
         model.clear();
@@ -189,12 +188,12 @@ public class VistaParecidos extends javax.swing.JFrame {
         }
         for (int i = 0; i < parecidos.size(); i++)
             model.addElement(parecidos.get(i));
-    }//GEN-LAST:event_ConsultarActionPerformed
+    }//GEN-LAST:event_botonConsultarActionPerformed
 
-    private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
+    private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-    }//GEN-LAST:event_AceptarActionPerformed
+    }//GEN-LAST:event_botonAceptarActionPerformed
 
     private void FRECActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FRECActionPerformed
         // TODO add your handling code here:
@@ -209,10 +208,10 @@ public class VistaParecidos extends javax.swing.JFrame {
         k = Integer.parseInt(textFieldNumDocs.getText());
     }//GEN-LAST:event_textFieldNumDocsActionPerformed
 
-    private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
+    private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-    }//GEN-LAST:event_CancelarActionPerformed
+    }//GEN-LAST:event_botonCancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -247,15 +246,15 @@ public class VistaParecidos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Aceptar;
-    private javax.swing.JButton Cancelar;
-    private javax.swing.JButton Consultar;
     private javax.swing.JRadioButton FREC;
-    private javax.swing.JLabel Metodo;
-    private javax.swing.JLabel Resultado;
     private javax.swing.JRadioButton TFIDF;
+    private javax.swing.JButton botonAceptar;
+    private javax.swing.JButton botonCancelar;
+    private javax.swing.JButton botonConsultar;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel fondo;
+    private javax.swing.JLabel labelMetodo;
+    private javax.swing.JLabel labelResultado;
     private javax.swing.JLabel numk;
     private javax.swing.JScrollPane scrollPaneResult;
     private javax.swing.JTextField textFieldNumDocs;
