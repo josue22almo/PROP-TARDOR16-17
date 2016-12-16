@@ -15,12 +15,13 @@ public class CtrlPersistencia {
 
     private String path;
     
-    public CtrlPersistencia(){
-    }
-
-    public void setPath(String path) {
+    public CtrlPersistencia(String path){
         this.path = path;
     }
+
+    /*public void setPath(String path) {
+        this.path = path;
+    }*/
 
     public ArrayList<BufferedReader> leerCarpeta(String rutaCarpeta) throws Exception{
         File directorio;

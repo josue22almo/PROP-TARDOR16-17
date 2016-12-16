@@ -61,7 +61,7 @@ public class VistaModificar extends javax.swing.JFrame {
 
         Autor.setText("Nuevo Autor (opcional) :");
         getContentPane().add(Autor);
-        Autor.setBounds(51, 49, 170, 15);
+        Autor.setBounds(51, 49, 166, 17);
 
         Aceptar.setText("Aceptar");
         Aceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -70,15 +70,15 @@ public class VistaModificar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Aceptar);
-        Aceptar.setBounds(390, 390, 90, 25);
+        Aceptar.setBounds(390, 390, 90, 31);
 
         Titulo.setText("Nuevo Título (opcional) :");
         getContentPane().add(Titulo);
-        Titulo.setBounds(51, 97, 171, 15);
+        Titulo.setBounds(51, 97, 167, 17);
 
         Contenido.setText("Nuevo Contenido (opcional) :");
         getContentPane().add(Contenido);
-        Contenido.setBounds(51, 140, 204, 15);
+        Contenido.setBounds(51, 140, 200, 17);
 
         textFieldAutor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,7 +112,7 @@ public class VistaModificar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Cancelar);
-        Cancelar.setBounds(244, 390, 110, 25);
+        Cancelar.setBounds(244, 390, 110, 31);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

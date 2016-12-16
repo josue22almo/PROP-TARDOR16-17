@@ -21,15 +21,15 @@ public class CtrlDomini {
     public static ArrayList<String> catalan;
     public static ArrayList<String> ingles;
     
-    public CtrlDomini () throws IOException, Exception {
-        ctrlPersistencia  = new CtrlPersistencia();
+    public CtrlDomini (String ruta) throws Exception {
+        ctrlPersistencia  = new CtrlPersistencia(ruta);
         espanol = ctrlPersistencia.leerPalabrasFuncionales("src/Texto/sp.txt");
         catalan = ctrlPersistencia.leerPalabrasFuncionales("src/Texto/cat.txt");
         ingles = ctrlPersistencia.leerPalabrasFuncionales("src/Texto/eng.txt");
-        ctrlPersistencia.cargarDatos();
+        //ctrlPersistencia.cargarDatos();
     }
   
-    public void altaConjuntoDocumentosDirectorio(String folder) throws Exception {    
+    public void altaConjuntoDocumentosDirectorio(String folder, boolean guardar) throws Exception {    
         ArrayList<BufferedReader> docs = ctrlPersistencia.leerCarpeta(folder);
         for (int i = 0; i < docs.size(); ++i){
             String autor = docs.get(i).readLine();
@@ -43,11 +43,11 @@ public class CtrlDomini {
                 contenido += '\n';
             }
             cd.altaDocumento(autor, titulo, contenido);
-            ctrlPersistencia.guardarDocumento(autor, titulo, contenido);
+            if (guardar) ctrlPersistencia.guardarDocumento(autor, titulo, contenido);
         }
     }
     
-    public void altaDocumentoPorRuta(File archivo) throws Exception {
+    public void altaDocumentoPorRuta(File archivo, boolean guardar) throws Exception {
         BufferedReader doc = ctrlPersistencia.leerDocumento(archivo);
             String autor = doc.readLine();
             doc.readLine();
@@ -60,14 +60,14 @@ public class CtrlDomini {
                 contenido += '\n';
             }
             cd.altaDocumento(autor, titulo, contenido);        
-            ctrlPersistencia.guardarDocumento(autor, titulo, contenido);
+            if (guardar) ctrlPersistencia.guardarDocumento(autor, titulo, contenido);
     }
     
-    public void altaDocumento(String autor, String titulo, String contenido) throws Exception {
+    /*public void altaDocumento(String autor, String titulo, String contenido) throws Exception {
         
         cd.altaDocumento(autor, titulo, contenido);
         ctrlPersistencia.guardarDocumento(autor, titulo, contenido);
-    }
+    }*/
     
     public void bajaDocumento(String autor, String titulo) {
         
@@ -203,7 +203,7 @@ public class CtrlDomini {
             cd.altaDocumento(autor, titulo, contenido);
         }
     }
-    public void setPath(String path){
+    /*public void setPath(String path){
         ctrlPersistencia.setPath(path);
-    }
+    }*/
 }

@@ -26,10 +26,12 @@ public class VistaExprBooleana extends javax.swing.JFrame {
     
     /**
      * Creates new form VistaExprBooleana
+     * @param cp
+     * @throws java.io.IOException
      */
-    public VistaExprBooleana() throws IOException, Exception {
+    public VistaExprBooleana(CtrlPresentacio cp) throws Exception {
         initComponents();
-        VistaExprBooleana.cp = new CtrlPresentacio();
+        VistaExprBooleana.cp = cp;
         VistaExprBooleana.documentos = new TreeMap<>();
     }
 
@@ -173,9 +175,7 @@ public class VistaExprBooleana extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    new VistaExprBooleana().setVisible(true);
-                } catch (IOException ex) {
-                    Logger.getLogger(VistaExprBooleana.class.getName()).log(Level.SEVERE, null, ex);
+                    new VistaExprBooleana(cp).setVisible(true);
                 } catch (Exception ex) {
                     Logger.getLogger(VistaExprBooleana.class.getName()).log(Level.SEVERE, null, ex);
                 }

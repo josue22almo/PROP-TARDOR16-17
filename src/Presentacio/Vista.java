@@ -39,11 +39,8 @@ public class Vista extends javax.swing.JFrame {
     private static String rutaCarpeta;
     /**
      * Creates new form Vista
-     * @throws java.io.IOException
      */
-    public Vista() throws IOException, Exception {
-        
-        Vista.cp = new CtrlPresentacio();
+    public Vista() {
         Vista.autoresPref = new ArrayList<>();
         modelAutores = new DefaultListModel();
         Vista.listaAutores = new JList(modelAutores);
@@ -288,7 +285,7 @@ public class Vista extends javax.swing.JFrame {
               System.out.println("getCurrentDirectory(): " + chooser.getCurrentDirectory());
               System.out.println("getSelectedFile() : " + chooser.getSelectedFile());
                 try {
-                    Vista.cp.altaCjtoDocsDirectorio(chooser.getSelectedFile().getCanonicalPath()); 
+                    Vista.cp.altaCjtoDocsDirectorio(chooser.getSelectedFile().getCanonicalPath(),true); 
                     String exito = "Documentos creados con éxito.";
                     JOptionPane.showMessageDialog(rootPane,exito);  
                 } catch (FileNotFoundException ex) {
@@ -375,7 +372,8 @@ public class Vista extends javax.swing.JFrame {
 
             if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
                 try {
-                    Vista.cp.altaDocumentoPorRuta(chooser.getSelectedFile());
+                    if (chooser.getSelectedFile().getPath().equals(rutaCarpeta)) Vista.cp.altaDocumentoPorRuta(chooser.getSelectedFile(),false);
+                    else Vista.cp.altaDocumentoPorRuta(chooser.getSelectedFile(),true);
                     String exito = "Documento creado con éxito.";
                     JOptionPane.showMessageDialog(rootPane,exito);  
                 } catch (Exception ex) {
@@ -410,9 +408,6 @@ public class Vista extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_botonModificarActionPerformed
     
-    public CtrlPresentacio getCtrPresentacio() {
-        return Vista.cp;
-    }
     /**
      * @param args the command line arguments
      */
@@ -428,19 +423,28 @@ public class Vista extends javax.swing.JFrame {
                     vista.setVisible(true);
                     JFileChooser chooser = new JFileChooser();
                     chooser.setCurrentDirectory(new java.io.File("."));
-                    chooser.setDialogTitle("Seleccione la carpeta en la que desea guardar sus documentos:");
+                    chooser.setDialogTitle("Seleccione el directorio en el que desea guardar sus documentos:");
                     chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
                     chooser.setAcceptAllFileFilterUsed(false);
-                    if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
-                      System.out.println("getCurrentDirectory(): " + chooser.getCurrentDirectory());
-                      System.out.println("getSelectedFile() : " + chooser.getSelectedFile());
-                      Vista.rutaCarpeta = chooser.getSelectedFile().getPath();
-                      File directorio = new File(rutaCarpeta);
-                      File [] archivos;
-                      archivos = directorio.listFiles();
-                      if (archivos.length != 0) Vista.cp.altaCjtoDocsDirectorio(rutaCarpeta);
-                      Vista.cp.setRuta(rutaCarpeta);
+                    int option = chooser.showOpenDialog(null);
+                    while (true) {
+                        if (option == JFileChooser.CANCEL_OPTION) {
+                            String excepcion = "Debe seleccionar un directorio.";
+                            JOptionPane.showMessageDialog(vista, excepcion);
+                            option = chooser.showOpenDialog(null);
+                        }
+                        else if (option == JFileChooser.APPROVE_OPTION) {
+                            Vista.rutaCarpeta = chooser.getSelectedFile().getPath();
+                            break;
+                        }
                     }
+                    //System.out.println("getCurrentDirectory(): " + chooser.getCurrentDirectory());
+                    //System.out.println("getSelectedFile() : " + chooser.getSelectedFile().getPath());
+                    File directorio = new File(rutaCarpeta);
+                    File [] archivos;
+                    archivos = directorio.listFiles();
+                    Vista.cp = new CtrlPresentacio(rutaCarpeta);
+                    if (archivos.length != 0) Vista.cp.altaCjtoDocsDirectorio(rutaCarpeta,false);
                 } catch (Exception ex) {
                     Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
                 }

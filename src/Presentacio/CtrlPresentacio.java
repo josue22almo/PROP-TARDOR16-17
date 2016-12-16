@@ -18,25 +18,25 @@ import java.util.Map;
 public class CtrlPresentacio {
     private CtrlDomini cd;
     
-    public CtrlPresentacio() throws IOException, Exception {
-        this.cd = new CtrlDomini();
+    public CtrlPresentacio(String ruta) throws Exception {
+        this.cd = new CtrlDomini(ruta);
     }
     
     public ArrayList<String> getAutorPref(String autor) throws Exception {
         return this.cd.consultarAutoresPorPrefijo(autor);
     }
     
-    public void altaCjtoDocsDirectorio(String folder) throws Exception {
-        this.cd.altaConjuntoDocumentosDirectorio(folder);
+    public void altaCjtoDocsDirectorio(String folder, boolean guardar) throws Exception {
+        this.cd.altaConjuntoDocumentosDirectorio(folder, guardar);
     }
     
-    public void altaDocumentoPorRuta (File archivo) throws Exception {
-        this.cd.altaDocumentoPorRuta(archivo);
+    public void altaDocumentoPorRuta (File archivo, boolean guardar) throws Exception {
+        this.cd.altaDocumentoPorRuta(archivo,guardar);
     } 
     
-    public void altaDocumento(String autor, String titulo, String contenido) throws Exception {
+    /*public void altaDocumento(String autor, String titulo, String contenido) throws Exception {
         this.cd.altaDocumento(autor, titulo, contenido);
-    }
+    }*/
     
     public String consultarContenido(String autor, String titulo) {
         return this.cd.consultarContenido(autor, titulo);
@@ -64,12 +64,5 @@ public class CtrlPresentacio {
     
     public void modificarContenido(String autor, String titulo, String contenidoModif) throws IOException {
         cd.modificaContenidoDoc(autor, titulo, contenidoModif);
-    }
-    
-    public void setRuta (String ruta) throws Exception {
-        this.cd.setPath(ruta);
-    }
-    public CtrlDomini getCtrlDomini() {
-        return this.cd;
     }
 }
