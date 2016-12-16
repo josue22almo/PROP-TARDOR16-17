@@ -105,7 +105,7 @@ public class BooleanTree {
             ExpressionNode term = term();
             result = new NegatedNode(term,true);
         }else result = term();  //signed_term -> term
-        return result;
+        return result; //epsilon
     }
     
     private ExpressionNode op(ExpressionNode exp) throws Exception{
