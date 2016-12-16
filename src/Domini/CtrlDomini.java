@@ -108,7 +108,7 @@ public class CtrlDomini {
         return cd.consultarAutoresPorPrefijo(prefijo);
     }
     
-    public Map<String,ArrayList<String>> getDocumentosParecidos(String autor, String titulo, int k, String type) throws Exception {
+    public ArrayList<String> getDocumentosParecidos(String autor, String titulo, int k, String type) throws Exception {
         
         /*if (!type.equals("TF-IDF") && !type.equals("FREC"))
             throw new Exception("El tipo que ha especificado no es válido. Ha de ser FREC o TF-IDF.");
@@ -121,7 +121,7 @@ public class CtrlDomini {
                                                         
         // Cogemos el map con las distancias respecto al documento con id = id
         Map < Double, ArrayList<Integer> > docs;
-        Map < String, ArrayList<String> > m = new TreeMap<>();
+        ArrayList<String> m = new ArrayList<>();
         if ("FREC".equals(type)) {
             docs = cd.getDistsFrec().get(id);
         }
@@ -134,23 +134,11 @@ public class CtrlDomini {
         int aux = 0;
         while(it.hasNext() && aux <= k){
             Double key = (Double) it.next();
-            /*Documento doc = vecDocumentos.get(docs.get(key));
-            m.put(doc.getAutor(),doc.getTitulo());
-            ++aux;*/
             ArrayList <Integer> d = docs.get(key);
             for (int i = 0; i < d.size() && aux < k; ++i){
                 Integer j = d.get(i);
                 Documento doc = vecDocumentos.get(j);
-                ArrayList<String> tit;
-                if (m.containsKey(doc.getAutor())){
-                    tit = m.get(doc.getAutor());
-                    tit.add(doc.getTitulo());
-                }
-                else {
-                    tit = new ArrayList<>();
-                    tit.add(doc.getTitulo());
-                    m.put(doc.getAutor(),tit);   
-                }
+                m.add("Autor: " + doc.getAutor() + ". Titulo: " + doc.getTitulo() + "." + "\n");
                 ++aux;
             }
         }
@@ -158,16 +146,16 @@ public class CtrlDomini {
         return m;
     }
     
-    public Map<String,String> getDocumentosBool(String expresion) throws Exception{
+    public ArrayList<String> getDocumentosBool(String expresion) throws Exception{
         
-        Map<String,String> result = new HashMap<>();
+        ArrayList<String> result = new ArrayList<>();
         BooleanTree tree = new BooleanTree(expresion);
         Map <Integer, Documento> m = cd.getVecDocumentos();
         for (Integer id : m.keySet()) {
             Documento d = m.get(id);
             boolean b = tree.satisfyExpression(d);
             if (b) 
-                result.put(d.getAutor(),d.getTitulo());
+                result.add("Autor: " + d.getAutor() + ". Titulo: " + d.getTitulo() + "." + "\n");
         }
         if (m.isEmpty()) throw new Exception("No hay ningún documento que cumpla la expresión");
         return result;

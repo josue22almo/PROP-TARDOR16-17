@@ -142,27 +142,15 @@ public class DriverCtrlDomini {
                     sc.nextLine();
                     System.out.println("Escribe FREC o TF-IDF:");
                     aux = sc.nextLine();
-                    Map<String,ArrayList<String>> docs = c.getDocumentosParecidos(autor,titulo,k,aux); 
-                    for (String key : docs.keySet()){
-                        System.out.println("Autor: " + key);
-                        for (int i=0; i<docs.get(key).size(); i++){
-                            System.out.println("Título: " + docs.get(key).get(i));
-                            System.out.println();
-                        }
-                    } 
+                    ArrayList<String> docs = c.getDocumentosParecidos(autor,titulo,k,aux); 
+                    for (int i=0; i<docs.size(); i++ ) System.out.println(docs.get(i));
                     break;
                 case 12:
                     System.out.println("Consultar expresión booleana");
                     System.out.println("Frase booleana:");
                     String booleano = sc.nextLine();
-                    Map <String, String> m = c.getDocumentosBool(booleano);
-                    Iterator iter = m.keySet().iterator();
-                    while(iter.hasNext()){
-                        String autorr = (String) iter.next();
-                        System.out.print("Autor: " + autorr + '\n');
-                        System.out.println("Titulo: " + m.get(autorr));
-                        //System.out.println();
-                    }
+                    ArrayList <String> m = c.getDocumentosBool(booleano);
+                    for (int i=0; i<m.size(); i++ ) System.out.println(m.get(i));
                     break;
                 case 13: 
                     System.out.println("Consultar todo el conjunto de documentos");
@@ -175,7 +163,6 @@ public class DriverCtrlDomini {
                         Documento doc = vecDocumentos.get(id);
                         System.out.print("Id: " + id + '\n' + "Autor: " + doc.getAutor() + '\n');
                         System.out.println("Titulo: " + doc.getTitulo() + '\n' + "Contenido: " + doc.getContenidoOriginal());
-                        //System.out.println();
                     }
                     System.out.println();
                     System.out.println("ids es:");
@@ -189,7 +176,6 @@ public class DriverCtrlDomini {
                             String t = (String) it3.next();
                             System.out.print("Id: " + ids.get(a).get(t) + '\n' + "Autor: " + a + '\n');
                             System.out.println("Titulo: " + t + '\n');
-                            //System.out.println();
                         }
                     }            
                     break;

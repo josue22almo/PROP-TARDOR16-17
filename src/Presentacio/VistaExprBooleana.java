@@ -6,8 +6,8 @@
 package Presentacio;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.TreeMap;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
@@ -22,7 +22,7 @@ public class VistaExprBooleana extends javax.swing.JFrame {
     private static CtrlPresentacio cp;
     private static String listaDocumentos;
     private static String expresion;
-    private static Map< String, String> documentos;
+    private static ArrayList<String> documentos;
     
     /**
      * Creates new form VistaExprBooleana
@@ -32,7 +32,7 @@ public class VistaExprBooleana extends javax.swing.JFrame {
     public VistaExprBooleana(CtrlPresentacio cp) throws Exception {
         initComponents();
         VistaExprBooleana.cp = cp;
-        VistaExprBooleana.documentos = new TreeMap<>();
+        VistaExprBooleana.documentos = new ArrayList<>();
     }
 
     /**
@@ -137,10 +137,7 @@ public class VistaExprBooleana extends javax.swing.JFrame {
             String excepcion = "La búsqueda no ha producido resultados.";
             JOptionPane.showMessageDialog(rootPane,excepcion);
         }
-        for (String autor : documentos.keySet()) {
-            String titulo = documentos.get(autor);
-            listaDocumentos+=(titulo + ", " + autor + "\n");
-        }
+        for (int i=0; i<documentos.size(); i++) listaDocumentos+=(documentos.get(i));
         jTextArea1.setText(listaDocumentos);
     }//GEN-LAST:event_ConsultarActionPerformed
 

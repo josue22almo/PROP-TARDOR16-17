@@ -28,7 +28,7 @@ public class VistaParecidos extends javax.swing.JFrame {
     private static String type;
     private static JList lista;
     static DefaultListModel model;
-    private Map<String, ArrayList<String>> parecidos;
+    private ArrayList<String> parecidos;
     public static CtrlPresentacio cp;
     
     /**
@@ -191,11 +191,8 @@ public class VistaParecidos extends javax.swing.JFrame {
             String excepcion = "No hay ningún documento que cumpla los requisitos especificados..";
             JOptionPane.showMessageDialog(rootPane,excepcion); 
         }
-        
-        for (String autorParecido: parecidos.keySet()) {
-            for (int i = 0; i < parecidos.get(autorParecido).size(); i++)
-                model.addElement("Autor: "+autorParecido+". Título: "+ parecidos.get(autorParecido).get(i)+".");
-        }        
+        for (int i = 0; i < parecidos.size(); i++)
+            model.addElement(parecidos.get(i));
     }//GEN-LAST:event_ConsultarActionPerformed
 
     private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed

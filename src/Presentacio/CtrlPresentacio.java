@@ -38,7 +38,7 @@ public class CtrlPresentacio {
         return this.cd.consultarContenido(autor, titulo);
     }
     
-    public Map<String,ArrayList<String>> consultarParecidos(String autor, String titulo, Integer k, String type) throws Exception {
+    public ArrayList<String> consultarParecidos(String autor, String titulo, Integer k, String type) throws Exception {
         return this.cd.getDocumentosParecidos(autor, titulo, k, type);
     }
     
@@ -46,7 +46,7 @@ public class CtrlPresentacio {
         return this.cd.consultarTitulosAutor(autor);
     }
     
-    public Map<String,String> consultarDocumentosExprBooleana(String exprBooleana) throws Exception {
+    public ArrayList<String> consultarDocumentosExprBooleana(String exprBooleana) throws Exception {
         return this.cd.getDocumentosBool(exprBooleana);
     }
     
