@@ -130,7 +130,7 @@ public class BooleanTree {
         ExpressionNode exp;
         switch (top.token){
             case Values.COMA:
-                //term -> COMA argument COMA
+                //term -> COMA argument_comas COMA
                 nextToken();
                 exp = argument_comas();
                 if (top.token != Values.COMA) 
@@ -138,7 +138,7 @@ public class BooleanTree {
                 nextToken();                
                 break;
             case Values.OC_BRACKET:
-                //term -> OC_BRACKET argument CC_BRACKET
+                //term -> OC_BRACKET argument_curly_brackets CC_BRACKET
                 nextToken();
                 exp = argument_curly_brackets();
                 //argument_curly_brackets();
