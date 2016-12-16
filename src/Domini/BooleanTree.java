@@ -155,7 +155,7 @@ public class BooleanTree {
                 nextToken();
                 break;
             default:
-                //term -> argument
+                //term -> argument_curly_brackets
                 exp = argument_curly_brackets();
                 break;
         }
