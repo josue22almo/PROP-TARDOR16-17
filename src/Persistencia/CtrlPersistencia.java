@@ -23,7 +23,7 @@ public class CtrlPersistencia {
         this.path = path;
     }*/
 
-    public ArrayList<BufferedReader> leerCarpeta(String rutaCarpeta) throws Exception{
+    public ArrayList<BufferedReader> leerCarpeta(String rutaCarpeta) throws FileNotFoundException {
         File directorio;
         File[] archivos;
         ArrayList<BufferedReader> result = new ArrayList<>();
@@ -31,7 +31,6 @@ public class CtrlPersistencia {
         try {
             directorio = new File(rutaCarpeta);
             archivos = directorio.listFiles();
-//           S if (archivos.length == 0) throw new Exception("La carpeta esta vacia");
             for (int i = 0; i < archivos.length; ++i){
                 b = new BufferedReader(new FileReader(archivos[i].getPath()));
                 result.add(b);
@@ -85,7 +84,7 @@ public class CtrlPersistencia {
         file.delete();
     }
     
-    public void cargarDatos() throws Exception{
+    /*public void cargarDatos() throws Exception{
         leerCarpeta(path);
-    }
+    }*/
 }

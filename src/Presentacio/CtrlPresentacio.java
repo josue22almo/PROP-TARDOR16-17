@@ -22,10 +22,6 @@ public class CtrlPresentacio {
         this.cd = new CtrlDomini(ruta);
     }
     
-    public ArrayList<String> getAutorPref(String autor) throws Exception {
-        return this.cd.consultarAutoresPorPrefijo(autor);
-    }
-    
     public void altaCjtoDocsDirectorio(String folder, boolean guardar) throws Exception {
         this.cd.altaConjuntoDocumentosDirectorio(folder, guardar);
     }
@@ -52,6 +48,10 @@ public class CtrlPresentacio {
     
     public Map<String,String> consultarDocumentosExprBooleana(String exprBooleana) throws Exception {
         return this.cd.getDocumentosBool(exprBooleana);
+    }
+    
+    public ArrayList<String> consultarAutoresPorPrefijo(String autor) throws Exception {
+        return this.cd.consultarAutoresPorPrefijo(autor);
     }
     
     public void modificarAutor(String autor, String titulo, String autorModif) throws IOException {

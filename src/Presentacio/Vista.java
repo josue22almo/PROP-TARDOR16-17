@@ -27,10 +27,10 @@ import javax.swing.JScrollPane;
 public class Vista extends javax.swing.JFrame {
 
     public static CtrlPresentacio cp;
-    private static String autor;
-    private static ArrayList<String> autoresPref;
-    private static JList listaAutores;
-    private static JList listaTitulos;
+    private String autorBuscado;
+    private ArrayList<String> autoresPref;
+    private JList listaAutores;
+    private JList listaTitulos;
     static DefaultListModel modelAutores;
     static DefaultListModel modelTitulos;
     private String autorSelect;
@@ -41,11 +41,11 @@ public class Vista extends javax.swing.JFrame {
      * Creates new form Vista
      */
     public Vista() {
-        Vista.autoresPref = new ArrayList<>();
+        this.autoresPref = new ArrayList<>();
         modelAutores = new DefaultListModel();
-        Vista.listaAutores = new JList(modelAutores);
+        this.listaAutores = new JList(modelAutores);
         modelTitulos = new DefaultListModel();
-        Vista.listaTitulos = new JList(modelTitulos);
+        this.listaTitulos = new JList(modelTitulos);
         //logoFondo = new ImageIcon(ImageIO.read(getClass().getResource("/presentacio/fondo.png")));
         //ImageIcon fondoLabel = (new ImageIcon(getClass().getResource("fondo.png")));
         //fondo.setIcon(logoFondo);
@@ -303,7 +303,7 @@ public class Vista extends javax.swing.JFrame {
 
     private void textFieldAutor(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldAutor
         // TODO add your handling code here:
-        Vista.autor = textFieldBuscaAutores.getText();
+        this.autorBuscado = textFieldBuscaAutores.getText();
     }//GEN-LAST:event_textFieldAutor
 
 
@@ -312,8 +312,8 @@ public class Vista extends javax.swing.JFrame {
         textFieldAutor(evt);
         modelAutores.clear();
         try {
-            if (autor == null) autor = "";
-            autoresPref = cp.getAutorPref(autor);
+            if (this.autorBuscado == null) this.autorBuscado = "";
+            this.autoresPref = cp.consultarAutoresPorPrefijo(this.autorBuscado);
         } catch (Exception ex) {
             String excepcion = "La búsqueda no ha producido resultados.";
             JOptionPane.showMessageDialog(rootPane,excepcion);
@@ -391,7 +391,7 @@ public class Vista extends javax.swing.JFrame {
         }
         else {
             this.tituloSelect = listaTitulos.getSelectedValue().toString();
-            VistaParecidos vp = new VistaParecidos(cp, autorSelect, tituloSelect);
+            VistaParecidos vp = new VistaParecidos(cp, this.autorSelect, this.tituloSelect);
             vp.setVisible(true);
         }
     }//GEN-LAST:event_botonParecidosActionPerformed
@@ -403,7 +403,7 @@ public class Vista extends javax.swing.JFrame {
         }
         else {
             this.tituloSelect = listaTitulos.getSelectedValue().toString();
-            VistaModificar vm = new VistaModificar(cp, autorSelect, tituloSelect);
+            VistaModificar vm = new VistaModificar(cp, this.autorSelect, this.tituloSelect);
             vm.setVisible(true);
         }
     }//GEN-LAST:event_botonModificarActionPerformed
