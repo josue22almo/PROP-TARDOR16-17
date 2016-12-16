@@ -76,10 +76,7 @@ public class CjtoDocumentos {
     }      
     
     public void bajaDocumento(String autor, String titulo)  {
-        
-        //if (!existeDocumento(autor, titulo))
-        //    throw new Exception("El documento no existe");
-        
+
         //Eliminamos las palabras no repetidas en otros documentos del diccionario
         int id = ids.get(autor).get(titulo);
         Documento doc = vecDocumentos.get(id);
@@ -107,37 +104,11 @@ public class CjtoDocumentos {
         distsTFIDF.remove(id);
         
         //Calculamos todas las distancias de todos los documentos respecto a todos los otros
-        calcularDistancias();
-        
-        /*//Recalculamos id's
-            //en vecDocumentos
-        for (int id_nou = id; id_nou < vecDocumentos.size(); id_nou++){
-            Documento documento = vecDocumentos.get(id_nou);
-            vecDocumentos.remove(id_nou);
-            vecDocumentos.put(id_nou-1,documento);
-        }
-            //en ids
-        Iterator it = ids.keySet().iterator();
-        while(it.hasNext()){
-            String aut = (String) it.next();
-            Iterator it2 = ids.get(aut).keySet().iterator();
-            while(it2.hasNext()){
-                String tit = (String) it2.next();
-                int id2 = ids.get(aut).get(tit);
-                if (id2 > id){
-                    ids.get(autor).remove(tit);
-                    ids.get(aut).put(tit,id2-1);
-                }
-            }
-        }*/
-        
+        calcularDistancias();        
     }
     
     public void modificaAutorDoc(String autor, String titulo, String autorModif) {
-        
-        //if (!existeDocumento(autor, titulo))
-        //    throw new Exception("El documento no existe");
-        
+
         //Se modifica en vecDocumentos
         int id = ids.get(autor).get(titulo);
         vecDocumentos.get(id).setAutor(autorModif);
@@ -169,10 +140,7 @@ public class CjtoDocumentos {
         }
     }
     
-    public void modificaTituloDoc(String autor, String titulo, String tituloModif)  {
-        
-        //if (!existeDocumento(autor, titulo))
-        //    throw new Exception("El documento no existe");  
+    public void modificaTituloDoc(String autor, String titulo, String tituloModif)  { 
         
         //Se modifica en vecDocumentos
         int id = ids.get(autor).get(titulo);
@@ -186,9 +154,6 @@ public class CjtoDocumentos {
     
     public void modificaContenidoDoc(String autor, String titulo, String contenidoModif) {
         
-        //if (!existeDocumento(autor, titulo))
-        //    throw new Exception("El documento no existe");
-        
         int id = ids.get(autor).get(titulo);
         Documento doc = vecDocumentos.get(id);
         doc.setContenido(contenidoModif);
@@ -196,10 +161,6 @@ public class CjtoDocumentos {
     }
     
     public ArrayList<String> consultarTitulosAutor(String autor) throws Exception {
-        // CREO QUE YA NO HACE FALTA PORQUE EN NUESTRA APLICACIÓN
-        // SELECCIONAMOS EL AUTOR EN LA LISTA
-        //if (!ids.containsKey(autor))
-        //	throw new Exception("No existe el autor");
         
         ArrayList<String> titulos = new ArrayList<>();
         Map<String,Integer> titulos_e_ids = ids.get(autor);
@@ -219,20 +180,13 @@ public class CjtoDocumentos {
     }
     
     public String consultarContenido(String autor, String titulo) {
-        
-        //if (!existeDocumento(autor, titulo))
-        //    throw new Exception("El documento no existe");
-        
+ 
         int id = ids.get(autor).get(titulo);
         Documento doc = vecDocumentos.get(id);
         return doc.getContenidoOriginal();
     }
    
     public void calcularDistancias() {
-        //Map<Double,ArrayList<Documento>> docs;
-        //docs = new TreeMap<>();
-        
-        //Documento origen = vecDocumentos.get(0);
         
         //Se calcula la distancia de todos los documentos respecto a todos los documentos
         for (Integer doc1: vecDocumentos.keySet()){
