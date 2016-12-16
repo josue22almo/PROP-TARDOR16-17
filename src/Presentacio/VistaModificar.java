@@ -30,9 +30,9 @@ public class VistaModificar extends javax.swing.JFrame {
      */
     public VistaModificar(CtrlPresentacio cp, String autor, String titulo) {
         initComponents();
-        VistaParecidos.autor = autor;
-        VistaParecidos.titulo = titulo;
-        VistaParecidos.cp = cp;
+        VistaModificar.autor = autor;
+        VistaModificar.titulo = titulo;
+        VistaModificar.cp = cp;
         
     }
 
@@ -123,9 +123,14 @@ public class VistaModificar extends javax.swing.JFrame {
             textFieldContenidoActionPerformed(evt);        
         try {
             // TODO add your handling code here:
-            if (!nuevo_autor.isEmpty()) cp.modificarAutor(autor,titulo,nuevo_autor);
-            if (!nuevo_titulo.isEmpty()) cp.modificarTitulo(autor,titulo,nuevo_titulo);
-            if (!nuevo_contenido.isEmpty()) cp.modificarContenido(autor,titulo,nuevo_contenido);
+            if (nuevo_autor != null && !nuevo_autor.isEmpty()) cp.modificarAutor(autor,titulo,nuevo_autor);
+            if (nuevo_titulo != null && !nuevo_titulo.isEmpty()) cp.modificarTitulo(autor,titulo,nuevo_titulo);
+            if (nuevo_contenido != null && !nuevo_contenido.isEmpty()) {
+                cp.modificarContenido(autor,titulo,nuevo_contenido);
+                System.out.println("no null");
+                System.out.println(autor);
+                System.out.println(titulo);
+            }
             this.setVisible(false);
         } catch (IOException ex) {
             Logger.getLogger(VistaModificar.class.getName()).log(Level.SEVERE, null, ex);

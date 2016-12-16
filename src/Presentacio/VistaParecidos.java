@@ -70,6 +70,7 @@ public class VistaParecidos extends javax.swing.JFrame {
         textFieldNumDocs = new javax.swing.JTextField();
         scrollPaneResult = new JScrollPane(lista);
         Cancelar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(750, 600));
@@ -79,33 +80,41 @@ public class VistaParecidos extends javax.swing.JFrame {
 
         numk.setText("Cantidad de documentos requeridos:");
         getContentPane().add(numk);
-        numk.setBounds(49, 51, 264, 15);
+        numk.setBounds(49, 51, 257, 17);
 
         Metodo.setText("Método:");
         getContentPane().add(Metodo);
-        Metodo.setBounds(49, 89, 59, 15);
+        Metodo.setBounds(49, 89, 59, 17);
 
+        Consultar.setBackground(new java.awt.Color(174, 178, 194));
+        Consultar.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
+        Consultar.setForeground(new java.awt.Color(0, 0, 0));
         Consultar.setText("Consultar");
+        Consultar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
         Consultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ConsultarActionPerformed(evt);
             }
         });
         getContentPane().add(Consultar);
-        Consultar.setBounds(390, 160, 120, 25);
+        Consultar.setBounds(400, 160, 120, 22);
 
+        Aceptar.setBackground(new java.awt.Color(174, 178, 194));
+        Aceptar.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
+        Aceptar.setForeground(new java.awt.Color(0, 0, 0));
         Aceptar.setText("Aceptar");
+        Aceptar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
         Aceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AceptarActionPerformed(evt);
             }
         });
         getContentPane().add(Aceptar);
-        Aceptar.setBounds(410, 450, 100, 25);
+        Aceptar.setBounds(450, 550, 100, 22);
 
         Resultado.setText("Resultado:");
         getContentPane().add(Resultado);
-        Resultado.setBounds(49, 187, 110, 15);
+        Resultado.setBounds(49, 187, 110, 17);
 
         FREC.setText("Frecuencias");
         FREC.addActionListener(new java.awt.event.ActionListener() {
@@ -123,7 +132,7 @@ public class VistaParecidos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(TFIDF);
-        TFIDF.setBounds(134, 122, 68, 23);
+        TFIDF.setBounds(134, 122, 71, 23);
 
         textFieldNumDocs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -131,18 +140,37 @@ public class VistaParecidos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(textFieldNumDocs);
-        textFieldNumDocs.setBounds(420, 50, 80, 19);
+        textFieldNumDocs.setBounds(350, 40, 80, 29);
         getContentPane().add(scrollPaneResult);
-        scrollPaneResult.setBounds(50, 230, 460, 200);
+        scrollPaneResult.setBounds(50, 230, 650, 240);
 
+        Cancelar.setBackground(new java.awt.Color(174, 178, 194));
+        Cancelar.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
+        Cancelar.setForeground(new java.awt.Color(0, 0, 0));
         Cancelar.setText("Cancelar");
+        Cancelar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
         Cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CancelarActionPerformed(evt);
             }
         });
         getContentPane().add(Cancelar);
-        Cancelar.setBounds(274, 450, 110, 25);
+        Cancelar.setBounds(590, 550, 110, 22);
+
+        jLabel1.setIcon(new javax.swing.JLabel() {
+            public javax.swing.Icon getIcon() {
+                try {
+                    return new javax.swing.ImageIcon(
+                        new java.net.URL("url:http://www.celer-comex.com.ar/images/fondo.jpg")
+                    );
+                } catch (java.net.MalformedURLException e) {
+                }
+                return null;
+            }
+        }.getIcon());
+        jLabel1.setPreferredSize(new java.awt.Dimension(750, 600));
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 750, 600);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -234,6 +262,7 @@ public class VistaParecidos extends javax.swing.JFrame {
     private javax.swing.JLabel Resultado;
     private javax.swing.JRadioButton TFIDF;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel numk;
     private javax.swing.JScrollPane scrollPaneResult;
     private javax.swing.JTextField textFieldNumDocs;

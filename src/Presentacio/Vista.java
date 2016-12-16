@@ -397,7 +397,7 @@ public class Vista extends javax.swing.JFrame {
     }//GEN-LAST:event_botonParecidosActionPerformed
 
     private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
-        if (listaAutores.getSelectedValue() == null || listaTitulos.getSelectedValue().toString() == null) {
+        if (listaAutores.getSelectedValue() == null || listaTitulos.getSelectedValue() == null) {
         String excepcion = "Primero seleccione un autor y un título.";
         JOptionPane.showMessageDialog(rootPane,excepcion);            
         }
