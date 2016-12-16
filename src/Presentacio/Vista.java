@@ -434,7 +434,7 @@ public class Vista extends javax.swing.JFrame {
                             option = chooser.showOpenDialog(null);
                         }
                         else if (option == JFileChooser.APPROVE_OPTION) {
-                            Vista.rutaCarpeta = chooser.getSelectedFile().getPath();
+                            Vista.rutaCarpeta = chooser.getSelectedFile().getAbsolutePath();
                             break;
                         }
                     }
@@ -444,6 +444,7 @@ public class Vista extends javax.swing.JFrame {
                     File [] archivos;
                     archivos = directorio.listFiles();
                     Vista.cp = new CtrlPresentacio(rutaCarpeta);
+                    System.out.println(rutaCarpeta);
                     if (archivos.length != 0) Vista.cp.altaCjtoDocsDirectorio(rutaCarpeta,false);
                 } catch (Exception ex) {
                     Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
