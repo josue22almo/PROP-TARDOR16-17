@@ -34,6 +34,18 @@ public class CtrlPresentacio {
         this.cd.altaDocumento(autor, titulo, contenido);
     }*/
     
+    public void modificarAutor(String autor, String titulo, String autorModif) throws IOException {
+        cd.modificaAutorDoc(autor, titulo, autorModif);
+    }
+    
+    public void modificarTitulo(String autor, String titulo, String tituloModif) throws IOException {
+        cd.modificaTituloDoc(autor, titulo, tituloModif);
+    }
+    
+    public void modificarContenido(String autor, String titulo, String contenidoModif) throws IOException {
+        cd.modificaContenidoDoc(autor, titulo, contenidoModif);
+    }
+    
     public String consultarContenido(String autor, String titulo) {
         return this.cd.consultarContenido(autor, titulo);
     }
@@ -52,17 +64,5 @@ public class CtrlPresentacio {
     
     public ArrayList<String> consultarAutoresPorPrefijo(String autor) throws Exception {
         return this.cd.consultarAutoresPorPrefijo(autor);
-    }
-    
-    public void modificarAutor(String autor, String titulo, String autorModif) throws IOException {
-        cd.modificaAutorDoc(autor, titulo, autorModif);
-    }
-    
-    public void modificarTitulo(String autor, String titulo, String tituloModif) throws IOException {
-        cd.modificaTituloDoc(autor, titulo, tituloModif);
-    }
-    
-    public void modificarContenido(String autor, String titulo, String contenidoModif) throws IOException {
-        cd.modificaContenidoDoc(autor, titulo, contenidoModif);
     }
 }
