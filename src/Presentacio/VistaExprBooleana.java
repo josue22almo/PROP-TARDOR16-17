@@ -54,7 +54,6 @@ public class VistaExprBooleana extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(700, 600));
-        setPreferredSize(new java.awt.Dimension(700, 600));
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -63,7 +62,7 @@ public class VistaExprBooleana extends javax.swing.JFrame {
         LabelExpresion.setForeground(new java.awt.Color(255, 255, 255));
         LabelExpresion.setText("Expresión:");
         getContentPane().add(LabelExpresion);
-        LabelExpresion.setBounds(34, 52, 100, 20);
+        LabelExpresion.setBounds(34, 52, 100, 18);
 
         jScrollPane1.setViewportView(textoExpresion);
 
@@ -77,7 +76,7 @@ public class VistaExprBooleana extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Aceptar);
-        Aceptar.setBounds(570, 530, 100, 31);
+        Aceptar.setBounds(560, 510, 100, 25);
 
         Consultar.setText("Consultar");
         Consultar.addActionListener(new java.awt.event.ActionListener() {
@@ -86,14 +85,14 @@ public class VistaExprBooleana extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Consultar);
-        Consultar.setBounds(540, 50, 110, 31);
+        Consultar.setBounds(540, 50, 110, 25);
 
         Resultado.setBackground(new java.awt.Color(255, 255, 255));
         Resultado.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         Resultado.setForeground(new java.awt.Color(255, 255, 255));
         Resultado.setText("Resultado:");
         getContentPane().add(Resultado);
-        Resultado.setBounds(34, 132, 100, 20);
+        Resultado.setBounds(34, 132, 100, 18);
 
         jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);

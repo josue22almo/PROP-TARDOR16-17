@@ -52,6 +52,7 @@ public class VistaModificar extends javax.swing.JFrame {
         textFieldAutor = new javax.swing.JTextField();
         textFieldTitulo = new javax.swing.JTextField();
         textFieldContenido = new javax.swing.JTextField();
+        Cancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(750, 600));
@@ -60,7 +61,7 @@ public class VistaModificar extends javax.swing.JFrame {
 
         Autor.setText("Nuevo Autor (opcional) :");
         getContentPane().add(Autor);
-        Autor.setBounds(51, 49, 166, 17);
+        Autor.setBounds(51, 49, 170, 15);
 
         Aceptar.setText("Aceptar");
         Aceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -69,15 +70,15 @@ public class VistaModificar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Aceptar);
-        Aceptar.setBounds(559, 470, 90, 31);
+        Aceptar.setBounds(390, 390, 90, 25);
 
         Titulo.setText("Nuevo Título (opcional) :");
         getContentPane().add(Titulo);
-        Titulo.setBounds(51, 97, 167, 17);
+        Titulo.setBounds(51, 97, 171, 15);
 
         Contenido.setText("Nuevo Contenido (opcional) :");
         getContentPane().add(Contenido);
-        Contenido.setBounds(51, 140, 200, 17);
+        Contenido.setBounds(51, 140, 204, 15);
 
         textFieldAutor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,6 +104,15 @@ public class VistaModificar extends javax.swing.JFrame {
         });
         getContentPane().add(textFieldContenido);
         textFieldContenido.setBounds(50, 170, 430, 180);
+
+        Cancelar.setText("Cancelar");
+        Cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CancelarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Cancelar);
+        Cancelar.setBounds(244, 390, 110, 25);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -136,6 +146,11 @@ public class VistaModificar extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.nuevo_contenido = textFieldContenido.getText();
     }//GEN-LAST:event_textFieldContenidoActionPerformed
+
+    private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+    }//GEN-LAST:event_CancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -175,6 +190,7 @@ public class VistaModificar extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Aceptar;
     private javax.swing.JLabel Autor;
+    private javax.swing.JButton Cancelar;
     private javax.swing.JLabel Contenido;
     private javax.swing.JLabel Titulo;
     private javax.swing.JTextField textFieldAutor;

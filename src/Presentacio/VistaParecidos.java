@@ -69,6 +69,7 @@ public class VistaParecidos extends javax.swing.JFrame {
         TFIDF = new javax.swing.JRadioButton();
         textFieldNumDocs = new javax.swing.JTextField();
         scrollPaneResult = new JScrollPane(lista);
+        Cancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(750, 600));
@@ -78,11 +79,11 @@ public class VistaParecidos extends javax.swing.JFrame {
 
         numk.setText("Cantidad de documentos requeridos:");
         getContentPane().add(numk);
-        numk.setBounds(49, 51, 257, 17);
+        numk.setBounds(49, 51, 264, 15);
 
         Metodo.setText("Método:");
         getContentPane().add(Metodo);
-        Metodo.setBounds(49, 89, 59, 17);
+        Metodo.setBounds(49, 89, 59, 15);
 
         Consultar.setText("Consultar");
         Consultar.addActionListener(new java.awt.event.ActionListener() {
@@ -91,7 +92,7 @@ public class VistaParecidos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Consultar);
-        Consultar.setBounds(390, 160, 120, 29);
+        Consultar.setBounds(390, 160, 120, 25);
 
         Aceptar.setText("Aceptar");
         Aceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -100,11 +101,11 @@ public class VistaParecidos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Aceptar);
-        Aceptar.setBounds(410, 540, 100, 29);
+        Aceptar.setBounds(410, 450, 100, 25);
 
         Resultado.setText("Resultado:");
         getContentPane().add(Resultado);
-        Resultado.setBounds(49, 187, 73, 17);
+        Resultado.setBounds(49, 187, 110, 15);
 
         FREC.setText("Frecuencias");
         FREC.addActionListener(new java.awt.event.ActionListener() {
@@ -113,7 +114,7 @@ public class VistaParecidos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(FREC);
-        FREC.setBounds(134, 86, 110, 24);
+        FREC.setBounds(134, 86, 110, 23);
 
         TFIDF.setText("TF-IDF");
         TFIDF.addActionListener(new java.awt.event.ActionListener() {
@@ -122,7 +123,7 @@ public class VistaParecidos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(TFIDF);
-        TFIDF.setBounds(134, 122, 71, 24);
+        TFIDF.setBounds(134, 122, 68, 23);
 
         textFieldNumDocs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -130,9 +131,18 @@ public class VistaParecidos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(textFieldNumDocs);
-        textFieldNumDocs.setBounds(420, 50, 80, 27);
+        textFieldNumDocs.setBounds(420, 50, 80, 19);
         getContentPane().add(scrollPaneResult);
-        scrollPaneResult.setBounds(50, 230, 460, 280);
+        scrollPaneResult.setBounds(50, 230, 460, 200);
+
+        Cancelar.setText("Cancelar");
+        Cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CancelarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Cancelar);
+        Cancelar.setBounds(274, 450, 110, 25);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -178,6 +188,11 @@ public class VistaParecidos extends javax.swing.JFrame {
         k = Integer.parseInt(textFieldNumDocs.getText());
     }//GEN-LAST:event_textFieldNumDocsActionPerformed
 
+    private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+    }//GEN-LAST:event_CancelarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -216,6 +231,7 @@ public class VistaParecidos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Aceptar;
+    private javax.swing.JButton Cancelar;
     private javax.swing.JButton Consultar;
     private javax.swing.JRadioButton FREC;
     private javax.swing.JLabel Metodo;
