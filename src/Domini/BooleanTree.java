@@ -110,7 +110,7 @@ public class BooleanTree {
     
     private ExpressionNode op(ExpressionNode exp) throws Exception{
         if (top.token == Values.AND || top.token == Values.OR){
-            //op -> AND term expression
+            //op -> AND expression or OR expression
             OperationExpressionNode result;
             if (top.token == Values.AND){
                 result = new AndNode(exp,false);
