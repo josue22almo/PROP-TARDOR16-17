@@ -105,7 +105,7 @@ public class BooleanTree {
             ExpressionNode term = term();
             result = new NegatedNode(term,true);
         }else result = term();  //signed_term -> term
-        return result; //epsilon
+        return result; 
     }
     
     private ExpressionNode op(ExpressionNode exp) throws Exception{
@@ -123,7 +123,7 @@ public class BooleanTree {
             result.add(e, signed);
             return result;
         }
-        return exp;
+        return exp;//epsilon
     }
     
     private ExpressionNode term() throws Exception{
