@@ -12,9 +12,10 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
-import javax.swing.ImageIcon;
+import javax.swing.Icon;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
@@ -35,20 +36,16 @@ public class Vista extends javax.swing.JFrame {
     static DefaultListModel modelTitulos;
     private String autorSelect;
     private String tituloSelect;
-    static ImageIcon logoFondo;
     private static String rutaCarpeta;
     /**
      * Creates new form Vista
      */
-    public Vista() {
+    public Vista() throws IOException {
         this.autoresPref = new ArrayList<>();
         modelAutores = new DefaultListModel();
         this.listaAutores = new JList(modelAutores);
         modelTitulos = new DefaultListModel();
         this.listaTitulos = new JList(modelTitulos);
-        //logoFondo = new ImageIcon(ImageIO.read(getClass().getResource("/presentacio/fondo.png")));
-        //ImageIcon fondoLabel = (new ImageIcon(getClass().getResource("fondo.png")));
-        //fondo.setIcon(logoFondo);
         initComponents();
     }
 
@@ -75,6 +72,8 @@ public class Vista extends javax.swing.JFrame {
         botonConsultar = new javax.swing.JButton();
         botonParecidos = new javax.swing.JButton();
         botonModificar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         fondo = new javax.swing.JLabel();
         barraMenu = new javax.swing.JMenuBar();
         opcion1Menu = new javax.swing.JMenu();
@@ -204,6 +203,27 @@ public class Vista extends javax.swing.JFrame {
         });
         getContentPane().add(botonModificar);
         botonModificar.setBounds(980, 420, 190, 40);
+
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("LM Sans 10", 0, 65)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Gestión de documentos");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(350, 40, 880, 100);
+
+        jLabel2.setIcon(new javax.swing.JLabel() {
+            public javax.swing.Icon getIcon() {
+                try {
+                    return new javax.swing.ImageIcon(
+                        new java.net.URL("url:http://icdn.pro/images/es/d/o/documento-icono-3983-128.png")
+                    );
+                } catch (java.net.MalformedURLException e) {
+                }
+                return null;
+            }
+        }.getIcon());
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(210, 30, 130, 120);
 
         fondo.setIcon(new javax.swing.JLabel() {
             public javax.swing.Icon getIcon() {
@@ -340,7 +360,7 @@ public class Vista extends javax.swing.JFrame {
                 String excepcion = "Este autor no tiene ningún documento.";
                 JOptionPane.showMessageDialog(rootPane,excepcion);
             }
-
+ 
             for (String titulo: titulosAutor) {
                 modelTitulos.addElement(titulo);
             }
@@ -407,7 +427,7 @@ public class Vista extends javax.swing.JFrame {
             vm.setVisible(true);
         }
     }//GEN-LAST:event_botonModificarActionPerformed
-    
+
     /**
      * @param args the command line arguments
      */
@@ -419,6 +439,7 @@ public class Vista extends javax.swing.JFrame {
             public void run() {
                 try {
                     Vista vista = new Vista();
+                    //vista.add(imagenFondo);
                     vista.setExtendedState(JFrame.MAXIMIZED_BOTH);
                     vista.setVisible(true);
                     JFileChooser chooser = new JFileChooser();
@@ -463,6 +484,8 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JButton botonParecidos;
     private java.awt.Label buscar;
     private javax.swing.JLabel fondo;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar2;
