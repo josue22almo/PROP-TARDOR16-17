@@ -121,14 +121,18 @@ public class VistaModificarContenido extends javax.swing.JFrame {
 
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
         // TODO add your handling code here:
-        VistaModificarContenido.nuevo_contenido = textoNuevoContenido.getText();
-        if (nuevo_contenido != null && !nuevo_contenido.isEmpty()) try {
-            cp.modificarContenido(a,t,nuevo_contenido);
-            this.setVisible(false);
+        try{ 
+            VistaModificarContenido.nuevo_contenido = textoNuevoContenido.getText();
+            if (nuevo_contenido != null && !nuevo_contenido.isEmpty()){
+                cp.modificarContenido(a,t,nuevo_contenido);
+                this.setVisible(false);
+            }
+            else {
+                String excepcion = "Escriba un contenido.";
+                JOptionPane.showMessageDialog(rootPane,excepcion);
+            }
         } catch (IOException ex) {
-            String excepcion = "Escriba un contenido.";
-            JOptionPane.showMessageDialog(rootPane,excepcion);
-            Logger.getLogger(VistaModificarAutor.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VistaModificarContenido.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_aceptarActionPerformed
 

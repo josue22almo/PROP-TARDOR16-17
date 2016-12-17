@@ -136,7 +136,7 @@ public class VistaModificarTitulo extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane,excepcion);
             }
         } catch (IOException ex) {
-            Logger.getLogger(VistaModificarAutor.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VistaModificarTitulo.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_aceptarActionPerformed
 

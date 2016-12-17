@@ -103,14 +103,18 @@ public class VistaModificarAutor extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelarActionPerformed
 
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
-        // TODO add your handling code here:
-        textFieldNuevoAutorActionPerformed(evt);
-        if (!nuevo_autor.isEmpty()) try {
-            cp.modificarAutor(a,t,nuevo_autor);
-            this.setVisible(false);
+        // TODO add your handling code here: 
+        try{ 
+            textFieldNuevoAutorActionPerformed(evt);
+            if (nuevo_autor != null && !nuevo_autor.isEmpty()){
+                cp.modificarAutor(a,t,nuevo_autor);
+                this.setVisible(false);
+            }
+            else {
+                String excepcion = "Escriba un autor.";
+                JOptionPane.showMessageDialog(rootPane,excepcion);
+            }
         } catch (IOException ex) {
-            String excepcion = "Escriba un autor.";
-            JOptionPane.showMessageDialog(rootPane,excepcion);
             Logger.getLogger(VistaModificarAutor.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_aceptarActionPerformed
