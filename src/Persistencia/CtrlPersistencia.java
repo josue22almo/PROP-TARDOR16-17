@@ -68,9 +68,8 @@ public class CtrlPersistencia {
         File txt = new File(path, titulo + "," + autor + ".txt");
         System.out.println(path);
         txt.createNewFile();
-        //System.out.println("hola");
         try ( PrintWriter writer = new PrintWriter(txt)) {
-                //PrintWriter writer = new PrintWriter(path + autor + "-" + titulo + ".txt", "UTF-8")) {
+            //PrintWriter writer = new PrintWriter(path + autor + "-" + titulo + ".txt", "UTF-8")) {
             //File txt = new File(path, titulo);
             writer.println(autor);
             writer.println();
@@ -85,7 +84,6 @@ public class CtrlPersistencia {
     
     public void eliminarDocumento(String autor, String titulo){
         File file = new File(path,titulo + "," + autor + ".txt");
-        //File file = new File(path + titulo);
         if (file.delete())
             System.out.println("El fichero ha sido borrado satisfactoriamente");
         else
