@@ -76,7 +76,7 @@ public class VistaModificar extends javax.swing.JFrame {
             }
         }.getIcon());
         getContentPane().add(fondo);
-        fondo.setBounds(0, 0, 780, 600);
+        fondo.setBounds(0, 0, 450, 360);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
