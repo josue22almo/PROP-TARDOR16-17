@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 
 /**
  *
@@ -31,9 +32,9 @@ public class VistaModificarContenido extends javax.swing.JFrame {
         VistaModificarContenido.a=autor;
         VistaModificarContenido.t=titulo;
         VistaModificarContenido.c=contenido;
-        textoContenido.setText(contenido);
         VistaModificarContenido.cp = cp;
         initComponents();
+        textoContenido.setText("hola");
     }
 
     /**
@@ -48,7 +49,7 @@ public class VistaModificarContenido extends javax.swing.JFrame {
         aceptar = new javax.swing.JButton();
         contenido = new javax.swing.JLabel();
         nuevocontenido = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        jScrollPane1 = new JScrollPane(textoContenido);
         textoContenido = new javax.swing.JTextPane();
         jScrollPane2 = new javax.swing.JScrollPane();
         textoNuevoContenido = new javax.swing.JTextPane();
