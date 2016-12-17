@@ -65,7 +65,7 @@ public class CtrlPersistencia {
     } 
     
     public void guardarDocumento (String autor, String titulo, String contenido) throws IOException{
-        File txt = new File(path, titulo + "," + autor + ".txt");
+        File txt = new File(path, titulo + "," + autor);
         System.out.println(path);
         txt.createNewFile();
         try ( PrintWriter writer = new PrintWriter(txt)) {
@@ -83,7 +83,7 @@ public class CtrlPersistencia {
      
     
     public void eliminarDocumento(String autor, String titulo){
-        File file = new File(path,titulo + "," + autor + ".txt");
+        File file = new File(path,titulo + "," + autor);
         if (file.delete())
             System.out.println("El fichero ha sido borrado satisfactoriamente");
         else
