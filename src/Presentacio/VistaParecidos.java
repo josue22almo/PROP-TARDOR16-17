@@ -73,13 +73,16 @@ public class VistaParecidos extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
+        numk.setForeground(new java.awt.Color(255, 255, 255));
         numk.setText("Cantidad de documentos requeridos:");
         getContentPane().add(numk);
-        numk.setBounds(49, 51, 257, 17);
+        numk.setBounds(49, 51, 264, 15);
 
+        labelMetodo.setBackground(new java.awt.Color(11, 116, 163));
+        labelMetodo.setForeground(new java.awt.Color(255, 255, 255));
         labelMetodo.setText("Método:");
         getContentPane().add(labelMetodo);
-        labelMetodo.setBounds(49, 89, 59, 17);
+        labelMetodo.setBounds(49, 89, 59, 15);
 
         botonConsultar.setBackground(new java.awt.Color(174, 178, 194));
         botonConsultar.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
@@ -92,7 +95,7 @@ public class VistaParecidos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(botonConsultar);
-        botonConsultar.setBounds(400, 160, 120, 22);
+        botonConsultar.setBounds(330, 130, 120, 30);
 
         botonAceptar.setBackground(new java.awt.Color(174, 178, 194));
         botonAceptar.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
@@ -105,12 +108,16 @@ public class VistaParecidos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(botonAceptar);
-        botonAceptar.setBounds(450, 550, 100, 22);
+        botonAceptar.setBounds(450, 540, 100, 30);
 
-        labelResultado.setText("Resultado:");
+        labelResultado.setBackground(new java.awt.Color(11, 116, 163));
+        labelResultado.setForeground(new java.awt.Color(255, 255, 255));
+        labelResultado.setText("Autor y título de los documentos más parecidos (ordenado de más a menos parecido):");
         getContentPane().add(labelResultado);
-        labelResultado.setBounds(49, 187, 110, 17);
+        labelResultado.setBounds(49, 187, 620, 15);
 
+        FREC.setBackground(new java.awt.Color(11, 116, 163));
+        FREC.setForeground(new java.awt.Color(255, 255, 255));
         FREC.setText("Frecuencias");
         FREC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,8 +125,10 @@ public class VistaParecidos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(FREC);
-        FREC.setBounds(134, 86, 110, 23);
+        FREC.setBounds(130, 80, 110, 23);
 
+        TFIDF.setBackground(new java.awt.Color(11, 116, 163));
+        TFIDF.setForeground(new java.awt.Color(255, 255, 255));
         TFIDF.setText("TF-IDF");
         TFIDF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,7 +136,7 @@ public class VistaParecidos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(TFIDF);
-        TFIDF.setBounds(134, 122, 71, 23);
+        TFIDF.setBounds(130, 110, 68, 23);
 
         textFieldNumDocs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,7 +144,7 @@ public class VistaParecidos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(textFieldNumDocs);
-        textFieldNumDocs.setBounds(350, 40, 80, 29);
+        textFieldNumDocs.setBounds(340, 50, 80, 19);
         getContentPane().add(scrollPaneResult);
         scrollPaneResult.setBounds(50, 230, 650, 240);
 
@@ -150,7 +159,7 @@ public class VistaParecidos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(botonCancelar);
-        botonCancelar.setBounds(590, 550, 110, 22);
+        botonCancelar.setBounds(590, 540, 110, 30);
 
         fondo.setIcon(new javax.swing.JLabel() {
             public javax.swing.Icon getIcon() {

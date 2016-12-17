@@ -12,10 +12,8 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
-import javax.swing.Icon;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
@@ -40,7 +38,7 @@ public class Vista extends javax.swing.JFrame {
     /**
      * Creates new form Vista
      */
-    public Vista() throws IOException {
+    public Vista() {
         this.autoresPref = new ArrayList<>();
         modelAutores = new DefaultListModel();
         this.listaAutores = new JList(modelAutores);
@@ -288,12 +286,11 @@ public class Vista extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCerrarActionPerformed
-        // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_menuCerrarActionPerformed
 
     private void accionAnadirCarpeta(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accionAnadirCarpeta
-        // TODO add your handling code here:
+
             JFileChooser chooser = new JFileChooser();
             chooser.setCurrentDirectory(new java.io.File("."));
             chooser.setDialogTitle("Seleccionar carpeta");
@@ -305,10 +302,10 @@ public class Vista extends javax.swing.JFrame {
               System.out.println("getCurrentDirectory(): " + chooser.getCurrentDirectory());
               System.out.println("getSelectedFile() : " + chooser.getSelectedFile());
                 try {
-                    Vista.cp.altaCjtoDocsDirectorio(chooser.getSelectedFile().getCanonicalPath(),true); 
+                    Vista.cp.altaCjtoDocsDirectorio(chooser.getSelectedFile().getAbsolutePath(),true); 
                     String exito = "Documentos creados con éxito.";
                     JOptionPane.showMessageDialog(rootPane,exito);  
-                } catch (FileNotFoundException ex) {
+                } catch (NullPointerException ex) {
                     String excepcion = "No hay ningún documento en este directorio.";
                     JOptionPane.showMessageDialog(rootPane,excepcion);                    
                 } catch (IOException ex) {

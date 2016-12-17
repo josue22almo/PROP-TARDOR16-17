@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author florencia.rimolo
@@ -27,7 +29,7 @@ public class CtrlDomini {
         //ctrlPersistencia.cargarDatos();
     }
   
-    public void altaConjuntoDocumentosDirectorio(String folder, boolean guardar) throws Exception {    
+    public void altaConjuntoDocumentosDirectorio(String folder, boolean guardar) throws Exception{    
         ArrayList<BufferedReader> docs = ctrlPersistencia.leerCarpeta(folder);
         for (int i = 0; i < docs.size(); ++i){
             String autor = docs.get(i).readLine();
@@ -40,7 +42,11 @@ public class CtrlDomini {
                 contenido += aux;
                 contenido += '\n';
             }
-            cd.altaDocumento(autor, titulo, contenido);
+            try {
+                cd.altaDocumento(autor, titulo, contenido);
+            } catch (Exception ex) {
+                i++;
+            }
             if (guardar) ctrlPersistencia.guardarDocumento(autor, titulo, contenido);
         }
     }

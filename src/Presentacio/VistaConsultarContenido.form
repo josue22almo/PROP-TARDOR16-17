@@ -68,6 +68,9 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="labelAutor">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="a3" green="74" red="b" type="rgb"/>
+        </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Verdana" size="15" style="0"/>
         </Property>
@@ -84,6 +87,9 @@
     </Component>
     <Component class="javax.swing.JLabel" name="labelTitulo">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="a3" green="74" red="b" type="rgb"/>
+        </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Verdana" size="15" style="0"/>
         </Property>
@@ -126,6 +132,9 @@
     </Component>
     <Component class="javax.swing.JLabel" name="labelContenido">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="a3" green="74" red="b" type="rgb"/>
+        </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Verdana" size="15" style="0"/>
         </Property>

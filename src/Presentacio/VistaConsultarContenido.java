@@ -78,12 +78,14 @@ public class VistaConsultarContenido extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
+        labelAutor.setBackground(new java.awt.Color(11, 116, 163));
         labelAutor.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         labelAutor.setForeground(new java.awt.Color(255, 255, 255));
         labelAutor.setText("Autor:");
         getContentPane().add(labelAutor);
         labelAutor.setBounds(50, 30, 60, 30);
 
+        labelTitulo.setBackground(new java.awt.Color(11, 116, 163));
         labelTitulo.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         labelTitulo.setForeground(new java.awt.Color(255, 255, 255));
         labelTitulo.setText("Título:");
@@ -102,11 +104,12 @@ public class VistaConsultarContenido extends javax.swing.JFrame {
         getContentPane().add(botonAceptar);
         botonAceptar.setBounds(639, 460, 110, 30);
 
+        labelContenido.setBackground(new java.awt.Color(11, 116, 163));
         labelContenido.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         labelContenido.setForeground(new java.awt.Color(255, 255, 255));
         labelContenido.setText("Contenido:");
         getContentPane().add(labelContenido);
-        labelContenido.setBounds(50, 140, 90, 20);
+        labelContenido.setBounds(50, 140, 90, 18);
 
         textoAutor.setEditable(false);
         textoAutor.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N

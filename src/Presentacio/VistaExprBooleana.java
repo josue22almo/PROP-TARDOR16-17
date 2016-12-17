@@ -19,10 +19,10 @@ import javax.swing.JOptionPane;
  */
 public class VistaExprBooleana extends javax.swing.JFrame {
     
-    private static CtrlPresentacio cp;
-    private static String listaDocumentos;
-    private static String expresion;
-    private static ArrayList<String> documentos;
+    public static CtrlPresentacio cp;
+    private String listaDocumentos;
+    private String expresion;
+    private  ArrayList<String> documentos;
     
     /**
      * Creates new form VistaExprBooleana
@@ -32,7 +32,7 @@ public class VistaExprBooleana extends javax.swing.JFrame {
     public VistaExprBooleana(CtrlPresentacio cp) throws Exception {
         initComponents();
         VistaExprBooleana.cp = cp;
-        VistaExprBooleana.documentos = new ArrayList<>();
+        this.documentos = new ArrayList<>();
     }
 
     /**
@@ -44,57 +44,58 @@ public class VistaExprBooleana extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        LabelExpresion = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        textoExpresion = new javax.swing.JTextPane();
-        Aceptar = new javax.swing.JButton();
-        Consultar = new javax.swing.JButton();
-        Resultado = new javax.swing.JLabel();
+        labelExpresion = new javax.swing.JLabel();
+        botonAceptar = new javax.swing.JButton();
+        botonConsultar = new javax.swing.JButton();
+        labelResultado = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        jLabel1 = new javax.swing.JLabel();
+        botonCancelar = new javax.swing.JButton();
+        textFieldExp = new javax.swing.JTextField();
+        fondo = new javax.swing.JLabel();
 
         setTitle("Expresión booleana");
         setMinimumSize(new java.awt.Dimension(700, 600));
         setResizable(false);
         getContentPane().setLayout(null);
 
-        LabelExpresion.setBackground(new java.awt.Color(255, 255, 255));
-        LabelExpresion.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
-        LabelExpresion.setForeground(new java.awt.Color(255, 255, 255));
-        LabelExpresion.setText("Expresión:");
-        getContentPane().add(LabelExpresion);
-        LabelExpresion.setBounds(34, 52, 100, 20);
+        labelExpresion.setBackground(new java.awt.Color(255, 255, 255));
+        labelExpresion.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
+        labelExpresion.setForeground(new java.awt.Color(255, 255, 255));
+        labelExpresion.setText("Expresión:");
+        getContentPane().add(labelExpresion);
+        labelExpresion.setBounds(34, 52, 100, 18);
 
-        jScrollPane1.setViewportView(textoExpresion);
-
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(171, 48, 350, 30);
-
-        Aceptar.setText("Aceptar");
-        Aceptar.addActionListener(new java.awt.event.ActionListener() {
+        botonAceptar.setBackground(new java.awt.Color(174, 178, 194));
+        botonAceptar.setForeground(new java.awt.Color(0, 0, 0));
+        botonAceptar.setText("Aceptar");
+        botonAceptar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
+        botonAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AceptarActionPerformed(evt);
+                botonAceptarActionPerformed(evt);
             }
         });
-        getContentPane().add(Aceptar);
-        Aceptar.setBounds(560, 510, 100, 31);
+        getContentPane().add(botonAceptar);
+        botonAceptar.setBounds(460, 510, 100, 30);
 
-        Consultar.setText("Consultar");
-        Consultar.addActionListener(new java.awt.event.ActionListener() {
+        botonConsultar.setBackground(new java.awt.Color(174, 178, 194));
+        botonConsultar.setForeground(new java.awt.Color(0, 0, 0));
+        botonConsultar.setText("Consultar");
+        botonConsultar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
+        botonConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ConsultarActionPerformed(evt);
+                botonConsultarActionPerformed(evt);
             }
         });
-        getContentPane().add(Consultar);
-        Consultar.setBounds(540, 50, 110, 31);
+        getContentPane().add(botonConsultar);
+        botonConsultar.setBounds(560, 50, 110, 30);
 
-        Resultado.setBackground(new java.awt.Color(255, 255, 255));
-        Resultado.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
-        Resultado.setForeground(new java.awt.Color(255, 255, 255));
-        Resultado.setText("Resultado:");
-        getContentPane().add(Resultado);
-        Resultado.setBounds(34, 132, 100, 20);
+        labelResultado.setBackground(new java.awt.Color(255, 255, 255));
+        labelResultado.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
+        labelResultado.setForeground(new java.awt.Color(255, 255, 255));
+        labelResultado.setText("Resultado:");
+        getContentPane().add(labelResultado);
+        labelResultado.setBounds(34, 132, 100, 18);
 
         jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
@@ -102,9 +103,24 @@ public class VistaExprBooleana extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTextArea1);
 
         getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(171, 139, 500, 330);
+        jScrollPane2.setBounds(131, 139, 540, 330);
 
-        jLabel1.setIcon(new javax.swing.JLabel() {
+        botonCancelar.setBackground(new java.awt.Color(174, 178, 194));
+        botonCancelar.setForeground(new java.awt.Color(0, 0, 0));
+        botonCancelar.setText("Cancelar");
+        botonCancelar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
+        getContentPane().add(botonCancelar);
+        botonCancelar.setBounds(580, 510, 90, 30);
+
+        textFieldExp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldExpActionPerformed(evt);
+            }
+        });
+        getContentPane().add(textFieldExp);
+        textFieldExp.setBounds(120, 49, 420, 30);
+
+        fondo.setIcon(new javax.swing.JLabel() {
             public javax.swing.Icon getIcon() {
                 try {
                     return new javax.swing.ImageIcon(
@@ -115,21 +131,20 @@ public class VistaExprBooleana extends javax.swing.JFrame {
                 return null;
             }
         }.getIcon());
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(-40, 0, 3000, 1579);
+        getContentPane().add(fondo);
+        fondo.setBounds(-40, 0, 3000, 1579);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
+    private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-    }//GEN-LAST:event_AceptarActionPerformed
+    }//GEN-LAST:event_botonAceptarActionPerformed
 
-    private void ConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultarActionPerformed
+    private void botonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarActionPerformed
         // TODO add your handling code here:
-        VistaExprBooleana.expresion = textoExpresion.getText();
-        
+        textFieldExpActionPerformed(evt);
         try {
             if (expresion == null) expresion = "";
             documentos = cp.consultarDocumentosExprBooleana(expresion);
@@ -139,7 +154,12 @@ public class VistaExprBooleana extends javax.swing.JFrame {
         }
         for (int i=0; i<documentos.size(); i++) listaDocumentos+=(documentos.get(i));
         jTextArea1.setText(listaDocumentos);
-    }//GEN-LAST:event_ConsultarActionPerformed
+    }//GEN-LAST:event_botonConsultarActionPerformed
+
+    private void textFieldExpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldExpActionPerformed
+        // TODO add your handling code here:
+        this.expresion = textFieldExp.getText();
+    }//GEN-LAST:event_textFieldExpActionPerformed
 
     /**
      * @param args the command line arguments
@@ -181,14 +201,14 @@ public class VistaExprBooleana extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Aceptar;
-    private javax.swing.JButton Consultar;
-    private javax.swing.JLabel LabelExpresion;
-    private javax.swing.JLabel Resultado;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton botonAceptar;
+    private javax.swing.JButton botonCancelar;
+    private javax.swing.JButton botonConsultar;
+    private javax.swing.JLabel fondo;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextPane textoExpresion;
+    private javax.swing.JLabel labelExpresion;
+    private javax.swing.JLabel labelResultado;
+    private javax.swing.JTextField textFieldExp;
     // End of variables declaration//GEN-END:variables
 }

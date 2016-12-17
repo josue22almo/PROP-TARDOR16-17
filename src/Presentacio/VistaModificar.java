@@ -61,32 +61,38 @@ public class VistaModificar extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
+        labelAutor.setBackground(new java.awt.Color(11, 116, 163));
         labelAutor.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         labelAutor.setForeground(new java.awt.Color(255, 255, 255));
         labelAutor.setText("Nuevo Autor (opcional) :");
         getContentPane().add(labelAutor);
-        labelAutor.setBounds(51, 49, 186, 20);
+        labelAutor.setBounds(51, 49, 177, 18);
 
+        botonAceptar.setBackground(new java.awt.Color(174, 178, 194));
+        botonAceptar.setForeground(new java.awt.Color(0, 0, 0));
         botonAceptar.setText("Aceptar");
+        botonAceptar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
         botonAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonAceptarActionPerformed(evt);
             }
         });
         getContentPane().add(botonAceptar);
-        botonAceptar.setBounds(460, 540, 110, 31);
+        botonAceptar.setBounds(460, 535, 110, 30);
 
+        labelTitulo.setBackground(new java.awt.Color(11, 116, 163));
         labelTitulo.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         labelTitulo.setForeground(new java.awt.Color(255, 255, 255));
         labelTitulo.setText("Nuevo Título (opcional) :");
         getContentPane().add(labelTitulo);
-        labelTitulo.setBounds(51, 97, 185, 20);
+        labelTitulo.setBounds(50, 100, 176, 18);
 
+        labelContenido.setBackground(new java.awt.Color(11, 116, 163));
         labelContenido.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         labelContenido.setForeground(new java.awt.Color(255, 255, 255));
         labelContenido.setText("Nuevo Contenido (opcional) :");
         getContentPane().add(labelContenido);
-        labelContenido.setBounds(51, 140, 230, 20);
+        labelContenido.setBounds(51, 140, 230, 18);
 
         textFieldAutor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,7 +100,7 @@ public class VistaModificar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(textFieldAutor);
-        textFieldAutor.setBounds(250, 39, 220, 40);
+        textFieldAutor.setBounds(250, 40, 220, 30);
 
         textFieldTitulo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,7 +108,7 @@ public class VistaModificar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(textFieldTitulo);
-        textFieldTitulo.setBounds(250, 90, 220, 40);
+        textFieldTitulo.setBounds(250, 90, 220, 30);
 
         textFieldContenido.setToolTipText("");
         textFieldContenido.addActionListener(new java.awt.event.ActionListener() {
@@ -113,14 +119,17 @@ public class VistaModificar extends javax.swing.JFrame {
         getContentPane().add(textFieldContenido);
         textFieldContenido.setBounds(50, 170, 650, 350);
 
+        botonCancelar.setBackground(new java.awt.Color(174, 178, 194));
+        botonCancelar.setForeground(new java.awt.Color(0, 0, 0));
         botonCancelar.setText("Cancelar");
+        botonCancelar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
         botonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCancelarActionPerformed(evt);
             }
         });
         getContentPane().add(botonCancelar);
-        botonCancelar.setBounds(590, 540, 110, 31);
+        botonCancelar.setBounds(590, 535, 110, 30);
 
         fondo.setIcon(new javax.swing.JLabel() {
             public javax.swing.Icon getIcon() {
