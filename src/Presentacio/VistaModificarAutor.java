@@ -18,7 +18,7 @@ public class VistaModificarAutor extends javax.swing.JFrame {
     private static String a;
     private static String t;
     private static CtrlPresentacio cp;
-    private static String nuevo_autor;
+    private String nuevo_autor;
     /**
      * Creates new form VistaModificarAutor
      * @param cp
@@ -26,11 +26,11 @@ public class VistaModificarAutor extends javax.swing.JFrame {
      * @param titulo
      */
     public VistaModificarAutor(CtrlPresentacio cp, String autor, String titulo) {
-        initComponents();
         VistaModificarAutor.a=autor;
         VistaModificarAutor.t=titulo;
-        textoAutor.setText(autor);
         VistaModificarAutor.cp = cp;
+        textFieldAutor.setText(a);
+        initComponents();
     }
 
     /**
@@ -43,24 +43,25 @@ public class VistaModificarAutor extends javax.swing.JFrame {
     private void initComponents() {
 
         autor = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        textoAutor = new javax.swing.JTextPane();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        textoNuevoAutor = new javax.swing.JTextPane();
+        nuevoAutor = new javax.swing.JLabel();
         cancelar = new javax.swing.JButton();
         aceptar = new javax.swing.JButton();
+        textFieldAutor = new javax.swing.JTextField();
+        textFieldNuevoAutor = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(500, 350));
+        setPreferredSize(new java.awt.Dimension(500, 350));
+        setResizable(false);
+        getContentPane().setLayout(null);
 
         autor.setText("Autor:");
+        getContentPane().add(autor);
+        autor.setBounds(70, 60, 43, 17);
 
-        jLabel1.setText("Nuevo Autor:");
-
-        textoAutor.setEditable(false);
-        jScrollPane1.setViewportView(textoAutor);
-
-        jScrollPane2.setViewportView(textoNuevoAutor);
+        nuevoAutor.setText("Nuevo autor:");
+        getContentPane().add(nuevoAutor);
+        nuevoAutor.setBounds(30, 130, 90, 17);
 
         cancelar.setText("Cancelar");
         cancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -68,6 +69,8 @@ public class VistaModificarAutor extends javax.swing.JFrame {
                 cancelarActionPerformed(evt);
             }
         });
+        getContentPane().add(cancelar);
+        cancelar.setBounds(386, 300, 90, 31);
 
         aceptar.setText("Aceptar");
         aceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -75,50 +78,22 @@ public class VistaModificarAutor extends javax.swing.JFrame {
                 aceptarActionPerformed(evt);
             }
         });
+        getContentPane().add(aceptar);
+        aceptar.setBounds(290, 300, 90, 31);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(aceptar)
-                        .addGap(18, 18, 18)
-                        .addComponent(cancelar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(autor)
-                            .addComponent(jLabel1))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addGap(60, 60, 60))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(autor)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cancelar)
-                    .addComponent(aceptar))
-                .addGap(28, 28, 28))
-        );
+        textFieldAutor.setEditable(false);
+        getContentPane().add(textFieldAutor);
+        textFieldAutor.setBounds(150, 60, 300, 29);
+
+        textFieldNuevoAutor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldNuevoAutorActionPerformed(evt);
+            }
+        });
+        getContentPane().add(textFieldNuevoAutor);
+        textFieldNuevoAutor.setBounds(150, 130, 300, 29);
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 500, 350);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -130,7 +105,7 @@ public class VistaModificarAutor extends javax.swing.JFrame {
 
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
         // TODO add your handling code here:
-        VistaModificarAutor.nuevo_autor = autor.getText();
+        textFieldNuevoAutorActionPerformed(evt);
         if (nuevo_autor != null && !nuevo_autor.isEmpty()) try {
             cp.modificarAutor(a,t,nuevo_autor);
             this.setVisible(false);
@@ -140,6 +115,10 @@ public class VistaModificarAutor extends javax.swing.JFrame {
             Logger.getLogger(VistaModificarAutor.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_aceptarActionPerformed
+
+    private void textFieldNuevoAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldNuevoAutorActionPerformed
+        nuevo_autor = textFieldNuevoAutor.getText();
+    }//GEN-LAST:event_textFieldNuevoAutorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -181,9 +160,8 @@ public class VistaModificarAutor extends javax.swing.JFrame {
     private javax.swing.JLabel autor;
     private javax.swing.JButton cancelar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextPane textoAutor;
-    private javax.swing.JTextPane textoNuevoAutor;
+    private javax.swing.JLabel nuevoAutor;
+    private javax.swing.JTextField textFieldAutor;
+    private javax.swing.JTextField textFieldNuevoAutor;
     // End of variables declaration//GEN-END:variables
 }

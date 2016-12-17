@@ -6,6 +6,7 @@
 package Presentacio;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -96,7 +97,7 @@ public class Vista extends javax.swing.JFrame {
         buscar.setForeground(new java.awt.Color(254, 254, 254));
         buscar.setText("Buscar autor:");
         getContentPane().add(buscar);
-        buscar.setBounds(80, 170, 160, 26);
+        buscar.setBounds(80, 170, 160, 27);
         buscar.getAccessibleContext().setAccessibleName("Buscar");
 
         textFieldBuscaAutores.setForeground(new java.awt.Color(0, 0, 0));
@@ -114,10 +115,10 @@ public class Vista extends javax.swing.JFrame {
         autores.setForeground(new java.awt.Color(255, 255, 255));
         autores.setText("Autores:");
         getContentPane().add(autores);
-        autores.setBounds(80, 250, 90, 26);
+        autores.setBounds(80, 250, 90, 27);
 
         titulos.setBackground(new java.awt.Color(14, 115, 161));
-        titulos.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        titulos.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         titulos.setForeground(new java.awt.Color(255, 255, 255));
         titulos.setText("Títulos:");
         getContentPane().add(titulos);
@@ -309,6 +310,7 @@ public class Vista extends javax.swing.JFrame {
         ayuda.setBackground(new java.awt.Color(11, 116, 163));
         ayuda.setForeground(new java.awt.Color(255, 255, 255));
         ayuda.setText("Ayuda");
+        ayuda.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         ayuda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ayudaActionPerformed(evt);
@@ -428,18 +430,17 @@ public class Vista extends javax.swing.JFrame {
                 try {
                     if (chooser.getSelectedFile().getAbsolutePath().equals(rutaCarpeta)) {
                         Vista.cp.altaDocumentoPorRuta(chooser.getSelectedFile(),false);
-                        System.out.println("if");
                     }
                     else {
                         Vista.cp.altaDocumentoPorRuta(chooser.getSelectedFile(),true);
-                        System.out.println("else");
                     }
                     String exito = "Documento creado con éxito.";
-                    JOptionPane.showMessageDialog(rootPane,exito);  
-                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(rootPane,exito);
+                }catch (IOException ex) {
                     Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
-                    //String yaExiste = "Este documento ya existe.";
-                    //JOptionPane.showMessageDialog(rootPane,yaExiste);
+                } catch (Exception ex) {
+                    String yaExiste = "Este documento ya existe.";
+                    JOptionPane.showMessageDialog(rootPane,yaExiste);
                 }
             }
     }//GEN-LAST:event_anadirDocActionPerformed
@@ -532,8 +533,8 @@ public class Vista extends javax.swing.JFrame {
                     File [] archivos;
                     archivos = directorio.listFiles();
                     Vista.cp = new CtrlPresentacio(rutaCarpeta);
-                    System.out.println(rutaCarpeta);
-                    System.out.println(archivos.length);
+                    //System.out.println(rutaCarpeta);
+                    //System.out.println(archivos.length);
                     if (archivos.length != 0) Vista.cp.altaCjtoDocsDirectorio(rutaCarpeta,false);
                 } catch (Exception ex) {
                     Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);

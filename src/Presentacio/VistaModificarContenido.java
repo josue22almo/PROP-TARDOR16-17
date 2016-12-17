@@ -28,12 +28,12 @@ public class VistaModificarContenido extends javax.swing.JFrame {
      * @param contenido
      */
     public VistaModificarContenido(CtrlPresentacio cp, String autor, String titulo, String contenido) {
-        initComponents();
         VistaModificarContenido.a=autor;
         VistaModificarContenido.t=titulo;
         VistaModificarContenido.c=contenido;
         textoContenido.setText(contenido);
         VistaModificarContenido.cp = cp;
+        initComponents();
     }
 
     /**
@@ -53,8 +53,10 @@ public class VistaModificarContenido extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         textoNuevoContenido = new javax.swing.JTextPane();
         cancelar = new javax.swing.JButton();
+        fondo = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(618, 570));
+        getContentPane().setLayout(null);
 
         aceptar.setText("Aceptar");
         aceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -62,15 +64,33 @@ public class VistaModificarContenido extends javax.swing.JFrame {
                 aceptarActionPerformed(evt);
             }
         });
+        getContentPane().add(aceptar);
+        aceptar.setBounds(405, 527, 69, 31);
 
+        contenido.setBackground(new java.awt.Color(14, 115, 161));
+        contenido.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
+        contenido.setForeground(new java.awt.Color(255, 255, 255));
         contenido.setText("Contenido:");
+        getContentPane().add(contenido);
+        contenido.setBounds(33, 37, 90, 20);
 
-        nuevocontenido.setText("Nuevo Contenido:");
+        nuevocontenido.setBackground(new java.awt.Color(14, 115, 161));
+        nuevocontenido.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
+        nuevocontenido.setForeground(new java.awt.Color(255, 255, 255));
+        nuevocontenido.setText("Nuevo contenido:");
+        getContentPane().add(nuevocontenido);
+        nuevocontenido.setBounds(33, 283, 140, 20);
 
         textoContenido.setEditable(false);
         jScrollPane1.setViewportView(textoContenido);
 
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(33, 72, 544, 193);
+
         jScrollPane2.setViewportView(textoNuevoContenido);
+
+        getContentPane().add(jScrollPane2);
+        jScrollPane2.setBounds(33, 318, 544, 192);
 
         cancelar.setText("Cancelar");
         cancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -78,47 +98,22 @@ public class VistaModificarContenido extends javax.swing.JFrame {
                 cancelarActionPerformed(evt);
             }
         });
+        getContentPane().add(cancelar);
+        cancelar.setBounds(492, 527, 76, 31);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(aceptar)
-                .addGap(18, 18, 18)
-                .addComponent(cancelar)
-                .addGap(50, 50, 50))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 544, Short.MAX_VALUE)
-                    .addComponent(nuevocontenido)
-                    .addComponent(contenido)
-                    .addComponent(jScrollPane1))
-                .addContainerGap(41, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(contenido)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(nuevocontenido)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
-                        .addGap(60, 60, 60))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(aceptar)
-                            .addComponent(cancelar))
-                        .addContainerGap())))
-        );
+        fondo.setIcon(new javax.swing.JLabel() {
+            public javax.swing.Icon getIcon() {
+                try {
+                    return new javax.swing.ImageIcon(
+                        new java.net.URL("url:http://www.celer-comex.com.ar/images/fondo.jpg")
+                    );
+                } catch (java.net.MalformedURLException e) {
+                }
+                return null;
+            }
+        }.getIcon());
+        getContentPane().add(fondo);
+        fondo.setBounds(0, 0, 620, 570);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -180,6 +175,7 @@ public class VistaModificarContenido extends javax.swing.JFrame {
     private javax.swing.JButton aceptar;
     private javax.swing.JButton cancelar;
     private javax.swing.JLabel contenido;
+    private javax.swing.JLabel fondo;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel nuevocontenido;

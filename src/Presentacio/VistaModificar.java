@@ -5,10 +5,6 @@
  */
 package Presentacio;
 
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 /**
  *
  * @author florencia.rimolo
@@ -29,10 +25,11 @@ public class VistaModificar extends javax.swing.JFrame {
      * 
      */
     public VistaModificar(CtrlPresentacio cp, String autor, String titulo, String contenido) {
-        initComponents();
         VistaModificar.autor = autor;
         VistaModificar.titulo = titulo;
         VistaModificar.cp = cp;
+        VistaModificar.contenido = contenido;
+        initComponents();
     }
 
     /**
@@ -45,14 +42,19 @@ public class VistaModificar extends javax.swing.JFrame {
     private void initComponents() {
 
         botonCancelar = new javax.swing.JButton();
+        botonAutor = new javax.swing.JButton();
+        botonTitulo = new javax.swing.JButton();
+        botonContenido = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
 
         setTitle("Modificar documento");
-        setMinimumSize(new java.awt.Dimension(750, 600));
+        setMinimumSize(new java.awt.Dimension(450, 360));
+        setPreferredSize(new java.awt.Dimension(450, 360));
         setResizable(false);
         getContentPane().setLayout(null);
 
         botonCancelar.setBackground(new java.awt.Color(174, 178, 194));
+        botonCancelar.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         botonCancelar.setForeground(new java.awt.Color(0, 0, 0));
         botonCancelar.setText("Cancelar");
         botonCancelar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
@@ -63,6 +65,35 @@ public class VistaModificar extends javax.swing.JFrame {
         });
         getContentPane().add(botonCancelar);
         botonCancelar.setBounds(300, 290, 110, 30);
+
+        botonAutor.setBackground(new java.awt.Color(174, 178, 194));
+        botonAutor.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
+        botonAutor.setForeground(new java.awt.Color(0, 0, 0));
+        botonAutor.setText("Modificar autor");
+        botonAutor.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
+        getContentPane().add(botonAutor);
+        botonAutor.setBounds(130, 60, 200, 40);
+
+        botonTitulo.setBackground(new java.awt.Color(174, 178, 194));
+        botonTitulo.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
+        botonTitulo.setForeground(new java.awt.Color(0, 0, 0));
+        botonTitulo.setText("Modificar título");
+        botonTitulo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
+        getContentPane().add(botonTitulo);
+        botonTitulo.setBounds(130, 120, 200, 40);
+
+        botonContenido.setBackground(new java.awt.Color(174, 178, 194));
+        botonContenido.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
+        botonContenido.setForeground(new java.awt.Color(0, 0, 0));
+        botonContenido.setText("Modificar contenido");
+        botonContenido.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
+        botonContenido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonContenidoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(botonContenido);
+        botonContenido.setBounds(130, 180, 200, 40);
 
         fondo.setIcon(new javax.swing.JLabel() {
             public javax.swing.Icon getIcon() {
@@ -75,6 +106,7 @@ public class VistaModificar extends javax.swing.JFrame {
                 return null;
             }
         }.getIcon());
+        fondo.setMinimumSize(new java.awt.Dimension(450, 1579));
         getContentPane().add(fondo);
         fondo.setBounds(0, 0, 450, 360);
 
@@ -85,6 +117,11 @@ public class VistaModificar extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.setVisible(false);
     }//GEN-LAST:event_botonCancelarActionPerformed
+
+    private void botonContenidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonContenidoActionPerformed
+        VistaModificarContenido vmc = new VistaModificarContenido(cp, autor, titulo, contenido);
+        vmc.setVisible(true);
+    }//GEN-LAST:event_botonContenidoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -116,13 +153,16 @@ public class VistaModificar extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VistaModificar(cp,autor,titulo).setVisible(true);
+                new VistaModificar(cp,autor,titulo,contenido).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonAutor;
     private javax.swing.JButton botonCancelar;
+    private javax.swing.JButton botonContenido;
+    private javax.swing.JButton botonTitulo;
     private javax.swing.JLabel fondo;
     // End of variables declaration//GEN-END:variables
 }
