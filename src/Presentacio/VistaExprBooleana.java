@@ -29,7 +29,7 @@ public class VistaExprBooleana extends javax.swing.JFrame {
      * @param cp
      * @throws java.io.IOException
      */
-    public VistaExprBooleana(CtrlPresentacio cp) throws Exception {
+    public VistaExprBooleana(CtrlPresentacio cp) {
         initComponents();
         VistaExprBooleana.cp = cp;
         this.documentos = new ArrayList<>();

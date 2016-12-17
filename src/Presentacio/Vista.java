@@ -73,7 +73,7 @@ public class Vista extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         botonExpBool = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        eliminar = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
         barraMenu = new javax.swing.JMenuBar();
         opcion1Menu = new javax.swing.JMenu();
@@ -229,15 +229,25 @@ public class Vista extends javax.swing.JFrame {
         botonExpBool.setForeground(new java.awt.Color(0, 0, 0));
         botonExpBool.setText("Consultar expresión booleana");
         botonExpBool.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
+        botonExpBool.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonExpBoolActionPerformed(evt);
+            }
+        });
         getContentPane().add(botonExpBool);
         botonExpBool.setBounds(910, 170, 260, 40);
 
-        jButton1.setBackground(new java.awt.Color(174, 178, 194));
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton1.setText("Eliminar");
-        jButton1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
-        getContentPane().add(jButton1);
-        jButton1.setBounds(980, 520, 190, 40);
+        eliminar.setBackground(new java.awt.Color(174, 178, 194));
+        eliminar.setForeground(new java.awt.Color(0, 0, 0));
+        eliminar.setText("Eliminar");
+        eliminar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
+        eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(eliminar);
+        eliminar.setBounds(980, 520, 190, 40);
 
         fondo.setIcon(new javax.swing.JLabel() {
             public javax.swing.Icon getIcon() {
@@ -437,8 +447,8 @@ public class Vista extends javax.swing.JFrame {
 
     private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
         if (listaAutores.getSelectedValue() == null || listaTitulos.getSelectedValue() == null) {
-        String excepcion = "Primero seleccione un autor y un título.";
-        JOptionPane.showMessageDialog(rootPane,excepcion);            
+            String excepcion = "Primero seleccione un autor y un título.";
+            JOptionPane.showMessageDialog(rootPane,excepcion);            
         }
         else {
             this.tituloSelect = listaTitulos.getSelectedValue().toString();
@@ -446,6 +456,26 @@ public class Vista extends javax.swing.JFrame {
             vm.setVisible(true);
         }
     }//GEN-LAST:event_botonModificarActionPerformed
+
+    private void botonExpBoolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonExpBoolActionPerformed
+        // TODO add your handling code here:
+        VistaExprBooleana veb = new VistaExprBooleana(cp);
+        veb.setVisible(true);
+    }//GEN-LAST:event_botonExpBoolActionPerformed
+
+    private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
+        // TODO add your handling code here:
+        if (listaAutores.getSelectedValue() == null || listaTitulos.getSelectedValue() == null) {
+            String excepcion = "Primero seleccione un autor y un título.";
+            JOptionPane.showMessageDialog(rootPane,excepcion);            
+        }
+        else {
+            this.tituloSelect = listaTitulos.getSelectedValue().toString();
+            Vista.cp.eliminarDocumento(this.autorSelect, this.tituloSelect);
+            String excepcion = "El documento seleccionado ha sido eliminado.";
+            JOptionPane.showMessageDialog(rootPane,excepcion);
+        }
+    }//GEN-LAST:event_eliminarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -504,8 +534,8 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JButton botonModificar;
     private javax.swing.JButton botonParecidos;
     private java.awt.Label buscar;
+    private javax.swing.JButton eliminar;
     private javax.swing.JLabel fondo;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu2;

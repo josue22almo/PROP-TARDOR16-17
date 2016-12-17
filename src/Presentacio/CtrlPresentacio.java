@@ -29,11 +29,11 @@ public class CtrlPresentacio {
     public void altaDocumentoPorRuta (File archivo, boolean guardar) throws Exception {
         System.out.println("presentacio");
         this.cd.altaDocumentoPorRuta(archivo,guardar);
-    } 
+    }
     
-    /*public void altaDocumento(String autor, String titulo, String contenido) throws Exception {
-        this.cd.altaDocumento(autor, titulo, contenido);
-    }*/
+    public void eliminarDocumento(String autor, String titulo){
+        cd.bajaDocumento(autor, titulo);
+    }
     
     public void modificarAutor(String autor, String titulo, String autorModif) throws IOException {
         cd.modificaAutorDoc(autor, titulo, autorModif);
