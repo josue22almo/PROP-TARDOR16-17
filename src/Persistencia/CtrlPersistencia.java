@@ -33,7 +33,7 @@ public class CtrlPersistencia {
             directorio = new File(rutaCarpeta);
             archivos = directorio.listFiles();
             for (int i = 0; i < archivos.length; ++i){
-                b = new BufferedReader(new FileReader(archivos[i].getAbsolutePath()));
+                b = new BufferedReader(new FileReader(archivos[i].getPath()));
                 result.add(b);
             }
             
@@ -65,16 +65,17 @@ public class CtrlPersistencia {
     } 
     
     public void guardarDocumento (String autor, String titulo, String contenido) throws IOException{
-        //File txt = new File(path, titulo);
-        try ( //if (first) eliminarDatos();
-                PrintWriter writer = new PrintWriter(path + autor + "-" + titulo + ".txt", "UTF-8")) {
+        File txt = new File(path, titulo);
+        try ( PrintWriter writer = new PrintWriter(txt)) {
+                //PrintWriter writer = new PrintWriter(path + autor + "-" + titulo + ".txt", "UTF-8")) {
             //File txt = new File(path, titulo);
             writer.println(autor);
             writer.println();
             writer.println(titulo);
             writer.println();
             writer.println(contenido);
-            writer.flush();
+            //writer.flush();
+            writer.close();
         }
     }
      

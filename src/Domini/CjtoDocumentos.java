@@ -30,6 +30,7 @@ public class CjtoDocumentos {
         this.trie = new Trie();
         this.diccionario = new Diccionario();
         this.numDocs = 0;
+        this.histDocs = 0;
     }
     
     public void altaDocumento (String autor, String titulo, String contenido) throws Exception {

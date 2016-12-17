@@ -302,7 +302,7 @@ public class Vista extends javax.swing.JFrame {
               System.out.println("getCurrentDirectory(): " + chooser.getCurrentDirectory());
               System.out.println("getSelectedFile() : " + chooser.getSelectedFile());
                 try {
-                    Vista.cp.altaCjtoDocsDirectorio(chooser.getSelectedFile().getAbsolutePath(),true); 
+                    Vista.cp.altaCjtoDocsDirectorio(chooser.getSelectedFile().getCanonicalPath(),true); 
                     String exito = "Documentos creados con éxito.";
                     JOptionPane.showMessageDialog(rootPane,exito);  
                 } catch (NullPointerException ex) {
@@ -394,9 +394,9 @@ public class Vista extends javax.swing.JFrame {
                     String exito = "Documento creado con éxito.";
                     JOptionPane.showMessageDialog(rootPane,exito);  
                 } catch (Exception ex) {
-                    //Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
-                    String yaExiste = "Este documento ya existe.";
-                    JOptionPane.showMessageDialog(rootPane,yaExiste);
+                    Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
+                    //String yaExiste = "Este documento ya existe.";
+                    //JOptionPane.showMessageDialog(rootPane,yaExiste);
                 }
             }
     }//GEN-LAST:event_anadirDocActionPerformed
@@ -463,7 +463,7 @@ public class Vista extends javax.swing.JFrame {
                     archivos = directorio.listFiles();
                     Vista.cp = new CtrlPresentacio(rutaCarpeta);
                     System.out.println(rutaCarpeta);
-                    if (archivos.length != 0) Vista.cp.altaCjtoDocsDirectorio(rutaCarpeta,false);
+                    //if (archivos.length != 0) Vista.cp.altaCjtoDocsDirectorio(rutaCarpeta,false);
                 } catch (Exception ex) {
                     Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
                 }
