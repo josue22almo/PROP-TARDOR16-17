@@ -463,7 +463,8 @@ public class Vista extends javax.swing.JFrame {
         }
         else {
             this.tituloSelect = listaTitulos.getSelectedValue().toString();
-            VistaModificar vm = new VistaModificar(cp, this.autorSelect, this.tituloSelect);
+            String contenido = Vista.cp.consultarContenido(this.autorSelect, this.tituloSelect);
+            VistaModificar vm = new VistaModificar(cp, this.autorSelect, this.tituloSelect, contenido);
             vm.setVisible(true);
         }
     }//GEN-LAST:event_botonModificarActionPerformed
