@@ -74,7 +74,7 @@ public class CtrlPersistencia {
             writer.println(titulo);
             writer.println();
             writer.println(contenido);
-            //writer.flush();
+            writer.flush();
             writer.close();
         }
     }

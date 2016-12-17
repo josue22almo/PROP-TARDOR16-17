@@ -389,8 +389,14 @@ public class Vista extends javax.swing.JFrame {
 
             if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
                 try {
-                    if (chooser.getSelectedFile().getPath().equals(rutaCarpeta)) Vista.cp.altaDocumentoPorRuta(chooser.getSelectedFile(),false);
-                    else Vista.cp.altaDocumentoPorRuta(chooser.getSelectedFile(),true);
+                    if (chooser.getSelectedFile().getAbsolutePath().equals(rutaCarpeta)) {
+                        Vista.cp.altaDocumentoPorRuta(chooser.getSelectedFile(),false);
+                        System.out.println("if");
+                    }
+                    else {
+                        Vista.cp.altaDocumentoPorRuta(chooser.getSelectedFile(),true);
+                        System.out.println("else");
+                    }
                     String exito = "Documento creado con éxito.";
                     JOptionPane.showMessageDialog(rootPane,exito);  
                 } catch (Exception ex) {
