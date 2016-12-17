@@ -367,7 +367,7 @@ public class Vista extends javax.swing.JFrame {
     private void botonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarActionPerformed
         // TODO add your handling code here:
         String contenido = "";
-        if (listaAutores.getSelectedValue() == null || listaTitulos.getSelectedValue().toString() == null) {
+        if (listaAutores.getSelectedValue() == null || listaTitulos.getSelectedValue() == null) {
             String excepcion = "Primero seleccione un autor y un título.";
             JOptionPane.showMessageDialog(rootPane,excepcion);            
         }

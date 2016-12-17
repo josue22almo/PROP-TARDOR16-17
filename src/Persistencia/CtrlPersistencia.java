@@ -66,6 +66,8 @@ public class CtrlPersistencia {
     
     public void guardarDocumento (String autor, String titulo, String contenido) throws IOException{
         File txt = new File(path, titulo);
+        System.out.println(path);
+        System.out.println("hola");
         try ( PrintWriter writer = new PrintWriter(txt)) {
                 //PrintWriter writer = new PrintWriter(path + autor + "-" + titulo + ".txt", "UTF-8")) {
             //File txt = new File(path, titulo);

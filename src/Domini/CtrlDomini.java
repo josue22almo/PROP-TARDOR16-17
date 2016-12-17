@@ -48,6 +48,7 @@ public class CtrlDomini {
     }
     
     public void altaDocumentoPorRuta(File archivo, boolean guardar) throws Exception {
+        System.out.println("domini");
         BufferedReader doc = ctrlPersistencia.leerDocumento(archivo);
             String autor = doc.readLine();
             doc.readLine();
@@ -60,7 +61,10 @@ public class CtrlDomini {
                 contenido += '\n';
             }
             cd.altaDocumento(autor, titulo, contenido);        
-            if (guardar) ctrlPersistencia.guardarDocumento(autor, titulo, contenido);
+            if (guardar) {
+                ctrlPersistencia.guardarDocumento(autor, titulo, contenido);
+                System.out.println("if guardar");
+            }
     }
     
     /*public void altaDocumento(String autor, String titulo, String contenido) throws Exception {
