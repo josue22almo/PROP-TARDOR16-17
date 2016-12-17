@@ -109,6 +109,11 @@ public class VistaExprBooleana extends javax.swing.JFrame {
         botonCancelar.setForeground(new java.awt.Color(0, 0, 0));
         botonCancelar.setText("Cancelar");
         botonCancelar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
+        botonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCancelarActionPerformed(evt);
+            }
+        });
         getContentPane().add(botonCancelar);
         botonCancelar.setBounds(580, 510, 90, 30);
 
@@ -160,6 +165,11 @@ public class VistaExprBooleana extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.expresion = textFieldExp.getText();
     }//GEN-LAST:event_textFieldExpActionPerformed
+
+    private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+    }//GEN-LAST:event_botonCancelarActionPerformed
 
     /**
      * @param args the command line arguments

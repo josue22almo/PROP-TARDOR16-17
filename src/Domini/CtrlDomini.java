@@ -7,8 +7,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 /**
  *
  * @author florencia.rimolo
@@ -21,7 +19,8 @@ public class CtrlDomini {
     public static ArrayList<String> catalan;
     public static ArrayList<String> ingles;
     
-    public CtrlDomini (String ruta) throws Exception {
+    public CtrlDomini (String ruta) throws Exception 
+    {
         ctrlPersistencia  = new CtrlPersistencia(ruta);
         espanol = ctrlPersistencia.leerPalabrasFuncionales("src/Texto/sp.txt");
         catalan = ctrlPersistencia.leerPalabrasFuncionales("src/Texto/cat.txt");
@@ -29,7 +28,8 @@ public class CtrlDomini {
         //ctrlPersistencia.cargarDatos();
     }
   
-    public void altaConjuntoDocumentosDirectorio(String folder, boolean guardar) throws Exception{    
+    public void altaConjuntoDocumentosDirectorio(String folder, boolean guardar) throws Exception
+    {    
         ArrayList<BufferedReader> docs = ctrlPersistencia.leerCarpeta(folder);
         for (int i = 0; i < docs.size(); ++i){
             String autor = docs.get(i).readLine();
@@ -47,7 +47,8 @@ public class CtrlDomini {
         }
     }
     
-    public void altaDocumentoPorRuta(File archivo, boolean guardar) throws Exception {
+    public void altaDocumentoPorRuta(File archivo, boolean guardar) throws Exception 
+    {
         System.out.println("domini");
         BufferedReader doc = ctrlPersistencia.leerDocumento(archivo);
             String autor = doc.readLine();
@@ -67,53 +68,52 @@ public class CtrlDomini {
             }
     }
     
-    /*public void altaDocumento(String autor, String titulo, String contenido) throws Exception {
-        
-        cd.altaDocumento(autor, titulo, contenido);
-        ctrlPersistencia.guardarDocumento(autor, titulo, contenido);
-    }*/
-    
-    public void bajaDocumento(String autor, String titulo) {
-        
+    public void bajaDocumento(String autor, String titulo) 
+    {
         cd.bajaDocumento(autor, titulo);
         ctrlPersistencia.eliminarDocumento(autor, titulo);
     }
     
-    public void modificaAutorDoc(String autor, String titulo, String autorModif) throws IOException {
+    public void modificaAutorDoc(String autor, String titulo, String autorModif) throws IOException 
+    {
         String contenido = cd.consultarContenido(autor, titulo);
         cd.modificaAutorDoc(autor, titulo, autorModif);
         ctrlPersistencia.eliminarDocumento(autor, titulo);
         ctrlPersistencia.guardarDocumento(autorModif, titulo, contenido);
     }
     
-    public void modificaTituloDoc(String autor, String titulo, String tituloModif) throws IOException {
+    public void modificaTituloDoc(String autor, String titulo, String tituloModif) throws IOException 
+    {
         String contenido = cd.consultarContenido(autor, titulo);
         cd.modificaTituloDoc(autor, titulo, tituloModif);
         ctrlPersistencia.eliminarDocumento(autor, titulo);
         ctrlPersistencia.guardarDocumento(autor, tituloModif, contenido);
     }
     
-    public void modificaContenidoDoc(String autor, String titulo, String contenidoModif) throws IOException {        
+    public void modificaContenidoDoc(String autor, String titulo, String contenidoModif) throws IOException
+    {        
         cd.modificaContenidoDoc(autor, titulo, contenidoModif);
         ctrlPersistencia.eliminarDocumento(autor, titulo);
         ctrlPersistencia.guardarDocumento(autor, titulo, contenidoModif);
     }
     
-    public ArrayList<String> consultarTitulosAutor(String autor) throws Exception {        
+    public ArrayList<String> consultarTitulosAutor(String autor) throws Exception
+    {        
         return cd.consultarTitulosAutor(autor);        
     }
     
-    public String consultarContenido(String autor, String titulo) {        
+    public String consultarContenido(String autor, String titulo)
+    {        
         return cd.consultarContenido(autor, titulo);
     }
     
-    public ArrayList<String> consultarAutoresPorPrefijo(String prefijo) throws Exception{
-         
+    public ArrayList<String> consultarAutoresPorPrefijo(String prefijo) throws Exception
+    {
         return cd.consultarAutoresPorPrefijo(prefijo);
     }
     
-    public ArrayList<String> getDocumentosParecidos(String autor, String titulo, int k, String type) throws Exception {
-               
+    public ArrayList<String> getDocumentosParecidos(String autor, String titulo, int k, String type) throws Exception 
+    {
         // Cogemos el id que corresponde a este autor y titulo
         int id = cd.getIds().get(autor).get(titulo); 
                                                         
@@ -144,8 +144,8 @@ public class CtrlDomini {
         return m;
     }
     
-    public ArrayList<String> getDocumentosBool(String expresion) throws Exception{
-        
+    public ArrayList<String> getDocumentosBool(String expresion) throws Exception
+    {
         ArrayList<String> result = new ArrayList<>();
         BooleanTree tree = new BooleanTree(expresion);
         Map <Integer, Documento> m = cd.getVecDocumentos();
@@ -159,11 +159,13 @@ public class CtrlDomini {
         return result;
     }
     
-    public CjtoDocumentos getCjtoDocumentos(){        
+    public CjtoDocumentos getCjtoDocumentos()
+    {        
         return cd;
     }
     
-    public void guardarDocumentos() throws IOException{
+    public void guardarDocumentos() throws IOException
+    {
         Map <Integer, Documento> vecDocumentos = cd.getVecDocumentos();
         boolean first = true;
         for (Integer key : vecDocumentos.keySet()){
@@ -176,7 +178,8 @@ public class CtrlDomini {
         }
     }
     
-    private void cargarDocumentos() throws IOException, Exception{
+    private void cargarDocumentos() throws IOException, Exception
+    {
         ArrayList<BufferedReader> docs = ctrlPersistencia.leerCarpeta("Datos");
         for (int i = 0; i < docs.size(); ++i){
             String autor = docs.get(i).readLine();
@@ -190,7 +193,4 @@ public class CtrlDomini {
             cd.altaDocumento(autor, titulo, contenido);
         }
     }
-    /*public void setPath(String path){
-        ctrlPersistencia.setPath(path);
-    }*/
 }
