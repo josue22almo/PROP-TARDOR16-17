@@ -66,21 +66,21 @@ public class VistaModificarContenido extends javax.swing.JFrame {
             }
         });
         getContentPane().add(aceptar);
-        aceptar.setBounds(405, 527, 69, 31);
+        aceptar.setBounds(405, 527, 67, 29);
 
         contenido.setBackground(new java.awt.Color(14, 115, 161));
         contenido.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         contenido.setForeground(new java.awt.Color(255, 255, 255));
         contenido.setText("Contenido:");
         getContentPane().add(contenido);
-        contenido.setBounds(33, 37, 90, 20);
+        contenido.setBounds(33, 37, 90, 18);
 
         nuevocontenido.setBackground(new java.awt.Color(14, 115, 161));
         nuevocontenido.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         nuevocontenido.setForeground(new java.awt.Color(255, 255, 255));
         nuevocontenido.setText("Nuevo contenido:");
         getContentPane().add(nuevocontenido);
-        nuevocontenido.setBounds(33, 283, 140, 20);
+        nuevocontenido.setBounds(33, 283, 140, 18);
 
         textoContenido.setEditable(false);
         jScrollPane1.setViewportView(textoContenido);
@@ -100,7 +100,7 @@ public class VistaModificarContenido extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cancelar);
-        cancelar.setBounds(492, 527, 76, 31);
+        cancelar.setBounds(492, 527, 74, 29);
 
         fondo.setIcon(new javax.swing.JLabel() {
             public javax.swing.Icon getIcon() {

@@ -5,12 +5,9 @@
  */
 package Presentacio;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -27,7 +24,6 @@ public class VistaExprBooleana extends javax.swing.JFrame {
     /**
      * Creates new form VistaExprBooleana
      * @param cp
-     * @throws java.io.IOException
      */
     public VistaExprBooleana(CtrlPresentacio cp) {
         initComponents();
