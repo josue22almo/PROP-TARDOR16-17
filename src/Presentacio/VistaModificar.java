@@ -33,7 +33,6 @@ public class VistaModificar extends javax.swing.JFrame {
         VistaModificar.autor = autor;
         VistaModificar.titulo = titulo;
         VistaModificar.cp = cp;
-        
     }
 
     /**
