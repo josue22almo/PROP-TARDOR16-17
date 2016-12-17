@@ -80,6 +80,7 @@ public class Vista extends javax.swing.JFrame {
         anadirDoc = new javax.swing.JMenuItem();
         menuAnadir = new javax.swing.JMenuItem();
         menuCerrar = new javax.swing.JMenuItem();
+        ayuda = new javax.swing.JMenu();
 
         jMenu2.setText("File");
         jMenuBar2.add(jMenu2);
@@ -306,6 +307,16 @@ public class Vista extends javax.swing.JFrame {
 
         barraMenu.add(opcion1Menu);
 
+        ayuda.setBackground(new java.awt.Color(11, 116, 163));
+        ayuda.setForeground(new java.awt.Color(255, 255, 255));
+        ayuda.setText("Ayuda");
+        ayuda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ayudaActionPerformed(evt);
+            }
+        });
+        barraMenu.add(ayuda);
+
         setJMenuBar(barraMenu);
 
         pack();
@@ -477,6 +488,12 @@ public class Vista extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_eliminarActionPerformed
 
+    private void ayudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ayudaActionPerformed
+        // TODO add your handling code here:
+        VistaManualDeUsuario u = new VistaManualDeUsuario();
+        u.setVisible(true);
+    }//GEN-LAST:event_ayudaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -527,6 +544,7 @@ public class Vista extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem anadirDoc;
     private java.awt.Label autores;
+    private javax.swing.JMenu ayuda;
     private javax.swing.JMenuBar barraMenu;
     private javax.swing.JButton botonAceptar;
     private javax.swing.JButton botonConsultar;
