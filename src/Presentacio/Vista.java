@@ -81,6 +81,7 @@ public class Vista extends javax.swing.JFrame {
         menuAnadir = new javax.swing.JMenuItem();
         menuCerrar = new javax.swing.JMenuItem();
         ayuda = new javax.swing.JMenu();
+        manualdeusuario = new javax.swing.JCheckBoxMenuItem();
 
         jMenu2.setText("File");
         jMenuBar2.add(jMenu2);
@@ -97,7 +98,7 @@ public class Vista extends javax.swing.JFrame {
         buscar.setForeground(new java.awt.Color(254, 254, 254));
         buscar.setText("Buscar autor:");
         getContentPane().add(buscar);
-        buscar.setBounds(80, 170, 160, 27);
+        buscar.setBounds(80, 170, 160, 26);
         buscar.getAccessibleContext().setAccessibleName("Buscar");
 
         textFieldBuscaAutores.setForeground(new java.awt.Color(0, 0, 0));
@@ -115,7 +116,7 @@ public class Vista extends javax.swing.JFrame {
         autores.setForeground(new java.awt.Color(255, 255, 255));
         autores.setText("Autores:");
         getContentPane().add(autores);
-        autores.setBounds(80, 250, 90, 27);
+        autores.setBounds(80, 250, 90, 26);
 
         titulos.setBackground(new java.awt.Color(14, 115, 161));
         titulos.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
@@ -316,6 +317,17 @@ public class Vista extends javax.swing.JFrame {
                 ayudaActionPerformed(evt);
             }
         });
+
+        manualdeusuario.setBackground(new java.awt.Color(11, 116, 163));
+        manualdeusuario.setForeground(new java.awt.Color(255, 255, 255));
+        manualdeusuario.setText("Manual de usuario");
+        manualdeusuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                manualdeusuarioActionPerformed(evt);
+            }
+        });
+        ayuda.add(manualdeusuario);
+
         barraMenu.add(ayuda);
         ayuda.getAccessibleContext().setAccessibleDescription("");
 
@@ -492,9 +504,13 @@ public class Vista extends javax.swing.JFrame {
 
     private void ayudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ayudaActionPerformed
         // TODO add your handling code here:
+    }//GEN-LAST:event_ayudaActionPerformed
+
+    private void manualdeusuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manualdeusuarioActionPerformed
+        // TODO add your handling code here:
         VistaManualDeUsuario u = new VistaManualDeUsuario();
         u.setVisible(true);
-    }//GEN-LAST:event_ayudaActionPerformed
+    }//GEN-LAST:event_manualdeusuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -561,6 +577,7 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JCheckBoxMenuItem manualdeusuario;
     private javax.swing.JMenuItem menuAnadir;
     private javax.swing.JMenuItem menuCerrar;
     private javax.swing.JButton mostrarTitulos;

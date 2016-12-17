@@ -34,7 +34,7 @@ public class VistaModificarContenido extends javax.swing.JFrame {
         VistaModificarContenido.c=contenido;
         VistaModificarContenido.cp = cp;
         initComponents();
-        textoContenido.setText("hola");
+        textoContenido.setText(contenido);
     }
 
     /**
@@ -121,7 +121,7 @@ public class VistaModificarContenido extends javax.swing.JFrame {
 
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
         // TODO add your handling code here:
-        VistaModificarContenido.nuevo_contenido = contenido.getText();
+        VistaModificarContenido.nuevo_contenido = textoNuevoContenido.getText();
         if (nuevo_contenido != null && !nuevo_contenido.isEmpty()) try {
             cp.modificarContenido(a,t,nuevo_contenido);
             this.setVisible(false);

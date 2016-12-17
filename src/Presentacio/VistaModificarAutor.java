@@ -29,7 +29,7 @@ public class VistaModificarAutor extends javax.swing.JFrame {
         VistaModificarAutor.a=autor;
         VistaModificarAutor.t=titulo;
         VistaModificarAutor.cp = cp;
-        textFieldAutor.setText(a);
+        textFieldAutor.setText(autor);
         initComponents();
     }
 
@@ -117,7 +117,7 @@ public class VistaModificarAutor extends javax.swing.JFrame {
     }//GEN-LAST:event_aceptarActionPerformed
 
     private void textFieldNuevoAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldNuevoAutorActionPerformed
-        nuevo_autor = textFieldNuevoAutor.getText();
+        this.nuevo_autor = textFieldNuevoAutor.getText();
     }//GEN-LAST:event_textFieldNuevoAutorActionPerformed
 
     /**
