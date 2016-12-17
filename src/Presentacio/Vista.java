@@ -6,7 +6,6 @@
 package Presentacio;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -316,6 +315,7 @@ public class Vista extends javax.swing.JFrame {
             }
         });
         barraMenu.add(ayuda);
+        ayuda.getAccessibleContext().setAccessibleDescription("");
 
         setJMenuBar(barraMenu);
 
