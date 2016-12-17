@@ -121,7 +121,7 @@ public class Vista extends javax.swing.JFrame {
         titulos.setForeground(new java.awt.Color(255, 255, 255));
         titulos.setText("Títulos:");
         getContentPane().add(titulos);
-        titulos.setBounds(510, 250, 70, 20);
+        titulos.setBounds(590, 250, 70, 20);
 
         scrollPaneAutores.setBackground(new java.awt.Color(174, 178, 194));
         scrollPaneAutores.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -130,7 +130,7 @@ public class Vista extends javax.swing.JFrame {
         scrollPaneAutores.setEnabled(false);
         scrollPaneAutores.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         getContentPane().add(scrollPaneAutores);
-        scrollPaneAutores.setBounds(80, 290, 290, 400);
+        scrollPaneAutores.setBounds(80, 280, 290, 400);
 
         botonAceptar.setBackground(new java.awt.Color(174, 178, 194));
         botonAceptar.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
@@ -189,7 +189,7 @@ public class Vista extends javax.swing.JFrame {
             }
         });
         getContentPane().add(botonParecidos);
-        botonParecidos.setBounds(980, 340, 190, 40);
+        botonParecidos.setBounds(980, 360, 190, 40);
 
         botonModificar.setBackground(new java.awt.Color(174, 178, 194));
         botonModificar.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
@@ -202,7 +202,7 @@ public class Vista extends javax.swing.JFrame {
             }
         });
         getContentPane().add(botonModificar);
-        botonModificar.setBounds(980, 410, 190, 40);
+        botonModificar.setBounds(980, 440, 190, 40);
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("LM Sans 10", 0, 65)); // NOI18N
@@ -230,14 +230,14 @@ public class Vista extends javax.swing.JFrame {
         botonExpBool.setText("Consultar expresión booleana");
         botonExpBool.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
         getContentPane().add(botonExpBool);
-        botonExpBool.setBounds(950, 470, 260, 40);
+        botonExpBool.setBounds(910, 170, 260, 40);
 
         jButton1.setBackground(new java.awt.Color(174, 178, 194));
         jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Eliminar");
         jButton1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
         getContentPane().add(jButton1);
-        jButton1.setBounds(980, 530, 190, 40);
+        jButton1.setBounds(980, 520, 190, 40);
 
         fondo.setIcon(new javax.swing.JLabel() {
             public javax.swing.Icon getIcon() {
