@@ -85,7 +85,7 @@ public class CtrlPersistencia {
     
     public void eliminarDocumento(String autor, String titulo){
         //File file = new File(path + autor + "-" + titulo + ".txt");
-        File file = new File(path + titulo + ".txt");
+        File file = new File(path + titulo);
         file.delete();
     }
     
