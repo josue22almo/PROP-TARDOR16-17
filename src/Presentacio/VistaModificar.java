@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author jessica.sobreviela
+ * @author florencia.rimolo
  */
 public class VistaModificar extends javax.swing.JFrame {
     
