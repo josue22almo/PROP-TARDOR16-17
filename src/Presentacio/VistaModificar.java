@@ -56,7 +56,6 @@ public class VistaModificar extends javax.swing.JFrame {
 
         setTitle("Modificar documento");
         setMinimumSize(new java.awt.Dimension(750, 600));
-        setPreferredSize(new java.awt.Dimension(750, 600));
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -84,7 +83,7 @@ public class VistaModificar extends javax.swing.JFrame {
         labelTitulo.setForeground(new java.awt.Color(255, 255, 255));
         labelTitulo.setText("Nuevo Título (opcional) :");
         getContentPane().add(labelTitulo);
-        labelTitulo.setBounds(50, 100, 176, 18);
+        labelTitulo.setBounds(50, 90, 176, 18);
 
         labelContenido.setBackground(new java.awt.Color(11, 116, 163));
         labelContenido.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
@@ -107,7 +106,7 @@ public class VistaModificar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(textFieldTitulo);
-        textFieldTitulo.setBounds(250, 90, 220, 30);
+        textFieldTitulo.setBounds(250, 80, 220, 30);
 
         textFieldContenido.setToolTipText("");
         textFieldContenido.addActionListener(new java.awt.event.ActionListener() {

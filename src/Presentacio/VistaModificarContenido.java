@@ -5,17 +5,35 @@
  */
 package Presentacio;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
- * @author jessica
+ * @author florencia.rimolo
  */
 public class VistaModificarContenido extends javax.swing.JFrame {
-
+    private static String a;
+    private static String t;
+    private static String c;
+    private static CtrlPresentacio cp;
+    private static String nuevo_contenido;
     /**
      * Creates new form VistaModificarContenido
+     * @param cp
+     * @param autor
+     * @param titulo
+     * @param contenido
      */
-    public VistaModificarContenido() {
+    public VistaModificarContenido(CtrlPresentacio cp, String autor, String titulo, String contenido) {
         initComponents();
+        VistaModificarContenido.a=autor;
+        VistaModificarContenido.t=titulo;
+        VistaModificarContenido.c=contenido;
+        textoContenido.setText(contenido);
+        VistaModificarContenido.cp = cp;
     }
 
     /**
@@ -27,21 +45,101 @@ public class VistaModificarContenido extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        aceptar = new javax.swing.JButton();
+        contenido = new javax.swing.JLabel();
+        nuevocontenido = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        textoContenido = new javax.swing.JTextPane();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        textoNuevoContenido = new javax.swing.JTextPane();
+        cancelar = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        aceptar.setText("Aceptar");
+        aceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aceptarActionPerformed(evt);
+            }
+        });
+
+        contenido.setText("Contenido:");
+
+        nuevocontenido.setText("Nuevo Contenido:");
+
+        textoContenido.setEditable(false);
+        jScrollPane1.setViewportView(textoContenido);
+
+        jScrollPane2.setViewportView(textoNuevoContenido);
+
+        cancelar.setText("Cancelar");
+        cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(aceptar)
+                .addGap(18, 18, 18)
+                .addComponent(cancelar)
+                .addGap(50, 50, 50))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 544, Short.MAX_VALUE)
+                    .addComponent(nuevocontenido)
+                    .addComponent(contenido)
+                    .addComponent(jScrollPane1))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addComponent(contenido)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(nuevocontenido)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
+                        .addGap(60, 60, 60))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(aceptar)
+                            .addComponent(cancelar))
+                        .addContainerGap())))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
+        // TODO add your handling code here:
+        VistaModificarContenido.nuevo_contenido = contenido.getText();
+        if (nuevo_contenido != null && !nuevo_contenido.isEmpty()) try {
+            cp.modificarContenido(a,t,nuevo_contenido);
+            this.setVisible(false);
+        } catch (IOException ex) {
+            String excepcion = "Escriba un contenido.";
+            JOptionPane.showMessageDialog(rootPane,excepcion);
+            Logger.getLogger(VistaModificarAutor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_aceptarActionPerformed
+
+    private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+    }//GEN-LAST:event_cancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -73,11 +171,19 @@ public class VistaModificarContenido extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VistaModificarContenido().setVisible(true);
+                new VistaModificarContenido(cp, a, t, c).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton aceptar;
+    private javax.swing.JButton cancelar;
+    private javax.swing.JLabel contenido;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel nuevocontenido;
+    private javax.swing.JTextPane textoContenido;
+    private javax.swing.JTextPane textoNuevoContenido;
     // End of variables declaration//GEN-END:variables
 }
