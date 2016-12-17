@@ -18,7 +18,7 @@ public class VistaModificarAutor extends javax.swing.JFrame {
     private static String a;
     private static String t;
     private static CtrlPresentacio cp;
-    private String nuevo_autor;
+    private static String nuevo_autor;
     /**
      * Creates new form VistaModificarAutor
      * @param cp
@@ -29,8 +29,8 @@ public class VistaModificarAutor extends javax.swing.JFrame {
         VistaModificarAutor.a=autor;
         VistaModificarAutor.t=titulo;
         VistaModificarAutor.cp = cp;
-        textFieldAutor.setText(autor);
         initComponents();
+        textFieldAutor.setText(autor);
     }
 
     /**
@@ -117,7 +117,7 @@ public class VistaModificarAutor extends javax.swing.JFrame {
     }//GEN-LAST:event_aceptarActionPerformed
 
     private void textFieldNuevoAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldNuevoAutorActionPerformed
-        this.nuevo_autor = textFieldNuevoAutor.getText();
+        VistaModificarAutor.nuevo_autor = textFieldNuevoAutor.getText();
     }//GEN-LAST:event_textFieldNuevoAutorActionPerformed
 
     /**

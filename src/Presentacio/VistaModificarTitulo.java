@@ -26,11 +26,11 @@ public class VistaModificarTitulo extends javax.swing.JFrame {
      * @param titulo
      */
     public VistaModificarTitulo(CtrlPresentacio cp, String autor, String titulo) {
-        initComponents();
         VistaModificarTitulo.a=autor;
         VistaModificarTitulo.t=titulo;
-        textoTitulo.setText(titulo);
         VistaModificarTitulo.cp = cp;
+        initComponents();
+        textoTitulo.setText(titulo);
     }
 
     /**
@@ -125,13 +125,17 @@ public class VistaModificarTitulo extends javax.swing.JFrame {
 
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
         // TODO add your handling code here:
-        VistaModificarTitulo.nuevo_titulo = titulo.getText();
-        if (nuevo_titulo != null && !nuevo_titulo.isEmpty()) try {
-            cp.modificarTitulo(a,t,nuevo_titulo);
-            this.setVisible(false);
+        try{ 
+            VistaModificarTitulo.nuevo_titulo = textoNuevoTitulo.getText();
+            if (nuevo_titulo != null && !nuevo_titulo.isEmpty()){
+                cp.modificarTitulo(a,t,nuevo_titulo);
+                this.setVisible(false);
+            }
+            else {
+                String excepcion = "Escriba un titulo.";
+                JOptionPane.showMessageDialog(rootPane,excepcion);
+            }
         } catch (IOException ex) {
-            String excepcion = "Escriba un titulo.";
-            JOptionPane.showMessageDialog(rootPane,excepcion);
             Logger.getLogger(VistaModificarAutor.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_aceptarActionPerformed
