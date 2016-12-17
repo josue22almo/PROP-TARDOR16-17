@@ -95,6 +95,7 @@ public class CtrlDomini {
     
     public void modificaContenidoDoc(String autor, String titulo, String contenidoModif) throws IOException {        
         cd.modificaContenidoDoc(autor, titulo, contenidoModif);
+        ctrlPersistencia.eliminarDocumento(autor, titulo);
         ctrlPersistencia.guardarDocumento(autor, titulo, contenidoModif);
     }
     

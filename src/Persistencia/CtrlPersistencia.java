@@ -68,7 +68,7 @@ public class CtrlPersistencia {
         File txt = new File(path, titulo);
         System.out.println(path);
         txt.createNewFile();
-        System.out.println("hola");
+        //System.out.println("hola");
         try ( PrintWriter writer = new PrintWriter(txt)) {
                 //PrintWriter writer = new PrintWriter(path + autor + "-" + titulo + ".txt", "UTF-8")) {
             //File txt = new File(path, titulo);
@@ -84,7 +84,8 @@ public class CtrlPersistencia {
      
     
     public void eliminarDocumento(String autor, String titulo){
-        File file = new File(path + autor + "-" + titulo + ".txt");
+        //File file = new File(path + autor + "-" + titulo + ".txt");
+        File file = new File(path + titulo + ".txt");
         file.delete();
     }
     

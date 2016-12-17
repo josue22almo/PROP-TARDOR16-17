@@ -2,18 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/home/florenciarf/Dropbox/Informatica/prop/proj/src/Persistencia/CtrlPersistencia.java</file>
-            <file>file:/home/florenciarf/Dropbox/Informatica/prop/proj/src/Presentacio/CtrlPresentacio.java</file>
-            <file>file:/home/florenciarf/Dropbox/Informatica/prop/proj/src/Domini/CtrlDomini.java</file>
-            <file>file:/home/florenciarf/Dropbox/Informatica/prop/proj/src/Domini/Diccionario.java</file>
-            <file>file:/home/florenciarf/Dropbox/Informatica/prop/proj/src/Presentacio/VistaParecidos.java</file>
-            <file>file:/home/florenciarf/Dropbox/Informatica/prop/proj/src/Presentacio/VistaModificar.java</file>
-            <file>file:/home/florenciarf/Dropbox/Informatica/prop/proj/src/Domini/CjtoDocumentos.java</file>
-            <file>file:/home/florenciarf/Dropbox/Informatica/prop/proj/src/Domini/Contenido.java</file>
-            <file>file:/home/florenciarf/Dropbox/Informatica/prop/proj/src/Presentacio/VistaExprBooleana.java</file>
-            <file>file:/home/florenciarf/Dropbox/Informatica/prop/proj/src/Presentacio/Vista.java</file>
-            <file>file:/home/florenciarf/Dropbox/Informatica/prop/proj/src/Persistencia/DriverCtrlPersistencia.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
