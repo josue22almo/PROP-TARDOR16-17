@@ -49,7 +49,6 @@ public class VistaModificar extends javax.swing.JFrame {
 
         setTitle("Modificar documento");
         setMinimumSize(new java.awt.Dimension(450, 360));
-        setPreferredSize(new java.awt.Dimension(450, 360));
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -71,6 +70,11 @@ public class VistaModificar extends javax.swing.JFrame {
         botonAutor.setForeground(new java.awt.Color(0, 0, 0));
         botonAutor.setText("Modificar autor");
         botonAutor.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
+        botonAutor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAutorActionPerformed(evt);
+            }
+        });
         getContentPane().add(botonAutor);
         botonAutor.setBounds(130, 60, 200, 40);
 
@@ -79,6 +83,11 @@ public class VistaModificar extends javax.swing.JFrame {
         botonTitulo.setForeground(new java.awt.Color(0, 0, 0));
         botonTitulo.setText("Modificar título");
         botonTitulo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
+        botonTitulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonTituloActionPerformed(evt);
+            }
+        });
         getContentPane().add(botonTitulo);
         botonTitulo.setBounds(130, 120, 200, 40);
 
@@ -122,6 +131,18 @@ public class VistaModificar extends javax.swing.JFrame {
         VistaModificarContenido vmc = new VistaModificarContenido(cp, autor, titulo, contenido);
         vmc.setVisible(true);
     }//GEN-LAST:event_botonContenidoActionPerformed
+
+    private void botonAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAutorActionPerformed
+        // TODO add your handling code here:
+        VistaModificarAutor vma = new VistaModificarAutor(cp,autor,titulo);
+        vma.setVisible(true);
+    }//GEN-LAST:event_botonAutorActionPerformed
+
+    private void botonTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonTituloActionPerformed
+        // TODO add your handling code here:
+        VistaModificarTitulo vmt = new VistaModificarTitulo(cp,autor,titulo);
+        vmt.setVisible(true);
+    }//GEN-LAST:event_botonTituloActionPerformed
 
     /**
      * @param args the command line arguments
