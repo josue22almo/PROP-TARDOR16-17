@@ -72,6 +72,8 @@ public class Vista extends javax.swing.JFrame {
         botonModificar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        botonExpBool = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
         barraMenu = new javax.swing.JMenuBar();
         opcion1Menu = new javax.swing.JMenu();
@@ -94,7 +96,7 @@ public class Vista extends javax.swing.JFrame {
         buscar.setForeground(new java.awt.Color(254, 254, 254));
         buscar.setText("Buscar autor:");
         getContentPane().add(buscar);
-        buscar.setBounds(80, 170, 160, 27);
+        buscar.setBounds(80, 170, 160, 26);
         buscar.getAccessibleContext().setAccessibleName("Buscar");
 
         textFieldBuscaAutores.setForeground(new java.awt.Color(0, 0, 0));
@@ -112,7 +114,7 @@ public class Vista extends javax.swing.JFrame {
         autores.setForeground(new java.awt.Color(255, 255, 255));
         autores.setText("Autores:");
         getContentPane().add(autores);
-        autores.setBounds(80, 250, 90, 27);
+        autores.setBounds(80, 250, 90, 26);
 
         titulos.setBackground(new java.awt.Color(14, 115, 161));
         titulos.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -187,7 +189,7 @@ public class Vista extends javax.swing.JFrame {
             }
         });
         getContentPane().add(botonParecidos);
-        botonParecidos.setBounds(980, 350, 190, 40);
+        botonParecidos.setBounds(980, 340, 190, 40);
 
         botonModificar.setBackground(new java.awt.Color(174, 178, 194));
         botonModificar.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
@@ -200,7 +202,7 @@ public class Vista extends javax.swing.JFrame {
             }
         });
         getContentPane().add(botonModificar);
-        botonModificar.setBounds(980, 420, 190, 40);
+        botonModificar.setBounds(980, 410, 190, 40);
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("LM Sans 10", 0, 65)); // NOI18N
@@ -222,6 +224,20 @@ public class Vista extends javax.swing.JFrame {
         }.getIcon());
         getContentPane().add(jLabel2);
         jLabel2.setBounds(210, 30, 130, 120);
+
+        botonExpBool.setBackground(new java.awt.Color(174, 178, 194));
+        botonExpBool.setForeground(new java.awt.Color(0, 0, 0));
+        botonExpBool.setText("Consultar expresión booleana");
+        botonExpBool.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
+        getContentPane().add(botonExpBool);
+        botonExpBool.setBounds(950, 470, 260, 40);
+
+        jButton1.setBackground(new java.awt.Color(174, 178, 194));
+        jButton1.setForeground(new java.awt.Color(0, 0, 0));
+        jButton1.setText("Eliminar");
+        jButton1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
+        getContentPane().add(jButton1);
+        jButton1.setBounds(980, 530, 190, 40);
 
         fondo.setIcon(new javax.swing.JLabel() {
             public javax.swing.Icon getIcon() {
@@ -484,10 +500,12 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JMenuBar barraMenu;
     private javax.swing.JButton botonAceptar;
     private javax.swing.JButton botonConsultar;
+    private javax.swing.JButton botonExpBool;
     private javax.swing.JButton botonModificar;
     private javax.swing.JButton botonParecidos;
     private java.awt.Label buscar;
     private javax.swing.JLabel fondo;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu2;
