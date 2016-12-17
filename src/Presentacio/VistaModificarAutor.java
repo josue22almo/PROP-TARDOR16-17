@@ -51,17 +51,16 @@ public class VistaModificarAutor extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(500, 350));
-        setPreferredSize(new java.awt.Dimension(500, 350));
         setResizable(false);
         getContentPane().setLayout(null);
 
         autor.setText("Autor:");
         getContentPane().add(autor);
-        autor.setBounds(70, 60, 43, 17);
+        autor.setBounds(40, 70, 70, 17);
 
         nuevoAutor.setText("Nuevo autor:");
         getContentPane().add(nuevoAutor);
-        nuevoAutor.setBounds(30, 130, 90, 17);
+        nuevoAutor.setBounds(40, 140, 120, 17);
 
         cancelar.setText("Cancelar");
         cancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -70,7 +69,7 @@ public class VistaModificarAutor extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cancelar);
-        cancelar.setBounds(386, 300, 90, 31);
+        cancelar.setBounds(350, 280, 110, 29);
 
         aceptar.setText("Aceptar");
         aceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -79,11 +78,11 @@ public class VistaModificarAutor extends javax.swing.JFrame {
             }
         });
         getContentPane().add(aceptar);
-        aceptar.setBounds(290, 300, 90, 31);
+        aceptar.setBounds(240, 280, 90, 29);
 
         textFieldAutor.setEditable(false);
         getContentPane().add(textFieldAutor);
-        textFieldAutor.setBounds(150, 60, 300, 29);
+        textFieldAutor.setBounds(150, 60, 300, 27);
 
         textFieldNuevoAutor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,7 +90,7 @@ public class VistaModificarAutor extends javax.swing.JFrame {
             }
         });
         getContentPane().add(textFieldNuevoAutor);
-        textFieldNuevoAutor.setBounds(150, 130, 300, 29);
+        textFieldNuevoAutor.setBounds(150, 130, 300, 27);
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 500, 350);
 
@@ -106,7 +105,7 @@ public class VistaModificarAutor extends javax.swing.JFrame {
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
         // TODO add your handling code here:
         textFieldNuevoAutorActionPerformed(evt);
-        if (nuevo_autor != null && !nuevo_autor.isEmpty()) try {
+        if (!nuevo_autor.isEmpty()) try {
             cp.modificarAutor(a,t,nuevo_autor);
             this.setVisible(false);
         } catch (IOException ex) {

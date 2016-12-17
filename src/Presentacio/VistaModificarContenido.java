@@ -66,7 +66,7 @@ public class VistaModificarContenido extends javax.swing.JFrame {
             }
         });
         getContentPane().add(aceptar);
-        aceptar.setBounds(405, 527, 67, 29);
+        aceptar.setBounds(360, 530, 90, 29);
 
         contenido.setBackground(new java.awt.Color(14, 115, 161));
         contenido.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
@@ -100,7 +100,7 @@ public class VistaModificarContenido extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cancelar);
-        cancelar.setBounds(492, 527, 74, 29);
+        cancelar.setBounds(470, 530, 100, 29);
 
         fondo.setIcon(new javax.swing.JLabel() {
             public javax.swing.Icon getIcon() {
