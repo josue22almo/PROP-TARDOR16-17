@@ -43,7 +43,7 @@ public class CtrlDomini {
                 contenido += '\n';
             }
             cd.altaDocumento(autor, titulo, contenido);
-            //if (guardar) ctrlPersistencia.guardarDocumento(autor, titulo, contenido);
+            if (guardar) ctrlPersistencia.guardarDocumento(autor, titulo, contenido);
         }
     }
     
@@ -60,7 +60,7 @@ public class CtrlDomini {
                 contenido += '\n';
             }
             cd.altaDocumento(autor, titulo, contenido);        
-            //if (guardar) ctrlPersistencia.guardarDocumento(autor, titulo, contenido);
+            if (guardar) ctrlPersistencia.guardarDocumento(autor, titulo, contenido);
     }
     
     /*public void altaDocumento(String autor, String titulo, String contenido) throws Exception {
