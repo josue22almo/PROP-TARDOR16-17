@@ -46,7 +46,6 @@ public class VistaExprBooleana extends javax.swing.JFrame {
         labelResultado = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        botonCancelar = new javax.swing.JButton();
         textFieldExp = new javax.swing.JTextField();
         fondo = new javax.swing.JLabel();
 
@@ -72,7 +71,7 @@ public class VistaExprBooleana extends javax.swing.JFrame {
             }
         });
         getContentPane().add(botonAceptar);
-        botonAceptar.setBounds(460, 510, 100, 30);
+        botonAceptar.setBounds(570, 510, 100, 30);
 
         botonConsultar.setBackground(new java.awt.Color(174, 178, 194));
         botonConsultar.setForeground(new java.awt.Color(0, 0, 0));
@@ -100,18 +99,6 @@ public class VistaExprBooleana extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane2);
         jScrollPane2.setBounds(131, 139, 540, 330);
-
-        botonCancelar.setBackground(new java.awt.Color(174, 178, 194));
-        botonCancelar.setForeground(new java.awt.Color(0, 0, 0));
-        botonCancelar.setText("Cancelar");
-        botonCancelar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
-        botonCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonCancelarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(botonCancelar);
-        botonCancelar.setBounds(580, 510, 90, 30);
 
         textFieldExp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,11 +149,6 @@ public class VistaExprBooleana extends javax.swing.JFrame {
         this.expresion = textFieldExp.getText();
     }//GEN-LAST:event_textFieldExpActionPerformed
 
-    private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
-        // TODO add your handling code here:
-        this.setVisible(false);
-    }//GEN-LAST:event_botonCancelarActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -208,7 +190,6 @@ public class VistaExprBooleana extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAceptar;
-    private javax.swing.JButton botonCancelar;
     private javax.swing.JButton botonConsultar;
     private javax.swing.JLabel fondo;
     private javax.swing.JScrollPane jScrollPane2;

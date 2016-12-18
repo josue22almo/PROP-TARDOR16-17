@@ -66,7 +66,6 @@ public class VistaParecidos extends javax.swing.JFrame {
         TFIDF = new javax.swing.JRadioButton();
         textFieldNumDocs = new javax.swing.JTextField();
         scrollPaneResult = new JScrollPane(lista);
-        botonCancelar = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
 
         setTitle("Consultar parecidos");
@@ -77,13 +76,13 @@ public class VistaParecidos extends javax.swing.JFrame {
         numk.setForeground(new java.awt.Color(255, 255, 255));
         numk.setText("Cantidad de documentos requeridos:");
         getContentPane().add(numk);
-        numk.setBounds(49, 51, 264, 15);
+        numk.setBounds(49, 51, 257, 17);
 
         labelMetodo.setBackground(new java.awt.Color(11, 116, 163));
         labelMetodo.setForeground(new java.awt.Color(255, 255, 255));
         labelMetodo.setText("Método:");
         getContentPane().add(labelMetodo);
-        labelMetodo.setBounds(49, 89, 59, 15);
+        labelMetodo.setBounds(49, 89, 59, 17);
 
         botonConsultar.setBackground(new java.awt.Color(174, 178, 194));
         botonConsultar.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
@@ -109,25 +108,25 @@ public class VistaParecidos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(botonAceptar);
-        botonAceptar.setBounds(450, 540, 100, 30);
+        botonAceptar.setBounds(570, 510, 100, 30);
 
         labelResultado.setBackground(new java.awt.Color(11, 116, 163));
         labelResultado.setForeground(new java.awt.Color(255, 255, 255));
         labelResultado.setText("Autor y título de los documentos más parecidos (ordenado de más a menos parecido):");
         getContentPane().add(labelResultado);
-        labelResultado.setBounds(49, 187, 620, 15);
+        labelResultado.setBounds(49, 187, 620, 17);
 
         FREC.setBackground(new java.awt.Color(11, 116, 163));
         FREC.setForeground(new java.awt.Color(255, 255, 255));
         FREC.setText("Frecuencias");
         getContentPane().add(FREC);
-        FREC.setBounds(130, 80, 110, 23);
+        FREC.setBounds(130, 80, 110, 24);
 
         TFIDF.setBackground(new java.awt.Color(11, 116, 163));
         TFIDF.setForeground(new java.awt.Color(255, 255, 255));
         TFIDF.setText("TF-IDF");
         getContentPane().add(TFIDF);
-        TFIDF.setBounds(130, 110, 68, 23);
+        TFIDF.setBounds(130, 110, 71, 24);
 
         textFieldNumDocs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,22 +134,9 @@ public class VistaParecidos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(textFieldNumDocs);
-        textFieldNumDocs.setBounds(340, 50, 80, 19);
+        textFieldNumDocs.setBounds(340, 50, 80, 27);
         getContentPane().add(scrollPaneResult);
-        scrollPaneResult.setBounds(50, 230, 650, 240);
-
-        botonCancelar.setBackground(new java.awt.Color(174, 178, 194));
-        botonCancelar.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
-        botonCancelar.setForeground(new java.awt.Color(0, 0, 0));
-        botonCancelar.setText("Cancelar");
-        botonCancelar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
-        botonCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonCancelarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(botonCancelar);
-        botonCancelar.setBounds(590, 540, 110, 30);
+        scrollPaneResult.setBounds(50, 230, 630, 240);
 
         fondo.setIcon(new javax.swing.JLabel() {
             public javax.swing.Icon getIcon() {
@@ -165,7 +151,7 @@ public class VistaParecidos extends javax.swing.JFrame {
         }.getIcon());
         fondo.setPreferredSize(new java.awt.Dimension(750, 600));
         getContentPane().add(fondo);
-        fondo.setBounds(0, 0, 750, 600);
+        fondo.setBounds(0, 0, 720, 600);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -205,11 +191,6 @@ public class VistaParecidos extends javax.swing.JFrame {
         
     }//GEN-LAST:event_textFieldNumDocsActionPerformed
 
-    private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
-        // TODO add your handling code here:
-        this.setVisible(false);
-    }//GEN-LAST:event_botonCancelarActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -245,7 +226,6 @@ public class VistaParecidos extends javax.swing.JFrame {
     private javax.swing.JRadioButton FREC;
     private javax.swing.JRadioButton TFIDF;
     private javax.swing.JButton botonAceptar;
-    private javax.swing.JButton botonCancelar;
     private javax.swing.JButton botonConsultar;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel fondo;
