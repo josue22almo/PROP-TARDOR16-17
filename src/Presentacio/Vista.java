@@ -97,7 +97,7 @@ public class Vista extends javax.swing.JFrame {
         buscar.setForeground(new java.awt.Color(254, 254, 254));
         buscar.setText("Buscar autor:");
         getContentPane().add(buscar);
-        buscar.setBounds(80, 170, 160, 26);
+        buscar.setBounds(80, 170, 160, 27);
         buscar.getAccessibleContext().setAccessibleName("Buscar");
 
         textFieldBuscaAutores.setForeground(new java.awt.Color(0, 0, 0));
@@ -115,7 +115,7 @@ public class Vista extends javax.swing.JFrame {
         autores.setForeground(new java.awt.Color(255, 255, 255));
         autores.setText("Autores:");
         getContentPane().add(autores);
-        autores.setBounds(80, 250, 90, 26);
+        autores.setBounds(80, 250, 90, 27);
 
         titulos.setBackground(new java.awt.Color(14, 115, 161));
         titulos.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
@@ -227,6 +227,7 @@ public class Vista extends javax.swing.JFrame {
         jLabel2.setBounds(210, 30, 130, 120);
 
         botonExpBool.setBackground(new java.awt.Color(174, 178, 194));
+        botonExpBool.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         botonExpBool.setForeground(new java.awt.Color(0, 0, 0));
         botonExpBool.setText("Consultar expresión booleana");
         botonExpBool.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
@@ -239,6 +240,7 @@ public class Vista extends javax.swing.JFrame {
         botonExpBool.setBounds(910, 170, 260, 40);
 
         eliminar.setBackground(new java.awt.Color(174, 178, 194));
+        eliminar.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         eliminar.setForeground(new java.awt.Color(0, 0, 0));
         eliminar.setText("Eliminar");
         eliminar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
@@ -311,13 +313,9 @@ public class Vista extends javax.swing.JFrame {
         ayuda.setForeground(new java.awt.Color(255, 255, 255));
         ayuda.setText("Ayuda");
         ayuda.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
-        ayuda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ayudaActionPerformed(evt);
-            }
-        });
 
         menuManual.setBackground(new java.awt.Color(11, 116, 163));
+        menuManual.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         menuManual.setForeground(new java.awt.Color(255, 255, 255));
         menuManual.setText("Manual de usuario");
         menuManual.addActionListener(new java.awt.event.ActionListener() {
@@ -361,13 +359,11 @@ public class Vista extends javax.swing.JFrame {
     }//GEN-LAST:event_accionAnadirCarpeta
 
     private void textFieldAutor(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldAutor
-        // TODO add your handling code here:
         this.autorBuscado = textFieldBuscaAutores.getText();
     }//GEN-LAST:event_textFieldAutor
 
 
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
-        // TODO add your handling code here:
         textFieldAutor(evt);
         modelAutores.clear();
         try {
@@ -385,7 +381,6 @@ public class Vista extends javax.swing.JFrame {
     }//GEN-LAST:event_aceptarActionPerformed
 
     private void mostrarTitulosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarTitulosActionPerformed
-        // TODO add your handling code here:
         ArrayList<String> titulosAutor = new ArrayList<>();
         modelTitulos.clear();
         if (listaAutores.getSelectedValue() == null) {
@@ -423,31 +418,29 @@ public class Vista extends javax.swing.JFrame {
     }//GEN-LAST:event_botonConsultarActionPerformed
 
     private void anadirDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anadirDocActionPerformed
-        // TODO add your handling code here:
-            JFileChooser chooser = new JFileChooser();
-            chooser.setCurrentDirectory(new java.io.File("."));
-            chooser.setDialogTitle("Seleccionar documento");
-            chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-            chooser.setAcceptAllFileFilterUsed(false);
-
-            if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
-                try {
-                    if (chooser.getSelectedFile().getAbsolutePath().equals(rutaCarpeta)) {
-                        Vista.cp.altaDocumentoPorRuta(chooser.getSelectedFile(),false);
-                    }
-                    else {
-                        Vista.cp.altaDocumentoPorRuta(chooser.getSelectedFile(),true);
-                    }
-                    String exito = "Documento creado con éxito.";
-                    actualizarAutores();
-                    limpiarTitulos();
-                    JOptionPane.showMessageDialog(rootPane,exito);
-                }catch (IOException ex) {
-                    JOptionPane.showMessageDialog(rootPane,ex);
-                } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(rootPane,ex);
+        JFileChooser chooser = new JFileChooser();
+        chooser.setCurrentDirectory(new java.io.File("."));
+        chooser.setDialogTitle("Seleccionar documento");
+        chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        chooser.setAcceptAllFileFilterUsed(false);
+        if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+            try {
+                if (chooser.getSelectedFile().getAbsolutePath().equals(rutaCarpeta)) {
+                    Vista.cp.altaDocumentoPorRuta(chooser.getSelectedFile(),false);
                 }
+                else {
+                    Vista.cp.altaDocumentoPorRuta(chooser.getSelectedFile(),true);
+                }
+                String exito = "Documento creado con éxito.";
+                actualizarAutores();
+                limpiarTitulos();
+                JOptionPane.showMessageDialog(rootPane,exito);
+            }catch (IOException ex) {
+                JOptionPane.showMessageDialog(rootPane,ex);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(rootPane,ex);
             }
+        }
     }//GEN-LAST:event_anadirDocActionPerformed
 
     private void botonParecidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonParecidosActionPerformed
@@ -482,13 +475,11 @@ public class Vista extends javax.swing.JFrame {
     }//GEN-LAST:event_botonModificarActionPerformed
 
     private void botonExpBoolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonExpBoolActionPerformed
-        // TODO add your handling code here:
         VistaExprBooleana veb = new VistaExprBooleana(cp);
         veb.setVisible(true);
     }//GEN-LAST:event_botonExpBoolActionPerformed
 
     private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
-        // TODO add your handling code here:
         if (listaAutores.getSelectedValue() == null || listaTitulos.getSelectedValue() == null) {
             String excepcion = "Primero seleccione un autor y un título.";
             JOptionPane.showMessageDialog(rootPane,excepcion);            
@@ -508,12 +499,7 @@ public class Vista extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_eliminarActionPerformed
 
-    private void ayudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ayudaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ayudaActionPerformed
-
     private void menuManualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuManualActionPerformed
-        // TODO add your handling code here:
         VistaManualDeUsuario vma = new VistaManualDeUsuario();
         vma.setVisible(true);
     }//GEN-LAST:event_menuManualActionPerformed
@@ -537,7 +523,6 @@ public class Vista extends javax.swing.JFrame {
             public void run() {
                 try {
                     Vista vista = new Vista();
-                    //vista.add(imagenFondo);
                     vista.setExtendedState(JFrame.MAXIMIZED_BOTH);
                     vista.setVisible(true);
                     JFileChooser chooser = new JFileChooser();
@@ -557,14 +542,10 @@ public class Vista extends javax.swing.JFrame {
                             break;
                         }
                     }
-                    //System.out.println("getCurrentDirectory(): " + chooser.getCurrentDirectory());
-                    //System.out.println("getSelectedFile() : " + chooser.getSelectedFile().getPath());
                     File directorio = new File(rutaCarpeta);
                     File [] archivos;
                     archivos = directorio.listFiles();
                     Vista.cp = new CtrlPresentacio(rutaCarpeta);
-                    //System.out.println(rutaCarpeta);
-                    //System.out.println(archivos.length);
                     if (archivos.length != 0) Vista.cp.altaCjtoDocsDirectorio(rutaCarpeta,false);
                 } catch (Exception ex) {
                     Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);

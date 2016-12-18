@@ -57,12 +57,14 @@ public class VistaModificarTitulo extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         titulo.setBackground(new java.awt.Color(11, 116, 163));
+        titulo.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         titulo.setForeground(new java.awt.Color(255, 255, 255));
         titulo.setText("Título:");
         getContentPane().add(titulo);
-        titulo.setBounds(41, 49, 45, 15);
+        titulo.setBounds(41, 49, 60, 20);
 
         cancelar.setBackground(new java.awt.Color(174, 178, 194));
+        cancelar.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         cancelar.setForeground(new java.awt.Color(0, 0, 0));
         cancelar.setText("Cancelar");
         cancelar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
@@ -72,15 +74,17 @@ public class VistaModificarTitulo extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cancelar);
-        cancelar.setBounds(340, 176, 111, 30);
+        cancelar.setBounds(340, 190, 111, 30);
 
         nuevotitulo.setBackground(new java.awt.Color(11, 116, 163));
+        nuevotitulo.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         nuevotitulo.setForeground(new java.awt.Color(255, 255, 255));
         nuevotitulo.setText("Nuevo Título:");
         getContentPane().add(nuevotitulo);
-        nuevotitulo.setBounds(41, 131, 93, 15);
+        nuevotitulo.setBounds(41, 131, 110, 20);
 
         aceptar.setBackground(new java.awt.Color(174, 178, 194));
+        aceptar.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         aceptar.setForeground(new java.awt.Color(0, 0, 0));
         aceptar.setText("Aceptar");
         aceptar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
@@ -90,7 +94,7 @@ public class VistaModificarTitulo extends javax.swing.JFrame {
             }
         });
         getContentPane().add(aceptar);
-        aceptar.setBounds(200, 176, 110, 30);
+        aceptar.setBounds(200, 190, 110, 30);
 
         textoNuevoTitulo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,16 +102,12 @@ public class VistaModificarTitulo extends javax.swing.JFrame {
             }
         });
         getContentPane().add(textoNuevoTitulo);
-        textoNuevoTitulo.setBounds(169, 129, 282, 19);
+        textoNuevoTitulo.setBounds(169, 129, 282, 29);
 
         textoTitulo.setEditable(false);
-        textoTitulo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textoTituloActionPerformed(evt);
-            }
-        });
+        textoTitulo.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         getContentPane().add(textoTitulo);
-        textoTitulo.setBounds(169, 45, 282, 19);
+        textoTitulo.setBounds(169, 45, 282, 32);
 
         fondo.setIcon(new javax.swing.JLabel() {
             public javax.swing.Icon getIcon() {
@@ -155,10 +155,6 @@ public class VistaModificarTitulo extends javax.swing.JFrame {
         // TODO add your handling code here:
         VistaModificarTitulo.nuevo_titulo = textoNuevoTitulo.getText();
     }//GEN-LAST:event_textoNuevoTituloActionPerformed
-
-    private void textoTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoTituloActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textoTituloActionPerformed
 
     /**
      * @param args the command line arguments

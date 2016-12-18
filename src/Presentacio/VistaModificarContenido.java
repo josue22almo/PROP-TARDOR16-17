@@ -61,6 +61,7 @@ public class VistaModificarContenido extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         aceptar.setBackground(new java.awt.Color(174, 178, 194));
+        aceptar.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         aceptar.setForeground(new java.awt.Color(0, 0, 0));
         aceptar.setText("Aceptar");
         aceptar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
@@ -70,21 +71,21 @@ public class VistaModificarContenido extends javax.swing.JFrame {
             }
         });
         getContentPane().add(aceptar);
-        aceptar.setBounds(360, 530, 90, 17);
+        aceptar.setBounds(360, 530, 90, 30);
 
         contenido.setBackground(new java.awt.Color(14, 115, 161));
         contenido.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         contenido.setForeground(new java.awt.Color(255, 255, 255));
         contenido.setText("Contenido:");
         getContentPane().add(contenido);
-        contenido.setBounds(33, 37, 90, 18);
+        contenido.setBounds(33, 37, 90, 20);
 
         nuevocontenido.setBackground(new java.awt.Color(14, 115, 161));
         nuevocontenido.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         nuevocontenido.setForeground(new java.awt.Color(255, 255, 255));
         nuevocontenido.setText("Nuevo contenido:");
         getContentPane().add(nuevocontenido);
-        nuevocontenido.setBounds(33, 283, 140, 18);
+        nuevocontenido.setBounds(33, 283, 140, 20);
 
         textoContenido.setEditable(false);
         jScrollPane1.setViewportView(textoContenido);
@@ -98,6 +99,7 @@ public class VistaModificarContenido extends javax.swing.JFrame {
         jScrollPane2.setBounds(33, 318, 544, 192);
 
         cancelar.setBackground(new java.awt.Color(174, 178, 194));
+        cancelar.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         cancelar.setForeground(new java.awt.Color(0, 0, 0));
         cancelar.setText("Cancelar");
         cancelar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
@@ -107,7 +109,7 @@ public class VistaModificarContenido extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cancelar);
-        cancelar.setBounds(470, 530, 100, 17);
+        cancelar.setBounds(470, 530, 100, 30);
 
         fondo.setIcon(new javax.swing.JLabel() {
             public javax.swing.Icon getIcon() {

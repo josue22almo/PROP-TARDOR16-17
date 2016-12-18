@@ -73,16 +73,18 @@ public class VistaParecidos extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
+        numk.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         numk.setForeground(new java.awt.Color(255, 255, 255));
         numk.setText("Cantidad de documentos requeridos:");
         getContentPane().add(numk);
-        numk.setBounds(49, 51, 257, 17);
+        numk.setBounds(49, 51, 280, 20);
 
         labelMetodo.setBackground(new java.awt.Color(11, 116, 163));
+        labelMetodo.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         labelMetodo.setForeground(new java.awt.Color(255, 255, 255));
         labelMetodo.setText("Método:");
         getContentPane().add(labelMetodo);
-        labelMetodo.setBounds(49, 89, 59, 17);
+        labelMetodo.setBounds(49, 89, 70, 20);
 
         botonConsultar.setBackground(new java.awt.Color(174, 178, 194));
         botonConsultar.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
@@ -111,22 +113,25 @@ public class VistaParecidos extends javax.swing.JFrame {
         botonAceptar.setBounds(570, 510, 100, 30);
 
         labelResultado.setBackground(new java.awt.Color(11, 116, 163));
+        labelResultado.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         labelResultado.setForeground(new java.awt.Color(255, 255, 255));
         labelResultado.setText("Autor y título de los documentos más parecidos (ordenado de más a menos parecido):");
         getContentPane().add(labelResultado);
-        labelResultado.setBounds(49, 187, 620, 17);
+        labelResultado.setBounds(49, 187, 660, 20);
 
         FREC.setBackground(new java.awt.Color(11, 116, 163));
+        FREC.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         FREC.setForeground(new java.awt.Color(255, 255, 255));
         FREC.setText("Frecuencias");
         getContentPane().add(FREC);
-        FREC.setBounds(130, 80, 110, 24);
+        FREC.setBounds(130, 80, 150, 24);
 
         TFIDF.setBackground(new java.awt.Color(11, 116, 163));
+        TFIDF.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         TFIDF.setForeground(new java.awt.Color(255, 255, 255));
         TFIDF.setText("TF-IDF");
         getContentPane().add(TFIDF);
-        TFIDF.setBounds(130, 110, 71, 24);
+        TFIDF.setBounds(130, 110, 90, 24);
 
         textFieldNumDocs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,7 +139,7 @@ public class VistaParecidos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(textFieldNumDocs);
-        textFieldNumDocs.setBounds(340, 50, 80, 27);
+        textFieldNumDocs.setBounds(340, 50, 80, 29);
         getContentPane().add(scrollPaneResult);
         scrollPaneResult.setBounds(50, 230, 630, 240);
 

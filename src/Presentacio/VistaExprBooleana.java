@@ -59,9 +59,10 @@ public class VistaExprBooleana extends javax.swing.JFrame {
         labelExpresion.setForeground(new java.awt.Color(255, 255, 255));
         labelExpresion.setText("Expresión:");
         getContentPane().add(labelExpresion);
-        labelExpresion.setBounds(34, 52, 100, 18);
+        labelExpresion.setBounds(34, 52, 100, 20);
 
         botonAceptar.setBackground(new java.awt.Color(174, 178, 194));
+        botonAceptar.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         botonAceptar.setForeground(new java.awt.Color(0, 0, 0));
         botonAceptar.setText("Aceptar");
         botonAceptar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
@@ -74,6 +75,7 @@ public class VistaExprBooleana extends javax.swing.JFrame {
         botonAceptar.setBounds(570, 510, 100, 30);
 
         botonConsultar.setBackground(new java.awt.Color(174, 178, 194));
+        botonConsultar.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         botonConsultar.setForeground(new java.awt.Color(0, 0, 0));
         botonConsultar.setText("Consultar");
         botonConsultar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
@@ -90,7 +92,7 @@ public class VistaExprBooleana extends javax.swing.JFrame {
         labelResultado.setForeground(new java.awt.Color(255, 255, 255));
         labelResultado.setText("Resultado:");
         getContentPane().add(labelResultado);
-        labelResultado.setBounds(34, 132, 100, 18);
+        labelResultado.setBounds(34, 132, 100, 20);
 
         jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);

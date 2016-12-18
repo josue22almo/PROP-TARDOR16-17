@@ -109,7 +109,7 @@ public class VistaConsultarContenido extends javax.swing.JFrame {
         labelContenido.setForeground(new java.awt.Color(255, 255, 255));
         labelContenido.setText("Contenido:");
         getContentPane().add(labelContenido);
-        labelContenido.setBounds(50, 140, 90, 18);
+        labelContenido.setBounds(50, 140, 90, 20);
 
         textoAutor.setEditable(false);
         textoAutor.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
@@ -151,7 +151,6 @@ public class VistaConsultarContenido extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
-        // TODO add your handling code here:
         this.setVisible(false);
     }//GEN-LAST:event_botonAceptarActionPerformed
 
