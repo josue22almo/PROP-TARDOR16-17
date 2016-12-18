@@ -69,6 +69,7 @@ public class VistaParecidos extends javax.swing.JFrame {
         fondo = new javax.swing.JLabel();
 
         setTitle("Consultar parecidos");
+        setMaximumSize(new java.awt.Dimension(750, 600));
         setMinimumSize(new java.awt.Dimension(750, 600));
         setResizable(false);
         getContentPane().setLayout(null);
@@ -77,14 +78,14 @@ public class VistaParecidos extends javax.swing.JFrame {
         numk.setForeground(new java.awt.Color(255, 255, 255));
         numk.setText("Cantidad de documentos requeridos:");
         getContentPane().add(numk);
-        numk.setBounds(49, 51, 280, 20);
+        numk.setBounds(49, 51, 280, 18);
 
         labelMetodo.setBackground(new java.awt.Color(11, 116, 163));
         labelMetodo.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         labelMetodo.setForeground(new java.awt.Color(255, 255, 255));
         labelMetodo.setText("Método:");
         getContentPane().add(labelMetodo);
-        labelMetodo.setBounds(49, 89, 70, 20);
+        labelMetodo.setBounds(49, 89, 70, 18);
 
         botonConsultar.setBackground(new java.awt.Color(174, 178, 194));
         botonConsultar.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
@@ -117,7 +118,7 @@ public class VistaParecidos extends javax.swing.JFrame {
         labelResultado.setForeground(new java.awt.Color(255, 255, 255));
         labelResultado.setText("Autor y título de los documentos más parecidos (ordenado de más a menos parecido):");
         getContentPane().add(labelResultado);
-        labelResultado.setBounds(49, 187, 660, 20);
+        labelResultado.setBounds(49, 187, 660, 18);
 
         FREC.setBackground(new java.awt.Color(11, 116, 163));
         FREC.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
@@ -139,7 +140,7 @@ public class VistaParecidos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(textFieldNumDocs);
-        textFieldNumDocs.setBounds(340, 50, 80, 29);
+        textFieldNumDocs.setBounds(340, 50, 80, 27);
         getContentPane().add(scrollPaneResult);
         scrollPaneResult.setBounds(50, 230, 630, 240);
 
@@ -156,7 +157,8 @@ public class VistaParecidos extends javax.swing.JFrame {
         }.getIcon());
         fondo.setPreferredSize(new java.awt.Dimension(750, 600));
         getContentPane().add(fondo);
-        fondo.setBounds(0, 0, 720, 600);
+        fondo.setBounds(0, 0, 750, 600);
+        fondo.getAccessibleContext().setAccessibleDescription("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
