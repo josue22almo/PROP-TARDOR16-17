@@ -279,6 +279,11 @@ public class Vista extends javax.swing.JFrame {
         menuAnadirDocManual.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         menuAnadirDocManual.setForeground(new java.awt.Color(255, 255, 255));
         menuAnadirDocManual.setText("Añadir documento manualmente");
+        menuAnadirDocManual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuAnadirDocManualActionPerformed(evt);
+            }
+        });
         opcion1Menu.add(menuAnadirDocManual);
 
         anadirDoc.setBackground(new java.awt.Color(11, 116, 163));
@@ -508,6 +513,11 @@ public class Vista extends javax.swing.JFrame {
         VistaManualDeUsuario vma = new VistaManualDeUsuario();
         vma.setVisible(true);
     }//GEN-LAST:event_menuManualActionPerformed
+
+    private void menuAnadirDocManualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAnadirDocManualActionPerformed
+        VistaAñadirManualmente vam = new VistaAñadirManualmente(this, cp);
+        vam.setVisible(true);
+    }//GEN-LAST:event_menuAnadirDocManualActionPerformed
 
     public void actualizarAutores() {
         modelAutores.clear();

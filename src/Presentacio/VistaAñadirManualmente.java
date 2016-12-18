@@ -108,6 +108,11 @@ public class VistaAñadirManualmente extends javax.swing.JFrame {
         botonCancelar.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         botonCancelar.setForeground(new java.awt.Color(0, 0, 0));
         botonCancelar.setText("Cancelar");
+        botonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCancelarActionPerformed(evt);
+            }
+        });
         getContentPane().add(botonCancelar);
         botonCancelar.setBounds(620, 480, 100, 34);
 
@@ -130,25 +135,31 @@ public class VistaAñadirManualmente extends javax.swing.JFrame {
 
     private void textFieldAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldAutorActionPerformed
         this.autor = textFieldAutor.getText();
-        if (this.autor == null) this.autor = "";
     }//GEN-LAST:event_textFieldAutorActionPerformed
 
     private void textFieldTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldTituloActionPerformed
         this.titulo = textFieldTitulo.getText();
-        if (this.titulo == null) this.titulo = "";
     }//GEN-LAST:event_textFieldTituloActionPerformed
 
     private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
         textFieldAutorActionPerformed(evt);
+        if (this.autor == null) this.autor = "";
         textFieldTituloActionPerformed(evt);
+        if (this.titulo == null) this.titulo = "";
         this.contenido = textPaneContenido.getText();
         if (this.contenido == null) this.contenido = "";
         try {
             VistaAñadirManualmente.cp.altaDocumentoManual(autor, titulo, contenido);
+            JOptionPane.showMessageDialog(rootPane,"Documento añadido con éxito.");
+            this.setVisible(false);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(rootPane,ex);
         }
     }//GEN-LAST:event_botonAceptarActionPerformed
+
+    private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_botonCancelarActionPerformed
 
     /**
      * @param args the command line arguments
