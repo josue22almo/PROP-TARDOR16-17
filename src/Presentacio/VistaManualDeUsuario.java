@@ -44,7 +44,7 @@ public class VistaManualDeUsuario extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTextArea1);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(20, 40, 1080, 720);
+        jScrollPane1.setBounds(20, 20, 1080, 620);
 
         fondo.setIcon(new javax.swing.JLabel() {
             public javax.swing.Icon getIcon() {
@@ -58,7 +58,7 @@ public class VistaManualDeUsuario extends javax.swing.JFrame {
             }
         }.getIcon());
         getContentPane().add(fondo);
-        fondo.setBounds(0, 0, 1120, 820);
+        fondo.setBounds(0, 0, 1120, 690);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
