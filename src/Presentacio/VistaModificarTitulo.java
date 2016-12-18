@@ -48,39 +48,66 @@ public class VistaModificarTitulo extends javax.swing.JFrame {
         nuevotitulo = new javax.swing.JLabel();
         aceptar = new javax.swing.JButton();
         textoNuevoTitulo = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        fondo = new javax.swing.JLabel();
         textoTitulo = new javax.swing.JTextField();
+        fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(493, 240));
+        setResizable(false);
+        getContentPane().setLayout(null);
 
         titulo.setBackground(new java.awt.Color(11, 116, 163));
         titulo.setForeground(new java.awt.Color(255, 255, 255));
         titulo.setText("Título:");
+        getContentPane().add(titulo);
+        titulo.setBounds(41, 49, 45, 15);
 
+        cancelar.setBackground(new java.awt.Color(174, 178, 194));
+        cancelar.setForeground(new java.awt.Color(0, 0, 0));
         cancelar.setText("Cancelar");
+        cancelar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
         cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelarActionPerformed(evt);
             }
         });
+        getContentPane().add(cancelar);
+        cancelar.setBounds(340, 176, 111, 17);
 
         nuevotitulo.setBackground(new java.awt.Color(11, 116, 163));
         nuevotitulo.setForeground(new java.awt.Color(255, 255, 255));
         nuevotitulo.setText("Nuevo Título:");
+        getContentPane().add(nuevotitulo);
+        nuevotitulo.setBounds(41, 131, 93, 15);
 
+        aceptar.setBackground(new java.awt.Color(174, 178, 194));
+        aceptar.setForeground(new java.awt.Color(0, 0, 0));
         aceptar.setText("Aceptar");
+        aceptar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
         aceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 aceptarActionPerformed(evt);
             }
         });
+        getContentPane().add(aceptar);
+        aceptar.setBounds(200, 176, 110, 17);
 
         textoNuevoTitulo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textoNuevoTituloActionPerformed(evt);
             }
         });
+        getContentPane().add(textoNuevoTitulo);
+        textoNuevoTitulo.setBounds(169, 129, 282, 19);
+
+        textoTitulo.setEditable(false);
+        textoTitulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textoTituloActionPerformed(evt);
+            }
+        });
+        getContentPane().add(textoTitulo);
+        textoTitulo.setBounds(169, 45, 282, 19);
 
         fondo.setIcon(new javax.swing.JLabel() {
             public javax.swing.Icon getIcon() {
@@ -93,66 +120,8 @@ public class VistaModificarTitulo extends javax.swing.JFrame {
                 return null;
             }
         }.getIcon());
-
-        textoTitulo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textoTituloActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addGap(41, 41, 41)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(titulo)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(nuevotitulo)
-                        .addGap(35, 35, 35)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(textoNuevoTitulo)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 31, Short.MAX_VALUE)
-                                .addComponent(aceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(30, 30, 30)
-                                .addComponent(cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(textoTitulo))
-                        .addGap(42, 42, 42))))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(fondo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 492, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addComponent(textoTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(titulo)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nuevotitulo)
-                    .addComponent(textoNuevoTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(aceptar)
-                    .addComponent(cancelar))
-                .addGap(24, 24, 24))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addComponent(fondo, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        getContentPane().add(fondo);
+        fondo.setBounds(0, 0, 493, 240);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -174,7 +143,7 @@ public class VistaModificarTitulo extends javax.swing.JFrame {
                 vista.limpiarTitulos();
             }
             else {
-                String excepcion = "Escriba un titulo.";
+                String excepcion = "Escriba un título.";
                 JOptionPane.showMessageDialog(rootPane,excepcion);
             }
         } catch (Exception ex) {
@@ -230,7 +199,6 @@ public class VistaModificarTitulo extends javax.swing.JFrame {
     private javax.swing.JButton aceptar;
     private javax.swing.JButton cancelar;
     private javax.swing.JLabel fondo;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel nuevotitulo;
     private javax.swing.JTextField textoNuevoTitulo;
     private javax.swing.JTextField textoTitulo;

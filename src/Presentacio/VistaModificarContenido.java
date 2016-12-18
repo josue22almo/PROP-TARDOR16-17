@@ -57,16 +57,20 @@ public class VistaModificarContenido extends javax.swing.JFrame {
         fondo = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(618, 570));
+        setResizable(false);
         getContentPane().setLayout(null);
 
+        aceptar.setBackground(new java.awt.Color(174, 178, 194));
+        aceptar.setForeground(new java.awt.Color(0, 0, 0));
         aceptar.setText("Aceptar");
+        aceptar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
         aceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 aceptarActionPerformed(evt);
             }
         });
         getContentPane().add(aceptar);
-        aceptar.setBounds(360, 530, 90, 29);
+        aceptar.setBounds(360, 530, 90, 17);
 
         contenido.setBackground(new java.awt.Color(14, 115, 161));
         contenido.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
@@ -93,14 +97,17 @@ public class VistaModificarContenido extends javax.swing.JFrame {
         getContentPane().add(jScrollPane2);
         jScrollPane2.setBounds(33, 318, 544, 192);
 
+        cancelar.setBackground(new java.awt.Color(174, 178, 194));
+        cancelar.setForeground(new java.awt.Color(0, 0, 0));
         cancelar.setText("Cancelar");
+        cancelar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
         cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelarActionPerformed(evt);
             }
         });
         getContentPane().add(cancelar);
-        cancelar.setBounds(470, 530, 100, 29);
+        cancelar.setBounds(470, 530, 100, 17);
 
         fondo.setIcon(new javax.swing.JLabel() {
             public javax.swing.Icon getIcon() {

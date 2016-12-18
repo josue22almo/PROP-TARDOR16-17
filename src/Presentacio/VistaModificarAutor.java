@@ -59,35 +59,42 @@ public class VistaModificarAutor extends javax.swing.JFrame {
         autor.setForeground(new java.awt.Color(255, 255, 255));
         autor.setText("Autor:");
         getContentPane().add(autor);
-        autor.setBounds(40, 50, 70, 17);
+        autor.setBounds(40, 50, 70, 15);
 
         nuevoAutor.setBackground(new java.awt.Color(11, 116, 163));
         nuevoAutor.setForeground(new java.awt.Color(255, 255, 255));
         nuevoAutor.setText("Nuevo Autor:");
         getContentPane().add(nuevoAutor);
-        nuevoAutor.setBounds(40, 120, 120, 17);
+        nuevoAutor.setBounds(40, 120, 120, 15);
 
+        cancelar.setBackground(new java.awt.Color(174, 178, 194));
+        cancelar.setForeground(new java.awt.Color(0, 0, 0));
         cancelar.setText("Cancelar");
+        cancelar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
         cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelarActionPerformed(evt);
             }
         });
         getContentPane().add(cancelar);
-        cancelar.setBounds(340, 170, 110, 29);
+        cancelar.setBounds(340, 170, 110, 17);
 
+        aceptar.setBackground(new java.awt.Color(174, 178, 194));
+        aceptar.setForeground(new java.awt.Color(0, 0, 0));
         aceptar.setText("Aceptar");
+        aceptar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
         aceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 aceptarActionPerformed(evt);
             }
         });
         getContentPane().add(aceptar);
-        aceptar.setBounds(210, 170, 100, 29);
+        aceptar.setBounds(210, 170, 100, 17);
 
         textFieldAutor.setEditable(false);
+        textFieldAutor.setBackground(new java.awt.Color(255, 255, 255));
         getContentPane().add(textFieldAutor);
-        textFieldAutor.setBounds(170, 40, 280, 27);
+        textFieldAutor.setBounds(170, 40, 280, 19);
 
         textFieldNuevoAutor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,7 +102,7 @@ public class VistaModificarAutor extends javax.swing.JFrame {
             }
         });
         getContentPane().add(textFieldNuevoAutor);
-        textFieldNuevoAutor.setBounds(170, 110, 280, 27);
+        textFieldNuevoAutor.setBounds(170, 110, 280, 19);
 
         fondo.setIcon(new javax.swing.JLabel() {
             public javax.swing.Icon getIcon() {
