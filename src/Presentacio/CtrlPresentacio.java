@@ -26,7 +26,6 @@ public class CtrlPresentacio {
     }
     
     public void altaDocumentoPorRuta (File archivo, boolean guardar) throws Exception {
-        System.out.println("presentacio");
         this.cd.altaDocumentoPorRuta(archivo,guardar);
     }
     
