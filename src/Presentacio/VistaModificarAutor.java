@@ -52,7 +52,7 @@ public class VistaModificarAutor extends javax.swing.JFrame {
         textFieldNuevoAutor = new javax.swing.JTextField();
         fondo = new javax.swing.JLabel();
 
-        setMinimumSize(new java.awt.Dimension(500, 350));
+        setMinimumSize(new java.awt.Dimension(500, 230));
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -77,7 +77,7 @@ public class VistaModificarAutor extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cancelar);
-        cancelar.setBounds(340, 170, 110, 17);
+        cancelar.setBounds(340, 150, 110, 30);
 
         aceptar.setBackground(new java.awt.Color(174, 178, 194));
         aceptar.setForeground(new java.awt.Color(0, 0, 0));
@@ -89,7 +89,7 @@ public class VistaModificarAutor extends javax.swing.JFrame {
             }
         });
         getContentPane().add(aceptar);
-        aceptar.setBounds(210, 170, 100, 17);
+        aceptar.setBounds(210, 150, 100, 30);
 
         textFieldAutor.setEditable(false);
         textFieldAutor.setBackground(new java.awt.Color(255, 255, 255));

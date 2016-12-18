@@ -72,7 +72,7 @@ public class VistaModificarTitulo extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cancelar);
-        cancelar.setBounds(340, 176, 111, 17);
+        cancelar.setBounds(340, 176, 111, 30);
 
         nuevotitulo.setBackground(new java.awt.Color(11, 116, 163));
         nuevotitulo.setForeground(new java.awt.Color(255, 255, 255));
@@ -90,7 +90,7 @@ public class VistaModificarTitulo extends javax.swing.JFrame {
             }
         });
         getContentPane().add(aceptar);
-        aceptar.setBounds(200, 176, 110, 17);
+        aceptar.setBounds(200, 176, 110, 30);
 
         textoNuevoTitulo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
