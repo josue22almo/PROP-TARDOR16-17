@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author florenciarf
+ * @author florencia.rimolo
  */
 public class VistaAñadirManualmente extends javax.swing.JFrame {
     public static Vista vista;
@@ -62,7 +62,7 @@ public class VistaAñadirManualmente extends javax.swing.JFrame {
             }
         });
         getContentPane().add(textFieldAutor);
-        textFieldAutor.setBounds(220, 50, 500, 29);
+        textFieldAutor.setBounds(220, 50, 500, 27);
 
         labelAutor.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         labelAutor.setForeground(new java.awt.Color(255, 255, 255));
@@ -76,7 +76,7 @@ public class VistaAñadirManualmente extends javax.swing.JFrame {
             }
         });
         getContentPane().add(textFieldTitulo);
-        textFieldTitulo.setBounds(220, 100, 500, 29);
+        textFieldTitulo.setBounds(220, 100, 500, 27);
 
         labelTitulo.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         labelTitulo.setForeground(new java.awt.Color(255, 255, 255));
@@ -104,7 +104,7 @@ public class VistaAñadirManualmente extends javax.swing.JFrame {
             }
         });
         getContentPane().add(botonAceptar);
-        botonAceptar.setBounds(484, 480, 100, 34);
+        botonAceptar.setBounds(484, 480, 100, 30);
 
         botonCancelar.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         botonCancelar.setForeground(new java.awt.Color(0, 0, 0));
@@ -115,7 +115,7 @@ public class VistaAñadirManualmente extends javax.swing.JFrame {
             }
         });
         getContentPane().add(botonCancelar);
-        botonCancelar.setBounds(620, 480, 100, 34);
+        botonCancelar.setBounds(620, 480, 100, 30);
 
         fondo.setIcon(new javax.swing.JLabel() {
             public javax.swing.Icon getIcon() {

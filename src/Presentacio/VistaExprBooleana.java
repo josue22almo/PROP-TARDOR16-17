@@ -19,7 +19,7 @@ public class VistaExprBooleana extends javax.swing.JFrame {
     public static CtrlPresentacio cp;
     private String listaDocumentos;
     private String expresion;
-    private  ArrayList<String> documentos;
+    private ArrayList<String> documentos;
     
     /**
      * Creates new form VistaExprBooleana

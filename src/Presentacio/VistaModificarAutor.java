@@ -22,6 +22,7 @@ public class VistaModificarAutor extends javax.swing.JFrame {
     public static Vista vista;
     /**
      * Creates new form VistaModificarAutor
+     * @param vista
      * @param cp
      * @param autor
      * @param titulo
