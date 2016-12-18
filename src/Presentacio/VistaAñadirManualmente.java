@@ -27,6 +27,7 @@ public class VistaAñadirManualmente extends javax.swing.JFrame {
     public VistaAñadirManualmente(Vista vista, CtrlPresentacio cp) {
         initComponents();
         VistaAñadirManualmente.vista = vista;
+        VistaAñadirManualmente.cp = cp;
         
     }
 
@@ -149,7 +150,7 @@ public class VistaAñadirManualmente extends javax.swing.JFrame {
         this.contenido = textPaneContenido.getText();
         if (this.contenido == null) this.contenido = "";
         try {
-            VistaAñadirManualmente.cp.altaDocumentoManual(autor, titulo, contenido);
+            VistaAñadirManualmente.cp.altaDocumentoManual(this.autor, this.titulo, this.contenido);
             JOptionPane.showMessageDialog(rootPane,"Documento añadido con éxito.");
             this.setVisible(false);
         } catch (Exception ex) {
