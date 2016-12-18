@@ -118,22 +118,12 @@ public class VistaParecidos extends javax.swing.JFrame {
         FREC.setBackground(new java.awt.Color(11, 116, 163));
         FREC.setForeground(new java.awt.Color(255, 255, 255));
         FREC.setText("Frecuencias");
-        FREC.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FRECActionPerformed(evt);
-            }
-        });
         getContentPane().add(FREC);
         FREC.setBounds(130, 80, 110, 23);
 
         TFIDF.setBackground(new java.awt.Color(11, 116, 163));
         TFIDF.setForeground(new java.awt.Color(255, 255, 255));
         TFIDF.setText("TF-IDF");
-        TFIDF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TFIDFActionPerformed(evt);
-            }
-        });
         getContentPane().add(TFIDF);
         TFIDF.setBounds(130, 110, 68, 23);
 
@@ -200,14 +190,6 @@ public class VistaParecidos extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.setVisible(false);
     }//GEN-LAST:event_botonAceptarActionPerformed
-
-    private void FRECActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FRECActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_FRECActionPerformed
-
-    private void TFIDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFIDFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TFIDFActionPerformed
 
     private void textFieldNumDocsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldNumDocsActionPerformed
         // TODO add your handling code here:

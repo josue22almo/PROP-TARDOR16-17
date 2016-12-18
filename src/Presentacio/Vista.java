@@ -458,6 +458,7 @@ public class Vista extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane,excepcion);            
         }
         else {
+            this.autorSelect = listaAutores.getSelectedValue().toString();
             this.tituloSelect = listaTitulos.getSelectedValue().toString();
             VistaParecidos vp = new VistaParecidos(cp, this.autorSelect, this.tituloSelect);
             vp.setVisible(true);
@@ -471,6 +472,7 @@ public class Vista extends javax.swing.JFrame {
         }
         else {
             try {
+                this.autorSelect = listaAutores.getSelectedValue().toString();
                 this.tituloSelect = listaTitulos.getSelectedValue().toString();
                 String contenido = Vista.cp.consultarContenido(this.autorSelect, this.tituloSelect);
                 VistaModificar vm = new VistaModificar(this,cp, this.autorSelect, this.tituloSelect, contenido);
@@ -495,6 +497,7 @@ public class Vista extends javax.swing.JFrame {
         }
         else {
             try {
+                this.autorSelect = listaAutores.getSelectedValue().toString();
                 this.tituloSelect = listaTitulos.getSelectedValue().toString();
                 Vista.cp.eliminarDocumento(this.autorSelect, this.tituloSelect);
                 String excepcion = "El documento seleccionado ha sido eliminado con éxito.";

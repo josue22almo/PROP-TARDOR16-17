@@ -105,6 +105,7 @@ public class CtrlDomini {
     
     public ArrayList<String> getDocumentosParecidos(String autor, String titulo, int k, String type) throws Exception {
         // Cogemos el id que corresponde a este autor y titulo
+        if (!this.cd.existeDocumento(autor, titulo)) throw new Exception("El documento seleccionado no existe");
         int id = cd.getIds().get(autor).get(titulo); 
                                                         
         // Cogemos el map con las distancias respecto al documento con id = id
