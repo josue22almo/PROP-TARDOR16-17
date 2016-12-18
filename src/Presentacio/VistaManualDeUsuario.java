@@ -33,7 +33,6 @@ public class VistaManualDeUsuario extends javax.swing.JFrame {
 
         setTitle("Manual de usuario");
         setMinimumSize(new java.awt.Dimension(1120, 760));
-        setPreferredSize(new java.awt.Dimension(1120, 760));
         setResizable(false);
         getContentPane().setLayout(null);
 

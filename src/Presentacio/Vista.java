@@ -321,6 +321,11 @@ public class Vista extends javax.swing.JFrame {
         menuManual.setBackground(new java.awt.Color(11, 116, 163));
         menuManual.setForeground(new java.awt.Color(255, 255, 255));
         menuManual.setText("Manual de usuario");
+        menuManual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuManualActionPerformed(evt);
+            }
+        });
         ayuda.add(menuManual);
 
         barraMenu.add(ayuda);
@@ -492,9 +497,14 @@ public class Vista extends javax.swing.JFrame {
     }//GEN-LAST:event_eliminarActionPerformed
 
     private void ayudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ayudaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ayudaActionPerformed
+
+    private void menuManualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuManualActionPerformed
+        // TODO add your handling code here:
         VistaManualDeUsuario vma = new VistaManualDeUsuario();
         vma.setVisible(true);
-    }//GEN-LAST:event_ayudaActionPerformed
+    }//GEN-LAST:event_menuManualActionPerformed
 
     public void actualizarAutores() {
         modelAutores.clear();
