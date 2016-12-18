@@ -372,6 +372,8 @@ public class Vista extends javax.swing.JFrame {
         try {
             if (this.autorBuscado == null) this.autorBuscado = "";
             this.autoresPref = cp.consultarAutoresPorPrefijo(this.autorBuscado);
+        } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(rootPane,"Primero debe dar de alta un documento.");
         } catch (Exception ex) {
             String excepcion = "La búsqueda no ha producido resultados.";
             JOptionPane.showMessageDialog(rootPane,ex);
