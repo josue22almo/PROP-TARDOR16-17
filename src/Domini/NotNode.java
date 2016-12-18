@@ -6,12 +6,12 @@ package Domini;
  *
  * @author Josue Inaldo Alcantara Moreno
  */
-public class NegatedNode extends OperationExpressionNode {
+public class NotNode extends OperationExpressionNode {
 
-    public NegatedNode() {
+    public NotNode() {
     }
 
-    NegatedNode(ExpressionNode exp, boolean signed) {
+    NotNode(ExpressionNode exp, boolean signed) {
         super(exp,signed);
     }
     
