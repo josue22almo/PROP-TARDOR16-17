@@ -66,26 +66,26 @@ public class CtrlDomini {
             }
     }
     
-    public void bajaDocumento(String autor, String titulo) {
+    public void bajaDocumento(String autor, String titulo) throws Exception {
         cd.bajaDocumento(autor, titulo);
         ctrlPersistencia.eliminarDocumento(autor, titulo);
     }
     
-    public void modificaAutorDoc(String autor, String titulo, String autorModif) throws IOException {
+    public void modificaAutorDoc(String autor, String titulo, String autorModif) throws IOException, Exception {
         String contenido = cd.consultarContenido(autor, titulo);
         cd.modificaAutorDoc(autor, titulo, autorModif);
         ctrlPersistencia.eliminarDocumento(autor, titulo);
         ctrlPersistencia.guardarDocumento(autorModif, titulo, contenido);
     }
     
-    public void modificaTituloDoc(String autor, String titulo, String tituloModif) throws IOException {
+    public void modificaTituloDoc(String autor, String titulo, String tituloModif) throws IOException, Exception {
         String contenido = cd.consultarContenido(autor, titulo);
         cd.modificaTituloDoc(autor, titulo, tituloModif);
         ctrlPersistencia.eliminarDocumento(autor, titulo);
         ctrlPersistencia.guardarDocumento(autor, tituloModif, contenido);
     }
     
-    public void modificaContenidoDoc(String autor, String titulo, String contenidoModif) throws IOException {        
+    public void modificaContenidoDoc(String autor, String titulo, String contenidoModif) throws IOException, Exception {        
         cd.modificaContenidoDoc(autor, titulo, contenidoModif);
         ctrlPersistencia.eliminarDocumento(autor, titulo);
         ctrlPersistencia.guardarDocumento(autor, titulo, contenidoModif);
@@ -95,7 +95,7 @@ public class CtrlDomini {
         return cd.consultarTitulosAutor(autor);        
     }
     
-    public String consultarContenido(String autor, String titulo) {        
+    public String consultarContenido(String autor, String titulo) throws Exception {        
         return cd.consultarContenido(autor, titulo);
     }
     

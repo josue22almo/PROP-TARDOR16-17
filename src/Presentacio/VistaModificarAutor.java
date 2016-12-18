@@ -6,6 +6,8 @@
 package Presentacio;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -132,7 +134,7 @@ public class VistaModificarAutor extends javax.swing.JFrame {
                 String excepcion = "Escriba un autor.";
                 JOptionPane.showMessageDialog(rootPane,excepcion);
             }
-        } catch (IOException ex) {
+        } catch (Exception ex) {
             JOptionPane.showMessageDialog(rootPane,ex);
         }
     }//GEN-LAST:event_aceptarActionPerformed

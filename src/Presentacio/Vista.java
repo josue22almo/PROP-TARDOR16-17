@@ -414,10 +414,14 @@ public class Vista extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane,excepcion);            
         }
         else {
-            this.tituloSelect = listaTitulos.getSelectedValue().toString();
-            contenido = Vista.cp.consultarContenido(this.autorSelect, this.tituloSelect);
-            VistaConsultarContenido consCont = new VistaConsultarContenido(this.autorSelect, this.tituloSelect,contenido);
-            consCont.setVisible(true);
+            try {
+                this.tituloSelect = listaTitulos.getSelectedValue().toString();
+                contenido = Vista.cp.consultarContenido(this.autorSelect, this.tituloSelect);
+                VistaConsultarContenido consCont = new VistaConsultarContenido(this.autorSelect, this.tituloSelect,contenido);
+                consCont.setVisible(true);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(rootPane,ex);
+            }
         }
     }//GEN-LAST:event_botonConsultarActionPerformed
 
@@ -466,10 +470,14 @@ public class Vista extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane,excepcion);            
         }
         else {
-            this.tituloSelect = listaTitulos.getSelectedValue().toString();
-            String contenido = Vista.cp.consultarContenido(this.autorSelect, this.tituloSelect);
-            VistaModificar vm = new VistaModificar(this,cp, this.autorSelect, this.tituloSelect, contenido);
-            vm.setVisible(true);
+            try {
+                this.tituloSelect = listaTitulos.getSelectedValue().toString();
+                String contenido = Vista.cp.consultarContenido(this.autorSelect, this.tituloSelect);
+                VistaModificar vm = new VistaModificar(this,cp, this.autorSelect, this.tituloSelect, contenido);
+                vm.setVisible(true);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(rootPane,ex);
+            }
         }
     }//GEN-LAST:event_botonModificarActionPerformed
 
@@ -486,12 +494,16 @@ public class Vista extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane,excepcion);            
         }
         else {
-            this.tituloSelect = listaTitulos.getSelectedValue().toString();
-            Vista.cp.eliminarDocumento(this.autorSelect, this.tituloSelect);
-            String excepcion = "El documento seleccionado ha sido eliminado con éxito.";
-            JOptionPane.showMessageDialog(rootPane,excepcion);
-            actualizarAutores();
-            limpiarTitulos();
+            try {
+                this.tituloSelect = listaTitulos.getSelectedValue().toString();
+                Vista.cp.eliminarDocumento(this.autorSelect, this.tituloSelect);
+                String excepcion = "El documento seleccionado ha sido eliminado con éxito.";
+                JOptionPane.showMessageDialog(rootPane,excepcion);
+                actualizarAutores();
+                limpiarTitulos();
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(rootPane,ex);
+            }
         }
     }//GEN-LAST:event_eliminarActionPerformed
 

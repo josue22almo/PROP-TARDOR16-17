@@ -76,8 +76,9 @@ public class CjtoDocumentos {
         calcularDistancias();
     }      
     
-    public void bajaDocumento(String autor, String titulo)  {
-
+    public void bajaDocumento(String autor, String titulo) throws Exception  {
+        if (!existeDocumento(autor, titulo))
+            throw new Exception("El documento no existe");
         //Eliminamos las palabras no repetidas en otros documentos del diccionario
         int id = ids.get(autor).get(titulo);
         Documento doc = vecDocumentos.get(id);
@@ -108,8 +109,9 @@ public class CjtoDocumentos {
         calcularDistancias();        
     }
     
-    public void modificaAutorDoc(String autor, String titulo, String autorModif) {
-
+    public void modificaAutorDoc(String autor, String titulo, String autorModif) throws Exception {
+        if (!existeDocumento(autor, titulo))
+            throw new Exception("El documento no existe");
         //Se modifica en vecDocumentos
         int id = ids.get(autor).get(titulo);
         vecDocumentos.get(id).setAutor(autorModif);
@@ -141,8 +143,9 @@ public class CjtoDocumentos {
         }
     }
     
-    public void modificaTituloDoc(String autor, String titulo, String tituloModif)  { 
-        
+    public void modificaTituloDoc(String autor, String titulo, String tituloModif) throws Exception  { 
+        if (!existeDocumento(autor, titulo))
+            throw new Exception("El documento no existe");        
         //Se modifica en vecDocumentos
         int id = ids.get(autor).get(titulo);
         Documento doc = vecDocumentos.get(id);
@@ -153,8 +156,9 @@ public class CjtoDocumentos {
         ids.get(autor).put(tituloModif,id);
     }    
     
-    public void modificaContenidoDoc(String autor, String titulo, String contenidoModif) {
-        
+    public void modificaContenidoDoc(String autor, String titulo, String contenidoModif) throws Exception {
+        if (!existeDocumento(autor, titulo))
+            throw new Exception("El documento no existe");        
         int id = ids.get(autor).get(titulo);
         Documento doc = vecDocumentos.get(id);
         diccionario.eliminarPalabras(doc.getContenidoReducido());
@@ -181,8 +185,9 @@ public class CjtoDocumentos {
         return trie.consultarListaDelPrefijo(prefijo);
     }
     
-    public String consultarContenido(String autor, String titulo) {
- 
+    public String consultarContenido(String autor, String titulo) throws Exception {
+        if (!existeDocumento(autor, titulo))
+            throw new Exception("El documento no existe"); 
         int id = ids.get(autor).get(titulo);
         Documento doc = vecDocumentos.get(id);
         return doc.getContenidoOriginal();

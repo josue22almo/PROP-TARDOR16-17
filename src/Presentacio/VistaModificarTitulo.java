@@ -177,7 +177,7 @@ public class VistaModificarTitulo extends javax.swing.JFrame {
                 String excepcion = "Escriba un titulo.";
                 JOptionPane.showMessageDialog(rootPane,excepcion);
             }
-        } catch (IOException ex) {
+        } catch (Exception ex) {
             JOptionPane.showMessageDialog(rootPane,ex);
         }
     }//GEN-LAST:event_aceptarActionPerformed

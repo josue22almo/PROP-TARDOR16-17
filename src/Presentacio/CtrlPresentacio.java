@@ -30,23 +30,23 @@ public class CtrlPresentacio {
         this.cd.altaDocumentoPorRuta(archivo,guardar);
     }
     
-    public void eliminarDocumento(String autor, String titulo){
+    public void eliminarDocumento(String autor, String titulo) throws Exception{
         cd.bajaDocumento(autor, titulo);
     }
     
-    public void modificarAutor(String autor, String titulo, String autorModif) throws IOException {
+    public void modificarAutor(String autor, String titulo, String autorModif) throws IOException, Exception {
         cd.modificaAutorDoc(autor, titulo, autorModif);
     }
     
-    public void modificarTitulo(String autor, String titulo, String tituloModif) throws IOException {
+    public void modificarTitulo(String autor, String titulo, String tituloModif) throws IOException, Exception {
         cd.modificaTituloDoc(autor, titulo, tituloModif);
     }
     
-    public void modificarContenido(String autor, String titulo, String contenidoModif) throws IOException {
+    public void modificarContenido(String autor, String titulo, String contenidoModif) throws IOException, Exception {
         cd.modificaContenidoDoc(autor, titulo, contenidoModif);
     }
     
-    public String consultarContenido(String autor, String titulo) {
+    public String consultarContenido(String autor, String titulo) throws Exception {
         return this.cd.consultarContenido(autor, titulo);
     }
     
