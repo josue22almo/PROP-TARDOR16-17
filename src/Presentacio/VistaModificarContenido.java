@@ -125,6 +125,8 @@ public class VistaModificarContenido extends javax.swing.JFrame {
             VistaModificarContenido.nuevo_contenido = textoNuevoContenido.getText();
             if (nuevo_contenido != null && !nuevo_contenido.isEmpty()){
                 cp.modificarContenido(a,t,nuevo_contenido);
+                String excepcion = "Modificación realizada con éxito.";
+                JOptionPane.showMessageDialog(rootPane,excepcion);
                 this.setVisible(false);
             }
             else {

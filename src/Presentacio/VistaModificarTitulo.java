@@ -129,7 +129,7 @@ public class VistaModificarTitulo extends javax.swing.JFrame {
             if (nuevo_titulo != null && !nuevo_titulo.isEmpty()){
                 cp.modificarTitulo(a,t,nuevo_titulo);
                 this.setVisible(false);
-                String excepcion = "Actualice los titulos.";
+                String excepcion = "Modificación realizada con éxito. Actualice los titulos.";
                 JOptionPane.showMessageDialog(rootPane,excepcion);
             }
             else {
