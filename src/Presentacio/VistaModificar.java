@@ -128,20 +128,24 @@ public class VistaModificar extends javax.swing.JFrame {
     }//GEN-LAST:event_botonCancelarActionPerformed
 
     private void botonContenidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonContenidoActionPerformed
+        // TODO add your handling code here:
         VistaModificarContenido vmc = new VistaModificarContenido(cp, autor, titulo, contenido);
         vmc.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_botonContenidoActionPerformed
 
     private void botonAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAutorActionPerformed
         // TODO add your handling code here:
         VistaModificarAutor vma = new VistaModificarAutor(cp,autor,titulo);
         vma.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_botonAutorActionPerformed
 
     private void botonTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonTituloActionPerformed
         // TODO add your handling code here:
         VistaModificarTitulo vmt = new VistaModificarTitulo(cp,autor,titulo);
         vmt.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_botonTituloActionPerformed
 
     /**
