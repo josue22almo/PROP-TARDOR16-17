@@ -15,20 +15,23 @@ public class VistaModificar extends javax.swing.JFrame {
     private static String titulo;
     private static String contenido;
     private static CtrlPresentacio cp;
+    public static Vista vista;
     
     /**
      * Creates new form VistaModificar
+     * @param vista
      * @param cp
      * @param autor
      * @param titulo
      * @param contenido
      * 
      */
-    public VistaModificar(CtrlPresentacio cp, String autor, String titulo, String contenido) {
+    public VistaModificar(Vista vista, CtrlPresentacio cp, String autor, String titulo, String contenido) {
         VistaModificar.autor = autor;
         VistaModificar.titulo = titulo;
         VistaModificar.cp = cp;
         VistaModificar.contenido = contenido;
+        VistaModificar.vista = vista;
         initComponents();
     }
 
@@ -136,14 +139,14 @@ public class VistaModificar extends javax.swing.JFrame {
 
     private void botonAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAutorActionPerformed
         // TODO add your handling code here:
-        VistaModificarAutor vma = new VistaModificarAutor(cp,autor,titulo);
+        VistaModificarAutor vma = new VistaModificarAutor(vista,cp,autor,titulo);
         vma.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_botonAutorActionPerformed
 
     private void botonTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonTituloActionPerformed
         // TODO add your handling code here:
-        VistaModificarTitulo vmt = new VistaModificarTitulo(cp,autor,titulo);
+        VistaModificarTitulo vmt = new VistaModificarTitulo(vista,cp,autor,titulo);
         vmt.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_botonTituloActionPerformed
@@ -178,7 +181,7 @@ public class VistaModificar extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VistaModificar(cp,autor,titulo,contenido).setVisible(true);
+                new VistaModificar(vista,cp,autor,titulo,contenido).setVisible(true);
             }
         });
     }

@@ -81,7 +81,7 @@ public class Vista extends javax.swing.JFrame {
         menuAnadir = new javax.swing.JMenuItem();
         menuCerrar = new javax.swing.JMenuItem();
         ayuda = new javax.swing.JMenu();
-        manualdeusuario = new javax.swing.JCheckBoxMenuItem();
+        menuManual = new javax.swing.JMenuItem();
 
         jMenu2.setText("File");
         jMenuBar2.add(jMenu2);
@@ -318,15 +318,10 @@ public class Vista extends javax.swing.JFrame {
             }
         });
 
-        manualdeusuario.setBackground(new java.awt.Color(11, 116, 163));
-        manualdeusuario.setForeground(new java.awt.Color(255, 255, 255));
-        manualdeusuario.setText("Manual de usuario");
-        manualdeusuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                manualdeusuarioActionPerformed(evt);
-            }
-        });
-        ayuda.add(manualdeusuario);
+        menuManual.setBackground(new java.awt.Color(11, 116, 163));
+        menuManual.setForeground(new java.awt.Color(255, 255, 255));
+        menuManual.setText("Manual de usuario");
+        ayuda.add(menuManual);
 
         barraMenu.add(ayuda);
         ayuda.getAccessibleContext().setAccessibleDescription("");
@@ -477,7 +472,7 @@ public class Vista extends javax.swing.JFrame {
         else {
             this.tituloSelect = listaTitulos.getSelectedValue().toString();
             String contenido = Vista.cp.consultarContenido(this.autorSelect, this.tituloSelect);
-            VistaModificar vm = new VistaModificar(cp, this.autorSelect, this.tituloSelect, contenido);
+            VistaModificar vm = new VistaModificar(this,cp, this.autorSelect, this.tituloSelect, contenido);
             vm.setVisible(true);
         }
     }//GEN-LAST:event_botonModificarActionPerformed
@@ -503,15 +498,21 @@ public class Vista extends javax.swing.JFrame {
     }//GEN-LAST:event_eliminarActionPerformed
 
     private void ayudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ayudaActionPerformed
-        // TODO add your handling code here:
+        VistaManualDeUsuario vma = new VistaManualDeUsuario();
+        vma.setVisible(true);
     }//GEN-LAST:event_ayudaActionPerformed
 
-    private void manualdeusuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manualdeusuarioActionPerformed
-        // TODO add your handling code here:
-        VistaManualDeUsuario u = new VistaManualDeUsuario();
-        u.setVisible(true);
-    }//GEN-LAST:event_manualdeusuarioActionPerformed
-
+    public void actualizarAutores() {
+        modelAutores.clear();
+        for (String aut: autoresPref) {
+            modelAutores.addElement(aut);
+        }
+        
+    }
+    
+    public void limpiarTitulos() {
+        modelTitulos.clear();
+    }
     /**
      * @param args the command line arguments
      */
@@ -577,9 +578,9 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar2;
-    private javax.swing.JCheckBoxMenuItem manualdeusuario;
     private javax.swing.JMenuItem menuAnadir;
     private javax.swing.JMenuItem menuCerrar;
+    private javax.swing.JMenuItem menuManual;
     private javax.swing.JButton mostrarTitulos;
     private javax.swing.JMenu opcion1Menu;
     private javax.swing.JScrollPane scrollPaneAutores;

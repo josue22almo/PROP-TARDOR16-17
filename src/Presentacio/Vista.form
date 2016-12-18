@@ -117,7 +117,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ayudaActionPerformed"/>
           </Events>
           <SubComponents>
-            <MenuItem class="javax.swing.JCheckBoxMenuItem" name="manualdeusuario">
+            <MenuItem class="javax.swing.JMenuItem" name="menuManual">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="a3" green="74" red="b" type="rgb"/>
@@ -127,9 +127,6 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Manual de usuario"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="manualdeusuarioActionPerformed"/>
-              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

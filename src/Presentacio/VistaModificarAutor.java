@@ -19,16 +19,18 @@ public class VistaModificarAutor extends javax.swing.JFrame {
     private static String t;
     private static CtrlPresentacio cp;
     private static String nuevo_autor;
+    public static Vista vista;
     /**
      * Creates new form VistaModificarAutor
      * @param cp
      * @param autor
      * @param titulo
      */
-    public VistaModificarAutor(CtrlPresentacio cp, String autor, String titulo) {
+    public VistaModificarAutor(Vista vista, CtrlPresentacio cp, String autor, String titulo) {
         VistaModificarAutor.a=autor;
         VistaModificarAutor.t=titulo;
         VistaModificarAutor.cp = cp;
+        VistaModificarAutor.vista = vista;
         initComponents();
         textFieldAutor.setText(autor);
     }
@@ -108,9 +110,10 @@ public class VistaModificarAutor extends javax.swing.JFrame {
             textFieldNuevoAutorActionPerformed(evt);
             if (nuevo_autor != null && !nuevo_autor.isEmpty()){
                 cp.modificarAutor(a,t,nuevo_autor);
-                String excepcion = "Modificación realizada con éxito. Actualice los autores.";
+                String excepcion = "Modificación realizada con éxito.";
                 JOptionPane.showMessageDialog(rootPane,excepcion);
                 this.setVisible(false);
+                vista.actualizarAutores();
             }
             else {
                 String excepcion = "Escriba un autor.";
@@ -155,7 +158,7 @@ public class VistaModificarAutor extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VistaModificarAutor(cp, a, t).setVisible(true);
+                new VistaModificarAutor(vista,cp, a, t).setVisible(true);
             }
         });
     }

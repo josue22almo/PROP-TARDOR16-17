@@ -19,16 +19,19 @@ public class VistaModificarTitulo extends javax.swing.JFrame {
     private static String t;
     private static CtrlPresentacio cp;
     private static String nuevo_titulo;
+    public static Vista vista;
     /**
      * Creates new form VistaModificarTitulo
+     * @param vista
      * @param cp
      * @param autor
      * @param titulo
      */
-    public VistaModificarTitulo(CtrlPresentacio cp, String autor, String titulo) {
+    public VistaModificarTitulo(Vista vista,CtrlPresentacio cp, String autor, String titulo) {
         VistaModificarTitulo.a=autor;
         VistaModificarTitulo.t=titulo;
         VistaModificarTitulo.cp = cp;
+        VistaModificarTitulo.vista = vista;
         initComponents();
         textoTitulo.setText(titulo);
     }
@@ -130,9 +133,10 @@ public class VistaModificarTitulo extends javax.swing.JFrame {
             textoNuevoTituloActionPerformed(evt);
             if (nuevo_titulo != null && !nuevo_titulo.isEmpty()){
                 cp.modificarTitulo(a,t,nuevo_titulo);
+                String exito = "Modificación realizada con éxito.";
+                JOptionPane.showMessageDialog(rootPane,exito);
                 this.setVisible(false);
-                String excepcion = "Modificación realizada con éxito. Actualice los titulos.";
-                JOptionPane.showMessageDialog(rootPane,excepcion);
+                vista.limpiarTitulos();
             }
             else {
                 String excepcion = "Escriba un titulo.";
@@ -178,7 +182,7 @@ public class VistaModificarTitulo extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VistaModificarTitulo(cp, a, t).setVisible(true);
+                new VistaModificarTitulo(vista,cp, a, t).setVisible(true);
             }
         });
     }
