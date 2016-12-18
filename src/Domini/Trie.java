@@ -64,7 +64,7 @@ public class Trie {
         if (aux.isEmpty())
             throw new Exception("La búsqueda no ha producido resultados");
         
-        return aux;
+        else return aux;
     }
     
     public void consultarSubArbol(Nodo sub, ArrayList<String> aux, String autor){
