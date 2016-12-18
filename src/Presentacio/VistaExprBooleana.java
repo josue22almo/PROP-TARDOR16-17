@@ -152,6 +152,7 @@ public class VistaExprBooleana extends javax.swing.JFrame {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(rootPane,ex);
         }
+        listaDocumentos = "";
         for (int i=0; i<documentos.size(); i++) listaDocumentos+=(documentos.get(i));
         jTextArea1.setText(listaDocumentos);
     }//GEN-LAST:event_botonConsultarActionPerformed
