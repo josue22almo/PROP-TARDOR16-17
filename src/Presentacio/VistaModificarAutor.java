@@ -52,7 +52,8 @@ public class VistaModificarAutor extends javax.swing.JFrame {
         textFieldNuevoAutor = new javax.swing.JTextField();
         fondo = new javax.swing.JLabel();
 
-        setMinimumSize(new java.awt.Dimension(500, 230));
+        setMaximumSize(new java.awt.Dimension(500, 220));
+        setMinimumSize(new java.awt.Dimension(500, 220));
         setResizable(false);
         getContentPane().setLayout(null);
 
