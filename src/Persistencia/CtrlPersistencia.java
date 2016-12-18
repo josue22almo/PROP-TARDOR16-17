@@ -82,9 +82,6 @@ public class CtrlPersistencia {
      
     public void eliminarDocumento(String autor, String titulo){
         File file = new File(path,titulo + "," + autor);
-        if (file.delete())
-            System.out.println("El fichero ha sido borrado satisfactoriamente");
-        else
-            System.out.println("El fichero no puede ser borrado");
+        file.delete();
     }
 }
