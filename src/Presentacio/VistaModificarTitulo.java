@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
 public class VistaModificarTitulo extends javax.swing.JFrame {
     private static String a;
     private static String t;
-    private static CtrlPresentacio cp;
+    public static CtrlPresentacio cp;
     private static String nuevo_titulo;
     public static Vista vista;
     /**

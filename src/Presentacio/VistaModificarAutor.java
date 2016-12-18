@@ -99,6 +99,7 @@ public class VistaModificarAutor extends javax.swing.JFrame {
         getContentPane().add(textFieldAutor);
         textFieldAutor.setBounds(170, 40, 280, 29);
 
+        textFieldNuevoAutor.setBackground(new java.awt.Color(255, 255, 255));
         textFieldNuevoAutor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textFieldNuevoAutorActionPerformed(evt);

@@ -19,7 +19,7 @@ public class VistaModificarContenido extends javax.swing.JFrame {
     private static String a;
     private static String t;
     private static String c;
-    private static CtrlPresentacio cp;
+    public static CtrlPresentacio cp;
     private static String nuevo_contenido;
     /**
      * Creates new form VistaModificarContenido

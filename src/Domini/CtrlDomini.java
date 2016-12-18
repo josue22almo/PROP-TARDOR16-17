@@ -40,12 +40,16 @@ public class CtrlDomini {
                 contenido += '\n';
             }
             if (!this.cd.existeDocumento(autor, titulo)) {
-            cd.altaDocumento(autor, titulo, contenido);
-            if (guardar) ctrlPersistencia.guardarDocumento(autor, titulo, contenido);
+            this.cd.altaDocumento(autor, titulo, contenido);
+            if (guardar) this.ctrlPersistencia.guardarDocumento(autor, titulo, contenido);
             }
         }
     }
     
+    public void altaDocumentoManual(String autor, String titulo, String contenido) throws Exception {
+        this.cd.altaDocumento(autor, titulo, contenido);
+        this.ctrlPersistencia.guardarDocumento(autor, titulo, contenido);
+    }
     public void altaDocumentoPorRuta(File archivo, boolean guardar) throws Exception {
         BufferedReader doc = ctrlPersistencia.leerDocumento(archivo);
             String autor = doc.readLine();
@@ -60,33 +64,33 @@ public class CtrlDomini {
             }
             cd.altaDocumento(autor, titulo, contenido);        
             if (guardar) {
-                ctrlPersistencia.guardarDocumento(autor, titulo, contenido);
+                this.ctrlPersistencia.guardarDocumento(autor, titulo, contenido);
             }
     }
     
     public void bajaDocumento(String autor, String titulo) throws Exception {
-        cd.bajaDocumento(autor, titulo);
-        ctrlPersistencia.eliminarDocumento(autor, titulo);
+        this.cd.bajaDocumento(autor, titulo);
+        this.ctrlPersistencia.eliminarDocumento(autor, titulo);
     }
     
     public void modificaAutorDoc(String autor, String titulo, String autorModif) throws IOException, Exception {
         String contenido = cd.consultarContenido(autor, titulo);
-        cd.modificaAutorDoc(autor, titulo, autorModif);
-        ctrlPersistencia.eliminarDocumento(autor, titulo);
-        ctrlPersistencia.guardarDocumento(autorModif, titulo, contenido);
+        this.cd.modificaAutorDoc(autor, titulo, autorModif);
+        this.ctrlPersistencia.eliminarDocumento(autor, titulo);
+        this.ctrlPersistencia.guardarDocumento(autorModif, titulo, contenido);
     }
     
     public void modificaTituloDoc(String autor, String titulo, String tituloModif) throws IOException, Exception {
         String contenido = cd.consultarContenido(autor, titulo);
-        cd.modificaTituloDoc(autor, titulo, tituloModif);
-        ctrlPersistencia.eliminarDocumento(autor, titulo);
-        ctrlPersistencia.guardarDocumento(autor, tituloModif, contenido);
+        this.cd.modificaTituloDoc(autor, titulo, tituloModif);
+        this.ctrlPersistencia.eliminarDocumento(autor, titulo);
+        this.ctrlPersistencia.guardarDocumento(autor, tituloModif, contenido);
     }
     
     public void modificaContenidoDoc(String autor, String titulo, String contenidoModif) throws IOException, Exception {        
-        cd.modificaContenidoDoc(autor, titulo, contenidoModif);
-        ctrlPersistencia.eliminarDocumento(autor, titulo);
-        ctrlPersistencia.guardarDocumento(autor, titulo, contenidoModif);
+        this.cd.modificaContenidoDoc(autor, titulo, contenidoModif);
+        this.ctrlPersistencia.eliminarDocumento(autor, titulo);
+        this.ctrlPersistencia.guardarDocumento(autor, titulo, contenidoModif);
     }
     
     public ArrayList<String> consultarTitulosAutor(String autor) {        

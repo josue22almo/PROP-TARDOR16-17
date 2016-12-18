@@ -29,6 +29,9 @@ public class CtrlPresentacio {
         this.cd.altaDocumentoPorRuta(archivo,guardar);
     }
     
+    public void altaDocumentoManual (String autor, String titulo, String contenido) throws Exception {
+        this.cd.altaDocumentoManual(autor, titulo, contenido);
+    }
     public void eliminarDocumento(String autor, String titulo) throws Exception{
         cd.bajaDocumento(autor, titulo);
     }

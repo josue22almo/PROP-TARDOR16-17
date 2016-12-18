@@ -14,7 +14,7 @@ public class VistaModificar extends javax.swing.JFrame {
     private static String autor;
     private static String titulo;
     private static String contenido;
-    private static CtrlPresentacio cp;
+    public static CtrlPresentacio cp;
     public static Vista vista;
     
     /**

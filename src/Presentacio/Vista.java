@@ -76,6 +76,7 @@ public class Vista extends javax.swing.JFrame {
         fondo = new javax.swing.JLabel();
         barraMenu = new javax.swing.JMenuBar();
         opcion1Menu = new javax.swing.JMenu();
+        menuAnadirDocManual = new javax.swing.JMenuItem();
         anadirDoc = new javax.swing.JMenuItem();
         menuAnadir = new javax.swing.JMenuItem();
         menuCerrar = new javax.swing.JMenuItem();
@@ -274,10 +275,16 @@ public class Vista extends javax.swing.JFrame {
         opcion1Menu.setText("Archivo");
         opcion1Menu.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
 
+        menuAnadirDocManual.setBackground(new java.awt.Color(11, 116, 163));
+        menuAnadirDocManual.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
+        menuAnadirDocManual.setForeground(new java.awt.Color(255, 255, 255));
+        menuAnadirDocManual.setText("Añadir documento manualmente");
+        opcion1Menu.add(menuAnadirDocManual);
+
         anadirDoc.setBackground(new java.awt.Color(11, 116, 163));
         anadirDoc.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         anadirDoc.setForeground(new java.awt.Color(255, 255, 255));
-        anadirDoc.setText("Añadir documento...");
+        anadirDoc.setText("Añadir documento por carpeta");
         anadirDoc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 anadirDocActionPerformed(evt);
@@ -288,7 +295,7 @@ public class Vista extends javax.swing.JFrame {
         menuAnadir.setBackground(new java.awt.Color(11, 116, 163));
         menuAnadir.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         menuAnadir.setForeground(new java.awt.Color(255, 255, 255));
-        menuAnadir.setText("Añadir por carpeta...");
+        menuAnadir.setText("Añadir conjunto de documentos por carpeta");
         menuAnadir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 accionAnadirCarpeta(evt);
@@ -435,8 +442,6 @@ public class Vista extends javax.swing.JFrame {
                 actualizarAutores();
                 limpiarTitulos();
                 JOptionPane.showMessageDialog(rootPane,exito);
-            }catch (IOException ex) {
-                JOptionPane.showMessageDialog(rootPane,ex);
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(rootPane,ex);
             }
@@ -573,6 +578,7 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem menuAnadir;
+    private javax.swing.JMenuItem menuAnadirDocManual;
     private javax.swing.JMenuItem menuCerrar;
     private javax.swing.JMenuItem menuManual;
     private javax.swing.JButton mostrarTitulos;
