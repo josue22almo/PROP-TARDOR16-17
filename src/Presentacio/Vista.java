@@ -504,10 +504,7 @@ public class Vista extends javax.swing.JFrame {
 
     public void actualizarAutores() {
         modelAutores.clear();
-        for (String aut: autoresPref) {
-            modelAutores.addElement(aut);
-        }
-        
+        aceptarActionPerformed(null);
     }
     
     public void limpiarTitulos() {
