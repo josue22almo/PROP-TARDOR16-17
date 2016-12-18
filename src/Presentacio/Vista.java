@@ -415,6 +415,7 @@ public class Vista extends javax.swing.JFrame {
         }
         else {
             try {
+                this.autorSelect = listaAutores.getSelectedValue().toString();
                 this.tituloSelect = listaTitulos.getSelectedValue().toString();
                 contenido = Vista.cp.consultarContenido(this.autorSelect, this.tituloSelect);
                 VistaConsultarContenido consCont = new VistaConsultarContenido(this.autorSelect, this.tituloSelect,contenido);
@@ -453,7 +454,7 @@ public class Vista extends javax.swing.JFrame {
     }//GEN-LAST:event_anadirDocActionPerformed
 
     private void botonParecidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonParecidosActionPerformed
-        if (listaAutores.getSelectedValue() == null || listaTitulos.getSelectedValue().toString() == null) {
+        if (listaAutores.getSelectedValue() == null || listaTitulos.getSelectedValue() == null) {
             String excepcion = "Primero seleccione un autor y un título.";
             JOptionPane.showMessageDialog(rootPane,excepcion);            
         }

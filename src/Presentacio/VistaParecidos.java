@@ -193,7 +193,12 @@ public class VistaParecidos extends javax.swing.JFrame {
 
     private void textFieldNumDocsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldNumDocsActionPerformed
         // TODO add your handling code here:
-        k = Integer.parseInt(textFieldNumDocs.getText());
+        try {
+            k = Integer.parseInt(textFieldNumDocs.getText());
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(rootPane,"Introduzca un número."); 
+        }
+        
     }//GEN-LAST:event_textFieldNumDocsActionPerformed
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
