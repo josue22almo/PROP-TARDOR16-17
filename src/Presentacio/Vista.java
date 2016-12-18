@@ -492,8 +492,10 @@ public class Vista extends javax.swing.JFrame {
         else {
             this.tituloSelect = listaTitulos.getSelectedValue().toString();
             Vista.cp.eliminarDocumento(this.autorSelect, this.tituloSelect);
-            String excepcion = "El documento seleccionado ha sido eliminado.";
+            String excepcion = "El documento seleccionado ha sido eliminado con éxito.";
             JOptionPane.showMessageDialog(rootPane,excepcion);
+            actualizarAutores();
+            limpiarTitulos();
         }
     }//GEN-LAST:event_eliminarActionPerformed
 
