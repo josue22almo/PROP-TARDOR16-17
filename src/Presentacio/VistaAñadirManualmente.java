@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author florencia.rimolo
+ * @author florencia.rimolo+
  */
 public class VistaAñadirManualmente extends javax.swing.JFrame {
     public static Vista vista;
