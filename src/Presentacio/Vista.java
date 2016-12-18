@@ -344,9 +344,6 @@ public class Vista extends javax.swing.JFrame {
             chooser.setAcceptAllFileFilterUsed(false);
 
             if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
-                
-              System.out.println("getCurrentDirectory(): " + chooser.getCurrentDirectory());
-              System.out.println("getSelectedFile() : " + chooser.getSelectedFile());
                 try {
                     Vista.cp.altaCjtoDocsDirectorio(chooser.getSelectedFile().getCanonicalPath(),true); 
                     String exito = "Documentos creados con éxito.";
@@ -359,8 +356,6 @@ public class Vista extends javax.swing.JFrame {
                 } catch (Exception ex) {
                     Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            } else {
-              System.out.println("No Selection ");
             }
     }//GEN-LAST:event_accionAnadirCarpeta
 
