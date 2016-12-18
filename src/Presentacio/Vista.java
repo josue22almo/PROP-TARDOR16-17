@@ -349,12 +349,12 @@ public class Vista extends javax.swing.JFrame {
                     String exito = "Documentos creados con éxito.";
                     JOptionPane.showMessageDialog(rootPane,exito);  
                 } catch (NullPointerException ex) {
-                    String excepcion = "No hay ningún documento en este directorio.";
-                    JOptionPane.showMessageDialog(rootPane,excepcion);                    
+                    //String excepcion = "No hay ningún documento en este directorio.";
+                    JOptionPane.showMessageDialog(rootPane,ex);                    
                 } catch (IOException ex) {
-                    Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(rootPane,ex);
                 } catch (Exception ex) {
-                    Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(rootPane,ex);
                 }
             }
     }//GEN-LAST:event_accionAnadirCarpeta
@@ -374,7 +374,7 @@ public class Vista extends javax.swing.JFrame {
             this.autoresPref = cp.consultarAutoresPorPrefijo(this.autorBuscado);
         } catch (Exception ex) {
             String excepcion = "La búsqueda no ha producido resultados.";
-            JOptionPane.showMessageDialog(rootPane,excepcion);
+            JOptionPane.showMessageDialog(rootPane,ex);
         }
         for (String aut: autoresPref) {
             modelAutores.addElement(aut);
@@ -391,13 +391,8 @@ public class Vista extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane,excepcion);            
         }
         else {
-            try {
-                this.autorSelect = listaAutores.getSelectedValue().toString();
-                titulosAutor = Vista.cp.consultarTitulosAutor(this.autorSelect);
-            } catch (Exception ex) {
-                String excepcion = "Este autor no tiene ningún documento.";
-                JOptionPane.showMessageDialog(rootPane,excepcion);
-            }
+            this.autorSelect = listaAutores.getSelectedValue().toString();
+            titulosAutor = Vista.cp.consultarTitulosAutor(this.autorSelect);
  
             for (String titulo: titulosAutor) {
                 modelTitulos.addElement(titulo);
@@ -439,10 +434,10 @@ public class Vista extends javax.swing.JFrame {
                     String exito = "Documento creado con éxito.";
                     JOptionPane.showMessageDialog(rootPane,exito);
                 }catch (IOException ex) {
-                    Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(rootPane,ex);
                 } catch (Exception ex) {
-                    String yaExiste = "Este documento ya existe.";
-                    JOptionPane.showMessageDialog(rootPane,yaExiste);
+                    //String yaExiste = "Este documento ya existe.";
+                    JOptionPane.showMessageDialog(rootPane,ex);
                 }
             }
     }//GEN-LAST:event_anadirDocActionPerformed

@@ -163,7 +163,7 @@ public class CjtoDocumentos {
         calcularDistancias(); 
     }
     
-    public ArrayList<String> consultarTitulosAutor(String autor) throws Exception {
+    public ArrayList<String> consultarTitulosAutor(String autor) {
         
         ArrayList<String> titulos = new ArrayList<>();
         Map<String,Integer> titulos_e_ids = ids.get(autor);
@@ -173,7 +173,6 @@ public class CjtoDocumentos {
             String ti = (String) it.next();
             titulos.add(ti);
         }
-        if (titulos.isEmpty()) throw new Exception("Este autor no tiene documentos.");
         return titulos;
     }
    

@@ -19,26 +19,20 @@ public class CtrlPersistencia {
         this.path = path;
     }
 
-    /*public void setPath(String path) {
-        this.path = path;
-    }*/
-
-    public ArrayList<BufferedReader> leerCarpeta(String rutaCarpeta) throws FileNotFoundException {
+    public ArrayList<BufferedReader> leerCarpeta(String rutaCarpeta) throws Exception {
         File directorio;
         File[] archivos;
         ArrayList<BufferedReader> result = new ArrayList<>();
         BufferedReader b;
-        try {
+        //try {
             directorio = new File(rutaCarpeta);
             archivos = directorio.listFiles();
             for (int i = 0; i < archivos.length; ++i){
                 b = new BufferedReader(new FileReader(archivos[i].getPath()));
                 result.add(b);
             }
-            
-        } catch (NullPointerException e) {
-            System.out.println("No se ha encontrado ningún documento en este directorio.");
-        }
+        
+            if (archivos.length == 0) throw new Exception("No se ha encontrado ningún documento en este directorio.");
         return result;
     }
     
@@ -49,27 +43,19 @@ public class CtrlPersistencia {
     public ArrayList<String> leerPalabrasFuncionales(String archivo) throws Exception {
       String cadena;
       ArrayList<String> pf = new ArrayList<>();
-      try {
       FileReader f = new FileReader(archivo);
       if (f == null) throw new Exception("No existe el fichero " + archivo);
-      BufferedReader b = new BufferedReader(f);
-      while((cadena = b.readLine())!=null) {
-          pf.add(cadena);
-      }
-      b.close();
-      } catch (FileNotFoundException e) {
-          System.out.println("El fichero no existe.");
-      }
+        try (BufferedReader b = new BufferedReader(f)) {
+            while((cadena = b.readLine())!=null) {
+                pf.add(cadena);
+            } }
       return pf;
     } 
     
     public void guardarDocumento (String autor, String titulo, String contenido) throws IOException{
         File txt = new File(path, titulo + "," + autor);
-        //System.out.println(path);
         txt.createNewFile();
         try ( PrintWriter writer = new PrintWriter(txt)) {
-            //PrintWriter writer = new PrintWriter(path + autor + "-" + titulo + ".txt", "UTF-8")) {
-            //File txt = new File(path, titulo);
             writer.println(autor);
             writer.println();
             writer.println(titulo);

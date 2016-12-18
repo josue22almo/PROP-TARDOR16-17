@@ -91,7 +91,7 @@ public class CtrlDomini {
         ctrlPersistencia.guardarDocumento(autor, titulo, contenidoModif);
     }
     
-    public ArrayList<String> consultarTitulosAutor(String autor) throws Exception {        
+    public ArrayList<String> consultarTitulosAutor(String autor) {        
         return cd.consultarTitulosAutor(autor);        
     }
     

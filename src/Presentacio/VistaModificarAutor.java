@@ -120,7 +120,7 @@ public class VistaModificarAutor extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane,excepcion);
             }
         } catch (IOException ex) {
-            Logger.getLogger(VistaModificarAutor.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(rootPane,ex);
         }
     }//GEN-LAST:event_aceptarActionPerformed
 

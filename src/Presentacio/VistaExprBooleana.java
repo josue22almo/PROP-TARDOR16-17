@@ -150,8 +150,7 @@ public class VistaExprBooleana extends javax.swing.JFrame {
             if (expresion == null) expresion = "";
             documentos = cp.consultarDocumentosExprBooleana(expresion);
         } catch (Exception ex) {
-            String excepcion = "La búsqueda no ha producido resultados.";
-            JOptionPane.showMessageDialog(rootPane,excepcion);
+            JOptionPane.showMessageDialog(rootPane,ex);
         }
         for (int i=0; i<documentos.size(); i++) listaDocumentos+=(documentos.get(i));
         jTextArea1.setText(listaDocumentos);

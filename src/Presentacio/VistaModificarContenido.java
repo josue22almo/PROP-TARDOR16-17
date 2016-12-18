@@ -6,8 +6,6 @@
 package Presentacio;
 
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 
@@ -134,7 +132,7 @@ public class VistaModificarContenido extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane,excepcion);
             }
         } catch (IOException ex) {
-            Logger.getLogger(VistaModificarContenido.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(rootPane,ex);
         }
     }//GEN-LAST:event_aceptarActionPerformed
 

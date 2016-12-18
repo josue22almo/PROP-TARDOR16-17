@@ -32,7 +32,6 @@ public class VistaParecidos extends javax.swing.JFrame {
      * @param cp
      * @param autor
      * @param titulo
-     * @throws java.io.IOException
      */
     public VistaParecidos(CtrlPresentacio cp, String autor, String titulo) {
         VistaParecidos.autor = autor;
@@ -186,14 +185,12 @@ public class VistaParecidos extends javax.swing.JFrame {
         if (FREC.isSelected()) try {
             parecidos = cp.consultarParecidos(autor, titulo, k, "FREC");
         } catch (Exception ex) {
-            String excepcion = "No hay ningún documento que cumpla los requisitos especificados..";
-            JOptionPane.showMessageDialog(rootPane,excepcion); 
+            JOptionPane.showMessageDialog(rootPane,ex); 
         }
         else try {
             parecidos = cp.consultarParecidos(autor, titulo, k, "TF-IDF");
         } catch (Exception ex) {
-            String excepcion = "No hay ningún documento que cumpla los requisitos especificados..";
-            JOptionPane.showMessageDialog(rootPane,excepcion); 
+            JOptionPane.showMessageDialog(rootPane,ex);
         }
         for (int i = 0; i < parecidos.size(); i++)
             model.addElement(parecidos.get(i));
@@ -249,7 +246,6 @@ public class VistaParecidos extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new VistaParecidos(cp,autor,titulo).setVisible(true);
-                model.addElement("hola");
             }
         });
     }
