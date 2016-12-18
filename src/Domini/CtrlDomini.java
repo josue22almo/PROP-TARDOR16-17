@@ -41,8 +41,10 @@ public class CtrlDomini {
                 contenido += aux;
                 contenido += '\n';
             }
+            if (!this.cd.existeDocumento(autor, titulo)) {
             cd.altaDocumento(autor, titulo, contenido);
             if (guardar) ctrlPersistencia.guardarDocumento(autor, titulo, contenido);
+            }
         }
     }
     
