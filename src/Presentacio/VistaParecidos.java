@@ -174,16 +174,18 @@ public class VistaParecidos extends javax.swing.JFrame {
         model.clear();
         if (FREC.isSelected()) try {
             parecidos = cp.consultarParecidos(autor, titulo, k, "FREC");
+            for (int i = 0; i < parecidos.size(); i++)
+            model.addElement(parecidos.get(i));
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(rootPane,ex); 
         }
-        else try {
+        else if (TFIDF.isSelected())try {
             parecidos = cp.consultarParecidos(autor, titulo, k, "TF-IDF");
+            for (int i = 0; i < parecidos.size(); i++)
+            model.addElement(parecidos.get(i));
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(rootPane,ex);
         }
-        for (int i = 0; i < parecidos.size(); i++)
-            model.addElement(parecidos.get(i));
     }//GEN-LAST:event_botonConsultarActionPerformed
 
     private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
