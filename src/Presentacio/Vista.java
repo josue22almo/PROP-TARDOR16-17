@@ -20,7 +20,7 @@ import javax.swing.JScrollPane;
 
 /**
  *
- * @author florenciarf
+ * @author florencia.rimolo
  */
 public class Vista extends javax.swing.JFrame {
 
@@ -352,11 +352,6 @@ public class Vista extends javax.swing.JFrame {
                     Vista.cp.altaCjtoDocsDirectorio(chooser.getSelectedFile().getCanonicalPath(),true); 
                     String exito = "Documentos creados con éxito.";
                     JOptionPane.showMessageDialog(rootPane,exito);  
-                } catch (NullPointerException ex) {
-                    //String excepcion = "No hay ningún documento en este directorio.";
-                    JOptionPane.showMessageDialog(rootPane,ex);                    
-                } catch (IOException ex) {
-                    JOptionPane.showMessageDialog(rootPane,ex);
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(rootPane,ex);
                 }
@@ -380,7 +375,6 @@ public class Vista extends javax.swing.JFrame {
             modelAutores.addElement(aut);
             }
         } catch (NullPointerException ex) {
-            Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(rootPane,"La búsqueda no ha producido resultados.");
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(rootPane,ex);
@@ -447,7 +441,6 @@ public class Vista extends javax.swing.JFrame {
                 }catch (IOException ex) {
                     JOptionPane.showMessageDialog(rootPane,ex);
                 } catch (Exception ex) {
-                    //String yaExiste = "Este documento ya existe.";
                     JOptionPane.showMessageDialog(rootPane,ex);
                 }
             }

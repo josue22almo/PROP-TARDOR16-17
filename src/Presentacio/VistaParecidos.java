@@ -186,7 +186,6 @@ public class VistaParecidos extends javax.swing.JFrame {
             for (int i = 0; i < parecidos.size(); i++)
             model.addElement(parecidos.get(i));
         } catch (Exception ex) {
-            Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(rootPane,ex);
         }
     }//GEN-LAST:event_botonConsultarActionPerformed
