@@ -50,19 +50,22 @@ public class VistaModificarAutor extends javax.swing.JFrame {
         aceptar = new javax.swing.JButton();
         textFieldAutor = new javax.swing.JTextField();
         textFieldNuevoAutor = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        fondo = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(500, 350));
         setResizable(false);
         getContentPane().setLayout(null);
 
+        autor.setForeground(new java.awt.Color(255, 255, 255));
         autor.setText("Autor:");
         getContentPane().add(autor);
-        autor.setBounds(40, 70, 70, 17);
+        autor.setBounds(40, 50, 70, 17);
 
-        nuevoAutor.setText("Nuevo autor:");
+        nuevoAutor.setBackground(new java.awt.Color(11, 116, 163));
+        nuevoAutor.setForeground(new java.awt.Color(255, 255, 255));
+        nuevoAutor.setText("Nuevo Autor:");
         getContentPane().add(nuevoAutor);
-        nuevoAutor.setBounds(40, 140, 120, 17);
+        nuevoAutor.setBounds(40, 120, 120, 17);
 
         cancelar.setText("Cancelar");
         cancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -71,7 +74,7 @@ public class VistaModificarAutor extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cancelar);
-        cancelar.setBounds(350, 280, 110, 29);
+        cancelar.setBounds(340, 170, 110, 29);
 
         aceptar.setText("Aceptar");
         aceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -80,11 +83,11 @@ public class VistaModificarAutor extends javax.swing.JFrame {
             }
         });
         getContentPane().add(aceptar);
-        aceptar.setBounds(240, 280, 90, 29);
+        aceptar.setBounds(210, 170, 100, 29);
 
         textFieldAutor.setEditable(false);
         getContentPane().add(textFieldAutor);
-        textFieldAutor.setBounds(150, 60, 300, 27);
+        textFieldAutor.setBounds(170, 40, 280, 27);
 
         textFieldNuevoAutor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,9 +95,21 @@ public class VistaModificarAutor extends javax.swing.JFrame {
             }
         });
         getContentPane().add(textFieldNuevoAutor);
-        textFieldNuevoAutor.setBounds(150, 130, 300, 27);
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 500, 350);
+        textFieldNuevoAutor.setBounds(170, 110, 280, 27);
+
+        fondo.setIcon(new javax.swing.JLabel() {
+            public javax.swing.Icon getIcon() {
+                try {
+                    return new javax.swing.ImageIcon(
+                        new java.net.URL("url:http://www.celer-comex.com.ar/images/fondo.jpg")
+                    );
+                } catch (java.net.MalformedURLException e) {
+                }
+                return null;
+            }
+        }.getIcon());
+        getContentPane().add(fondo);
+        fondo.setBounds(0, 0, 500, 230);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -167,7 +182,7 @@ public class VistaModificarAutor extends javax.swing.JFrame {
     private javax.swing.JButton aceptar;
     private javax.swing.JLabel autor;
     private javax.swing.JButton cancelar;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel fondo;
     private javax.swing.JLabel nuevoAutor;
     private javax.swing.JTextField textFieldAutor;
     private javax.swing.JTextField textFieldNuevoAutor;
