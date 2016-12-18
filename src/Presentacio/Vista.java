@@ -376,9 +376,9 @@ public class Vista extends javax.swing.JFrame {
             modelAutores.addElement(aut);
             }
         } catch (NullPointerException ex) {
-            JOptionPane.showMessageDialog(rootPane,"Primero debe dar de alta un documento.");
+            Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(rootPane,"La búsqueda no ha producido resultados.");
         } catch (Exception ex) {
-            String excepcion = "La búsqueda no ha producido resultados.";
             JOptionPane.showMessageDialog(rootPane,ex);
         }
         
