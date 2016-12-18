@@ -109,6 +109,8 @@ public class VistaModificarAutor extends javax.swing.JFrame {
             if (nuevo_autor != null && !nuevo_autor.isEmpty()){
                 cp.modificarAutor(a,t,nuevo_autor);
                 this.setVisible(false);
+                String excepcion = "Actualice los autores.";
+                JOptionPane.showMessageDialog(rootPane,excepcion);
             }
             else {
                 String excepcion = "Escriba un autor.";
