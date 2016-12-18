@@ -157,7 +157,9 @@ public class CjtoDocumentos {
         
         int id = ids.get(autor).get(titulo);
         Documento doc = vecDocumentos.get(id);
+        diccionario.eliminarPalabras(doc.getContenidoReducido());
         doc.setContenido(contenidoModif);
+        diccionario.anadirPalabras(doc.getContenidoReducido());
         calcularDistancias(); 
     }
     
