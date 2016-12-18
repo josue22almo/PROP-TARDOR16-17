@@ -6,7 +6,7 @@
 package Domini;
 /**
  *
- * @author Josue Inaldo Alcántara Moreno
+ * @author josue.inaldo.alcantara
  */
 public class AndNode extends OperationExpressionNode{
     

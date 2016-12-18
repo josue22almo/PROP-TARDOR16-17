@@ -24,15 +24,13 @@ public class CtrlPersistencia {
         File[] archivos;
         ArrayList<BufferedReader> result = new ArrayList<>();
         BufferedReader b;
-        //try {
-            directorio = new File(rutaCarpeta);
-            archivos = directorio.listFiles();
-            for (int i = 0; i < archivos.length; ++i){
-                b = new BufferedReader(new FileReader(archivos[i].getPath()));
-                result.add(b);
-            }
-        
-            if (archivos.length == 0) throw new Exception("No se ha encontrado ningún documento en este directorio.");
+        directorio = new File(rutaCarpeta);
+        archivos = directorio.listFiles();
+        for (int i = 0; i < archivos.length; ++i){
+            b = new BufferedReader(new FileReader(archivos[i].getPath()));
+            result.add(b);
+        }
+        if (archivos.length == 0) throw new Exception("No se ha encontrado ningún documento en este directorio.");
         return result;
     }
     

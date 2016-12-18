@@ -23,7 +23,6 @@ public class Contenido {
     
     //Crea un contenido con contenidoOriginal y a partir de contenidoOriginal calula contenidoReducido
     public Contenido(String contenidoOriginal){
-      //  System.out.println("Creadora paso contenido");
         this.contenidoOriginal = contenidoOriginal;
         calcularContenidoReducido();
     }
@@ -35,7 +34,6 @@ public class Contenido {
 
     //cambia el contenidoOriginal 
     public void setContenidoOriginal(String contenidoOriginal) {
-       // System.out.println("Set contenido original");
         this.contenidoOriginal = contenidoOriginal; 
         contenidoReducido.clear();
         calcularContenidoReducido();

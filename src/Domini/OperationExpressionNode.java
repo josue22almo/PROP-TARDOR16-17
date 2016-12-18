@@ -4,7 +4,7 @@ package Domini;
 import java.util.LinkedList;
 /**
  *
- * @author Josue Inaldo Alcantara Moreno
+ * @author josue.inaldo.alcantara
  */
 public abstract class OperationExpressionNode implements ExpressionNode{
     protected LinkedList<Term> terms;

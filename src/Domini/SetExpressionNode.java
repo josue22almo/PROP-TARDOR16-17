@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Josue Inaldo Alcantara Moreno
+ * @author josue.inaldo.alcantara
  */
 public class SetExpressionNode extends ValueExpressionNode{
     

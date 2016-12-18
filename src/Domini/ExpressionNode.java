@@ -7,12 +7,10 @@ package Domini;
 
 /**
  *
- * @author Josue Inaldo Alcantara Moreno
+ * @author josue.inaldo.alcantara
  */
 public interface ExpressionNode {
     
     public int getType();
     public boolean getValue(Frase frase);
-
-   // public void add(ExpressionNode expression, boolean b);
 }

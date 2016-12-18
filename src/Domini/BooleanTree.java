@@ -3,7 +3,7 @@ package Domini;
 
 /**
  *
- * @author Josue Inaldo Alcántara Moreno
+ * @author josue.inaldo.alcantara
  */
 
 import java.util.ArrayList;

@@ -3,7 +3,7 @@ package Domini;
 
 /**
  *
- * @author Josue Inaldo Alcantara Moreno
+ * @author josue.inaldo.alcantara
  */
 public class OrNode extends OperationExpressionNode{
     

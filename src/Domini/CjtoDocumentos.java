@@ -79,6 +79,7 @@ public class CjtoDocumentos {
     public void bajaDocumento(String autor, String titulo) throws Exception  {
         if (!existeDocumento(autor, titulo))
             throw new Exception("El documento no existe");
+        
         //Eliminamos las palabras no repetidas en otros documentos del diccionario
         int id = ids.get(autor).get(titulo);
         Documento doc = vecDocumentos.get(id);
@@ -112,6 +113,7 @@ public class CjtoDocumentos {
     public void modificaAutorDoc(String autor, String titulo, String autorModif) throws Exception {
         if (!existeDocumento(autor, titulo))
             throw new Exception("El documento no existe");
+        
         //Se modifica en vecDocumentos
         int id = ids.get(autor).get(titulo);
         vecDocumentos.get(id).setAutor(autorModif);
@@ -146,6 +148,7 @@ public class CjtoDocumentos {
     public void modificaTituloDoc(String autor, String titulo, String tituloModif) throws Exception  { 
         if (!existeDocumento(autor, titulo))
             throw new Exception("El documento no existe");        
+        
         //Se modifica en vecDocumentos
         int id = ids.get(autor).get(titulo);
         Documento doc = vecDocumentos.get(id);
@@ -159,6 +162,7 @@ public class CjtoDocumentos {
     public void modificaContenidoDoc(String autor, String titulo, String contenidoModif) throws Exception {
         if (!existeDocumento(autor, titulo))
             throw new Exception("El documento no existe");        
+        
         int id = ids.get(autor).get(titulo);
         Documento doc = vecDocumentos.get(id);
         diccionario.eliminarPalabras(doc.getContenidoReducido());
@@ -205,8 +209,6 @@ public class CjtoDocumentos {
                     vecDocumentos.get(doc2).calcularTFIDF(numDocs, diccionario);
                     double distFrec = vecDocumentos.get(doc1).calcularDistancia(vecDocumentos.get(doc2),"FREC");             
                     double distTfIDf = vecDocumentos.get(doc1).calcularDistancia(vecDocumentos.get(doc2),"TF-IDF");
-                    //int idDoc = vecDocumentos.get(doc1).getID();
-                    //int idDoc2 = vecDocumentos.get(doc2).getID();
                     if (!distsFrec.get(doc1).containsKey(distFrec)){//si la distancia es nueva, creamos una nueva entrada
                         ArrayList<Integer> ar = new ArrayList<>();
                         ar.add(doc2);
@@ -220,9 +222,6 @@ public class CjtoDocumentos {
                         distsTFIDF.get(doc1).put(distTfIDf, ar);
                     }else //la distancia no es nueva. Añadimos el documento a la lista de documentos con la misma distancia 
                         distsTFIDF.get(doc1).get(distTfIDf).add(doc2);
-                    
-                    //distsFrecs.get(doc1).put(distFrec, doc2);
-                    //distsTFIDF.get(doc1).put(distTfIDf, doc2);
                 }
             }
         }  

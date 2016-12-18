@@ -4,7 +4,7 @@ package Domini;
 
 /**
  *
- * @author Josue Inaldo Alcantara Moreno
+ * @author josue.inaldo.alcantara
  */
 public class NotNode extends OperationExpressionNode {
 
