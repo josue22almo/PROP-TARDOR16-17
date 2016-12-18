@@ -351,6 +351,8 @@ public class Vista extends javax.swing.JFrame {
                 try {
                     Vista.cp.altaCjtoDocsDirectorio(chooser.getSelectedFile().getCanonicalPath(),true); 
                     String exito = "Documentos creados con éxito.";
+                    actualizarAutores();
+                    limpiarTitulos();
                     JOptionPane.showMessageDialog(rootPane,exito);  
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(rootPane,ex);
@@ -437,6 +439,8 @@ public class Vista extends javax.swing.JFrame {
                         Vista.cp.altaDocumentoPorRuta(chooser.getSelectedFile(),true);
                     }
                     String exito = "Documento creado con éxito.";
+                    actualizarAutores();
+                    limpiarTitulos();
                     JOptionPane.showMessageDialog(rootPane,exito);
                 }catch (IOException ex) {
                     JOptionPane.showMessageDialog(rootPane,ex);
