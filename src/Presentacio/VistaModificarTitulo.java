@@ -44,19 +44,16 @@ public class VistaModificarTitulo extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         textoTitulo = new javax.swing.JTextPane();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        textoNuevoTitulo = new javax.swing.JTextPane();
         titulo = new javax.swing.JLabel();
         cancelar = new javax.swing.JButton();
         nuevotitulo = new javax.swing.JLabel();
         aceptar = new javax.swing.JButton();
+        textoNuevoTitulo = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         textoTitulo.setEditable(false);
         jScrollPane1.setViewportView(textoTitulo);
-
-        jScrollPane2.setViewportView(textoNuevoTitulo);
 
         titulo.setText("Título:");
 
@@ -76,6 +73,12 @@ public class VistaModificarTitulo extends javax.swing.JFrame {
             }
         });
 
+        textoNuevoTitulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textoNuevoTituloActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -91,10 +94,9 @@ public class VistaModificarTitulo extends javax.swing.JFrame {
                         .addComponent(aceptar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(38, 38, 38)
                         .addComponent(cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
-                        .addComponent(jScrollPane2)))
-                .addContainerGap(42, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+                    .addComponent(textoNuevoTitulo))
+                .addGap(42, 42, 42))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,11 +105,11 @@ public class VistaModificarTitulo extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(titulo)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(nuevotitulo, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nuevotitulo)
+                    .addComponent(textoNuevoTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelar)
                     .addComponent(aceptar))
@@ -125,7 +127,7 @@ public class VistaModificarTitulo extends javax.swing.JFrame {
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
         // TODO add your handling code here:
         try{ 
-            VistaModificarTitulo.nuevo_titulo = textoNuevoTitulo.getText();
+            textoNuevoTituloActionPerformed(evt);
             if (nuevo_titulo != null && !nuevo_titulo.isEmpty()){
                 cp.modificarTitulo(a,t,nuevo_titulo);
                 this.setVisible(false);
@@ -140,6 +142,11 @@ public class VistaModificarTitulo extends javax.swing.JFrame {
             Logger.getLogger(VistaModificarTitulo.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_aceptarActionPerformed
+
+    private void textoNuevoTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoNuevoTituloActionPerformed
+        // TODO add your handling code here:
+        VistaModificarTitulo.nuevo_titulo = textoNuevoTitulo.getText();
+    }//GEN-LAST:event_textoNuevoTituloActionPerformed
 
     /**
      * @param args the command line arguments
@@ -180,9 +187,8 @@ public class VistaModificarTitulo extends javax.swing.JFrame {
     private javax.swing.JButton aceptar;
     private javax.swing.JButton cancelar;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel nuevotitulo;
-    private javax.swing.JTextPane textoNuevoTitulo;
+    private javax.swing.JTextField textoNuevoTitulo;
     private javax.swing.JTextPane textoTitulo;
     private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
