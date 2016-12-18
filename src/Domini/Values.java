@@ -25,5 +25,4 @@ public class Values {
     public static final int SET_NODE = 13;
     public static final int SENTENCES_NODE = 14;
     public static final int OPERATION_NODE = 15;
- // es NECESARIO?? CREO QUE NO PORQUE TERM ES TIENE UN ExpressionNode   public final int PARENTESIS_NODE = 5;
 }
