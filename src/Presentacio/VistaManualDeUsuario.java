@@ -32,7 +32,7 @@ public class VistaManualDeUsuario extends javax.swing.JFrame {
         fondo = new javax.swing.JLabel();
 
         setTitle("Manual de usuario");
-        setMinimumSize(new java.awt.Dimension(1120, 820));
+        setMinimumSize(new java.awt.Dimension(1120, 660));
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -58,7 +58,7 @@ public class VistaManualDeUsuario extends javax.swing.JFrame {
             }
         }.getIcon());
         getContentPane().add(fondo);
-        fondo.setBounds(0, 0, 1120, 690);
+        fondo.setBounds(0, 0, 1120, 660);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
