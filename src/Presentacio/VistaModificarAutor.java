@@ -69,6 +69,7 @@ public class VistaModificarAutor extends javax.swing.JFrame {
         nuevoAutor.setBounds(40, 120, 120, 20);
 
         cancelar.setBackground(new java.awt.Color(174, 178, 194));
+        cancelar.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         cancelar.setForeground(new java.awt.Color(0, 0, 0));
         cancelar.setText("Cancelar");
         cancelar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
@@ -81,6 +82,7 @@ public class VistaModificarAutor extends javax.swing.JFrame {
         cancelar.setBounds(340, 170, 110, 30);
 
         aceptar.setBackground(new java.awt.Color(174, 178, 194));
+        aceptar.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         aceptar.setForeground(new java.awt.Color(0, 0, 0));
         aceptar.setText("Aceptar");
         aceptar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
