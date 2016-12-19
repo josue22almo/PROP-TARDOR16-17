@@ -56,6 +56,7 @@ public class VistaModificarContenido extends javax.swing.JFrame {
         cancelar = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
 
+        setTitle("Modificar contenido");
         setMinimumSize(new java.awt.Dimension(618, 570));
         setResizable(false);
         getContentPane().setLayout(null);
