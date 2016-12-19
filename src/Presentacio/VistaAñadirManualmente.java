@@ -150,6 +150,8 @@ public class VistaAñadirManualmente extends javax.swing.JFrame {
         try {
             VistaAñadirManualmente.cp.altaDocumentoManual(this.autor, this.titulo, this.contenido);
             JOptionPane.showMessageDialog(rootPane,"Documento añadido con éxito.");
+            vista.actualizarAutores();
+            vista.limpiarTitulos();
             this.setVisible(false);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(rootPane,ex);
