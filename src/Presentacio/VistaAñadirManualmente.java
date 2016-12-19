@@ -60,7 +60,7 @@ public class VistaAñadirManualmente extends javax.swing.JFrame {
             }
         });
         getContentPane().add(textFieldAutor);
-        textFieldAutor.setBounds(220, 50, 500, 27);
+        textFieldAutor.setBounds(220, 50, 500, 19);
 
         labelAutor.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         labelAutor.setForeground(new java.awt.Color(255, 255, 255));
@@ -74,7 +74,7 @@ public class VistaAñadirManualmente extends javax.swing.JFrame {
             }
         });
         getContentPane().add(textFieldTitulo);
-        textFieldTitulo.setBounds(220, 100, 500, 27);
+        textFieldTitulo.setBounds(220, 100, 500, 19);
 
         labelTitulo.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         labelTitulo.setForeground(new java.awt.Color(255, 255, 255));
@@ -93,27 +93,31 @@ public class VistaAñadirManualmente extends javax.swing.JFrame {
         getContentPane().add(labelContenido);
         labelContenido.setBounds(30, 170, 180, 40);
 
+        botonAceptar.setBackground(new java.awt.Color(174, 178, 194));
         botonAceptar.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         botonAceptar.setForeground(new java.awt.Color(0, 0, 0));
         botonAceptar.setText("Aceptar");
+        botonAceptar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
         botonAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonAceptarActionPerformed(evt);
             }
         });
         getContentPane().add(botonAceptar);
-        botonAceptar.setBounds(484, 480, 100, 30);
+        botonAceptar.setBounds(484, 480, 100, 20);
 
+        botonCancelar.setBackground(new java.awt.Color(174, 178, 194));
         botonCancelar.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         botonCancelar.setForeground(new java.awt.Color(0, 0, 0));
         botonCancelar.setText("Cancelar");
+        botonCancelar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(174, 178, 194), 1, true));
         botonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCancelarActionPerformed(evt);
             }
         });
         getContentPane().add(botonCancelar);
-        botonCancelar.setBounds(620, 480, 100, 30);
+        botonCancelar.setBounds(620, 480, 100, 20);
 
         fondo.setIcon(new javax.swing.JLabel() {
             public javax.swing.Icon getIcon() {

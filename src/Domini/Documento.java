@@ -19,7 +19,7 @@ public class Documento {
     public Documento(int id, String autor, String titulo, String contenido) throws Exception{
         
         if (autor.isEmpty() || titulo.isEmpty() || contenido.isEmpty())
-            throw new Exception("Uno o más parámetros del documento está vacío");
+            throw new Exception("Uno o más parámetros del documento está vacío.");
         
         this.id = id;
         this.autor = autor;

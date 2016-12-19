@@ -109,7 +109,7 @@ public class VistaConsultarContenido extends javax.swing.JFrame {
         labelContenido.setForeground(new java.awt.Color(255, 255, 255));
         labelContenido.setText("Contenido:");
         getContentPane().add(labelContenido);
-        labelContenido.setBounds(50, 140, 90, 20);
+        labelContenido.setBounds(50, 140, 90, 18);
 
         textoAutor.setEditable(false);
         textoAutor.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N

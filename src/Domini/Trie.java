@@ -62,7 +62,7 @@ public class Trie {
         consultarSubArbol(sub, aux, prefijo);
         
         if (aux.isEmpty())
-            throw new Exception("La búsqueda no ha producido resultados");
+            throw new Exception("La búsqueda no ha producido resultados.");
         
         return aux;
     }

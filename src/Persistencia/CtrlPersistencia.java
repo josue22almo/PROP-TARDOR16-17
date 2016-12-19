@@ -42,7 +42,7 @@ public class CtrlPersistencia {
       String cadena;
       ArrayList<String> pf = new ArrayList<>();
       FileReader f = new FileReader(archivo);
-      if (f == null) throw new Exception("No existe el fichero " + archivo);
+      if (f == null) throw new Exception("No existe el fichero " + archivo + ".");
         try (BufferedReader b = new BufferedReader(f)) {
             while((cadena = b.readLine())!=null) {
                 pf.add(cadena);
