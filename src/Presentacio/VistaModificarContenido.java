@@ -55,7 +55,7 @@ public class VistaModificarContenido extends javax.swing.JFrame {
         fondo = new javax.swing.JLabel();
 
         setTitle("Modificar contenido");
-        setMinimumSize(new java.awt.Dimension(618, 570));
+        setMinimumSize(new java.awt.Dimension(620, 600));
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -77,14 +77,14 @@ public class VistaModificarContenido extends javax.swing.JFrame {
         contenido.setForeground(new java.awt.Color(255, 255, 255));
         contenido.setText("Contenido:");
         getContentPane().add(contenido);
-        contenido.setBounds(33, 37, 90, 20);
+        contenido.setBounds(33, 37, 90, 18);
 
         nuevocontenido.setBackground(new java.awt.Color(14, 115, 161));
         nuevocontenido.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         nuevocontenido.setForeground(new java.awt.Color(255, 255, 255));
         nuevocontenido.setText("Nuevo contenido:");
         getContentPane().add(nuevocontenido);
-        nuevocontenido.setBounds(33, 283, 140, 20);
+        nuevocontenido.setBounds(33, 283, 140, 18);
 
         textoContenido.setEditable(false);
         jScrollPane1.setViewportView(textoContenido);
@@ -122,7 +122,7 @@ public class VistaModificarContenido extends javax.swing.JFrame {
             }
         }.getIcon());
         getContentPane().add(fondo);
-        fondo.setBounds(0, 0, 620, 570);
+        fondo.setBounds(0, 0, 620, 600);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
