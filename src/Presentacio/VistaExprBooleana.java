@@ -27,6 +27,7 @@ public class VistaExprBooleana extends javax.swing.JFrame {
      */
     public VistaExprBooleana(CtrlPresentacio cp) {
         initComponents();
+        setLocationRelativeTo(null);
         VistaExprBooleana.cp = cp;
         this.documentos = new ArrayList<>();
     }

@@ -30,6 +30,7 @@ public class VistaModificarTitulo extends javax.swing.JFrame {
         VistaModificarTitulo.cp = cp;
         VistaModificarTitulo.vista = vista;
         initComponents();
+        setLocationRelativeTo(null);
         textoTitulo.setText(titulo);
     }
 

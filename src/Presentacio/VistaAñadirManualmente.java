@@ -26,7 +26,7 @@ public class VistaAñadirManualmente extends javax.swing.JFrame {
         initComponents();
         VistaAñadirManualmente.vista = vista;
         VistaAñadirManualmente.cp = cp;
-        
+        setLocationRelativeTo(null);
     }
 
     /**

@@ -22,6 +22,7 @@ public class VistaConsultarContenido extends javax.swing.JFrame {
      */
     public VistaConsultarContenido(String autor, String titulo, String contenido) {
         initComponents();
+        setLocationRelativeTo(null);
         VistaConsultarContenido.autor=autor;
         VistaConsultarContenido.titulo=titulo;
         VistaConsultarContenido.contenido=contenido;

@@ -40,6 +40,7 @@ public class VistaParecidos extends javax.swing.JFrame {
         VistaParecidos.lista = new JList(model);
         VistaParecidos.cp = cp;
         initComponents();
+        setLocationRelativeTo(null);
         ButtonGroup group = new ButtonGroup();
         group.add(FREC);
         group.add(TFIDF);

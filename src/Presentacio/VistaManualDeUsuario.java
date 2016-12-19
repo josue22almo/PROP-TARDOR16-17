@@ -16,6 +16,7 @@ public class VistaManualDeUsuario extends javax.swing.JFrame {
      */
     public VistaManualDeUsuario() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**

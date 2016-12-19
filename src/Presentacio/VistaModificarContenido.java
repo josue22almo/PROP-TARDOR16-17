@@ -31,6 +31,7 @@ public class VistaModificarContenido extends javax.swing.JFrame {
         VistaModificarContenido.c=contenido;
         VistaModificarContenido.cp = cp;
         initComponents();
+        setLocationRelativeTo(null);
         textoContenido.setText(contenido);
     }
 

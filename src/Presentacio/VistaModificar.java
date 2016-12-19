@@ -33,6 +33,7 @@ public class VistaModificar extends javax.swing.JFrame {
         VistaModificar.contenido = contenido;
         VistaModificar.vista = vista;
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
