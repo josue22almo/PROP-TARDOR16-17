@@ -51,7 +51,7 @@ public class VistaModificarTitulo extends javax.swing.JFrame {
         textoTitulo = new javax.swing.JTextField();
         fondo = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Modificar título");
         setMinimumSize(new java.awt.Dimension(493, 240));
         setResizable(false);
         getContentPane().setLayout(null);
